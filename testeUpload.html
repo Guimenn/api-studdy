@@ -112,7 +112,7 @@
 			document.getElementById('response').textContent = 'Enviando...';
 
 			try {
-				const response = await fetch('', {
+				const response = await fetch('https://api-studdy.onrender.com/questoes', {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
