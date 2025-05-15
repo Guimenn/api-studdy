@@ -131,26 +131,40 @@ const generateAlternatives = async (req, res) => {
 	if (!pergunta || !respostaCorreta) {
 		return res.status(400).json({ error: "Informe pergunta e respostaCorreta." });
 	}
-
 	try {
 		const completion = await openai.chat.completions.create({
-			model: "gpt-3.5-turbo",
-			prompt: `Você é um gerador de alternativas incorretas para quizzes. Receberá uma pergunta e a resposta correta	, e deve gerar 3 alternativas erradas que pareçam plausíveis, mas que estejam incorretas.
-
-Pergunta: ${pergunta}
-Resposta correta: ${respostaCorreta}
-
-Gere 3 alternativas erradas que sejam plausíveis mas incorretas.`,
+			model: "gpt-4o-mini",
+			messages: [
+				{
+					role: "system",
+					content: "Você é um gerador de alternativas incorretas para quizzes."
+				},
+				{
+					role: "user",
+					content: `Pergunta: ${pergunta}
+	  Resposta correta: ${respostaCorreta}
+	  
+	  Gere 3 alternativas erradas que sejam plausíveis mas incorretas. (apenas mande as respostas e mais nada)`
+				}
+			],
 			max_tokens: 150,
 			temperature: 0.7
 		});
 
-		const resposta = completion.choices[0].text;
+		console.log(JSON.stringify(completion, null, 2)); // Para debug
+
+		const resposta = completion.choices?.[0]?.message?.content;
+
+		if (!resposta) {
+			return res.status(500).json({ error: "Resposta do OpenAI vazia ou inválida" });
+		}
+
 		res.json({ alternativasErradas: resposta.split("\n").filter(Boolean) });
 	} catch (error) {
 		console.error("Erro ao gerar alternativas:", error);
 		res.status(500).json({ error: "Erro ao gerar alternativas" });
 	}
+
 };
 
 export { listarQuestoesController, obterQuestaoPorIDController, criarQuestaoController, atualizarQuestaoController, excluirQuestaoController, generateAlternatives }

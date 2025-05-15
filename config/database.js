@@ -1,135 +1,120 @@
-import mysql from 'mysql2/promise';
+import pkg from 'pg';
 import bcrypt from 'bcryptjs';
 
-const pool = mysql.createPool({
-	host: 'localhost',
-	user: 'root',
-	password: '',
-	database: 'studdy',
-	waitForConnections: true,
-	connectionLimit: 10,
-	queueLimit: 0
+const { Pool } = pkg;
+
+const pool = new Pool({
+  host: 'dpg-d0j3koh5pdvs73el5e5g-a',
+  user: 'studdy_user',
+  password: '9TCLfddk5qeqv9K2cveQ4oG42gzcYESh',
+  database: 'studdy',
+  port: 5432,
+  max: 10,
 });
 
-async function getConnection() {
-	return pool.getConnection();
-}
-
-//Função para ler todos os registros
 async function readAll(table, where = null) {
-	const connection = await getConnection();
-	try {
-		let sql = `SELECT * FROM ${table}`;
-		if (where) {
-			sql += ` WHERE ${where}`
-		}
-
-		const [rows] = await connection.execute(sql);
-		return rows;
-	} catch (err) {
-		console.error('Erro ao ler registros: ', err);
-		throw err;
-	} finally {
-		connection.release();
-	}
-
+  let sql = `SELECT * FROM ${table}`;
+  if (where) {
+    sql += ` WHERE ${where}`;
+  }
+  try {
+    const { rows } = await pool.query(sql);
+    return rows;
+  } catch (err) {
+    console.error('Erro ao ler registros: ', err);
+    throw err;
+  }
 }
 
-//Função para ler  um registro específico
 async function read(table, where) {
-	const connection = await getConnection();
-	try {
-		let sql = `SELECT * FROM ${table}`;
-		if (where) {
-			sql += ` WHERE ${where}`;
-		}
-
-		const [rows] = await connection.execute(sql);
-		return rows[0] || null;
-	} catch (err) {
-		console.error('Erro ao ler registros: ', err);
-		throw err;
-	} finally {
-		connection.release();
-	}
+  let sql = `SELECT * FROM ${table}`;
+  if (where) {
+    sql += ` WHERE ${where}`;
+  }
+  try {
+    const { rows } = await pool.query(sql);
+    return rows[0] || null;
+  } catch (err) {
+    console.error('Erro ao ler registro: ', err);
+    throw err;
+  }
 }
 
-//Função para inserir dados
 async function create(table, data) {
-	const connection = await getConnection();
-	try {
-		const columns = Object.keys(data).join(', ');
-		//(nome, email, endereco)
+  const client = await pool.connect();
+  try {
+    const columns = Object.keys(data).join(', ');
+    const placeholders = Object.keys(data)
+      .map((_, i) => `$${i + 1}`)
+      .join(', ');
 
-		const placeholders = Array(Object.keys(data).length).fill('?').join(', ');
-		//VALUES (?, ?, ?)
+    const sql = `INSERT INTO ${table} (${columns}) VALUES (${placeholders}) RETURNING id`;
 
-		const sql = `INSERT INTO ${table} (${columns}) VALUES (${placeholders})`;
-		//INSERT INTO clientes (nome, email, endereco) VALUES (?, ?, ?)
+    const values = Object.values(data);
 
-		const values = Object.values(data);
+    const { rows } = await client.query(sql, values);
 
-		const [result] = await connection.execute(sql, values);
-
-		return result.insertId;
-	} catch (err) {
-		console.error('Erro ao inserir registros: ', err);
-		throw err;
-	} finally {
-		connection.release();
-	}
+    return rows[0].id;
+  } catch (err) {
+    console.error('Erro ao inserir registro: ', err);
+    throw err;
+  } finally {
+    client.release();
+  }
 }
 
-//Função para atualizar um registro
 async function update(table, data, where) {
-	const connection = await getConnection();
-	try {
-		const set = Object.keys(data)
-			.map(column => `${column} = ?`)
-			.join(', ');
+  const client = await pool.connect();
+  try {
+    const set = Object.keys(data)
+      .map((column, i) => `${column} = $${i + 1}`)
+      .join(', ');
 
-		const sql = `UPDATE ${table} SET ${set} WHERE ${where}`;
-		const values = Object.values(data);
+    const sql = `UPDATE ${table} SET ${set} WHERE ${where}`;
 
-		const [result] = await connection.execute(sql, [...values]);
-		return result.affectedRows;
-	} catch (err) {
-		console.error('Erro ao atualizar registros: ', err);
-		throw err;
-	} finally {
-		connection.release();
-	}
+    const values = Object.values(data);
+
+    const result = await client.query(sql, values);
+
+    return result.rowCount;
+  } catch (err) {
+    console.error('Erro ao atualizar registro: ', err);
+    throw err;
+  } finally {
+    client.release();
+  }
 }
 
-// Função para excluir um registro
 async function deleteRecord(table, where) {
-	const connection = await getConnection();
-	try {
-		const sql = `DELETE FROM ${table} WHERE ${where}`;
-		const [result] = await connection.execute(sql);
-		return result.affectedRows;
-	} catch (err) {
-		console.error('Erro ao excluir registros: ', err);
-		throw err;
-	} finally {
-		connection.release();
-	}
+  const client = await pool.connect();
+  try {
+    const sql = `DELETE FROM ${table} WHERE ${where}`;
+
+    const result = await client.query(sql);
+
+    return result.rowCount;
+  } catch (err) {
+    console.error('Erro ao excluir registro: ', err);
+    throw err;
+  } finally {
+    client.release();
+  }
 }
 
 async function compare(senha, hash) {
-	try {
-		return await bcrypt.compare(senha, hash)
-	} catch (error) {
-		console.error('Erro ao comparar a senha com o hash', error)
-		return false;
-	}
+  try {
+    return await bcrypt.compare(senha, hash);
+  } catch (error) {
+    console.error('Erro ao comparar a senha com o hash', error);
+    return false;
+  }
 }
 
 export {
-	create,
-	readAll,
-	read,
-	update,
-	deleteRecord,
-	compare
+  create,
+  readAll,
+  read,
+  update,
+  deleteRecord,
+  compare,
 };

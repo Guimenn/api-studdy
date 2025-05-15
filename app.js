@@ -4,7 +4,7 @@ import authRotas from './routes/authRotas.js';
 import gerarQuestao from './routes/gerarQuestao.js';
 import cors from 'cors';
 const app = express();
-const PORT = 3001;
+const PORT = 3000;
 
 
 app.use(cors());
