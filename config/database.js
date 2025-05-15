@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 const { Pool } = pkg;
 
 const pool = new Pool({
-  host: 'dpg-d0j3koh5pdvs73el5e5g-a',
+  host: 'dpg-d0j3koh5pdvs73el5e5g-a.oregon-postgres.render.com',
   user: 'studdy_user',
   password: '9TCLfddk5qeqv9K2cveQ4oG42gzcYESh',
   database: 'studdy',
