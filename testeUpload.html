@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastro de Questão</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			max-width: 500px;
+		}
+
+		label {
+			margin-top: 10px;
+		}
+
+		input[type="text"],
+		select,
+		textarea {
+			padding: 8px;
+			margin-top: 5px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		button {
+			margin-top: 20px;
+			padding: 10px;
+			background-color: #004BFA;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		#response {
+			margin-top: 20px;
+			background-color: #f9f9f9;
+			border: 1px solid #ccc;
+			padding: 15px;
+			border-radius: 4px;
+			white-space: pre-wrap;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Cadastro de Questão</h1>
+
+	<form id="questaoForm">
+		<label for="enunciado">Enunciado:</label>
+		<textarea id="enunciado" name="enunciado" rows="4" required></textarea>
+
+		<label for="alternativa_a">Alternativa A:</label>
+		<input type="text" id="alternativa_a" name="alternativa_a" required>
+
+		<label for="alternativa_b">Alternativa B:</label>
+		<input type="text" id="alternativa_b" name="alternativa_b" required>
+
+		<label for="alternativa_c">Alternativa C:</label>
+		<input type="text" id="alternativa_c" name="alternativa_c" required>
+
+		<label for="alternativa_d">Alternativa D:</label>
+		<input type="text" id="alternativa_d" name="alternativa_d" required>
+
+		<label for="correta">Alternativa Correta:</label>
+		<select id="correta" name="correta" required>
+			<option value="">Selecione</option>
+			<option value="A">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+			<option value="D">D</option>
+		</select>
+
+		<label for="id_disciplina">ID da Disciplina:</label>
+		<input type="text" id="id_disciplina" name="id_disciplina" required>
+
+		<label for="id_professor">ID do Professor:</label>
+		<input type="text" id="id_professor" name="id_professor" required>
+		<label for="imagem_questao">Imagem (opcional):</label>
+		<input type="file" id="imagem_questao" name="imagem_questao" accept="image/*">
+
+		<button type="submit">Cadastrar Questão</button>
+	</form>
+
+	<div id="response"></div>
+
+	<script>
+		document.getElementById('questaoForm').addEventListener('submit', async function (event) {
+			event.preventDefault();
+
+			const form = event.target;
+			const formData = {
+				enunciado: form.enunciado.value,
+				alternativa_a: form.alternativa_a.value,
+				alternativa_b: form.alternativa_b.value,
+				alternativa_c: form.alternativa_c.value,
+				alternativa_d: form.alternativa_d.value,
+				correta: form.correta.value,
+				id_disciplina: parseInt(form.id_disciplina.value),
+				id_professor: parseInt(form.id_professor.value)
+			};
+
+			document.getElementById('response').textContent = 'Enviando...';
+
+			try {
+				const response = await fetch('http://localhost:3000/questoes', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3MjUyNDk2LCJleHAiOjE3NDcyNTYwOTZ9.L49t-G77e5ghDDjN9QztNs5UHpMIY1PAWS1agjzKgW0'
+					},
+					body: JSON.stringify(formData)
+				});
+
+				const result = await response.json();
+				document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+			} catch (error) {
+				document.getElementById('response').textContent = 'Erro ao enviar os dados: ' + error.message;
+			}
+		});
+	</script>
+
+</body>
+
+</html>
