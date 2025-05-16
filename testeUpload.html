@@ -85,8 +85,8 @@
 
 		<label for="id_professor">ID do Professor:</label>
 		<input type="text" id="id_professor" name="id_professor" required>
-		<label for="imagem_questao">Imagem (opcional):</label>
-		<input type="file" id="imagem_questao" name="imagem_questao" accept="image/*">
+		<label for="capa">Imagem (opcional):</label>
+		<input type="file" id="capa" name="capa" accept="image/*">
 
 		<button type="submit">Cadastrar Questão</button>
 	</form>
@@ -116,7 +116,7 @@
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json',
-						'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3MjUyNDk2LCJleHAiOjE3NDcyNTYwOTZ9.L49t-G77e5ghDDjN9QztNs5UHpMIY1PAWS1agjzKgW0'
+						'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQ3NDA0MDQ4LCJleHAiOjE3NDc0MDc2NDh9.NlORa4b6xXUDc2Uu4NOrUV8-X_o6k9dWp6vQ25qwrUU'
 					},
 					body: JSON.stringify(formData)
 				});

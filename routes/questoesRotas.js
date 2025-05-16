@@ -38,7 +38,7 @@ const router = express.Router();
 router.get('/', listarQuestoesController);
 router.get('/:id', obterQuestaoPorIDController);
 
-router.post('/', upload.single('capa'), criarQuestaoController)
+router.post('/', authMiddleware, upload.single('capa'), criarQuestaoController)
 
 
 router.put('/:id', authMiddleware, upload.single('capa'), atualizarQuestaoController)

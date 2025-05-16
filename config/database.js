@@ -1,15 +1,28 @@
 import pkg from 'pg';
 import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const { Pool } = pkg;
 
 const pool = new Pool({
-  host: 'dpg-d0j3koh5pdvs73el5e5g-a.oregon-postgres.render.com',
-  user: 'studdy_user',
-  password: '9TCLfddk5qeqv9K2cveQ4oG42gzcYESh',
-  database: 'studdy',
-  port: 5432,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 5432,
   max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+// Adiciona um handler de erro para o pool
+pool.on('error', (err) => {
+  console.error('Erro inesperado no pool de conexões:', err);
 });
 
 async function readAll(table, where = null) {
