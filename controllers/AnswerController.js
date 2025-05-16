@@ -38,7 +38,7 @@ const gerarAlternativas = async (req, res) => {
                     content: `Pergunta: ${pergunta}
 	  Resposta correta: ${respostaCorreta}
 	  
-	  Gere 3 alternativas erradas que sejam plausíveis mas incorretas. (apenas mande as respostas e mais nada)`
+	  Gere 3 alternativas erradas que sejam plausíveis mas incorretas. (apenas mande as respostas e mais nada, sem numeração das respostas)`
                 }
             ],
             max_tokens: 150,
