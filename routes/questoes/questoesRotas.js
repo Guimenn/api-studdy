@@ -1,13 +1,6 @@
 import express from 'express';
-
-import {
-	listarQuestoesController,
-	obterQuestaoPorIDController,
-	criarQuestaoController,
-	atualizarQuestaoController,
-	excluirQuestaoController
-} from '../controllers/AnswerController.js';
-import authMiddleware from '../middlewares/authMiddleware.js';
+import { GenericController } from '../../controllers/GenericController.js';
+import authMiddleware from '../../middlewares/authMiddleware.js';
 import multer from 'multer';
 import path from 'path';
 import {
@@ -33,23 +26,21 @@ const upload = multer({
 })
 const router = express.Router();
 
+const questoesController = GenericController('questoes');
 
-
-router.get('/', listarQuestoesController);
-router.get('/:id', obterQuestaoPorIDController);
-
-router.post('/', authMiddleware, upload.single('capa'), criarQuestaoController)
-
-
-router.put('/:id', authMiddleware, upload.single('capa'), atualizarQuestaoController)
-router.delete('/:id', authMiddleware, excluirQuestaoController)
+// Rotas para Questões
+router.get('/', questoesController.listar);
+router.get('/:id', questoesController.buscarPorId);
+router.post('/', questoesController.criar);
+router.put('/:id', questoesController.atualizar);
+router.delete('/:id', questoesController.excluir);
+router.get('/filtro', questoesController.buscarComFiltro);
+router.get('/:id/relacionamentos', questoesController.buscarRelacionamentos);
 
 router.options('/', (req, res) => {
 	res.setHeader('Allow', 'GET, PUT, DELETE, POST, OPTIONS');
 	res.status(204).send()
 })
-
-
 
 export default router;
 

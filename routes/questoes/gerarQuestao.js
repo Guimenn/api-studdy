@@ -1,8 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import { generateAlternatives } from '../controllers/AnswerController.js';
+import { gerarAlternativas } from '../../controllers/AnswerController.js';
 
-router.post('/gerar-alternativas', generateAlternatives);
+router.post('/', gerarAlternativas);
 
 router.options('/', (req, res) => {
 	res.setHeader('Allow', 'POST, OPTIONS');
