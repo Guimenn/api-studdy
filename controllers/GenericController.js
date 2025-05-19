@@ -33,9 +33,9 @@ export const GenericController = (tableName) => {
         criar: async (req, res) => {
             try {
                 const registroId = await create(tableName, req.body);
-                res.status(201).json({ 
-                    mensagem: `${tableName} criado com sucesso`, 
-                    id: registroId 
+                res.status(201).json({
+                    mensagem: `${tableName} criado com sucesso`,
+                    id: registroId
                 });
             } catch (error) {
                 console.error(`Erro ao criar ${tableName}:`, error);
@@ -76,6 +76,41 @@ export const GenericController = (tableName) => {
                 res.status(500).json({ mensagem: `Erro ao buscar ${tableName} com filtro` });
             }
         },
+
+        // Buscar por matrícula
+        buscarPorMatricula: async (req, res) => {
+            try {
+                const { matricula } = req.params;
+                const registros = await read(tableName, `matricula = '${matricula}'`);
+
+                if (registros) {
+                    res.status(200).json(registros);
+                } else {
+                    res.status(404).json({ mensagem: `${tableName} com matrícula ${matricula} não encontrado` });
+                }
+            } catch (error) {
+                console.error(`Erro ao buscar ${tableName} por matrícula:`, error);
+                res.status(500).json({ mensagem: `Erro ao buscar ${tableName} por matrícula` });
+            }
+        },
+          // Buscar por matrícula
+          buscaPorEmail: async (req, res) => {
+            try {
+                const { email } = req.params;
+                const registros = await read(tableName, `email = '${email}'`);
+
+                if (registros) {
+                    res.status(200).json(registros);
+                } else {
+                    res.status(404).json({ mensagem: `${tableName} com email ${email} não encontrado` });
+                }
+            } catch (error) {
+                console.error(`Erro ao buscar ${tableName} por email:`, error);
+                res.status(500).json({ mensagem: `Erro ao buscar ${tableName} por email` });
+            }
+        },
+
+
 
         // Buscar relacionamentos
         buscarRelacionamentos: async (req, res) => {

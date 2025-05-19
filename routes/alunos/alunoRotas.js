@@ -12,5 +12,8 @@ router.put('/:id', alunoController.atualizar);
 router.delete('/:id', alunoController.excluir);
 router.get('/filtro', alunoController.buscarComFiltro);
 router.get('/:id/relacionamentos', alunoController.buscarRelacionamentos);
+router.get('/matricula/:matricula', alunoController.buscarPorMatricula); 
+router.get('/email/:email', alunoController.buscaPorEmail)
+
 
 export default router; 
