@@ -1,37 +1,122 @@
-import { getAllClasses, getClassById, createClass } from '../models/Class.js';
+import {
+	getAllClasses,
+	getClassById,
+	createClass,
+	updateClass,
+	deleteClass,
+} from '../models/Class.js';
+import { classSchema } from '../schemas/class.schema.js';
 
 async function getAllClassesController(req, res) {
 	try {
 		const classes = await getAllClasses();
 		return res.status(200).json(classes);
 	} catch (error) {
-		console.error('Error fetching classes:', error);
-		return res.status(500).json({ message: 'Error fetching classes' });
+		console.error('Error fetching subjects:', error);
+		return res.status(500).json({ message: 'Error fetching subjects' });
 	}
 }
 
 async function getClassByIdController(req, res) {
 	try {
-		const schoolClass = await getClassById(parseInt(req.params.id));
+		const schoolClass = await getClassById(parseInt(req.params.classId));
 
 		if (!schoolClass) {
-			return res.status(404).json({ message: 'Class not found' });
+			return res.status(404).json({ message: 'Subject not found' });
 		}
 
 		return res.status(200).json(schoolClass);
 	} catch (error) {
-		console.error('Error fetching class:', error);
-		return res.status(500).json({ message: 'Error fetching class' });
+		console.error('Error fetching subject:', error);
+		return res.status(500).json({ message: 'Error fetching subject' });
 	}
 }
 
 async function createClassController(req, res) {
+	let payload;
 	try {
-		const schoolClass = await createClass(req.body);
-		return res.status(201).json(schoolClass);
-	} catch (error) {
-		console.error('Error creating class:', error);
-		return res.status(500).json({ message: 'Error creating class' });
+		payload = classSchema.parse(req.body);
+	} catch (err) {
+		return res.status(400).json({
+			message: err.errors
+				? err.errors[0].message
+				: 'Invalid request body',
+		});
+	}
+
+	try {
+		const created = await createClass(payload);
+		return res.status(201).json(created);
+	} catch (err) {
+		// erro de professor não leciona matéria
+		if (err.message.includes('does not teach subject')) {
+			return res.status(400).json({ message: err.message });
+		}
+		// constraint do enum ou duplicação de nome cai aqui
+		if (err.code === 'P2002') {
+			return res
+				.status(409)
+				.json({ message: 'Class name already exists' });
+		}
+		console.error('Unexpected error:', err);
+		return res.status(500).json({ message: 'Internal Server Error' });
+	}
+}
+
+async function updateClassController(req, res) {
+	const classId = parseInt(req.params.classId);
+	let classData;
+
+	// Validação do payload com Zod
+	try {
+		classData = classSchema.parse(req.body);
+	} catch (err) {
+		return res.status(400).json({ message: 'Invalid request body' });
+	}
+
+	// Atualização da turma
+	try {
+		const updatedClass = await updateClass(classId, classData);
+		return res.status(200).json(updatedClass);
+	} catch (err) {
+		if (err.message === 'Class not found') {
+			return res.status(404).json({ message: 'Class not found' });
+		}
+
+		if (err.code === 'P2002') {
+			return res
+				.status(409)
+				.json({ message: 'Class with same name already exists' });
+		}
+
+		if (err.message.includes('turno')) {
+			return res.status(400).json({ message: err.message });
+		}
+
+		console.error('Unexpected error:', err);
+		return res.status(500).json({ message: 'Internal Server Error' });
+	}
+}
+
+async function deleteClassController(req, res) {
+	const classId = parseInt(req.params.classId);
+
+	try {
+		await deleteClass(classId);
+		return res.status(204).send();
+	} catch (err) {
+		if (err.code === 'CLASS_HAS_STUDENTS') {
+			return res
+				.status(400)
+				.json({ message: 'Cannot delete class with linked students' });
+		}
+
+		if (err.code === 'P2025') {
+			// Turma não encontrada
+			return res.status(404).json({ message: 'Class not found' });
+		}
+
+		return res.status(500).json({ message: 'Internal Server Error' });
 	}
 }
 
@@ -39,4 +124,6 @@ export {
 	getAllClassesController,
 	getClassByIdController,
 	createClassController,
+	updateClassController,
+	deleteClassController,
 };

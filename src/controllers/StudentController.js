@@ -2,9 +2,11 @@ import {
 	getAllStudents,
 	getStudentById,
 	createStudent,
-	updateStudentClass,
-	deleteStudentAccount,
+	updateStudent,
+	deleteStudent,
 } from '../models/Student.js';
+import { studentSchema } from '../schemas/student.schema.js';
+import { ZodError } from 'zod/v4';
 
 async function getAllStudentsController(req, res) {
 	try {
@@ -18,7 +20,7 @@ async function getAllStudentsController(req, res) {
 
 async function getStudentByIdController(req, res) {
 	try {
-		const student = await getStudentById(parseInt(req.params.student_id));
+		const student = await getStudentById(parseInt(req.params.studentId));
 
 		if (!student) {
 			return res.status(404).json({ message: 'Student not found' });
@@ -32,75 +34,93 @@ async function getStudentByIdController(req, res) {
 }
 
 async function createStudentController(req, res) {
-	try {
-		const student = await createStudent(req.body);
-		return res.status(201).json(student);
-	} catch (error) {
-		console.error('Error creating student:', error);
+	let student;
 
-		if (error.message === 'Error creating user while creating student') {
-			return res.status(500).json({
-				message: 'Error creating user while creating student',
+	try {
+		student = studentSchema.parse(req.body);
+	} catch (error) {
+		if (error instanceof ZodError) {
+			const formatted = error['issues'].map((err) => ({
+				path: err.path.join('.'),
+				message: err.message,
+			}));
+
+			return res.status(400).json({
+				message: 'Invalid request body',
+				errors: formatted,
 			});
 		}
-
-		if (error.message === 'Invalid student data:') {
-			return res
-				.status(400)
-				.json({ message: 'Invalid student data:', error });
-		}
-
-		return res.status(500).json({ message: 'Error creating student' });
 	}
-}
 
-async function updateStudentClassController(req, res) {
 	try {
-		const student_id = parseInt(req.params.student_id);
-		const { class_id } = req.body;
-
-		const student = await updateStudentClass(student_id, class_id);
-
-		if (!class_id) {
-			return res.status(400).json({ message: 'Class ID is required' });
-		}
-
-		return res.status(200).json(student);
+		const created = await createStudent(student);
+		return res.status(201).json(created);
 	} catch (error) {
-		console.error('Error updating student class:', error);
+		console.error(error);
 
-		if (error.message === 'Student not found') {
-			return res.status(404).json({ message: 'Student not found' });
+		if (error.message.includes('User is not a student')) {
+			return res.status(400).json({ message: error.message });
 		}
 
-		if (error.message === 'Class not found') {
-			return res.status(404).json({ message: 'Class not found' });
-		}
-
-		return res
-			.status(500)
-			.json({ message: 'Error updating student class' });
+		return res.status(500).json({ message: error.message });
 	}
 }
 
-async function deleteStudentAccountController(req, res) {
+async function updateStudentController(req, res) {
+	let student;
+
 	try {
-		const deleted = await deleteStudentAccount(
-			parseInt(req.params.user_id),
+		student = studentSchema.parse(req.body);
+	} catch (error) {
+		if (error instanceof ZodError) {
+			const formatted = error['issues'].map((err) => ({
+				path: err.path.join('.'),
+				message: err.message,
+			}));
+
+			return res.status(400).json({
+				message: 'Invalid request body',
+				errors: formatted,
+			});
+		}
+	}
+
+	try {
+		const updated = await updateStudent(
+			parseInt(req.params.studentId),
+			student,
 		);
-		return res.status(200).json(deleted);
+		return res.status(200).json(updated);
 	} catch (error) {
-		console.error('Error deleting student:', error);
+		console.error(error);
+		return res.status(500).json({ message: error.message });
+	}
+}
 
-		if (error.message === 'User not found') {
-			return res.status(404).json({ message: 'User not found' });
+async function deleteStudentController(req, res) {
+	const id = req.params.studentId;
+
+	try {
+		// Verifica se o id é número válido
+		const studentId = parseInt(id);
+		if (isNaN(studentId) || studentId <= 0) {
+			return res.status(400).json({ error: 'Student ID is invalid' });
 		}
 
-		if (error.message === 'User is not a student') {
-			return res.status(400).json({ message: 'User is not a student' });
+		// Executa a deleção no model
+		await deleteStudent(studentId);
+
+		// Retorna sucesso
+		return res.status(204).send();
+	} catch (error) {
+		console.error(error);
+
+		// Erro customizado para aluno não encontrado
+		if (error.message.includes('not found')) {
+			return res.status(404).json({ error: error.message });
 		}
 
-		return res.status(500).json({ message: 'Error deleting student' });
+		return res.status(500).json({ error: 'Internal server error' });
 	}
 }
 
@@ -108,6 +128,6 @@ export {
 	getAllStudentsController,
 	getStudentByIdController,
 	createStudentController,
-	updateStudentClassController,
-	deleteStudentAccountController,
+	updateStudentController,
+	deleteStudentController,
 };

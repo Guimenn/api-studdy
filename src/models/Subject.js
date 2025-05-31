@@ -1,27 +1,23 @@
 import prisma from '../../prisma/client.js';
-import { subjectSchema } from '../schemas/schemas.js';
 
 async function getAllSubjects() {
-	try {
-		const subjects = await prisma.subject.findMany();
-		return subjects;
-	} catch (error) {
-		console.log('Error fetching subjects:', error);
-		throw error;
-	}
+	return await prisma.subject.findMany({
+		select: {
+			id: true,
+			name: true,
+		},
+	});
 }
 
 async function getSubjectById(subject_id) {
 	try {
 		const subject = await prisma.subject.findUnique({
 			where: { id: subject_id },
+			select: {
+				id: true,
+				name: true,
+			},
 		});
-
-		if (!subject) {
-			console.error('Subject not found');
-			throw new Error('Subject not found');
-		}
-
 		return subject;
 	} catch (error) {
 		console.log('Error fetching subject:', error);
@@ -30,53 +26,41 @@ async function getSubjectById(subject_id) {
 }
 
 async function createSubject(subjectData) {
-	const parsedSubject = subjectSchema.safeParse(subjectData);
-
-	if (!parsedSubject.success) {
-		console.error('Invalid subject data:', parsedSubject.error);
-		throw new Error('Invalid subject data: ' + parsedSubject.error.message);
-	}
-
 	try {
 		return await prisma.subject.create({
-			data: parsedSubject.data,
+			data: subjectData,
+			select: {
+				id: true,
+				name: true,
+			},
 		});
 	} catch (error) {
-		if (error.code === 'P2002') {
-			console.error('Subject already exists');
-			throw new Error('Subject already exists');
-		}
-
-		console.error('Error creating subject:', error);
 		throw error;
 	}
 }
 
 async function updateSubject(subject_id, subjectData) {
-	const parsedSubject = subjectSchema.safeParse(subjectData);
-	if (!parsedSubject.success) {
-		console.error('Invalid subject data:', parsedSubject.error);
-		throw new Error('Invalid subject data: ' + parsedSubject.error.message);
-	}
 	try {
 		const updatedSubject = await prisma.subject.update({
 			where: { id: subject_id },
-			data: parsedSubject.data,
+			data: subjectData,
+			select: {
+				id: true,
+				name: true,
+			},
 		});
 		return updatedSubject;
 	} catch (error) {
 		if (error.code === 'P2002') {
-			console.error('Subject already exists');
-			throw new Error('Subject already exists');
+			throw { status: 409, message: 'Subject already exists' };
 		}
 
 		if (error.code === 'P2025') {
-			console.error('Subject not found');
-			throw new Error('Subject not found');
+			throw { status: 404, message: 'Subject not found' };
 		}
 
 		console.error('Error updating subject:', error);
-		throw error;
+		throw { status: 500, message: 'Error updating subject' };
 	}
 }
 
@@ -88,11 +72,11 @@ async function deleteSubject(subject_id) {
 		return deletedSubject;
 	} catch (error) {
 		if (error.code === 'P2025') {
-			console.error('Subject not found');
-			throw new Error('Subject not found');
+			throw { status: 404, message: 'Subject not found' };
 		}
+
 		console.error('Error deleting subject:', error);
-		throw error;
+		throw { status: 500, message: 'Error deleting subject' };
 	}
 }
 

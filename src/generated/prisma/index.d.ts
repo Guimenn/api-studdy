@@ -2112,13 +2112,13 @@ export namespace Prisma {
    */
 
   export type ClassCountOutputType = {
-    teacher_subject_classes: number
     students: number
+    teacher_subject_classes: number
   }
 
   export type ClassCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    teacher_subject_classes?: boolean | ClassCountOutputTypeCountTeacher_subject_classesArgs
     students?: boolean | ClassCountOutputTypeCountStudentsArgs
+    teacher_subject_classes?: boolean | ClassCountOutputTypeCountTeacher_subject_classesArgs
   }
 
   // Custom InputTypes
@@ -2135,15 +2135,15 @@ export namespace Prisma {
   /**
    * ClassCountOutputType without action
    */
-  export type ClassCountOutputTypeCountTeacher_subject_classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Relationship_teacher_subject_classWhereInput
+  export type ClassCountOutputTypeCountStudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StudentWhereInput
   }
 
   /**
    * ClassCountOutputType without action
    */
-  export type ClassCountOutputTypeCountStudentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StudentWhereInput
+  export type ClassCountOutputTypeCountTeacher_subject_classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Relationship_teacher_subject_classWhereInput
   }
 
 
@@ -2594,8 +2594,8 @@ export namespace Prisma {
     modified_at?: boolean
     role?: boolean
     hashed_password?: boolean
-    student?: boolean | User$studentArgs<ExtArgs>
     teacher?: boolean | User$teacherArgs<ExtArgs>
+    student?: boolean | User$studentArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2636,8 +2636,8 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "birth_date" | "cpf" | "created_at" | "modified_at" | "role" | "hashed_password", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    student?: boolean | User$studentArgs<ExtArgs>
     teacher?: boolean | User$teacherArgs<ExtArgs>
+    student?: boolean | User$studentArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
   export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2645,8 +2645,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      student: Prisma.$StudentPayload<ExtArgs> | null
       teacher: Prisma.$TeacherPayload<ExtArgs> | null
+      student: Prisma.$StudentPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -3052,8 +3052,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    student<T extends User$studentArgs<ExtArgs> = {}>(args?: Subset<T, User$studentArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     teacher<T extends User$teacherArgs<ExtArgs> = {}>(args?: Subset<T, User$teacherArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    student<T extends User$studentArgs<ExtArgs> = {}>(args?: Subset<T, User$studentArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3480,25 +3480,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.student
-   */
-  export type User$studentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Student
-     */
-    select?: StudentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Student
-     */
-    omit?: StudentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: StudentInclude<ExtArgs> | null
-    where?: StudentWhereInput
-  }
-
-  /**
    * User.teacher
    */
   export type User$teacherArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3515,6 +3496,25 @@ export namespace Prisma {
      */
     include?: TeacherInclude<ExtArgs> | null
     where?: TeacherWhereInput
+  }
+
+  /**
+   * User.student
+   */
+  export type User$studentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Student
+     */
+    select?: StudentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Student
+     */
+    omit?: StudentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentInclude<ExtArgs> | null
+    where?: StudentWhereInput
   }
 
   /**
@@ -3730,8 +3730,8 @@ export namespace Prisma {
     user_id?: boolean
     created_at?: boolean
     modified_at?: boolean
-    teacher_subjects?: boolean | Teacher$teacher_subjectsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    teacher_subjects?: boolean | Teacher$teacher_subjectsArgs<ExtArgs>
     _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teacher"]>
 
@@ -3760,8 +3760,8 @@ export namespace Prisma {
 
   export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "created_at" | "modified_at", ExtArgs["result"]["teacher"]>
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    teacher_subjects?: boolean | Teacher$teacher_subjectsArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    teacher_subjects?: boolean | Teacher$teacher_subjectsArgs<ExtArgs>
     _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TeacherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3774,8 +3774,8 @@ export namespace Prisma {
   export type $TeacherPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Teacher"
     objects: {
-      teacher_subjects: Prisma.$Relationship_teacher_subjectPayload<ExtArgs>[]
       user: Prisma.$UserPayload<ExtArgs>
+      teacher_subjects: Prisma.$Relationship_teacher_subjectPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4176,8 +4176,8 @@ export namespace Prisma {
    */
   export interface Prisma__TeacherClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    teacher_subjects<T extends Teacher$teacher_subjectsArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$teacher_subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    teacher_subjects<T extends Teacher$teacher_subjectsArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$teacher_subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7058,8 +7058,8 @@ export namespace Prisma {
     course?: boolean
     created_at?: boolean
     modified_at?: boolean
-    teacher_subject_classes?: boolean | Class$teacher_subject_classesArgs<ExtArgs>
     students?: boolean | Class$studentsArgs<ExtArgs>
+    teacher_subject_classes?: boolean | Class$teacher_subject_classesArgs<ExtArgs>
     _count?: boolean | ClassCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -7092,8 +7092,8 @@ export namespace Prisma {
 
   export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "shift" | "course" | "created_at" | "modified_at", ExtArgs["result"]["class"]>
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    teacher_subject_classes?: boolean | Class$teacher_subject_classesArgs<ExtArgs>
     students?: boolean | Class$studentsArgs<ExtArgs>
+    teacher_subject_classes?: boolean | Class$teacher_subject_classesArgs<ExtArgs>
     _count?: boolean | ClassCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClassIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7102,8 +7102,8 @@ export namespace Prisma {
   export type $ClassPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Class"
     objects: {
-      teacher_subject_classes: Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>[]
       students: Prisma.$StudentPayload<ExtArgs>[]
+      teacher_subject_classes: Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7506,8 +7506,8 @@ export namespace Prisma {
    */
   export interface Prisma__ClassClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    teacher_subject_classes<T extends Class$teacher_subject_classesArgs<ExtArgs> = {}>(args?: Subset<T, Class$teacher_subject_classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     students<T extends Class$studentsArgs<ExtArgs> = {}>(args?: Subset<T, Class$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    teacher_subject_classes<T extends Class$teacher_subject_classesArgs<ExtArgs> = {}>(args?: Subset<T, Class$teacher_subject_classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7931,30 +7931,6 @@ export namespace Prisma {
   }
 
   /**
-   * Class.teacher_subject_classes
-   */
-  export type Class$teacher_subject_classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Relationship_teacher_subject_class
-     */
-    select?: Relationship_teacher_subject_classSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Relationship_teacher_subject_class
-     */
-    omit?: Relationship_teacher_subject_classOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Relationship_teacher_subject_classInclude<ExtArgs> | null
-    where?: Relationship_teacher_subject_classWhereInput
-    orderBy?: Relationship_teacher_subject_classOrderByWithRelationInput | Relationship_teacher_subject_classOrderByWithRelationInput[]
-    cursor?: Relationship_teacher_subject_classWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Relationship_teacher_subject_classScalarFieldEnum | Relationship_teacher_subject_classScalarFieldEnum[]
-  }
-
-  /**
    * Class.students
    */
   export type Class$studentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7976,6 +7952,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: StudentScalarFieldEnum | StudentScalarFieldEnum[]
+  }
+
+  /**
+   * Class.teacher_subject_classes
+   */
+  export type Class$teacher_subject_classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Relationship_teacher_subject_class
+     */
+    select?: Relationship_teacher_subject_classSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Relationship_teacher_subject_class
+     */
+    omit?: Relationship_teacher_subject_classOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Relationship_teacher_subject_classInclude<ExtArgs> | null
+    where?: Relationship_teacher_subject_classWhereInput
+    orderBy?: Relationship_teacher_subject_classOrderByWithRelationInput | Relationship_teacher_subject_classOrderByWithRelationInput[]
+    cursor?: Relationship_teacher_subject_classWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Relationship_teacher_subject_classScalarFieldEnum | Relationship_teacher_subject_classScalarFieldEnum[]
   }
 
   /**
@@ -8211,9 +8211,9 @@ export namespace Prisma {
     class_id?: boolean
     created_at?: boolean
     modified_at?: boolean
-    quiz_attempts?: boolean | Student$quiz_attemptsArgs<ExtArgs>
-    class?: boolean | ClassDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    quiz_attempts?: boolean | Student$quiz_attemptsArgs<ExtArgs>
     _count?: boolean | StudentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["student"]>
 
@@ -8224,8 +8224,8 @@ export namespace Prisma {
     class_id?: boolean
     created_at?: boolean
     modified_at?: boolean
-    class?: boolean | ClassDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["student"]>
 
   export type StudentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8235,8 +8235,8 @@ export namespace Prisma {
     class_id?: boolean
     created_at?: boolean
     modified_at?: boolean
-    class?: boolean | ClassDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["student"]>
 
   export type StudentSelectScalar = {
@@ -8250,26 +8250,26 @@ export namespace Prisma {
 
   export type StudentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "enrollment" | "user_id" | "class_id" | "created_at" | "modified_at", ExtArgs["result"]["student"]>
   export type StudentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    quiz_attempts?: boolean | Student$quiz_attemptsArgs<ExtArgs>
-    class?: boolean | ClassDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    quiz_attempts?: boolean | Student$quiz_attemptsArgs<ExtArgs>
     _count?: boolean | StudentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type StudentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    class?: boolean | ClassDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
   }
   export type StudentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    class?: boolean | ClassDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
   }
 
   export type $StudentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Student"
     objects: {
-      quiz_attempts: Prisma.$Quiz_attemptPayload<ExtArgs>[]
-      class: Prisma.$ClassPayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
+      class: Prisma.$ClassPayload<ExtArgs>
+      quiz_attempts: Prisma.$Quiz_attemptPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -8672,9 +8672,9 @@ export namespace Prisma {
    */
   export interface Prisma__StudentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    quiz_attempts<T extends Student$quiz_attemptsArgs<ExtArgs> = {}>(args?: Subset<T, Student$quiz_attemptsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Quiz_attemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    class<T extends ClassDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassDefaultArgs<ExtArgs>>): Prisma__ClassClient<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    class<T extends ClassDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassDefaultArgs<ExtArgs>>): Prisma__ClassClient<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    quiz_attempts<T extends Student$quiz_attemptsArgs<ExtArgs> = {}>(args?: Subset<T, Student$quiz_attemptsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Quiz_attemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9338,9 +9338,9 @@ export namespace Prisma {
     id?: boolean
     class_id?: boolean
     teacher_subject_id?: boolean
-    quizzes?: boolean | Relationship_teacher_subject_class$quizzesArgs<ExtArgs>
     class?: boolean | ClassDefaultArgs<ExtArgs>
     teacher_subject?: boolean | Relationship_teacher_subjectDefaultArgs<ExtArgs>
+    quizzes?: boolean | Relationship_teacher_subject_class$quizzesArgs<ExtArgs>
     _count?: boolean | Relationship_teacher_subject_classCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["relationship_teacher_subject_class"]>
 
@@ -9368,9 +9368,9 @@ export namespace Prisma {
 
   export type Relationship_teacher_subject_classOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "class_id" | "teacher_subject_id", ExtArgs["result"]["relationship_teacher_subject_class"]>
   export type Relationship_teacher_subject_classInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    quizzes?: boolean | Relationship_teacher_subject_class$quizzesArgs<ExtArgs>
     class?: boolean | ClassDefaultArgs<ExtArgs>
     teacher_subject?: boolean | Relationship_teacher_subjectDefaultArgs<ExtArgs>
+    quizzes?: boolean | Relationship_teacher_subject_class$quizzesArgs<ExtArgs>
     _count?: boolean | Relationship_teacher_subject_classCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type Relationship_teacher_subject_classIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9385,9 +9385,9 @@ export namespace Prisma {
   export type $Relationship_teacher_subject_classPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Relationship_teacher_subject_class"
     objects: {
-      quizzes: Prisma.$QuizPayload<ExtArgs>[]
       class: Prisma.$ClassPayload<ExtArgs>
       teacher_subject: Prisma.$Relationship_teacher_subjectPayload<ExtArgs>
+      quizzes: Prisma.$QuizPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -9787,9 +9787,9 @@ export namespace Prisma {
    */
   export interface Prisma__Relationship_teacher_subject_classClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    quizzes<T extends Relationship_teacher_subject_class$quizzesArgs<ExtArgs> = {}>(args?: Subset<T, Relationship_teacher_subject_class$quizzesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     class<T extends ClassDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassDefaultArgs<ExtArgs>>): Prisma__ClassClient<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     teacher_subject<T extends Relationship_teacher_subjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Relationship_teacher_subjectDefaultArgs<ExtArgs>>): Prisma__Relationship_teacher_subjectClient<$Result.GetResult<Prisma.$Relationship_teacher_subjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    quizzes<T extends Relationship_teacher_subject_class$quizzesArgs<ExtArgs> = {}>(args?: Subset<T, Relationship_teacher_subject_class$quizzesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10506,8 +10506,8 @@ export namespace Prisma {
     created_at?: boolean
     modified_at?: boolean
     teacher_subject_class_id?: boolean
-    questions?: boolean | Quiz$questionsArgs<ExtArgs>
     teacher_subject_class?: boolean | Relationship_teacher_subject_classDefaultArgs<ExtArgs>
+    questions?: boolean | Quiz$questionsArgs<ExtArgs>
     quiz_attempts?: boolean | Quiz$quiz_attemptsArgs<ExtArgs>
     _count?: boolean | QuizCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quiz"]>
@@ -10552,8 +10552,8 @@ export namespace Prisma {
 
   export type QuizOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "duration_minutes" | "max_points" | "max_attempt" | "visibility" | "created_at" | "modified_at" | "teacher_subject_class_id", ExtArgs["result"]["quiz"]>
   export type QuizInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    questions?: boolean | Quiz$questionsArgs<ExtArgs>
     teacher_subject_class?: boolean | Relationship_teacher_subject_classDefaultArgs<ExtArgs>
+    questions?: boolean | Quiz$questionsArgs<ExtArgs>
     quiz_attempts?: boolean | Quiz$quiz_attemptsArgs<ExtArgs>
     _count?: boolean | QuizCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -10567,8 +10567,8 @@ export namespace Prisma {
   export type $QuizPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Quiz"
     objects: {
-      questions: Prisma.$QuestionPayload<ExtArgs>[]
       teacher_subject_class: Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>
+      questions: Prisma.$QuestionPayload<ExtArgs>[]
       quiz_attempts: Prisma.$Quiz_attemptPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -10975,8 +10975,8 @@ export namespace Prisma {
    */
   export interface Prisma__QuizClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    questions<T extends Quiz$questionsArgs<ExtArgs> = {}>(args?: Subset<T, Quiz$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     teacher_subject_class<T extends Relationship_teacher_subject_classDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Relationship_teacher_subject_classDefaultArgs<ExtArgs>>): Prisma__Relationship_teacher_subject_classClient<$Result.GetResult<Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    questions<T extends Quiz$questionsArgs<ExtArgs> = {}>(args?: Subset<T, Quiz$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     quiz_attempts<T extends Quiz$quiz_attemptsArgs<ExtArgs> = {}>(args?: Subset<T, Quiz$quiz_attemptsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Quiz_attemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11692,8 +11692,8 @@ export namespace Prisma {
     quiz_id?: boolean
     created_at?: boolean
     modified_at?: boolean
-    alternatives?: boolean | Question$alternativesArgs<ExtArgs>
     quiz?: boolean | QuizDefaultArgs<ExtArgs>
+    alternatives?: boolean | Question$alternativesArgs<ExtArgs>
     question_images?: boolean | Question$question_imagesArgs<ExtArgs>
     question_responses?: boolean | Question$question_responsesArgs<ExtArgs>
     _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
@@ -11730,8 +11730,8 @@ export namespace Prisma {
 
   export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "statement" | "points" | "quiz_id" | "created_at" | "modified_at", ExtArgs["result"]["question"]>
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    alternatives?: boolean | Question$alternativesArgs<ExtArgs>
     quiz?: boolean | QuizDefaultArgs<ExtArgs>
+    alternatives?: boolean | Question$alternativesArgs<ExtArgs>
     question_images?: boolean | Question$question_imagesArgs<ExtArgs>
     question_responses?: boolean | Question$question_responsesArgs<ExtArgs>
     _count?: boolean | QuestionCountOutputTypeDefaultArgs<ExtArgs>
@@ -11746,8 +11746,8 @@ export namespace Prisma {
   export type $QuestionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Question"
     objects: {
-      alternatives: Prisma.$AlternativePayload<ExtArgs>[]
       quiz: Prisma.$QuizPayload<ExtArgs>
+      alternatives: Prisma.$AlternativePayload<ExtArgs>[]
       question_images: Prisma.$Question_imagesPayload<ExtArgs>[]
       question_responses: Prisma.$Question_responsePayload<ExtArgs>[]
     }
@@ -12152,8 +12152,8 @@ export namespace Prisma {
    */
   export interface Prisma__QuestionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    alternatives<T extends Question$alternativesArgs<ExtArgs> = {}>(args?: Subset<T, Question$alternativesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlternativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     quiz<T extends QuizDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuizDefaultArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    alternatives<T extends Question$alternativesArgs<ExtArgs> = {}>(args?: Subset<T, Question$alternativesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlternativePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     question_images<T extends Question$question_imagesArgs<ExtArgs> = {}>(args?: Subset<T, Question$question_imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Question_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     question_responses<T extends Question$question_responsesArgs<ExtArgs> = {}>(args?: Subset<T, Question$question_responsesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Question_responsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -15154,9 +15154,9 @@ export namespace Prisma {
     total_score?: boolean
     created_at?: boolean
     modified_at?: boolean
-    question_responses?: boolean | Quiz_attempt$question_responsesArgs<ExtArgs>
-    quiz?: boolean | QuizDefaultArgs<ExtArgs>
     student?: boolean | StudentDefaultArgs<ExtArgs>
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
+    question_responses?: boolean | Quiz_attempt$question_responsesArgs<ExtArgs>
     _count?: boolean | Quiz_attemptCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quiz_attempt"]>
 
@@ -15170,8 +15170,8 @@ export namespace Prisma {
     total_score?: boolean
     created_at?: boolean
     modified_at?: boolean
-    quiz?: boolean | QuizDefaultArgs<ExtArgs>
     student?: boolean | StudentDefaultArgs<ExtArgs>
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quiz_attempt"]>
 
   export type Quiz_attemptSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -15184,8 +15184,8 @@ export namespace Prisma {
     total_score?: boolean
     created_at?: boolean
     modified_at?: boolean
-    quiz?: boolean | QuizDefaultArgs<ExtArgs>
     student?: boolean | StudentDefaultArgs<ExtArgs>
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["quiz_attempt"]>
 
   export type Quiz_attemptSelectScalar = {
@@ -15202,26 +15202,26 @@ export namespace Prisma {
 
   export type Quiz_attemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "student_id" | "quiz_id" | "started_at" | "finished_at" | "status" | "total_score" | "created_at" | "modified_at", ExtArgs["result"]["quiz_attempt"]>
   export type Quiz_attemptInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    question_responses?: boolean | Quiz_attempt$question_responsesArgs<ExtArgs>
-    quiz?: boolean | QuizDefaultArgs<ExtArgs>
     student?: boolean | StudentDefaultArgs<ExtArgs>
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
+    question_responses?: boolean | Quiz_attempt$question_responsesArgs<ExtArgs>
     _count?: boolean | Quiz_attemptCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type Quiz_attemptIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    quiz?: boolean | QuizDefaultArgs<ExtArgs>
     student?: boolean | StudentDefaultArgs<ExtArgs>
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
   }
   export type Quiz_attemptIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    quiz?: boolean | QuizDefaultArgs<ExtArgs>
     student?: boolean | StudentDefaultArgs<ExtArgs>
+    quiz?: boolean | QuizDefaultArgs<ExtArgs>
   }
 
   export type $Quiz_attemptPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Quiz_attempt"
     objects: {
-      question_responses: Prisma.$Question_responsePayload<ExtArgs>[]
-      quiz: Prisma.$QuizPayload<ExtArgs>
       student: Prisma.$StudentPayload<ExtArgs>
+      quiz: Prisma.$QuizPayload<ExtArgs>
+      question_responses: Prisma.$Question_responsePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -15627,9 +15627,9 @@ export namespace Prisma {
    */
   export interface Prisma__Quiz_attemptClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    question_responses<T extends Quiz_attempt$question_responsesArgs<ExtArgs> = {}>(args?: Subset<T, Quiz_attempt$question_responsesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Question_responsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    quiz<T extends QuizDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuizDefaultArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     student<T extends StudentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StudentDefaultArgs<ExtArgs>>): Prisma__StudentClient<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    quiz<T extends QuizDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuizDefaultArgs<ExtArgs>>): Prisma__QuizClient<$Result.GetResult<Prisma.$QuizPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    question_responses<T extends Quiz_attempt$question_responsesArgs<ExtArgs> = {}>(args?: Subset<T, Quiz_attempt$question_responsesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Question_responsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16344,8 +16344,8 @@ export namespace Prisma {
     points_earned?: boolean
     created_at?: boolean
     modified_at?: boolean
-    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     question?: boolean | QuestionDefaultArgs<ExtArgs>
+    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     quiz_attempt?: boolean | Quiz_attemptDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["question_response"]>
 
@@ -16358,8 +16358,8 @@ export namespace Prisma {
     points_earned?: boolean
     created_at?: boolean
     modified_at?: boolean
-    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     question?: boolean | QuestionDefaultArgs<ExtArgs>
+    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     quiz_attempt?: boolean | Quiz_attemptDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["question_response"]>
 
@@ -16372,8 +16372,8 @@ export namespace Prisma {
     points_earned?: boolean
     created_at?: boolean
     modified_at?: boolean
-    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     question?: boolean | QuestionDefaultArgs<ExtArgs>
+    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     quiz_attempt?: boolean | Quiz_attemptDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["question_response"]>
 
@@ -16390,26 +16390,26 @@ export namespace Prisma {
 
   export type Question_responseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "question_id" | "marked_alternative_id" | "quiz_attempt_id" | "is_correct" | "points_earned" | "created_at" | "modified_at", ExtArgs["result"]["question_response"]>
   export type Question_responseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     question?: boolean | QuestionDefaultArgs<ExtArgs>
+    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     quiz_attempt?: boolean | Quiz_attemptDefaultArgs<ExtArgs>
   }
   export type Question_responseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     question?: boolean | QuestionDefaultArgs<ExtArgs>
+    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     quiz_attempt?: boolean | Quiz_attemptDefaultArgs<ExtArgs>
   }
   export type Question_responseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     question?: boolean | QuestionDefaultArgs<ExtArgs>
+    marked_alternative?: boolean | AlternativeDefaultArgs<ExtArgs>
     quiz_attempt?: boolean | Quiz_attemptDefaultArgs<ExtArgs>
   }
 
   export type $Question_responsePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Question_response"
     objects: {
-      marked_alternative: Prisma.$AlternativePayload<ExtArgs>
       question: Prisma.$QuestionPayload<ExtArgs>
+      marked_alternative: Prisma.$AlternativePayload<ExtArgs>
       quiz_attempt: Prisma.$Quiz_attemptPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -16815,8 +16815,8 @@ export namespace Prisma {
    */
   export interface Prisma__Question_responseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    marked_alternative<T extends AlternativeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlternativeDefaultArgs<ExtArgs>>): Prisma__AlternativeClient<$Result.GetResult<Prisma.$AlternativePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     question<T extends QuestionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, QuestionDefaultArgs<ExtArgs>>): Prisma__QuestionClient<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    marked_alternative<T extends AlternativeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlternativeDefaultArgs<ExtArgs>>): Prisma__AlternativeClient<$Result.GetResult<Prisma.$AlternativePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     quiz_attempt<T extends Quiz_attemptDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Quiz_attemptDefaultArgs<ExtArgs>>): Prisma__Quiz_attemptClient<$Result.GetResult<Prisma.$Quiz_attemptPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -17617,8 +17617,8 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"User"> | Date | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     hashed_password?: StringFilter<"User"> | string
-    student?: XOR<StudentNullableScalarRelationFilter, StudentWhereInput> | null
     teacher?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
+    student?: XOR<StudentNullableScalarRelationFilter, StudentWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
@@ -17631,8 +17631,8 @@ export namespace Prisma {
     modified_at?: SortOrder
     role?: SortOrder
     hashed_password?: SortOrder
-    student?: StudentOrderByWithRelationInput
     teacher?: TeacherOrderByWithRelationInput
+    student?: StudentOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -17648,8 +17648,8 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"User"> | Date | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
     hashed_password?: StringFilter<"User"> | string
-    student?: XOR<StudentNullableScalarRelationFilter, StudentWhereInput> | null
     teacher?: XOR<TeacherNullableScalarRelationFilter, TeacherWhereInput> | null
+    student?: XOR<StudentNullableScalarRelationFilter, StudentWhereInput> | null
   }, "id" | "id" | "email" | "cpf">
 
   export type UserOrderByWithAggregationInput = {
@@ -17692,8 +17692,8 @@ export namespace Prisma {
     user_id?: IntFilter<"Teacher"> | number
     created_at?: DateTimeFilter<"Teacher"> | Date | string
     modified_at?: DateTimeFilter<"Teacher"> | Date | string
-    teacher_subjects?: Relationship_teacher_subjectListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    teacher_subjects?: Relationship_teacher_subjectListRelationFilter
   }
 
   export type TeacherOrderByWithRelationInput = {
@@ -17701,8 +17701,8 @@ export namespace Prisma {
     user_id?: SortOrder
     created_at?: SortOrder
     modified_at?: SortOrder
-    teacher_subjects?: Relationship_teacher_subjectOrderByRelationAggregateInput
     user?: UserOrderByWithRelationInput
+    teacher_subjects?: Relationship_teacher_subjectOrderByRelationAggregateInput
   }
 
   export type TeacherWhereUniqueInput = Prisma.AtLeast<{
@@ -17713,8 +17713,8 @@ export namespace Prisma {
     NOT?: TeacherWhereInput | TeacherWhereInput[]
     created_at?: DateTimeFilter<"Teacher"> | Date | string
     modified_at?: DateTimeFilter<"Teacher"> | Date | string
-    teacher_subjects?: Relationship_teacher_subjectListRelationFilter
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    teacher_subjects?: Relationship_teacher_subjectListRelationFilter
   }, "id" | "id" | "user_id">
 
   export type TeacherOrderByWithAggregationInput = {
@@ -17855,8 +17855,8 @@ export namespace Prisma {
     course?: StringFilter<"Class"> | string
     created_at?: DateTimeFilter<"Class"> | Date | string
     modified_at?: DateTimeFilter<"Class"> | Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classListRelationFilter
     students?: StudentListRelationFilter
+    teacher_subject_classes?: Relationship_teacher_subject_classListRelationFilter
   }
 
   export type ClassOrderByWithRelationInput = {
@@ -17866,8 +17866,8 @@ export namespace Prisma {
     course?: SortOrder
     created_at?: SortOrder
     modified_at?: SortOrder
-    teacher_subject_classes?: Relationship_teacher_subject_classOrderByRelationAggregateInput
     students?: StudentOrderByRelationAggregateInput
+    teacher_subject_classes?: Relationship_teacher_subject_classOrderByRelationAggregateInput
   }
 
   export type ClassWhereUniqueInput = Prisma.AtLeast<{
@@ -17881,8 +17881,8 @@ export namespace Prisma {
     course?: StringFilter<"Class"> | string
     created_at?: DateTimeFilter<"Class"> | Date | string
     modified_at?: DateTimeFilter<"Class"> | Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classListRelationFilter
     students?: StudentListRelationFilter
+    teacher_subject_classes?: Relationship_teacher_subject_classListRelationFilter
   }, "id" | "id" | "name_shift_course">
 
   export type ClassOrderByWithAggregationInput = {
@@ -17921,9 +17921,9 @@ export namespace Prisma {
     class_id?: IntFilter<"Student"> | number
     created_at?: DateTimeFilter<"Student"> | Date | string
     modified_at?: DateTimeFilter<"Student"> | Date | string
-    quiz_attempts?: Quiz_attemptListRelationFilter
-    class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
+    quiz_attempts?: Quiz_attemptListRelationFilter
   }
 
   export type StudentOrderByWithRelationInput = {
@@ -17933,9 +17933,9 @@ export namespace Prisma {
     class_id?: SortOrder
     created_at?: SortOrder
     modified_at?: SortOrder
-    quiz_attempts?: Quiz_attemptOrderByRelationAggregateInput
-    class?: ClassOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
+    class?: ClassOrderByWithRelationInput
+    quiz_attempts?: Quiz_attemptOrderByRelationAggregateInput
   }
 
   export type StudentWhereUniqueInput = Prisma.AtLeast<{
@@ -17948,9 +17948,9 @@ export namespace Prisma {
     class_id?: IntFilter<"Student"> | number
     created_at?: DateTimeFilter<"Student"> | Date | string
     modified_at?: DateTimeFilter<"Student"> | Date | string
-    quiz_attempts?: Quiz_attemptListRelationFilter
-    class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
+    quiz_attempts?: Quiz_attemptListRelationFilter
   }, "id" | "id" | "enrollment" | "user_id">
 
   export type StudentOrderByWithAggregationInput = {
@@ -17986,18 +17986,18 @@ export namespace Prisma {
     id?: IntFilter<"Relationship_teacher_subject_class"> | number
     class_id?: IntFilter<"Relationship_teacher_subject_class"> | number
     teacher_subject_id?: IntFilter<"Relationship_teacher_subject_class"> | number
-    quizzes?: QuizListRelationFilter
     class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     teacher_subject?: XOR<Relationship_teacher_subjectScalarRelationFilter, Relationship_teacher_subjectWhereInput>
+    quizzes?: QuizListRelationFilter
   }
 
   export type Relationship_teacher_subject_classOrderByWithRelationInput = {
     id?: SortOrder
     class_id?: SortOrder
     teacher_subject_id?: SortOrder
-    quizzes?: QuizOrderByRelationAggregateInput
     class?: ClassOrderByWithRelationInput
     teacher_subject?: Relationship_teacher_subjectOrderByWithRelationInput
+    quizzes?: QuizOrderByRelationAggregateInput
   }
 
   export type Relationship_teacher_subject_classWhereUniqueInput = Prisma.AtLeast<{
@@ -18008,9 +18008,9 @@ export namespace Prisma {
     NOT?: Relationship_teacher_subject_classWhereInput | Relationship_teacher_subject_classWhereInput[]
     class_id?: IntFilter<"Relationship_teacher_subject_class"> | number
     teacher_subject_id?: IntFilter<"Relationship_teacher_subject_class"> | number
-    quizzes?: QuizListRelationFilter
     class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
     teacher_subject?: XOR<Relationship_teacher_subjectScalarRelationFilter, Relationship_teacher_subjectWhereInput>
+    quizzes?: QuizListRelationFilter
   }, "id" | "id" | "teacher_subject_id_class_id">
 
   export type Relationship_teacher_subject_classOrderByWithAggregationInput = {
@@ -18046,8 +18046,8 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Quiz"> | Date | string
     modified_at?: DateTimeFilter<"Quiz"> | Date | string
     teacher_subject_class_id?: IntFilter<"Quiz"> | number
-    questions?: QuestionListRelationFilter
     teacher_subject_class?: XOR<Relationship_teacher_subject_classScalarRelationFilter, Relationship_teacher_subject_classWhereInput>
+    questions?: QuestionListRelationFilter
     quiz_attempts?: Quiz_attemptListRelationFilter
   }
 
@@ -18061,8 +18061,8 @@ export namespace Prisma {
     created_at?: SortOrder
     modified_at?: SortOrder
     teacher_subject_class_id?: SortOrder
-    questions?: QuestionOrderByRelationAggregateInput
     teacher_subject_class?: Relationship_teacher_subject_classOrderByWithRelationInput
+    questions?: QuestionOrderByRelationAggregateInput
     quiz_attempts?: Quiz_attemptOrderByRelationAggregateInput
   }
 
@@ -18079,8 +18079,8 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Quiz"> | Date | string
     modified_at?: DateTimeFilter<"Quiz"> | Date | string
     teacher_subject_class_id?: IntFilter<"Quiz"> | number
-    questions?: QuestionListRelationFilter
     teacher_subject_class?: XOR<Relationship_teacher_subject_classScalarRelationFilter, Relationship_teacher_subject_classWhereInput>
+    questions?: QuestionListRelationFilter
     quiz_attempts?: Quiz_attemptListRelationFilter
   }, "id" | "id">
 
@@ -18126,8 +18126,8 @@ export namespace Prisma {
     quiz_id?: IntFilter<"Question"> | number
     created_at?: DateTimeFilter<"Question"> | Date | string
     modified_at?: DateTimeFilter<"Question"> | Date | string
-    alternatives?: AlternativeListRelationFilter
     quiz?: XOR<QuizScalarRelationFilter, QuizWhereInput>
+    alternatives?: AlternativeListRelationFilter
     question_images?: Question_imagesListRelationFilter
     question_responses?: Question_responseListRelationFilter
   }
@@ -18139,8 +18139,8 @@ export namespace Prisma {
     quiz_id?: SortOrder
     created_at?: SortOrder
     modified_at?: SortOrder
-    alternatives?: AlternativeOrderByRelationAggregateInput
     quiz?: QuizOrderByWithRelationInput
+    alternatives?: AlternativeOrderByRelationAggregateInput
     question_images?: Question_imagesOrderByRelationAggregateInput
     question_responses?: Question_responseOrderByRelationAggregateInput
   }
@@ -18155,8 +18155,8 @@ export namespace Prisma {
     quiz_id?: IntFilter<"Question"> | number
     created_at?: DateTimeFilter<"Question"> | Date | string
     modified_at?: DateTimeFilter<"Question"> | Date | string
-    alternatives?: AlternativeListRelationFilter
     quiz?: XOR<QuizScalarRelationFilter, QuizWhereInput>
+    alternatives?: AlternativeListRelationFilter
     question_images?: Question_imagesListRelationFilter
     question_responses?: Question_responseListRelationFilter
   }, "id" | "id">
@@ -18322,9 +18322,9 @@ export namespace Prisma {
     total_score?: DecimalFilter<"Quiz_attempt"> | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
     modified_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
-    question_responses?: Question_responseListRelationFilter
-    quiz?: XOR<QuizScalarRelationFilter, QuizWhereInput>
     student?: XOR<StudentScalarRelationFilter, StudentWhereInput>
+    quiz?: XOR<QuizScalarRelationFilter, QuizWhereInput>
+    question_responses?: Question_responseListRelationFilter
   }
 
   export type Quiz_attemptOrderByWithRelationInput = {
@@ -18337,9 +18337,9 @@ export namespace Prisma {
     total_score?: SortOrder
     created_at?: SortOrder
     modified_at?: SortOrder
-    question_responses?: Question_responseOrderByRelationAggregateInput
-    quiz?: QuizOrderByWithRelationInput
     student?: StudentOrderByWithRelationInput
+    quiz?: QuizOrderByWithRelationInput
+    question_responses?: Question_responseOrderByRelationAggregateInput
   }
 
   export type Quiz_attemptWhereUniqueInput = Prisma.AtLeast<{
@@ -18355,9 +18355,9 @@ export namespace Prisma {
     total_score?: DecimalFilter<"Quiz_attempt"> | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
     modified_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
-    question_responses?: Question_responseListRelationFilter
-    quiz?: XOR<QuizScalarRelationFilter, QuizWhereInput>
     student?: XOR<StudentScalarRelationFilter, StudentWhereInput>
+    quiz?: XOR<QuizScalarRelationFilter, QuizWhereInput>
+    question_responses?: Question_responseListRelationFilter
   }, "id" | "id">
 
   export type Quiz_attemptOrderByWithAggregationInput = {
@@ -18404,8 +18404,8 @@ export namespace Prisma {
     points_earned?: DecimalFilter<"Question_response"> | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFilter<"Question_response"> | Date | string
     modified_at?: DateTimeFilter<"Question_response"> | Date | string
-    marked_alternative?: XOR<AlternativeScalarRelationFilter, AlternativeWhereInput>
     question?: XOR<QuestionScalarRelationFilter, QuestionWhereInput>
+    marked_alternative?: XOR<AlternativeScalarRelationFilter, AlternativeWhereInput>
     quiz_attempt?: XOR<Quiz_attemptScalarRelationFilter, Quiz_attemptWhereInput>
   }
 
@@ -18418,8 +18418,8 @@ export namespace Prisma {
     points_earned?: SortOrder
     created_at?: SortOrder
     modified_at?: SortOrder
-    marked_alternative?: AlternativeOrderByWithRelationInput
     question?: QuestionOrderByWithRelationInput
+    marked_alternative?: AlternativeOrderByWithRelationInput
     quiz_attempt?: Quiz_attemptOrderByWithRelationInput
   }
 
@@ -18435,8 +18435,8 @@ export namespace Prisma {
     points_earned?: DecimalFilter<"Question_response"> | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFilter<"Question_response"> | Date | string
     modified_at?: DateTimeFilter<"Question_response"> | Date | string
-    marked_alternative?: XOR<AlternativeScalarRelationFilter, AlternativeWhereInput>
     question?: XOR<QuestionScalarRelationFilter, QuestionWhereInput>
+    marked_alternative?: XOR<AlternativeScalarRelationFilter, AlternativeWhereInput>
     quiz_attempt?: XOR<Quiz_attemptScalarRelationFilter, Quiz_attemptWhereInput>
   }, "id" | "id">
 
@@ -18479,8 +18479,8 @@ export namespace Prisma {
     modified_at?: Date | string
     role: $Enums.Role
     hashed_password: string
-    student?: StudentCreateNestedOneWithoutUserInput
     teacher?: TeacherCreateNestedOneWithoutUserInput
+    student?: StudentCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -18493,8 +18493,8 @@ export namespace Prisma {
     modified_at?: Date | string
     role: $Enums.Role
     hashed_password: string
-    student?: StudentUncheckedCreateNestedOneWithoutUserInput
     teacher?: TeacherUncheckedCreateNestedOneWithoutUserInput
+    student?: StudentUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -18506,8 +18506,8 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     hashed_password?: StringFieldUpdateOperationsInput | string
-    student?: StudentUpdateOneWithoutUserNestedInput
     teacher?: TeacherUpdateOneWithoutUserNestedInput
+    student?: StudentUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -18520,8 +18520,8 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     hashed_password?: StringFieldUpdateOperationsInput | string
-    student?: StudentUncheckedUpdateOneWithoutUserNestedInput
     teacher?: TeacherUncheckedUpdateOneWithoutUserNestedInput
+    student?: StudentUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -18562,8 +18562,8 @@ export namespace Prisma {
   export type TeacherCreateInput = {
     created_at?: Date | string
     modified_at?: Date | string
-    teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput
     user: UserCreateNestedOneWithoutTeacherInput
+    teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateInput = {
@@ -18577,8 +18577,8 @@ export namespace Prisma {
   export type TeacherUpdateInput = {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutTeacherNestedInput
     user?: UserUpdateOneRequiredWithoutTeacherNestedInput
+    teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateInput = {
@@ -18706,8 +18706,8 @@ export namespace Prisma {
     course: string
     created_at?: Date | string
     modified_at?: Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
     students?: StudentCreateNestedManyWithoutClassInput
+    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
   }
 
   export type ClassUncheckedCreateInput = {
@@ -18717,8 +18717,8 @@ export namespace Prisma {
     course: string
     created_at?: Date | string
     modified_at?: Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
     students?: StudentUncheckedCreateNestedManyWithoutClassInput
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassUpdateInput = {
@@ -18727,8 +18727,8 @@ export namespace Prisma {
     course?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
     students?: StudentUpdateManyWithoutClassNestedInput
+    teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateInput = {
@@ -18738,8 +18738,8 @@ export namespace Prisma {
     course?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
     students?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type ClassCreateManyInput = {
@@ -18772,9 +18772,9 @@ export namespace Prisma {
     enrollment: string
     created_at?: Date | string
     modified_at?: Date | string
-    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutStudentInput
-    class: ClassCreateNestedOneWithoutStudentsInput
     user: UserCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
+    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutStudentInput
   }
 
   export type StudentUncheckedCreateInput = {
@@ -18791,9 +18791,9 @@ export namespace Prisma {
     enrollment?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    quiz_attempts?: Quiz_attemptUpdateManyWithoutStudentNestedInput
-    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
     user?: UserUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
+    quiz_attempts?: Quiz_attemptUpdateManyWithoutStudentNestedInput
   }
 
   export type StudentUncheckedUpdateInput = {
@@ -18831,9 +18831,9 @@ export namespace Prisma {
   }
 
   export type Relationship_teacher_subject_classCreateInput = {
-    quizzes?: QuizCreateNestedManyWithoutTeacher_subject_classInput
     class: ClassCreateNestedOneWithoutTeacher_subject_classesInput
     teacher_subject: Relationship_teacher_subjectCreateNestedOneWithoutTeacher_subject_classesInput
+    quizzes?: QuizCreateNestedManyWithoutTeacher_subject_classInput
   }
 
   export type Relationship_teacher_subject_classUncheckedCreateInput = {
@@ -18844,9 +18844,9 @@ export namespace Prisma {
   }
 
   export type Relationship_teacher_subject_classUpdateInput = {
-    quizzes?: QuizUpdateManyWithoutTeacher_subject_classNestedInput
     class?: ClassUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
     teacher_subject?: Relationship_teacher_subjectUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
+    quizzes?: QuizUpdateManyWithoutTeacher_subject_classNestedInput
   }
 
   export type Relationship_teacher_subject_classUncheckedUpdateInput = {
@@ -18880,8 +18880,8 @@ export namespace Prisma {
     visibility?: $Enums.QuizVisibility
     created_at?: Date | string
     modified_at?: Date | string
-    questions?: QuestionCreateNestedManyWithoutQuizInput
     teacher_subject_class: Relationship_teacher_subject_classCreateNestedOneWithoutQuizzesInput
+    questions?: QuestionCreateNestedManyWithoutQuizInput
     quiz_attempts?: Quiz_attemptCreateNestedManyWithoutQuizInput
   }
 
@@ -18907,8 +18907,8 @@ export namespace Prisma {
     visibility?: EnumQuizVisibilityFieldUpdateOperationsInput | $Enums.QuizVisibility
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    questions?: QuestionUpdateManyWithoutQuizNestedInput
     teacher_subject_class?: Relationship_teacher_subject_classUpdateOneRequiredWithoutQuizzesNestedInput
+    questions?: QuestionUpdateManyWithoutQuizNestedInput
     quiz_attempts?: Quiz_attemptUpdateManyWithoutQuizNestedInput
   }
 
@@ -18965,8 +18965,8 @@ export namespace Prisma {
     points: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    alternatives?: AlternativeCreateNestedManyWithoutQuestionInput
     quiz: QuizCreateNestedOneWithoutQuestionsInput
+    alternatives?: AlternativeCreateNestedManyWithoutQuestionInput
     question_images?: Question_imagesCreateNestedManyWithoutQuestionInput
     question_responses?: Question_responseCreateNestedManyWithoutQuestionInput
   }
@@ -18988,8 +18988,8 @@ export namespace Prisma {
     points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    alternatives?: AlternativeUpdateManyWithoutQuestionNestedInput
     quiz?: QuizUpdateOneRequiredWithoutQuestionsNestedInput
+    alternatives?: AlternativeUpdateManyWithoutQuestionNestedInput
     question_images?: Question_imagesUpdateManyWithoutQuestionNestedInput
     question_responses?: Question_responseUpdateManyWithoutQuestionNestedInput
   }
@@ -19153,9 +19153,9 @@ export namespace Prisma {
     total_score?: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    question_responses?: Question_responseCreateNestedManyWithoutQuiz_attemptInput
-    quiz: QuizCreateNestedOneWithoutQuiz_attemptsInput
     student: StudentCreateNestedOneWithoutQuiz_attemptsInput
+    quiz: QuizCreateNestedOneWithoutQuiz_attemptsInput
+    question_responses?: Question_responseCreateNestedManyWithoutQuiz_attemptInput
   }
 
   export type Quiz_attemptUncheckedCreateInput = {
@@ -19178,9 +19178,9 @@ export namespace Prisma {
     total_score?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    question_responses?: Question_responseUpdateManyWithoutQuiz_attemptNestedInput
-    quiz?: QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput
     student?: StudentUpdateOneRequiredWithoutQuiz_attemptsNestedInput
+    quiz?: QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput
+    question_responses?: Question_responseUpdateManyWithoutQuiz_attemptNestedInput
   }
 
   export type Quiz_attemptUncheckedUpdateInput = {
@@ -19234,8 +19234,8 @@ export namespace Prisma {
     points_earned?: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    marked_alternative: AlternativeCreateNestedOneWithoutQuestion_responsesInput
     question: QuestionCreateNestedOneWithoutQuestion_responsesInput
+    marked_alternative: AlternativeCreateNestedOneWithoutQuestion_responsesInput
     quiz_attempt: Quiz_attemptCreateNestedOneWithoutQuestion_responsesInput
   }
 
@@ -19255,8 +19255,8 @@ export namespace Prisma {
     points_earned?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    marked_alternative?: AlternativeUpdateOneRequiredWithoutQuestion_responsesNestedInput
     question?: QuestionUpdateOneRequiredWithoutQuestion_responsesNestedInput
+    marked_alternative?: AlternativeUpdateOneRequiredWithoutQuestion_responsesNestedInput
     quiz_attempt?: Quiz_attemptUpdateOneRequiredWithoutQuestion_responsesNestedInput
   }
 
@@ -19344,14 +19344,14 @@ export namespace Prisma {
     not?: NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
   }
 
-  export type StudentNullableScalarRelationFilter = {
-    is?: StudentWhereInput | null
-    isNot?: StudentWhereInput | null
-  }
-
   export type TeacherNullableScalarRelationFilter = {
     is?: TeacherWhereInput | null
     isNot?: TeacherWhereInput | null
+  }
+
+  export type StudentNullableScalarRelationFilter = {
+    is?: StudentWhereInput | null
+    isNot?: StudentWhereInput | null
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -19456,15 +19456,15 @@ export namespace Prisma {
     _max?: NestedEnumRoleFilter<$PrismaModel>
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
   export type Relationship_teacher_subjectListRelationFilter = {
     every?: Relationship_teacher_subjectWhereInput
     some?: Relationship_teacher_subjectWhereInput
     none?: Relationship_teacher_subjectWhereInput
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type Relationship_teacher_subjectOrderByRelationAggregateInput = {
@@ -19654,15 +19654,15 @@ export namespace Prisma {
     _max?: NestedEnumShiftFilter<$PrismaModel>
   }
 
+  export type ClassScalarRelationFilter = {
+    is?: ClassWhereInput
+    isNot?: ClassWhereInput
+  }
+
   export type Quiz_attemptListRelationFilter = {
     every?: Quiz_attemptWhereInput
     some?: Quiz_attemptWhereInput
     none?: Quiz_attemptWhereInput
-  }
-
-  export type ClassScalarRelationFilter = {
-    is?: ClassWhereInput
-    isNot?: ClassWhereInput
   }
 
   export type Quiz_attemptOrderByRelationAggregateInput = {
@@ -19708,15 +19708,15 @@ export namespace Prisma {
     class_id?: SortOrder
   }
 
+  export type Relationship_teacher_subjectScalarRelationFilter = {
+    is?: Relationship_teacher_subjectWhereInput
+    isNot?: Relationship_teacher_subjectWhereInput
+  }
+
   export type QuizListRelationFilter = {
     every?: QuizWhereInput
     some?: QuizWhereInput
     none?: QuizWhereInput
-  }
-
-  export type Relationship_teacher_subjectScalarRelationFilter = {
-    is?: Relationship_teacher_subjectWhereInput
-    isNot?: Relationship_teacher_subjectWhereInput
   }
 
   export type QuizOrderByRelationAggregateInput = {
@@ -19787,15 +19787,15 @@ export namespace Prisma {
     not?: NestedEnumQuizVisibilityFilter<$PrismaModel> | $Enums.QuizVisibility
   }
 
+  export type Relationship_teacher_subject_classScalarRelationFilter = {
+    is?: Relationship_teacher_subject_classWhereInput
+    isNot?: Relationship_teacher_subject_classWhereInput
+  }
+
   export type QuestionListRelationFilter = {
     every?: QuestionWhereInput
     some?: QuestionWhereInput
     none?: QuestionWhereInput
-  }
-
-  export type Relationship_teacher_subject_classScalarRelationFilter = {
-    is?: Relationship_teacher_subject_classWhereInput
-    isNot?: Relationship_teacher_subject_classWhereInput
   }
 
   export type SortOrderInput = {
@@ -19901,15 +19901,15 @@ export namespace Prisma {
     _max?: NestedEnumQuizVisibilityFilter<$PrismaModel>
   }
 
+  export type QuizScalarRelationFilter = {
+    is?: QuizWhereInput
+    isNot?: QuizWhereInput
+  }
+
   export type AlternativeListRelationFilter = {
     every?: AlternativeWhereInput
     some?: AlternativeWhereInput
     none?: AlternativeWhereInput
-  }
-
-  export type QuizScalarRelationFilter = {
-    is?: QuizWhereInput
-    isNot?: QuizWhereInput
   }
 
   export type Question_imagesListRelationFilter = {
@@ -20220,19 +20220,13 @@ export namespace Prisma {
     points_earned?: SortOrder
   }
 
-  export type StudentCreateNestedOneWithoutUserInput = {
-    create?: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
-    connectOrCreate?: StudentCreateOrConnectWithoutUserInput
-    connect?: StudentWhereUniqueInput
-  }
-
   export type TeacherCreateNestedOneWithoutUserInput = {
     create?: XOR<TeacherCreateWithoutUserInput, TeacherUncheckedCreateWithoutUserInput>
     connectOrCreate?: TeacherCreateOrConnectWithoutUserInput
     connect?: TeacherWhereUniqueInput
   }
 
-  export type StudentUncheckedCreateNestedOneWithoutUserInput = {
+  export type StudentCreateNestedOneWithoutUserInput = {
     create?: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
     connectOrCreate?: StudentCreateOrConnectWithoutUserInput
     connect?: StudentWhereUniqueInput
@@ -20242,6 +20236,12 @@ export namespace Prisma {
     create?: XOR<TeacherCreateWithoutUserInput, TeacherUncheckedCreateWithoutUserInput>
     connectOrCreate?: TeacherCreateOrConnectWithoutUserInput
     connect?: TeacherWhereUniqueInput
+  }
+
+  export type StudentUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
+    connectOrCreate?: StudentCreateOrConnectWithoutUserInput
+    connect?: StudentWhereUniqueInput
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -20256,16 +20256,6 @@ export namespace Prisma {
     set?: $Enums.Role
   }
 
-  export type StudentUpdateOneWithoutUserNestedInput = {
-    create?: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
-    connectOrCreate?: StudentCreateOrConnectWithoutUserInput
-    upsert?: StudentUpsertWithoutUserInput
-    disconnect?: StudentWhereInput | boolean
-    delete?: StudentWhereInput | boolean
-    connect?: StudentWhereUniqueInput
-    update?: XOR<XOR<StudentUpdateToOneWithWhereWithoutUserInput, StudentUpdateWithoutUserInput>, StudentUncheckedUpdateWithoutUserInput>
-  }
-
   export type TeacherUpdateOneWithoutUserNestedInput = {
     create?: XOR<TeacherCreateWithoutUserInput, TeacherUncheckedCreateWithoutUserInput>
     connectOrCreate?: TeacherCreateOrConnectWithoutUserInput
@@ -20276,15 +20266,7 @@ export namespace Prisma {
     update?: XOR<XOR<TeacherUpdateToOneWithWhereWithoutUserInput, TeacherUpdateWithoutUserInput>, TeacherUncheckedUpdateWithoutUserInput>
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type StudentUncheckedUpdateOneWithoutUserNestedInput = {
+  export type StudentUpdateOneWithoutUserNestedInput = {
     create?: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
     connectOrCreate?: StudentCreateOrConnectWithoutUserInput
     upsert?: StudentUpsertWithoutUserInput
@@ -20292,6 +20274,14 @@ export namespace Prisma {
     delete?: StudentWhereInput | boolean
     connect?: StudentWhereUniqueInput
     update?: XOR<XOR<StudentUpdateToOneWithWhereWithoutUserInput, StudentUpdateWithoutUserInput>, StudentUncheckedUpdateWithoutUserInput>
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type TeacherUncheckedUpdateOneWithoutUserNestedInput = {
@@ -20304,11 +20294,14 @@ export namespace Prisma {
     update?: XOR<XOR<TeacherUpdateToOneWithWhereWithoutUserInput, TeacherUpdateWithoutUserInput>, TeacherUncheckedUpdateWithoutUserInput>
   }
 
-  export type Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput = {
-    create?: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput> | Relationship_teacher_subjectCreateWithoutTeacherInput[] | Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput[]
-    connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput | Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput[]
-    createMany?: Relationship_teacher_subjectCreateManyTeacherInputEnvelope
-    connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
+  export type StudentUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
+    connectOrCreate?: StudentCreateOrConnectWithoutUserInput
+    upsert?: StudentUpsertWithoutUserInput
+    disconnect?: StudentWhereInput | boolean
+    delete?: StudentWhereInput | boolean
+    connect?: StudentWhereUniqueInput
+    update?: XOR<XOR<StudentUpdateToOneWithWhereWithoutUserInput, StudentUpdateWithoutUserInput>, StudentUncheckedUpdateWithoutUserInput>
   }
 
   export type UserCreateNestedOneWithoutTeacherInput = {
@@ -20317,11 +20310,26 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput> | Relationship_teacher_subjectCreateWithoutTeacherInput[] | Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput | Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput[]
+    createMany?: Relationship_teacher_subjectCreateManyTeacherInputEnvelope
+    connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
+  }
+
   export type Relationship_teacher_subjectUncheckedCreateNestedManyWithoutTeacherInput = {
     create?: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput> | Relationship_teacher_subjectCreateWithoutTeacherInput[] | Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput[]
     connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput | Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput[]
     createMany?: Relationship_teacher_subjectCreateManyTeacherInputEnvelope
     connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutTeacherNestedInput = {
+    create?: XOR<UserCreateWithoutTeacherInput, UserUncheckedCreateWithoutTeacherInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTeacherInput
+    upsert?: UserUpsertWithoutTeacherInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTeacherInput, UserUpdateWithoutTeacherInput>, UserUncheckedUpdateWithoutTeacherInput>
   }
 
   export type Relationship_teacher_subjectUpdateManyWithoutTeacherNestedInput = {
@@ -20336,14 +20344,6 @@ export namespace Prisma {
     update?: Relationship_teacher_subjectUpdateWithWhereUniqueWithoutTeacherInput | Relationship_teacher_subjectUpdateWithWhereUniqueWithoutTeacherInput[]
     updateMany?: Relationship_teacher_subjectUpdateManyWithWhereWithoutTeacherInput | Relationship_teacher_subjectUpdateManyWithWhereWithoutTeacherInput[]
     deleteMany?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
-  }
-
-  export type UserUpdateOneRequiredWithoutTeacherNestedInput = {
-    create?: XOR<UserCreateWithoutTeacherInput, UserUncheckedCreateWithoutTeacherInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTeacherInput
-    upsert?: UserUpsertWithoutTeacherInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTeacherInput, UserUpdateWithoutTeacherInput>, UserUncheckedUpdateWithoutTeacherInput>
   }
 
   export type Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherNestedInput = {
@@ -20472,13 +20472,6 @@ export namespace Prisma {
     deleteMany?: Relationship_teacher_subject_classScalarWhereInput | Relationship_teacher_subject_classScalarWhereInput[]
   }
 
-  export type Relationship_teacher_subject_classCreateNestedManyWithoutClassInput = {
-    create?: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput> | Relationship_teacher_subject_classCreateWithoutClassInput[] | Relationship_teacher_subject_classUncheckedCreateWithoutClassInput[]
-    connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutClassInput | Relationship_teacher_subject_classCreateOrConnectWithoutClassInput[]
-    createMany?: Relationship_teacher_subject_classCreateManyClassInputEnvelope
-    connect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
-  }
-
   export type StudentCreateNestedManyWithoutClassInput = {
     create?: XOR<StudentCreateWithoutClassInput, StudentUncheckedCreateWithoutClassInput> | StudentCreateWithoutClassInput[] | StudentUncheckedCreateWithoutClassInput[]
     connectOrCreate?: StudentCreateOrConnectWithoutClassInput | StudentCreateOrConnectWithoutClassInput[]
@@ -20486,7 +20479,7 @@ export namespace Prisma {
     connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
   }
 
-  export type Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput = {
+  export type Relationship_teacher_subject_classCreateNestedManyWithoutClassInput = {
     create?: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput> | Relationship_teacher_subject_classCreateWithoutClassInput[] | Relationship_teacher_subject_classUncheckedCreateWithoutClassInput[]
     connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutClassInput | Relationship_teacher_subject_classCreateOrConnectWithoutClassInput[]
     createMany?: Relationship_teacher_subject_classCreateManyClassInputEnvelope
@@ -20500,22 +20493,15 @@ export namespace Prisma {
     connect?: StudentWhereUniqueInput | StudentWhereUniqueInput[]
   }
 
-  export type EnumShiftFieldUpdateOperationsInput = {
-    set?: $Enums.Shift
-  }
-
-  export type Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput = {
+  export type Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput = {
     create?: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput> | Relationship_teacher_subject_classCreateWithoutClassInput[] | Relationship_teacher_subject_classUncheckedCreateWithoutClassInput[]
     connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutClassInput | Relationship_teacher_subject_classCreateOrConnectWithoutClassInput[]
-    upsert?: Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput | Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput[]
     createMany?: Relationship_teacher_subject_classCreateManyClassInputEnvelope
-    set?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
-    disconnect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
-    delete?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
     connect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
-    update?: Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput | Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput[]
-    updateMany?: Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput | Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput[]
-    deleteMany?: Relationship_teacher_subject_classScalarWhereInput | Relationship_teacher_subject_classScalarWhereInput[]
+  }
+
+  export type EnumShiftFieldUpdateOperationsInput = {
+    set?: $Enums.Shift
   }
 
   export type StudentUpdateManyWithoutClassNestedInput = {
@@ -20532,7 +20518,7 @@ export namespace Prisma {
     deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
   }
 
-  export type Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput = {
+  export type Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput = {
     create?: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput> | Relationship_teacher_subject_classCreateWithoutClassInput[] | Relationship_teacher_subject_classUncheckedCreateWithoutClassInput[]
     connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutClassInput | Relationship_teacher_subject_classCreateOrConnectWithoutClassInput[]
     upsert?: Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput | Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput[]
@@ -20560,17 +20546,18 @@ export namespace Prisma {
     deleteMany?: StudentScalarWhereInput | StudentScalarWhereInput[]
   }
 
-  export type Quiz_attemptCreateNestedManyWithoutStudentInput = {
-    create?: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput> | Quiz_attemptCreateWithoutStudentInput[] | Quiz_attemptUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: Quiz_attemptCreateOrConnectWithoutStudentInput | Quiz_attemptCreateOrConnectWithoutStudentInput[]
-    createMany?: Quiz_attemptCreateManyStudentInputEnvelope
-    connect?: Quiz_attemptWhereUniqueInput | Quiz_attemptWhereUniqueInput[]
-  }
-
-  export type ClassCreateNestedOneWithoutStudentsInput = {
-    create?: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
-    connectOrCreate?: ClassCreateOrConnectWithoutStudentsInput
-    connect?: ClassWhereUniqueInput
+  export type Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput = {
+    create?: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput> | Relationship_teacher_subject_classCreateWithoutClassInput[] | Relationship_teacher_subject_classUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutClassInput | Relationship_teacher_subject_classCreateOrConnectWithoutClassInput[]
+    upsert?: Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput | Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: Relationship_teacher_subject_classCreateManyClassInputEnvelope
+    set?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
+    disconnect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
+    delete?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
+    connect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
+    update?: Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput | Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput | Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: Relationship_teacher_subject_classScalarWhereInput | Relationship_teacher_subject_classScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutStudentInput = {
@@ -20579,11 +20566,40 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type ClassCreateNestedOneWithoutStudentsInput = {
+    create?: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+    connectOrCreate?: ClassCreateOrConnectWithoutStudentsInput
+    connect?: ClassWhereUniqueInput
+  }
+
+  export type Quiz_attemptCreateNestedManyWithoutStudentInput = {
+    create?: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput> | Quiz_attemptCreateWithoutStudentInput[] | Quiz_attemptUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: Quiz_attemptCreateOrConnectWithoutStudentInput | Quiz_attemptCreateOrConnectWithoutStudentInput[]
+    createMany?: Quiz_attemptCreateManyStudentInputEnvelope
+    connect?: Quiz_attemptWhereUniqueInput | Quiz_attemptWhereUniqueInput[]
+  }
+
   export type Quiz_attemptUncheckedCreateNestedManyWithoutStudentInput = {
     create?: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput> | Quiz_attemptCreateWithoutStudentInput[] | Quiz_attemptUncheckedCreateWithoutStudentInput[]
     connectOrCreate?: Quiz_attemptCreateOrConnectWithoutStudentInput | Quiz_attemptCreateOrConnectWithoutStudentInput[]
     createMany?: Quiz_attemptCreateManyStudentInputEnvelope
     connect?: Quiz_attemptWhereUniqueInput | Quiz_attemptWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutStudentNestedInput = {
+    create?: XOR<UserCreateWithoutStudentInput, UserUncheckedCreateWithoutStudentInput>
+    connectOrCreate?: UserCreateOrConnectWithoutStudentInput
+    upsert?: UserUpsertWithoutStudentInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutStudentInput, UserUpdateWithoutStudentInput>, UserUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type ClassUpdateOneRequiredWithoutStudentsNestedInput = {
+    create?: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+    connectOrCreate?: ClassCreateOrConnectWithoutStudentsInput
+    upsert?: ClassUpsertWithoutStudentsInput
+    connect?: ClassWhereUniqueInput
+    update?: XOR<XOR<ClassUpdateToOneWithWhereWithoutStudentsInput, ClassUpdateWithoutStudentsInput>, ClassUncheckedUpdateWithoutStudentsInput>
   }
 
   export type Quiz_attemptUpdateManyWithoutStudentNestedInput = {
@@ -20600,22 +20616,6 @@ export namespace Prisma {
     deleteMany?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
   }
 
-  export type ClassUpdateOneRequiredWithoutStudentsNestedInput = {
-    create?: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
-    connectOrCreate?: ClassCreateOrConnectWithoutStudentsInput
-    upsert?: ClassUpsertWithoutStudentsInput
-    connect?: ClassWhereUniqueInput
-    update?: XOR<XOR<ClassUpdateToOneWithWhereWithoutStudentsInput, ClassUpdateWithoutStudentsInput>, ClassUncheckedUpdateWithoutStudentsInput>
-  }
-
-  export type UserUpdateOneRequiredWithoutStudentNestedInput = {
-    create?: XOR<UserCreateWithoutStudentInput, UserUncheckedCreateWithoutStudentInput>
-    connectOrCreate?: UserCreateOrConnectWithoutStudentInput
-    upsert?: UserUpsertWithoutStudentInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutStudentInput, UserUpdateWithoutStudentInput>, UserUncheckedUpdateWithoutStudentInput>
-  }
-
   export type Quiz_attemptUncheckedUpdateManyWithoutStudentNestedInput = {
     create?: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput> | Quiz_attemptCreateWithoutStudentInput[] | Quiz_attemptUncheckedCreateWithoutStudentInput[]
     connectOrCreate?: Quiz_attemptCreateOrConnectWithoutStudentInput | Quiz_attemptCreateOrConnectWithoutStudentInput[]
@@ -20630,13 +20630,6 @@ export namespace Prisma {
     deleteMany?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
   }
 
-  export type QuizCreateNestedManyWithoutTeacher_subject_classInput = {
-    create?: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput> | QuizCreateWithoutTeacher_subject_classInput[] | QuizUncheckedCreateWithoutTeacher_subject_classInput[]
-    connectOrCreate?: QuizCreateOrConnectWithoutTeacher_subject_classInput | QuizCreateOrConnectWithoutTeacher_subject_classInput[]
-    createMany?: QuizCreateManyTeacher_subject_classInputEnvelope
-    connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
-  }
-
   export type ClassCreateNestedOneWithoutTeacher_subject_classesInput = {
     create?: XOR<ClassCreateWithoutTeacher_subject_classesInput, ClassUncheckedCreateWithoutTeacher_subject_classesInput>
     connectOrCreate?: ClassCreateOrConnectWithoutTeacher_subject_classesInput
@@ -20649,25 +20642,18 @@ export namespace Prisma {
     connect?: Relationship_teacher_subjectWhereUniqueInput
   }
 
-  export type QuizUncheckedCreateNestedManyWithoutTeacher_subject_classInput = {
+  export type QuizCreateNestedManyWithoutTeacher_subject_classInput = {
     create?: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput> | QuizCreateWithoutTeacher_subject_classInput[] | QuizUncheckedCreateWithoutTeacher_subject_classInput[]
     connectOrCreate?: QuizCreateOrConnectWithoutTeacher_subject_classInput | QuizCreateOrConnectWithoutTeacher_subject_classInput[]
     createMany?: QuizCreateManyTeacher_subject_classInputEnvelope
     connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
   }
 
-  export type QuizUpdateManyWithoutTeacher_subject_classNestedInput = {
+  export type QuizUncheckedCreateNestedManyWithoutTeacher_subject_classInput = {
     create?: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput> | QuizCreateWithoutTeacher_subject_classInput[] | QuizUncheckedCreateWithoutTeacher_subject_classInput[]
     connectOrCreate?: QuizCreateOrConnectWithoutTeacher_subject_classInput | QuizCreateOrConnectWithoutTeacher_subject_classInput[]
-    upsert?: QuizUpsertWithWhereUniqueWithoutTeacher_subject_classInput | QuizUpsertWithWhereUniqueWithoutTeacher_subject_classInput[]
     createMany?: QuizCreateManyTeacher_subject_classInputEnvelope
-    set?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
-    disconnect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
-    delete?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
     connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
-    update?: QuizUpdateWithWhereUniqueWithoutTeacher_subject_classInput | QuizUpdateWithWhereUniqueWithoutTeacher_subject_classInput[]
-    updateMany?: QuizUpdateManyWithWhereWithoutTeacher_subject_classInput | QuizUpdateManyWithWhereWithoutTeacher_subject_classInput[]
-    deleteMany?: QuizScalarWhereInput | QuizScalarWhereInput[]
   }
 
   export type ClassUpdateOneRequiredWithoutTeacher_subject_classesNestedInput = {
@@ -20686,6 +20672,20 @@ export namespace Prisma {
     update?: XOR<XOR<Relationship_teacher_subjectUpdateToOneWithWhereWithoutTeacher_subject_classesInput, Relationship_teacher_subjectUpdateWithoutTeacher_subject_classesInput>, Relationship_teacher_subjectUncheckedUpdateWithoutTeacher_subject_classesInput>
   }
 
+  export type QuizUpdateManyWithoutTeacher_subject_classNestedInput = {
+    create?: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput> | QuizCreateWithoutTeacher_subject_classInput[] | QuizUncheckedCreateWithoutTeacher_subject_classInput[]
+    connectOrCreate?: QuizCreateOrConnectWithoutTeacher_subject_classInput | QuizCreateOrConnectWithoutTeacher_subject_classInput[]
+    upsert?: QuizUpsertWithWhereUniqueWithoutTeacher_subject_classInput | QuizUpsertWithWhereUniqueWithoutTeacher_subject_classInput[]
+    createMany?: QuizCreateManyTeacher_subject_classInputEnvelope
+    set?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    disconnect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    delete?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    connect?: QuizWhereUniqueInput | QuizWhereUniqueInput[]
+    update?: QuizUpdateWithWhereUniqueWithoutTeacher_subject_classInput | QuizUpdateWithWhereUniqueWithoutTeacher_subject_classInput[]
+    updateMany?: QuizUpdateManyWithWhereWithoutTeacher_subject_classInput | QuizUpdateManyWithWhereWithoutTeacher_subject_classInput[]
+    deleteMany?: QuizScalarWhereInput | QuizScalarWhereInput[]
+  }
+
   export type QuizUncheckedUpdateManyWithoutTeacher_subject_classNestedInput = {
     create?: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput> | QuizCreateWithoutTeacher_subject_classInput[] | QuizUncheckedCreateWithoutTeacher_subject_classInput[]
     connectOrCreate?: QuizCreateOrConnectWithoutTeacher_subject_classInput | QuizCreateOrConnectWithoutTeacher_subject_classInput[]
@@ -20700,17 +20700,17 @@ export namespace Prisma {
     deleteMany?: QuizScalarWhereInput | QuizScalarWhereInput[]
   }
 
+  export type Relationship_teacher_subject_classCreateNestedOneWithoutQuizzesInput = {
+    create?: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
+    connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutQuizzesInput
+    connect?: Relationship_teacher_subject_classWhereUniqueInput
+  }
+
   export type QuestionCreateNestedManyWithoutQuizInput = {
     create?: XOR<QuestionCreateWithoutQuizInput, QuestionUncheckedCreateWithoutQuizInput> | QuestionCreateWithoutQuizInput[] | QuestionUncheckedCreateWithoutQuizInput[]
     connectOrCreate?: QuestionCreateOrConnectWithoutQuizInput | QuestionCreateOrConnectWithoutQuizInput[]
     createMany?: QuestionCreateManyQuizInputEnvelope
     connect?: QuestionWhereUniqueInput | QuestionWhereUniqueInput[]
-  }
-
-  export type Relationship_teacher_subject_classCreateNestedOneWithoutQuizzesInput = {
-    create?: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
-    connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutQuizzesInput
-    connect?: Relationship_teacher_subject_classWhereUniqueInput
   }
 
   export type Quiz_attemptCreateNestedManyWithoutQuizInput = {
@@ -20754,6 +20754,14 @@ export namespace Prisma {
     set?: $Enums.QuizVisibility
   }
 
+  export type Relationship_teacher_subject_classUpdateOneRequiredWithoutQuizzesNestedInput = {
+    create?: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
+    connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutQuizzesInput
+    upsert?: Relationship_teacher_subject_classUpsertWithoutQuizzesInput
+    connect?: Relationship_teacher_subject_classWhereUniqueInput
+    update?: XOR<XOR<Relationship_teacher_subject_classUpdateToOneWithWhereWithoutQuizzesInput, Relationship_teacher_subject_classUpdateWithoutQuizzesInput>, Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput>
+  }
+
   export type QuestionUpdateManyWithoutQuizNestedInput = {
     create?: XOR<QuestionCreateWithoutQuizInput, QuestionUncheckedCreateWithoutQuizInput> | QuestionCreateWithoutQuizInput[] | QuestionUncheckedCreateWithoutQuizInput[]
     connectOrCreate?: QuestionCreateOrConnectWithoutQuizInput | QuestionCreateOrConnectWithoutQuizInput[]
@@ -20766,14 +20774,6 @@ export namespace Prisma {
     update?: QuestionUpdateWithWhereUniqueWithoutQuizInput | QuestionUpdateWithWhereUniqueWithoutQuizInput[]
     updateMany?: QuestionUpdateManyWithWhereWithoutQuizInput | QuestionUpdateManyWithWhereWithoutQuizInput[]
     deleteMany?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
-  }
-
-  export type Relationship_teacher_subject_classUpdateOneRequiredWithoutQuizzesNestedInput = {
-    create?: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
-    connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutQuizzesInput
-    upsert?: Relationship_teacher_subject_classUpsertWithoutQuizzesInput
-    connect?: Relationship_teacher_subject_classWhereUniqueInput
-    update?: XOR<XOR<Relationship_teacher_subject_classUpdateToOneWithWhereWithoutQuizzesInput, Relationship_teacher_subject_classUpdateWithoutQuizzesInput>, Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput>
   }
 
   export type Quiz_attemptUpdateManyWithoutQuizNestedInput = {
@@ -20818,17 +20818,17 @@ export namespace Prisma {
     deleteMany?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
   }
 
+  export type QuizCreateNestedOneWithoutQuestionsInput = {
+    create?: XOR<QuizCreateWithoutQuestionsInput, QuizUncheckedCreateWithoutQuestionsInput>
+    connectOrCreate?: QuizCreateOrConnectWithoutQuestionsInput
+    connect?: QuizWhereUniqueInput
+  }
+
   export type AlternativeCreateNestedManyWithoutQuestionInput = {
     create?: XOR<AlternativeCreateWithoutQuestionInput, AlternativeUncheckedCreateWithoutQuestionInput> | AlternativeCreateWithoutQuestionInput[] | AlternativeUncheckedCreateWithoutQuestionInput[]
     connectOrCreate?: AlternativeCreateOrConnectWithoutQuestionInput | AlternativeCreateOrConnectWithoutQuestionInput[]
     createMany?: AlternativeCreateManyQuestionInputEnvelope
     connect?: AlternativeWhereUniqueInput | AlternativeWhereUniqueInput[]
-  }
-
-  export type QuizCreateNestedOneWithoutQuestionsInput = {
-    create?: XOR<QuizCreateWithoutQuestionsInput, QuizUncheckedCreateWithoutQuestionsInput>
-    connectOrCreate?: QuizCreateOrConnectWithoutQuestionsInput
-    connect?: QuizWhereUniqueInput
   }
 
   export type Question_imagesCreateNestedManyWithoutQuestionInput = {
@@ -20866,6 +20866,14 @@ export namespace Prisma {
     connect?: Question_responseWhereUniqueInput | Question_responseWhereUniqueInput[]
   }
 
+  export type QuizUpdateOneRequiredWithoutQuestionsNestedInput = {
+    create?: XOR<QuizCreateWithoutQuestionsInput, QuizUncheckedCreateWithoutQuestionsInput>
+    connectOrCreate?: QuizCreateOrConnectWithoutQuestionsInput
+    upsert?: QuizUpsertWithoutQuestionsInput
+    connect?: QuizWhereUniqueInput
+    update?: XOR<XOR<QuizUpdateToOneWithWhereWithoutQuestionsInput, QuizUpdateWithoutQuestionsInput>, QuizUncheckedUpdateWithoutQuestionsInput>
+  }
+
   export type AlternativeUpdateManyWithoutQuestionNestedInput = {
     create?: XOR<AlternativeCreateWithoutQuestionInput, AlternativeUncheckedCreateWithoutQuestionInput> | AlternativeCreateWithoutQuestionInput[] | AlternativeUncheckedCreateWithoutQuestionInput[]
     connectOrCreate?: AlternativeCreateOrConnectWithoutQuestionInput | AlternativeCreateOrConnectWithoutQuestionInput[]
@@ -20878,14 +20886,6 @@ export namespace Prisma {
     update?: AlternativeUpdateWithWhereUniqueWithoutQuestionInput | AlternativeUpdateWithWhereUniqueWithoutQuestionInput[]
     updateMany?: AlternativeUpdateManyWithWhereWithoutQuestionInput | AlternativeUpdateManyWithWhereWithoutQuestionInput[]
     deleteMany?: AlternativeScalarWhereInput | AlternativeScalarWhereInput[]
-  }
-
-  export type QuizUpdateOneRequiredWithoutQuestionsNestedInput = {
-    create?: XOR<QuizCreateWithoutQuestionsInput, QuizUncheckedCreateWithoutQuestionsInput>
-    connectOrCreate?: QuizCreateOrConnectWithoutQuestionsInput
-    upsert?: QuizUpsertWithoutQuestionsInput
-    connect?: QuizWhereUniqueInput
-    update?: XOR<XOR<QuizUpdateToOneWithWhereWithoutQuestionsInput, QuizUpdateWithoutQuestionsInput>, QuizUncheckedUpdateWithoutQuestionsInput>
   }
 
   export type Question_imagesUpdateManyWithoutQuestionNestedInput = {
@@ -21032,11 +21032,10 @@ export namespace Prisma {
     update?: XOR<XOR<QuestionUpdateToOneWithWhereWithoutQuestion_imagesInput, QuestionUpdateWithoutQuestion_imagesInput>, QuestionUncheckedUpdateWithoutQuestion_imagesInput>
   }
 
-  export type Question_responseCreateNestedManyWithoutQuiz_attemptInput = {
-    create?: XOR<Question_responseCreateWithoutQuiz_attemptInput, Question_responseUncheckedCreateWithoutQuiz_attemptInput> | Question_responseCreateWithoutQuiz_attemptInput[] | Question_responseUncheckedCreateWithoutQuiz_attemptInput[]
-    connectOrCreate?: Question_responseCreateOrConnectWithoutQuiz_attemptInput | Question_responseCreateOrConnectWithoutQuiz_attemptInput[]
-    createMany?: Question_responseCreateManyQuiz_attemptInputEnvelope
-    connect?: Question_responseWhereUniqueInput | Question_responseWhereUniqueInput[]
+  export type StudentCreateNestedOneWithoutQuiz_attemptsInput = {
+    create?: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
+    connectOrCreate?: StudentCreateOrConnectWithoutQuiz_attemptsInput
+    connect?: StudentWhereUniqueInput
   }
 
   export type QuizCreateNestedOneWithoutQuiz_attemptsInput = {
@@ -21045,10 +21044,11 @@ export namespace Prisma {
     connect?: QuizWhereUniqueInput
   }
 
-  export type StudentCreateNestedOneWithoutQuiz_attemptsInput = {
-    create?: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
-    connectOrCreate?: StudentCreateOrConnectWithoutQuiz_attemptsInput
-    connect?: StudentWhereUniqueInput
+  export type Question_responseCreateNestedManyWithoutQuiz_attemptInput = {
+    create?: XOR<Question_responseCreateWithoutQuiz_attemptInput, Question_responseUncheckedCreateWithoutQuiz_attemptInput> | Question_responseCreateWithoutQuiz_attemptInput[] | Question_responseUncheckedCreateWithoutQuiz_attemptInput[]
+    connectOrCreate?: Question_responseCreateOrConnectWithoutQuiz_attemptInput | Question_responseCreateOrConnectWithoutQuiz_attemptInput[]
+    createMany?: Question_responseCreateManyQuiz_attemptInputEnvelope
+    connect?: Question_responseWhereUniqueInput | Question_responseWhereUniqueInput[]
   }
 
   export type Question_responseUncheckedCreateNestedManyWithoutQuiz_attemptInput = {
@@ -21066,6 +21066,22 @@ export namespace Prisma {
     set?: $Enums.AttemptStatus
   }
 
+  export type StudentUpdateOneRequiredWithoutQuiz_attemptsNestedInput = {
+    create?: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
+    connectOrCreate?: StudentCreateOrConnectWithoutQuiz_attemptsInput
+    upsert?: StudentUpsertWithoutQuiz_attemptsInput
+    connect?: StudentWhereUniqueInput
+    update?: XOR<XOR<StudentUpdateToOneWithWhereWithoutQuiz_attemptsInput, StudentUpdateWithoutQuiz_attemptsInput>, StudentUncheckedUpdateWithoutQuiz_attemptsInput>
+  }
+
+  export type QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput = {
+    create?: XOR<QuizCreateWithoutQuiz_attemptsInput, QuizUncheckedCreateWithoutQuiz_attemptsInput>
+    connectOrCreate?: QuizCreateOrConnectWithoutQuiz_attemptsInput
+    upsert?: QuizUpsertWithoutQuiz_attemptsInput
+    connect?: QuizWhereUniqueInput
+    update?: XOR<XOR<QuizUpdateToOneWithWhereWithoutQuiz_attemptsInput, QuizUpdateWithoutQuiz_attemptsInput>, QuizUncheckedUpdateWithoutQuiz_attemptsInput>
+  }
+
   export type Question_responseUpdateManyWithoutQuiz_attemptNestedInput = {
     create?: XOR<Question_responseCreateWithoutQuiz_attemptInput, Question_responseUncheckedCreateWithoutQuiz_attemptInput> | Question_responseCreateWithoutQuiz_attemptInput[] | Question_responseUncheckedCreateWithoutQuiz_attemptInput[]
     connectOrCreate?: Question_responseCreateOrConnectWithoutQuiz_attemptInput | Question_responseCreateOrConnectWithoutQuiz_attemptInput[]
@@ -21078,22 +21094,6 @@ export namespace Prisma {
     update?: Question_responseUpdateWithWhereUniqueWithoutQuiz_attemptInput | Question_responseUpdateWithWhereUniqueWithoutQuiz_attemptInput[]
     updateMany?: Question_responseUpdateManyWithWhereWithoutQuiz_attemptInput | Question_responseUpdateManyWithWhereWithoutQuiz_attemptInput[]
     deleteMany?: Question_responseScalarWhereInput | Question_responseScalarWhereInput[]
-  }
-
-  export type QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput = {
-    create?: XOR<QuizCreateWithoutQuiz_attemptsInput, QuizUncheckedCreateWithoutQuiz_attemptsInput>
-    connectOrCreate?: QuizCreateOrConnectWithoutQuiz_attemptsInput
-    upsert?: QuizUpsertWithoutQuiz_attemptsInput
-    connect?: QuizWhereUniqueInput
-    update?: XOR<XOR<QuizUpdateToOneWithWhereWithoutQuiz_attemptsInput, QuizUpdateWithoutQuiz_attemptsInput>, QuizUncheckedUpdateWithoutQuiz_attemptsInput>
-  }
-
-  export type StudentUpdateOneRequiredWithoutQuiz_attemptsNestedInput = {
-    create?: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
-    connectOrCreate?: StudentCreateOrConnectWithoutQuiz_attemptsInput
-    upsert?: StudentUpsertWithoutQuiz_attemptsInput
-    connect?: StudentWhereUniqueInput
-    update?: XOR<XOR<StudentUpdateToOneWithWhereWithoutQuiz_attemptsInput, StudentUpdateWithoutQuiz_attemptsInput>, StudentUncheckedUpdateWithoutQuiz_attemptsInput>
   }
 
   export type Question_responseUncheckedUpdateManyWithoutQuiz_attemptNestedInput = {
@@ -21110,16 +21110,16 @@ export namespace Prisma {
     deleteMany?: Question_responseScalarWhereInput | Question_responseScalarWhereInput[]
   }
 
-  export type AlternativeCreateNestedOneWithoutQuestion_responsesInput = {
-    create?: XOR<AlternativeCreateWithoutQuestion_responsesInput, AlternativeUncheckedCreateWithoutQuestion_responsesInput>
-    connectOrCreate?: AlternativeCreateOrConnectWithoutQuestion_responsesInput
-    connect?: AlternativeWhereUniqueInput
-  }
-
   export type QuestionCreateNestedOneWithoutQuestion_responsesInput = {
     create?: XOR<QuestionCreateWithoutQuestion_responsesInput, QuestionUncheckedCreateWithoutQuestion_responsesInput>
     connectOrCreate?: QuestionCreateOrConnectWithoutQuestion_responsesInput
     connect?: QuestionWhereUniqueInput
+  }
+
+  export type AlternativeCreateNestedOneWithoutQuestion_responsesInput = {
+    create?: XOR<AlternativeCreateWithoutQuestion_responsesInput, AlternativeUncheckedCreateWithoutQuestion_responsesInput>
+    connectOrCreate?: AlternativeCreateOrConnectWithoutQuestion_responsesInput
+    connect?: AlternativeWhereUniqueInput
   }
 
   export type Quiz_attemptCreateNestedOneWithoutQuestion_responsesInput = {
@@ -21128,20 +21128,20 @@ export namespace Prisma {
     connect?: Quiz_attemptWhereUniqueInput
   }
 
-  export type AlternativeUpdateOneRequiredWithoutQuestion_responsesNestedInput = {
-    create?: XOR<AlternativeCreateWithoutQuestion_responsesInput, AlternativeUncheckedCreateWithoutQuestion_responsesInput>
-    connectOrCreate?: AlternativeCreateOrConnectWithoutQuestion_responsesInput
-    upsert?: AlternativeUpsertWithoutQuestion_responsesInput
-    connect?: AlternativeWhereUniqueInput
-    update?: XOR<XOR<AlternativeUpdateToOneWithWhereWithoutQuestion_responsesInput, AlternativeUpdateWithoutQuestion_responsesInput>, AlternativeUncheckedUpdateWithoutQuestion_responsesInput>
-  }
-
   export type QuestionUpdateOneRequiredWithoutQuestion_responsesNestedInput = {
     create?: XOR<QuestionCreateWithoutQuestion_responsesInput, QuestionUncheckedCreateWithoutQuestion_responsesInput>
     connectOrCreate?: QuestionCreateOrConnectWithoutQuestion_responsesInput
     upsert?: QuestionUpsertWithoutQuestion_responsesInput
     connect?: QuestionWhereUniqueInput
     update?: XOR<XOR<QuestionUpdateToOneWithWhereWithoutQuestion_responsesInput, QuestionUpdateWithoutQuestion_responsesInput>, QuestionUncheckedUpdateWithoutQuestion_responsesInput>
+  }
+
+  export type AlternativeUpdateOneRequiredWithoutQuestion_responsesNestedInput = {
+    create?: XOR<AlternativeCreateWithoutQuestion_responsesInput, AlternativeUncheckedCreateWithoutQuestion_responsesInput>
+    connectOrCreate?: AlternativeCreateOrConnectWithoutQuestion_responsesInput
+    upsert?: AlternativeUpsertWithoutQuestion_responsesInput
+    connect?: AlternativeWhereUniqueInput
+    update?: XOR<XOR<AlternativeUpdateToOneWithWhereWithoutQuestion_responsesInput, AlternativeUpdateWithoutQuestion_responsesInput>, AlternativeUncheckedUpdateWithoutQuestion_responsesInput>
   }
 
   export type Quiz_attemptUpdateOneRequiredWithoutQuestion_responsesNestedInput = {
@@ -21417,28 +21417,6 @@ export namespace Prisma {
     _max?: NestedEnumAttemptStatusFilter<$PrismaModel>
   }
 
-  export type StudentCreateWithoutUserInput = {
-    enrollment: string
-    created_at?: Date | string
-    modified_at?: Date | string
-    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutStudentInput
-    class: ClassCreateNestedOneWithoutStudentsInput
-  }
-
-  export type StudentUncheckedCreateWithoutUserInput = {
-    id?: number
-    enrollment: string
-    class_id: number
-    created_at?: Date | string
-    modified_at?: Date | string
-    quiz_attempts?: Quiz_attemptUncheckedCreateNestedManyWithoutStudentInput
-  }
-
-  export type StudentCreateOrConnectWithoutUserInput = {
-    where: StudentWhereUniqueInput
-    create: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
-  }
-
   export type TeacherCreateWithoutUserInput = {
     created_at?: Date | string
     modified_at?: Date | string
@@ -21457,32 +21435,26 @@ export namespace Prisma {
     create: XOR<TeacherCreateWithoutUserInput, TeacherUncheckedCreateWithoutUserInput>
   }
 
-  export type StudentUpsertWithoutUserInput = {
-    update: XOR<StudentUpdateWithoutUserInput, StudentUncheckedUpdateWithoutUserInput>
+  export type StudentCreateWithoutUserInput = {
+    enrollment: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    class: ClassCreateNestedOneWithoutStudentsInput
+    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutStudentInput
+  }
+
+  export type StudentUncheckedCreateWithoutUserInput = {
+    id?: number
+    enrollment: string
+    class_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+    quiz_attempts?: Quiz_attemptUncheckedCreateNestedManyWithoutStudentInput
+  }
+
+  export type StudentCreateOrConnectWithoutUserInput = {
+    where: StudentWhereUniqueInput
     create: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
-    where?: StudentWhereInput
-  }
-
-  export type StudentUpdateToOneWithWhereWithoutUserInput = {
-    where?: StudentWhereInput
-    data: XOR<StudentUpdateWithoutUserInput, StudentUncheckedUpdateWithoutUserInput>
-  }
-
-  export type StudentUpdateWithoutUserInput = {
-    enrollment?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    quiz_attempts?: Quiz_attemptUpdateManyWithoutStudentNestedInput
-    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
-  }
-
-  export type StudentUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    enrollment?: StringFieldUpdateOperationsInput | string
-    class_id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    quiz_attempts?: Quiz_attemptUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type TeacherUpsertWithoutUserInput = {
@@ -21509,25 +21481,32 @@ export namespace Prisma {
     teacher_subjects?: Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherNestedInput
   }
 
-  export type Relationship_teacher_subjectCreateWithoutTeacherInput = {
-    subject: SubjectCreateNestedOneWithoutTeacher_subjectsInput
-    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutTeacher_subjectInput
+  export type StudentUpsertWithoutUserInput = {
+    update: XOR<StudentUpdateWithoutUserInput, StudentUncheckedUpdateWithoutUserInput>
+    create: XOR<StudentCreateWithoutUserInput, StudentUncheckedCreateWithoutUserInput>
+    where?: StudentWhereInput
   }
 
-  export type Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput = {
-    id?: number
-    subject_id: number
-    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutTeacher_subjectInput
+  export type StudentUpdateToOneWithWhereWithoutUserInput = {
+    where?: StudentWhereInput
+    data: XOR<StudentUpdateWithoutUserInput, StudentUncheckedUpdateWithoutUserInput>
   }
 
-  export type Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput = {
-    where: Relationship_teacher_subjectWhereUniqueInput
-    create: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput>
+  export type StudentUpdateWithoutUserInput = {
+    enrollment?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
+    quiz_attempts?: Quiz_attemptUpdateManyWithoutStudentNestedInput
   }
 
-  export type Relationship_teacher_subjectCreateManyTeacherInputEnvelope = {
-    data: Relationship_teacher_subjectCreateManyTeacherInput | Relationship_teacher_subjectCreateManyTeacherInput[]
-    skipDuplicates?: boolean
+  export type StudentUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    enrollment?: StringFieldUpdateOperationsInput | string
+    class_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    quiz_attempts?: Quiz_attemptUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type UserCreateWithoutTeacherInput = {
@@ -21560,29 +21539,25 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutTeacherInput, UserUncheckedCreateWithoutTeacherInput>
   }
 
-  export type Relationship_teacher_subjectUpsertWithWhereUniqueWithoutTeacherInput = {
+  export type Relationship_teacher_subjectCreateWithoutTeacherInput = {
+    subject: SubjectCreateNestedOneWithoutTeacher_subjectsInput
+    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutTeacher_subjectInput
+  }
+
+  export type Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput = {
+    id?: number
+    subject_id: number
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutTeacher_subjectInput
+  }
+
+  export type Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput = {
     where: Relationship_teacher_subjectWhereUniqueInput
-    update: XOR<Relationship_teacher_subjectUpdateWithoutTeacherInput, Relationship_teacher_subjectUncheckedUpdateWithoutTeacherInput>
     create: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput>
   }
 
-  export type Relationship_teacher_subjectUpdateWithWhereUniqueWithoutTeacherInput = {
-    where: Relationship_teacher_subjectWhereUniqueInput
-    data: XOR<Relationship_teacher_subjectUpdateWithoutTeacherInput, Relationship_teacher_subjectUncheckedUpdateWithoutTeacherInput>
-  }
-
-  export type Relationship_teacher_subjectUpdateManyWithWhereWithoutTeacherInput = {
-    where: Relationship_teacher_subjectScalarWhereInput
-    data: XOR<Relationship_teacher_subjectUpdateManyMutationInput, Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherInput>
-  }
-
-  export type Relationship_teacher_subjectScalarWhereInput = {
-    AND?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
-    OR?: Relationship_teacher_subjectScalarWhereInput[]
-    NOT?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
-    id?: IntFilter<"Relationship_teacher_subject"> | number
-    subject_id?: IntFilter<"Relationship_teacher_subject"> | number
-    teacher_id?: IntFilter<"Relationship_teacher_subject"> | number
+  export type Relationship_teacher_subjectCreateManyTeacherInputEnvelope = {
+    data: Relationship_teacher_subjectCreateManyTeacherInput | Relationship_teacher_subjectCreateManyTeacherInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutTeacherInput = {
@@ -21619,6 +21594,31 @@ export namespace Prisma {
     role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
     hashed_password?: StringFieldUpdateOperationsInput | string
     student?: StudentUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type Relationship_teacher_subjectUpsertWithWhereUniqueWithoutTeacherInput = {
+    where: Relationship_teacher_subjectWhereUniqueInput
+    update: XOR<Relationship_teacher_subjectUpdateWithoutTeacherInput, Relationship_teacher_subjectUncheckedUpdateWithoutTeacherInput>
+    create: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type Relationship_teacher_subjectUpdateWithWhereUniqueWithoutTeacherInput = {
+    where: Relationship_teacher_subjectWhereUniqueInput
+    data: XOR<Relationship_teacher_subjectUpdateWithoutTeacherInput, Relationship_teacher_subjectUncheckedUpdateWithoutTeacherInput>
+  }
+
+  export type Relationship_teacher_subjectUpdateManyWithWhereWithoutTeacherInput = {
+    where: Relationship_teacher_subjectScalarWhereInput
+    data: XOR<Relationship_teacher_subjectUpdateManyMutationInput, Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherInput>
+  }
+
+  export type Relationship_teacher_subjectScalarWhereInput = {
+    AND?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
+    OR?: Relationship_teacher_subjectScalarWhereInput[]
+    NOT?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
+    id?: IntFilter<"Relationship_teacher_subject"> | number
+    subject_id?: IntFilter<"Relationship_teacher_subject"> | number
+    teacher_id?: IntFilter<"Relationship_teacher_subject"> | number
   }
 
   export type Relationship_teacher_subjectCreateWithoutSubjectInput = {
@@ -21695,8 +21695,8 @@ export namespace Prisma {
   }
 
   export type Relationship_teacher_subject_classCreateWithoutTeacher_subjectInput = {
-    quizzes?: QuizCreateNestedManyWithoutTeacher_subject_classInput
     class: ClassCreateNestedOneWithoutTeacher_subject_classesInput
+    quizzes?: QuizCreateNestedManyWithoutTeacher_subject_classInput
   }
 
   export type Relationship_teacher_subject_classUncheckedCreateWithoutTeacher_subjectInput = {
@@ -21788,33 +21788,12 @@ export namespace Prisma {
     teacher_subject_id?: IntFilter<"Relationship_teacher_subject_class"> | number
   }
 
-  export type Relationship_teacher_subject_classCreateWithoutClassInput = {
-    quizzes?: QuizCreateNestedManyWithoutTeacher_subject_classInput
-    teacher_subject: Relationship_teacher_subjectCreateNestedOneWithoutTeacher_subject_classesInput
-  }
-
-  export type Relationship_teacher_subject_classUncheckedCreateWithoutClassInput = {
-    id?: number
-    teacher_subject_id: number
-    quizzes?: QuizUncheckedCreateNestedManyWithoutTeacher_subject_classInput
-  }
-
-  export type Relationship_teacher_subject_classCreateOrConnectWithoutClassInput = {
-    where: Relationship_teacher_subject_classWhereUniqueInput
-    create: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput>
-  }
-
-  export type Relationship_teacher_subject_classCreateManyClassInputEnvelope = {
-    data: Relationship_teacher_subject_classCreateManyClassInput | Relationship_teacher_subject_classCreateManyClassInput[]
-    skipDuplicates?: boolean
-  }
-
   export type StudentCreateWithoutClassInput = {
     enrollment: string
     created_at?: Date | string
     modified_at?: Date | string
-    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutStudentInput
     user: UserCreateNestedOneWithoutStudentInput
+    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutStudentInput
   }
 
   export type StudentUncheckedCreateWithoutClassInput = {
@@ -21836,20 +21815,25 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput = {
+  export type Relationship_teacher_subject_classCreateWithoutClassInput = {
+    teacher_subject: Relationship_teacher_subjectCreateNestedOneWithoutTeacher_subject_classesInput
+    quizzes?: QuizCreateNestedManyWithoutTeacher_subject_classInput
+  }
+
+  export type Relationship_teacher_subject_classUncheckedCreateWithoutClassInput = {
+    id?: number
+    teacher_subject_id: number
+    quizzes?: QuizUncheckedCreateNestedManyWithoutTeacher_subject_classInput
+  }
+
+  export type Relationship_teacher_subject_classCreateOrConnectWithoutClassInput = {
     where: Relationship_teacher_subject_classWhereUniqueInput
-    update: XOR<Relationship_teacher_subject_classUpdateWithoutClassInput, Relationship_teacher_subject_classUncheckedUpdateWithoutClassInput>
     create: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput>
   }
 
-  export type Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput = {
-    where: Relationship_teacher_subject_classWhereUniqueInput
-    data: XOR<Relationship_teacher_subject_classUpdateWithoutClassInput, Relationship_teacher_subject_classUncheckedUpdateWithoutClassInput>
-  }
-
-  export type Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput = {
-    where: Relationship_teacher_subject_classScalarWhereInput
-    data: XOR<Relationship_teacher_subject_classUpdateManyMutationInput, Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassInput>
+  export type Relationship_teacher_subject_classCreateManyClassInputEnvelope = {
+    data: Relationship_teacher_subject_classCreateManyClassInput | Relationship_teacher_subject_classCreateManyClassInput[]
+    skipDuplicates?: boolean
   }
 
   export type StudentUpsertWithWhereUniqueWithoutClassInput = {
@@ -21880,61 +21864,20 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"Student"> | Date | string
   }
 
-  export type Quiz_attemptCreateWithoutStudentInput = {
-    started_at?: Date | string
-    finished_at?: Date | string | null
-    status?: $Enums.AttemptStatus
-    total_score?: Decimal | DecimalJsLike | number | string
-    created_at?: Date | string
-    modified_at?: Date | string
-    question_responses?: Question_responseCreateNestedManyWithoutQuiz_attemptInput
-    quiz: QuizCreateNestedOneWithoutQuiz_attemptsInput
+  export type Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutClassInput = {
+    where: Relationship_teacher_subject_classWhereUniqueInput
+    update: XOR<Relationship_teacher_subject_classUpdateWithoutClassInput, Relationship_teacher_subject_classUncheckedUpdateWithoutClassInput>
+    create: XOR<Relationship_teacher_subject_classCreateWithoutClassInput, Relationship_teacher_subject_classUncheckedCreateWithoutClassInput>
   }
 
-  export type Quiz_attemptUncheckedCreateWithoutStudentInput = {
-    id?: number
-    quiz_id: number
-    started_at?: Date | string
-    finished_at?: Date | string | null
-    status?: $Enums.AttemptStatus
-    total_score?: Decimal | DecimalJsLike | number | string
-    created_at?: Date | string
-    modified_at?: Date | string
-    question_responses?: Question_responseUncheckedCreateNestedManyWithoutQuiz_attemptInput
+  export type Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput = {
+    where: Relationship_teacher_subject_classWhereUniqueInput
+    data: XOR<Relationship_teacher_subject_classUpdateWithoutClassInput, Relationship_teacher_subject_classUncheckedUpdateWithoutClassInput>
   }
 
-  export type Quiz_attemptCreateOrConnectWithoutStudentInput = {
-    where: Quiz_attemptWhereUniqueInput
-    create: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput>
-  }
-
-  export type Quiz_attemptCreateManyStudentInputEnvelope = {
-    data: Quiz_attemptCreateManyStudentInput | Quiz_attemptCreateManyStudentInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ClassCreateWithoutStudentsInput = {
-    name: string
-    shift: $Enums.Shift
-    course: string
-    created_at?: Date | string
-    modified_at?: Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
-  }
-
-  export type ClassUncheckedCreateWithoutStudentsInput = {
-    id?: number
-    name: string
-    shift: $Enums.Shift
-    course: string
-    created_at?: Date | string
-    modified_at?: Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
-  }
-
-  export type ClassCreateOrConnectWithoutStudentsInput = {
-    where: ClassWhereUniqueInput
-    create: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+  export type Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput = {
+    where: Relationship_teacher_subject_classScalarWhereInput
+    data: XOR<Relationship_teacher_subject_classUpdateManyMutationInput, Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassInput>
   }
 
   export type UserCreateWithoutStudentInput = {
@@ -21967,65 +21910,61 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutStudentInput, UserUncheckedCreateWithoutStudentInput>
   }
 
-  export type Quiz_attemptUpsertWithWhereUniqueWithoutStudentInput = {
+  export type ClassCreateWithoutStudentsInput = {
+    name: string
+    shift: $Enums.Shift
+    course: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassUncheckedCreateWithoutStudentsInput = {
+    id?: number
+    name: string
+    shift: $Enums.Shift
+    course: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassCreateOrConnectWithoutStudentsInput = {
+    where: ClassWhereUniqueInput
+    create: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+  }
+
+  export type Quiz_attemptCreateWithoutStudentInput = {
+    started_at?: Date | string
+    finished_at?: Date | string | null
+    status?: $Enums.AttemptStatus
+    total_score?: Decimal | DecimalJsLike | number | string
+    created_at?: Date | string
+    modified_at?: Date | string
+    quiz: QuizCreateNestedOneWithoutQuiz_attemptsInput
+    question_responses?: Question_responseCreateNestedManyWithoutQuiz_attemptInput
+  }
+
+  export type Quiz_attemptUncheckedCreateWithoutStudentInput = {
+    id?: number
+    quiz_id: number
+    started_at?: Date | string
+    finished_at?: Date | string | null
+    status?: $Enums.AttemptStatus
+    total_score?: Decimal | DecimalJsLike | number | string
+    created_at?: Date | string
+    modified_at?: Date | string
+    question_responses?: Question_responseUncheckedCreateNestedManyWithoutQuiz_attemptInput
+  }
+
+  export type Quiz_attemptCreateOrConnectWithoutStudentInput = {
     where: Quiz_attemptWhereUniqueInput
-    update: XOR<Quiz_attemptUpdateWithoutStudentInput, Quiz_attemptUncheckedUpdateWithoutStudentInput>
     create: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput>
   }
 
-  export type Quiz_attemptUpdateWithWhereUniqueWithoutStudentInput = {
-    where: Quiz_attemptWhereUniqueInput
-    data: XOR<Quiz_attemptUpdateWithoutStudentInput, Quiz_attemptUncheckedUpdateWithoutStudentInput>
-  }
-
-  export type Quiz_attemptUpdateManyWithWhereWithoutStudentInput = {
-    where: Quiz_attemptScalarWhereInput
-    data: XOR<Quiz_attemptUpdateManyMutationInput, Quiz_attemptUncheckedUpdateManyWithoutStudentInput>
-  }
-
-  export type Quiz_attemptScalarWhereInput = {
-    AND?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
-    OR?: Quiz_attemptScalarWhereInput[]
-    NOT?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
-    id?: IntFilter<"Quiz_attempt"> | number
-    student_id?: IntFilter<"Quiz_attempt"> | number
-    quiz_id?: IntFilter<"Quiz_attempt"> | number
-    started_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
-    finished_at?: DateTimeNullableFilter<"Quiz_attempt"> | Date | string | null
-    status?: EnumAttemptStatusFilter<"Quiz_attempt"> | $Enums.AttemptStatus
-    total_score?: DecimalFilter<"Quiz_attempt"> | Decimal | DecimalJsLike | number | string
-    created_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
-    modified_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
-  }
-
-  export type ClassUpsertWithoutStudentsInput = {
-    update: XOR<ClassUpdateWithoutStudentsInput, ClassUncheckedUpdateWithoutStudentsInput>
-    create: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
-    where?: ClassWhereInput
-  }
-
-  export type ClassUpdateToOneWithWhereWithoutStudentsInput = {
-    where?: ClassWhereInput
-    data: XOR<ClassUpdateWithoutStudentsInput, ClassUncheckedUpdateWithoutStudentsInput>
-  }
-
-  export type ClassUpdateWithoutStudentsInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    shift?: EnumShiftFieldUpdateOperationsInput | $Enums.Shift
-    course?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
-  }
-
-  export type ClassUncheckedUpdateWithoutStudentsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    shift?: EnumShiftFieldUpdateOperationsInput | $Enums.Shift
-    course?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
+  export type Quiz_attemptCreateManyStudentInputEnvelope = {
+    data: Quiz_attemptCreateManyStudentInput | Quiz_attemptCreateManyStudentInput[]
+    skipDuplicates?: boolean
   }
 
   export type UserUpsertWithoutStudentInput = {
@@ -22064,39 +22003,65 @@ export namespace Prisma {
     teacher?: TeacherUncheckedUpdateOneWithoutUserNestedInput
   }
 
-  export type QuizCreateWithoutTeacher_subject_classInput = {
-    title: string
-    duration_minutes?: number | null
-    max_points?: Decimal | DecimalJsLike | number | string
-    max_attempt?: number | null
-    visibility?: $Enums.QuizVisibility
-    created_at?: Date | string
-    modified_at?: Date | string
-    questions?: QuestionCreateNestedManyWithoutQuizInput
-    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutQuizInput
+  export type ClassUpsertWithoutStudentsInput = {
+    update: XOR<ClassUpdateWithoutStudentsInput, ClassUncheckedUpdateWithoutStudentsInput>
+    create: XOR<ClassCreateWithoutStudentsInput, ClassUncheckedCreateWithoutStudentsInput>
+    where?: ClassWhereInput
   }
 
-  export type QuizUncheckedCreateWithoutTeacher_subject_classInput = {
-    id?: number
-    title: string
-    duration_minutes?: number | null
-    max_points?: Decimal | DecimalJsLike | number | string
-    max_attempt?: number | null
-    visibility?: $Enums.QuizVisibility
-    created_at?: Date | string
-    modified_at?: Date | string
-    questions?: QuestionUncheckedCreateNestedManyWithoutQuizInput
-    quiz_attempts?: Quiz_attemptUncheckedCreateNestedManyWithoutQuizInput
+  export type ClassUpdateToOneWithWhereWithoutStudentsInput = {
+    where?: ClassWhereInput
+    data: XOR<ClassUpdateWithoutStudentsInput, ClassUncheckedUpdateWithoutStudentsInput>
   }
 
-  export type QuizCreateOrConnectWithoutTeacher_subject_classInput = {
-    where: QuizWhereUniqueInput
-    create: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput>
+  export type ClassUpdateWithoutStudentsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    shift?: EnumShiftFieldUpdateOperationsInput | $Enums.Shift
+    course?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
   }
 
-  export type QuizCreateManyTeacher_subject_classInputEnvelope = {
-    data: QuizCreateManyTeacher_subject_classInput | QuizCreateManyTeacher_subject_classInput[]
-    skipDuplicates?: boolean
+  export type ClassUncheckedUpdateWithoutStudentsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    shift?: EnumShiftFieldUpdateOperationsInput | $Enums.Shift
+    course?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type Quiz_attemptUpsertWithWhereUniqueWithoutStudentInput = {
+    where: Quiz_attemptWhereUniqueInput
+    update: XOR<Quiz_attemptUpdateWithoutStudentInput, Quiz_attemptUncheckedUpdateWithoutStudentInput>
+    create: XOR<Quiz_attemptCreateWithoutStudentInput, Quiz_attemptUncheckedCreateWithoutStudentInput>
+  }
+
+  export type Quiz_attemptUpdateWithWhereUniqueWithoutStudentInput = {
+    where: Quiz_attemptWhereUniqueInput
+    data: XOR<Quiz_attemptUpdateWithoutStudentInput, Quiz_attemptUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type Quiz_attemptUpdateManyWithWhereWithoutStudentInput = {
+    where: Quiz_attemptScalarWhereInput
+    data: XOR<Quiz_attemptUpdateManyMutationInput, Quiz_attemptUncheckedUpdateManyWithoutStudentInput>
+  }
+
+  export type Quiz_attemptScalarWhereInput = {
+    AND?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
+    OR?: Quiz_attemptScalarWhereInput[]
+    NOT?: Quiz_attemptScalarWhereInput | Quiz_attemptScalarWhereInput[]
+    id?: IntFilter<"Quiz_attempt"> | number
+    student_id?: IntFilter<"Quiz_attempt"> | number
+    quiz_id?: IntFilter<"Quiz_attempt"> | number
+    started_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
+    finished_at?: DateTimeNullableFilter<"Quiz_attempt"> | Date | string | null
+    status?: EnumAttemptStatusFilter<"Quiz_attempt"> | $Enums.AttemptStatus
+    total_score?: DecimalFilter<"Quiz_attempt"> | Decimal | DecimalJsLike | number | string
+    created_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
+    modified_at?: DateTimeFilter<"Quiz_attempt"> | Date | string
   }
 
   export type ClassCreateWithoutTeacher_subject_classesInput = {
@@ -22139,35 +22104,39 @@ export namespace Prisma {
     create: XOR<Relationship_teacher_subjectCreateWithoutTeacher_subject_classesInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacher_subject_classesInput>
   }
 
-  export type QuizUpsertWithWhereUniqueWithoutTeacher_subject_classInput = {
+  export type QuizCreateWithoutTeacher_subject_classInput = {
+    title: string
+    duration_minutes?: number | null
+    max_points?: Decimal | DecimalJsLike | number | string
+    max_attempt?: number | null
+    visibility?: $Enums.QuizVisibility
+    created_at?: Date | string
+    modified_at?: Date | string
+    questions?: QuestionCreateNestedManyWithoutQuizInput
+    quiz_attempts?: Quiz_attemptCreateNestedManyWithoutQuizInput
+  }
+
+  export type QuizUncheckedCreateWithoutTeacher_subject_classInput = {
+    id?: number
+    title: string
+    duration_minutes?: number | null
+    max_points?: Decimal | DecimalJsLike | number | string
+    max_attempt?: number | null
+    visibility?: $Enums.QuizVisibility
+    created_at?: Date | string
+    modified_at?: Date | string
+    questions?: QuestionUncheckedCreateNestedManyWithoutQuizInput
+    quiz_attempts?: Quiz_attemptUncheckedCreateNestedManyWithoutQuizInput
+  }
+
+  export type QuizCreateOrConnectWithoutTeacher_subject_classInput = {
     where: QuizWhereUniqueInput
-    update: XOR<QuizUpdateWithoutTeacher_subject_classInput, QuizUncheckedUpdateWithoutTeacher_subject_classInput>
     create: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput>
   }
 
-  export type QuizUpdateWithWhereUniqueWithoutTeacher_subject_classInput = {
-    where: QuizWhereUniqueInput
-    data: XOR<QuizUpdateWithoutTeacher_subject_classInput, QuizUncheckedUpdateWithoutTeacher_subject_classInput>
-  }
-
-  export type QuizUpdateManyWithWhereWithoutTeacher_subject_classInput = {
-    where: QuizScalarWhereInput
-    data: XOR<QuizUpdateManyMutationInput, QuizUncheckedUpdateManyWithoutTeacher_subject_classInput>
-  }
-
-  export type QuizScalarWhereInput = {
-    AND?: QuizScalarWhereInput | QuizScalarWhereInput[]
-    OR?: QuizScalarWhereInput[]
-    NOT?: QuizScalarWhereInput | QuizScalarWhereInput[]
-    id?: IntFilter<"Quiz"> | number
-    title?: StringFilter<"Quiz"> | string
-    duration_minutes?: IntNullableFilter<"Quiz"> | number | null
-    max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
-    max_attempt?: IntNullableFilter<"Quiz"> | number | null
-    visibility?: EnumQuizVisibilityFilter<"Quiz"> | $Enums.QuizVisibility
-    created_at?: DateTimeFilter<"Quiz"> | Date | string
-    modified_at?: DateTimeFilter<"Quiz"> | Date | string
-    teacher_subject_class_id?: IntFilter<"Quiz"> | number
+  export type QuizCreateManyTeacher_subject_classInputEnvelope = {
+    data: QuizCreateManyTeacher_subject_classInput | QuizCreateManyTeacher_subject_classInput[]
+    skipDuplicates?: boolean
   }
 
   export type ClassUpsertWithoutTeacher_subject_classesInput = {
@@ -22222,6 +22191,53 @@ export namespace Prisma {
     teacher_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type QuizUpsertWithWhereUniqueWithoutTeacher_subject_classInput = {
+    where: QuizWhereUniqueInput
+    update: XOR<QuizUpdateWithoutTeacher_subject_classInput, QuizUncheckedUpdateWithoutTeacher_subject_classInput>
+    create: XOR<QuizCreateWithoutTeacher_subject_classInput, QuizUncheckedCreateWithoutTeacher_subject_classInput>
+  }
+
+  export type QuizUpdateWithWhereUniqueWithoutTeacher_subject_classInput = {
+    where: QuizWhereUniqueInput
+    data: XOR<QuizUpdateWithoutTeacher_subject_classInput, QuizUncheckedUpdateWithoutTeacher_subject_classInput>
+  }
+
+  export type QuizUpdateManyWithWhereWithoutTeacher_subject_classInput = {
+    where: QuizScalarWhereInput
+    data: XOR<QuizUpdateManyMutationInput, QuizUncheckedUpdateManyWithoutTeacher_subject_classInput>
+  }
+
+  export type QuizScalarWhereInput = {
+    AND?: QuizScalarWhereInput | QuizScalarWhereInput[]
+    OR?: QuizScalarWhereInput[]
+    NOT?: QuizScalarWhereInput | QuizScalarWhereInput[]
+    id?: IntFilter<"Quiz"> | number
+    title?: StringFilter<"Quiz"> | string
+    duration_minutes?: IntNullableFilter<"Quiz"> | number | null
+    max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
+    max_attempt?: IntNullableFilter<"Quiz"> | number | null
+    visibility?: EnumQuizVisibilityFilter<"Quiz"> | $Enums.QuizVisibility
+    created_at?: DateTimeFilter<"Quiz"> | Date | string
+    modified_at?: DateTimeFilter<"Quiz"> | Date | string
+    teacher_subject_class_id?: IntFilter<"Quiz"> | number
+  }
+
+  export type Relationship_teacher_subject_classCreateWithoutQuizzesInput = {
+    class: ClassCreateNestedOneWithoutTeacher_subject_classesInput
+    teacher_subject: Relationship_teacher_subjectCreateNestedOneWithoutTeacher_subject_classesInput
+  }
+
+  export type Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput = {
+    id?: number
+    class_id: number
+    teacher_subject_id: number
+  }
+
+  export type Relationship_teacher_subject_classCreateOrConnectWithoutQuizzesInput = {
+    where: Relationship_teacher_subject_classWhereUniqueInput
+    create: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
+  }
+
   export type QuestionCreateWithoutQuizInput = {
     statement: string
     points: Decimal | DecimalJsLike | number | string
@@ -22253,22 +22269,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type Relationship_teacher_subject_classCreateWithoutQuizzesInput = {
-    class: ClassCreateNestedOneWithoutTeacher_subject_classesInput
-    teacher_subject: Relationship_teacher_subjectCreateNestedOneWithoutTeacher_subject_classesInput
-  }
-
-  export type Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput = {
-    id?: number
-    class_id: number
-    teacher_subject_id: number
-  }
-
-  export type Relationship_teacher_subject_classCreateOrConnectWithoutQuizzesInput = {
-    where: Relationship_teacher_subject_classWhereUniqueInput
-    create: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
-  }
-
   export type Quiz_attemptCreateWithoutQuizInput = {
     started_at?: Date | string
     finished_at?: Date | string | null
@@ -22276,8 +22276,8 @@ export namespace Prisma {
     total_score?: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    question_responses?: Question_responseCreateNestedManyWithoutQuiz_attemptInput
     student: StudentCreateNestedOneWithoutQuiz_attemptsInput
+    question_responses?: Question_responseCreateNestedManyWithoutQuiz_attemptInput
   }
 
   export type Quiz_attemptUncheckedCreateWithoutQuizInput = {
@@ -22300,6 +22300,28 @@ export namespace Prisma {
   export type Quiz_attemptCreateManyQuizInputEnvelope = {
     data: Quiz_attemptCreateManyQuizInput | Quiz_attemptCreateManyQuizInput[]
     skipDuplicates?: boolean
+  }
+
+  export type Relationship_teacher_subject_classUpsertWithoutQuizzesInput = {
+    update: XOR<Relationship_teacher_subject_classUpdateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput>
+    create: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
+    where?: Relationship_teacher_subject_classWhereInput
+  }
+
+  export type Relationship_teacher_subject_classUpdateToOneWithWhereWithoutQuizzesInput = {
+    where?: Relationship_teacher_subject_classWhereInput
+    data: XOR<Relationship_teacher_subject_classUpdateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput>
+  }
+
+  export type Relationship_teacher_subject_classUpdateWithoutQuizzesInput = {
+    class?: ClassUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
+    teacher_subject?: Relationship_teacher_subjectUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
+  }
+
+  export type Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    teacher_subject_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type QuestionUpsertWithWhereUniqueWithoutQuizInput = {
@@ -22330,28 +22352,6 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"Question"> | Date | string
   }
 
-  export type Relationship_teacher_subject_classUpsertWithoutQuizzesInput = {
-    update: XOR<Relationship_teacher_subject_classUpdateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput>
-    create: XOR<Relationship_teacher_subject_classCreateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedCreateWithoutQuizzesInput>
-    where?: Relationship_teacher_subject_classWhereInput
-  }
-
-  export type Relationship_teacher_subject_classUpdateToOneWithWhereWithoutQuizzesInput = {
-    where?: Relationship_teacher_subject_classWhereInput
-    data: XOR<Relationship_teacher_subject_classUpdateWithoutQuizzesInput, Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput>
-  }
-
-  export type Relationship_teacher_subject_classUpdateWithoutQuizzesInput = {
-    class?: ClassUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
-    teacher_subject?: Relationship_teacher_subjectUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
-  }
-
-  export type Relationship_teacher_subject_classUncheckedUpdateWithoutQuizzesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    teacher_subject_id?: IntFieldUpdateOperationsInput | number
-  }
-
   export type Quiz_attemptUpsertWithWhereUniqueWithoutQuizInput = {
     where: Quiz_attemptWhereUniqueInput
     update: XOR<Quiz_attemptUpdateWithoutQuizInput, Quiz_attemptUncheckedUpdateWithoutQuizInput>
@@ -22366,33 +22366,6 @@ export namespace Prisma {
   export type Quiz_attemptUpdateManyWithWhereWithoutQuizInput = {
     where: Quiz_attemptScalarWhereInput
     data: XOR<Quiz_attemptUpdateManyMutationInput, Quiz_attemptUncheckedUpdateManyWithoutQuizInput>
-  }
-
-  export type AlternativeCreateWithoutQuestionInput = {
-    response: string
-    correct_alternative?: boolean
-    created_at?: Date | string
-    modified_at?: Date | string
-    question_responses?: Question_responseCreateNestedManyWithoutMarked_alternativeInput
-  }
-
-  export type AlternativeUncheckedCreateWithoutQuestionInput = {
-    id?: number
-    response: string
-    correct_alternative?: boolean
-    created_at?: Date | string
-    modified_at?: Date | string
-    question_responses?: Question_responseUncheckedCreateNestedManyWithoutMarked_alternativeInput
-  }
-
-  export type AlternativeCreateOrConnectWithoutQuestionInput = {
-    where: AlternativeWhereUniqueInput
-    create: XOR<AlternativeCreateWithoutQuestionInput, AlternativeUncheckedCreateWithoutQuestionInput>
-  }
-
-  export type AlternativeCreateManyQuestionInputEnvelope = {
-    data: AlternativeCreateManyQuestionInput | AlternativeCreateManyQuestionInput[]
-    skipDuplicates?: boolean
   }
 
   export type QuizCreateWithoutQuestionsInput = {
@@ -22423,6 +22396,33 @@ export namespace Prisma {
   export type QuizCreateOrConnectWithoutQuestionsInput = {
     where: QuizWhereUniqueInput
     create: XOR<QuizCreateWithoutQuestionsInput, QuizUncheckedCreateWithoutQuestionsInput>
+  }
+
+  export type AlternativeCreateWithoutQuestionInput = {
+    response: string
+    correct_alternative?: boolean
+    created_at?: Date | string
+    modified_at?: Date | string
+    question_responses?: Question_responseCreateNestedManyWithoutMarked_alternativeInput
+  }
+
+  export type AlternativeUncheckedCreateWithoutQuestionInput = {
+    id?: number
+    response: string
+    correct_alternative?: boolean
+    created_at?: Date | string
+    modified_at?: Date | string
+    question_responses?: Question_responseUncheckedCreateNestedManyWithoutMarked_alternativeInput
+  }
+
+  export type AlternativeCreateOrConnectWithoutQuestionInput = {
+    where: AlternativeWhereUniqueInput
+    create: XOR<AlternativeCreateWithoutQuestionInput, AlternativeUncheckedCreateWithoutQuestionInput>
+  }
+
+  export type AlternativeCreateManyQuestionInputEnvelope = {
+    data: AlternativeCreateManyQuestionInput | AlternativeCreateManyQuestionInput[]
+    skipDuplicates?: boolean
   }
 
   export type Question_imagesCreateWithoutQuestionInput = {
@@ -22477,34 +22477,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AlternativeUpsertWithWhereUniqueWithoutQuestionInput = {
-    where: AlternativeWhereUniqueInput
-    update: XOR<AlternativeUpdateWithoutQuestionInput, AlternativeUncheckedUpdateWithoutQuestionInput>
-    create: XOR<AlternativeCreateWithoutQuestionInput, AlternativeUncheckedCreateWithoutQuestionInput>
-  }
-
-  export type AlternativeUpdateWithWhereUniqueWithoutQuestionInput = {
-    where: AlternativeWhereUniqueInput
-    data: XOR<AlternativeUpdateWithoutQuestionInput, AlternativeUncheckedUpdateWithoutQuestionInput>
-  }
-
-  export type AlternativeUpdateManyWithWhereWithoutQuestionInput = {
-    where: AlternativeScalarWhereInput
-    data: XOR<AlternativeUpdateManyMutationInput, AlternativeUncheckedUpdateManyWithoutQuestionInput>
-  }
-
-  export type AlternativeScalarWhereInput = {
-    AND?: AlternativeScalarWhereInput | AlternativeScalarWhereInput[]
-    OR?: AlternativeScalarWhereInput[]
-    NOT?: AlternativeScalarWhereInput | AlternativeScalarWhereInput[]
-    id?: IntFilter<"Alternative"> | number
-    question_id?: IntFilter<"Alternative"> | number
-    response?: StringFilter<"Alternative"> | string
-    correct_alternative?: BoolFilter<"Alternative"> | boolean
-    created_at?: DateTimeFilter<"Alternative"> | Date | string
-    modified_at?: DateTimeFilter<"Alternative"> | Date | string
-  }
-
   export type QuizUpsertWithoutQuestionsInput = {
     update: XOR<QuizUpdateWithoutQuestionsInput, QuizUncheckedUpdateWithoutQuestionsInput>
     create: XOR<QuizCreateWithoutQuestionsInput, QuizUncheckedCreateWithoutQuestionsInput>
@@ -22539,6 +22511,34 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subject_class_id?: IntFieldUpdateOperationsInput | number
     quiz_attempts?: Quiz_attemptUncheckedUpdateManyWithoutQuizNestedInput
+  }
+
+  export type AlternativeUpsertWithWhereUniqueWithoutQuestionInput = {
+    where: AlternativeWhereUniqueInput
+    update: XOR<AlternativeUpdateWithoutQuestionInput, AlternativeUncheckedUpdateWithoutQuestionInput>
+    create: XOR<AlternativeCreateWithoutQuestionInput, AlternativeUncheckedCreateWithoutQuestionInput>
+  }
+
+  export type AlternativeUpdateWithWhereUniqueWithoutQuestionInput = {
+    where: AlternativeWhereUniqueInput
+    data: XOR<AlternativeUpdateWithoutQuestionInput, AlternativeUncheckedUpdateWithoutQuestionInput>
+  }
+
+  export type AlternativeUpdateManyWithWhereWithoutQuestionInput = {
+    where: AlternativeScalarWhereInput
+    data: XOR<AlternativeUpdateManyMutationInput, AlternativeUncheckedUpdateManyWithoutQuestionInput>
+  }
+
+  export type AlternativeScalarWhereInput = {
+    AND?: AlternativeScalarWhereInput | AlternativeScalarWhereInput[]
+    OR?: AlternativeScalarWhereInput[]
+    NOT?: AlternativeScalarWhereInput | AlternativeScalarWhereInput[]
+    id?: IntFilter<"Alternative"> | number
+    question_id?: IntFilter<"Alternative"> | number
+    response?: StringFilter<"Alternative"> | string
+    correct_alternative?: BoolFilter<"Alternative"> | boolean
+    created_at?: DateTimeFilter<"Alternative"> | Date | string
+    modified_at?: DateTimeFilter<"Alternative"> | Date | string
   }
 
   export type Question_imagesUpsertWithWhereUniqueWithoutQuestionInput = {
@@ -22706,8 +22706,8 @@ export namespace Prisma {
     points: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    alternatives?: AlternativeCreateNestedManyWithoutQuestionInput
     quiz: QuizCreateNestedOneWithoutQuestionsInput
+    alternatives?: AlternativeCreateNestedManyWithoutQuestionInput
     question_responses?: Question_responseCreateNestedManyWithoutQuestionInput
   }
 
@@ -22743,8 +22743,8 @@ export namespace Prisma {
     points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    alternatives?: AlternativeUpdateManyWithoutQuestionNestedInput
     quiz?: QuizUpdateOneRequiredWithoutQuestionsNestedInput
+    alternatives?: AlternativeUpdateManyWithoutQuestionNestedInput
     question_responses?: Question_responseUpdateManyWithoutQuestionNestedInput
   }
 
@@ -22759,13 +22759,65 @@ export namespace Prisma {
     question_responses?: Question_responseUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
+  export type StudentCreateWithoutQuiz_attemptsInput = {
+    enrollment: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    user: UserCreateNestedOneWithoutStudentInput
+    class: ClassCreateNestedOneWithoutStudentsInput
+  }
+
+  export type StudentUncheckedCreateWithoutQuiz_attemptsInput = {
+    id?: number
+    enrollment: string
+    user_id: number
+    class_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type StudentCreateOrConnectWithoutQuiz_attemptsInput = {
+    where: StudentWhereUniqueInput
+    create: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
+  }
+
+  export type QuizCreateWithoutQuiz_attemptsInput = {
+    title: string
+    duration_minutes?: number | null
+    max_points?: Decimal | DecimalJsLike | number | string
+    max_attempt?: number | null
+    visibility?: $Enums.QuizVisibility
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subject_class: Relationship_teacher_subject_classCreateNestedOneWithoutQuizzesInput
+    questions?: QuestionCreateNestedManyWithoutQuizInput
+  }
+
+  export type QuizUncheckedCreateWithoutQuiz_attemptsInput = {
+    id?: number
+    title: string
+    duration_minutes?: number | null
+    max_points?: Decimal | DecimalJsLike | number | string
+    max_attempt?: number | null
+    visibility?: $Enums.QuizVisibility
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subject_class_id: number
+    questions?: QuestionUncheckedCreateNestedManyWithoutQuizInput
+  }
+
+  export type QuizCreateOrConnectWithoutQuiz_attemptsInput = {
+    where: QuizWhereUniqueInput
+    create: XOR<QuizCreateWithoutQuiz_attemptsInput, QuizUncheckedCreateWithoutQuiz_attemptsInput>
+  }
+
   export type Question_responseCreateWithoutQuiz_attemptInput = {
     is_correct: boolean
     points_earned?: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    marked_alternative: AlternativeCreateNestedOneWithoutQuestion_responsesInput
     question: QuestionCreateNestedOneWithoutQuestion_responsesInput
+    marked_alternative: AlternativeCreateNestedOneWithoutQuestion_responsesInput
   }
 
   export type Question_responseUncheckedCreateWithoutQuiz_attemptInput = {
@@ -22788,72 +22840,32 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type QuizCreateWithoutQuiz_attemptsInput = {
-    title: string
-    duration_minutes?: number | null
-    max_points?: Decimal | DecimalJsLike | number | string
-    max_attempt?: number | null
-    visibility?: $Enums.QuizVisibility
-    created_at?: Date | string
-    modified_at?: Date | string
-    questions?: QuestionCreateNestedManyWithoutQuizInput
-    teacher_subject_class: Relationship_teacher_subject_classCreateNestedOneWithoutQuizzesInput
-  }
-
-  export type QuizUncheckedCreateWithoutQuiz_attemptsInput = {
-    id?: number
-    title: string
-    duration_minutes?: number | null
-    max_points?: Decimal | DecimalJsLike | number | string
-    max_attempt?: number | null
-    visibility?: $Enums.QuizVisibility
-    created_at?: Date | string
-    modified_at?: Date | string
-    teacher_subject_class_id: number
-    questions?: QuestionUncheckedCreateNestedManyWithoutQuizInput
-  }
-
-  export type QuizCreateOrConnectWithoutQuiz_attemptsInput = {
-    where: QuizWhereUniqueInput
-    create: XOR<QuizCreateWithoutQuiz_attemptsInput, QuizUncheckedCreateWithoutQuiz_attemptsInput>
-  }
-
-  export type StudentCreateWithoutQuiz_attemptsInput = {
-    enrollment: string
-    created_at?: Date | string
-    modified_at?: Date | string
-    class: ClassCreateNestedOneWithoutStudentsInput
-    user: UserCreateNestedOneWithoutStudentInput
-  }
-
-  export type StudentUncheckedCreateWithoutQuiz_attemptsInput = {
-    id?: number
-    enrollment: string
-    user_id: number
-    class_id: number
-    created_at?: Date | string
-    modified_at?: Date | string
-  }
-
-  export type StudentCreateOrConnectWithoutQuiz_attemptsInput = {
-    where: StudentWhereUniqueInput
+  export type StudentUpsertWithoutQuiz_attemptsInput = {
+    update: XOR<StudentUpdateWithoutQuiz_attemptsInput, StudentUncheckedUpdateWithoutQuiz_attemptsInput>
     create: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
+    where?: StudentWhereInput
   }
 
-  export type Question_responseUpsertWithWhereUniqueWithoutQuiz_attemptInput = {
-    where: Question_responseWhereUniqueInput
-    update: XOR<Question_responseUpdateWithoutQuiz_attemptInput, Question_responseUncheckedUpdateWithoutQuiz_attemptInput>
-    create: XOR<Question_responseCreateWithoutQuiz_attemptInput, Question_responseUncheckedCreateWithoutQuiz_attemptInput>
+  export type StudentUpdateToOneWithWhereWithoutQuiz_attemptsInput = {
+    where?: StudentWhereInput
+    data: XOR<StudentUpdateWithoutQuiz_attemptsInput, StudentUncheckedUpdateWithoutQuiz_attemptsInput>
   }
 
-  export type Question_responseUpdateWithWhereUniqueWithoutQuiz_attemptInput = {
-    where: Question_responseWhereUniqueInput
-    data: XOR<Question_responseUpdateWithoutQuiz_attemptInput, Question_responseUncheckedUpdateWithoutQuiz_attemptInput>
+  export type StudentUpdateWithoutQuiz_attemptsInput = {
+    enrollment?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutStudentNestedInput
+    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
   }
 
-  export type Question_responseUpdateManyWithWhereWithoutQuiz_attemptInput = {
-    where: Question_responseScalarWhereInput
-    data: XOR<Question_responseUpdateManyMutationInput, Question_responseUncheckedUpdateManyWithoutQuiz_attemptInput>
+  export type StudentUncheckedUpdateWithoutQuiz_attemptsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    enrollment?: StringFieldUpdateOperationsInput | string
+    user_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type QuizUpsertWithoutQuiz_attemptsInput = {
@@ -22875,8 +22887,8 @@ export namespace Prisma {
     visibility?: EnumQuizVisibilityFieldUpdateOperationsInput | $Enums.QuizVisibility
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    questions?: QuestionUpdateManyWithoutQuizNestedInput
     teacher_subject_class?: Relationship_teacher_subject_classUpdateOneRequiredWithoutQuizzesNestedInput
+    questions?: QuestionUpdateManyWithoutQuizNestedInput
   }
 
   export type QuizUncheckedUpdateWithoutQuiz_attemptsInput = {
@@ -22892,32 +22904,46 @@ export namespace Prisma {
     questions?: QuestionUncheckedUpdateManyWithoutQuizNestedInput
   }
 
-  export type StudentUpsertWithoutQuiz_attemptsInput = {
-    update: XOR<StudentUpdateWithoutQuiz_attemptsInput, StudentUncheckedUpdateWithoutQuiz_attemptsInput>
-    create: XOR<StudentCreateWithoutQuiz_attemptsInput, StudentUncheckedCreateWithoutQuiz_attemptsInput>
-    where?: StudentWhereInput
+  export type Question_responseUpsertWithWhereUniqueWithoutQuiz_attemptInput = {
+    where: Question_responseWhereUniqueInput
+    update: XOR<Question_responseUpdateWithoutQuiz_attemptInput, Question_responseUncheckedUpdateWithoutQuiz_attemptInput>
+    create: XOR<Question_responseCreateWithoutQuiz_attemptInput, Question_responseUncheckedCreateWithoutQuiz_attemptInput>
   }
 
-  export type StudentUpdateToOneWithWhereWithoutQuiz_attemptsInput = {
-    where?: StudentWhereInput
-    data: XOR<StudentUpdateWithoutQuiz_attemptsInput, StudentUncheckedUpdateWithoutQuiz_attemptsInput>
+  export type Question_responseUpdateWithWhereUniqueWithoutQuiz_attemptInput = {
+    where: Question_responseWhereUniqueInput
+    data: XOR<Question_responseUpdateWithoutQuiz_attemptInput, Question_responseUncheckedUpdateWithoutQuiz_attemptInput>
   }
 
-  export type StudentUpdateWithoutQuiz_attemptsInput = {
-    enrollment?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    class?: ClassUpdateOneRequiredWithoutStudentsNestedInput
-    user?: UserUpdateOneRequiredWithoutStudentNestedInput
+  export type Question_responseUpdateManyWithWhereWithoutQuiz_attemptInput = {
+    where: Question_responseScalarWhereInput
+    data: XOR<Question_responseUpdateManyMutationInput, Question_responseUncheckedUpdateManyWithoutQuiz_attemptInput>
   }
 
-  export type StudentUncheckedUpdateWithoutQuiz_attemptsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    enrollment?: StringFieldUpdateOperationsInput | string
-    user_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type QuestionCreateWithoutQuestion_responsesInput = {
+    statement: string
+    points: Decimal | DecimalJsLike | number | string
+    created_at?: Date | string
+    modified_at?: Date | string
+    quiz: QuizCreateNestedOneWithoutQuestionsInput
+    alternatives?: AlternativeCreateNestedManyWithoutQuestionInput
+    question_images?: Question_imagesCreateNestedManyWithoutQuestionInput
+  }
+
+  export type QuestionUncheckedCreateWithoutQuestion_responsesInput = {
+    id?: number
+    statement: string
+    points: Decimal | DecimalJsLike | number | string
+    quiz_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+    alternatives?: AlternativeUncheckedCreateNestedManyWithoutQuestionInput
+    question_images?: Question_imagesUncheckedCreateNestedManyWithoutQuestionInput
+  }
+
+  export type QuestionCreateOrConnectWithoutQuestion_responsesInput = {
+    where: QuestionWhereUniqueInput
+    create: XOR<QuestionCreateWithoutQuestion_responsesInput, QuestionUncheckedCreateWithoutQuestion_responsesInput>
   }
 
   export type AlternativeCreateWithoutQuestion_responsesInput = {
@@ -22942,32 +22968,6 @@ export namespace Prisma {
     create: XOR<AlternativeCreateWithoutQuestion_responsesInput, AlternativeUncheckedCreateWithoutQuestion_responsesInput>
   }
 
-  export type QuestionCreateWithoutQuestion_responsesInput = {
-    statement: string
-    points: Decimal | DecimalJsLike | number | string
-    created_at?: Date | string
-    modified_at?: Date | string
-    alternatives?: AlternativeCreateNestedManyWithoutQuestionInput
-    quiz: QuizCreateNestedOneWithoutQuestionsInput
-    question_images?: Question_imagesCreateNestedManyWithoutQuestionInput
-  }
-
-  export type QuestionUncheckedCreateWithoutQuestion_responsesInput = {
-    id?: number
-    statement: string
-    points: Decimal | DecimalJsLike | number | string
-    quiz_id: number
-    created_at?: Date | string
-    modified_at?: Date | string
-    alternatives?: AlternativeUncheckedCreateNestedManyWithoutQuestionInput
-    question_images?: Question_imagesUncheckedCreateNestedManyWithoutQuestionInput
-  }
-
-  export type QuestionCreateOrConnectWithoutQuestion_responsesInput = {
-    where: QuestionWhereUniqueInput
-    create: XOR<QuestionCreateWithoutQuestion_responsesInput, QuestionUncheckedCreateWithoutQuestion_responsesInput>
-  }
-
   export type Quiz_attemptCreateWithoutQuestion_responsesInput = {
     started_at?: Date | string
     finished_at?: Date | string | null
@@ -22975,8 +22975,8 @@ export namespace Prisma {
     total_score?: Decimal | DecimalJsLike | number | string
     created_at?: Date | string
     modified_at?: Date | string
-    quiz: QuizCreateNestedOneWithoutQuiz_attemptsInput
     student: StudentCreateNestedOneWithoutQuiz_attemptsInput
+    quiz: QuizCreateNestedOneWithoutQuiz_attemptsInput
   }
 
   export type Quiz_attemptUncheckedCreateWithoutQuestion_responsesInput = {
@@ -22994,6 +22994,38 @@ export namespace Prisma {
   export type Quiz_attemptCreateOrConnectWithoutQuestion_responsesInput = {
     where: Quiz_attemptWhereUniqueInput
     create: XOR<Quiz_attemptCreateWithoutQuestion_responsesInput, Quiz_attemptUncheckedCreateWithoutQuestion_responsesInput>
+  }
+
+  export type QuestionUpsertWithoutQuestion_responsesInput = {
+    update: XOR<QuestionUpdateWithoutQuestion_responsesInput, QuestionUncheckedUpdateWithoutQuestion_responsesInput>
+    create: XOR<QuestionCreateWithoutQuestion_responsesInput, QuestionUncheckedCreateWithoutQuestion_responsesInput>
+    where?: QuestionWhereInput
+  }
+
+  export type QuestionUpdateToOneWithWhereWithoutQuestion_responsesInput = {
+    where?: QuestionWhereInput
+    data: XOR<QuestionUpdateWithoutQuestion_responsesInput, QuestionUncheckedUpdateWithoutQuestion_responsesInput>
+  }
+
+  export type QuestionUpdateWithoutQuestion_responsesInput = {
+    statement?: StringFieldUpdateOperationsInput | string
+    points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    quiz?: QuizUpdateOneRequiredWithoutQuestionsNestedInput
+    alternatives?: AlternativeUpdateManyWithoutQuestionNestedInput
+    question_images?: Question_imagesUpdateManyWithoutQuestionNestedInput
+  }
+
+  export type QuestionUncheckedUpdateWithoutQuestion_responsesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    statement?: StringFieldUpdateOperationsInput | string
+    points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    quiz_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    alternatives?: AlternativeUncheckedUpdateManyWithoutQuestionNestedInput
+    question_images?: Question_imagesUncheckedUpdateManyWithoutQuestionNestedInput
   }
 
   export type AlternativeUpsertWithoutQuestion_responsesInput = {
@@ -23024,38 +23056,6 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type QuestionUpsertWithoutQuestion_responsesInput = {
-    update: XOR<QuestionUpdateWithoutQuestion_responsesInput, QuestionUncheckedUpdateWithoutQuestion_responsesInput>
-    create: XOR<QuestionCreateWithoutQuestion_responsesInput, QuestionUncheckedCreateWithoutQuestion_responsesInput>
-    where?: QuestionWhereInput
-  }
-
-  export type QuestionUpdateToOneWithWhereWithoutQuestion_responsesInput = {
-    where?: QuestionWhereInput
-    data: XOR<QuestionUpdateWithoutQuestion_responsesInput, QuestionUncheckedUpdateWithoutQuestion_responsesInput>
-  }
-
-  export type QuestionUpdateWithoutQuestion_responsesInput = {
-    statement?: StringFieldUpdateOperationsInput | string
-    points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    alternatives?: AlternativeUpdateManyWithoutQuestionNestedInput
-    quiz?: QuizUpdateOneRequiredWithoutQuestionsNestedInput
-    question_images?: Question_imagesUpdateManyWithoutQuestionNestedInput
-  }
-
-  export type QuestionUncheckedUpdateWithoutQuestion_responsesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    statement?: StringFieldUpdateOperationsInput | string
-    points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
-    quiz_id?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    alternatives?: AlternativeUncheckedUpdateManyWithoutQuestionNestedInput
-    question_images?: Question_imagesUncheckedUpdateManyWithoutQuestionNestedInput
-  }
-
   export type Quiz_attemptUpsertWithoutQuestion_responsesInput = {
     update: XOR<Quiz_attemptUpdateWithoutQuestion_responsesInput, Quiz_attemptUncheckedUpdateWithoutQuestion_responsesInput>
     create: XOR<Quiz_attemptCreateWithoutQuestion_responsesInput, Quiz_attemptUncheckedCreateWithoutQuestion_responsesInput>
@@ -23074,8 +23074,8 @@ export namespace Prisma {
     total_score?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    quiz?: QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput
     student?: StudentUpdateOneRequiredWithoutQuiz_attemptsNestedInput
+    quiz?: QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput
   }
 
   export type Quiz_attemptUncheckedUpdateWithoutQuestion_responsesInput = {
@@ -23138,8 +23138,8 @@ export namespace Prisma {
   }
 
   export type Relationship_teacher_subject_classUpdateWithoutTeacher_subjectInput = {
-    quizzes?: QuizUpdateManyWithoutTeacher_subject_classNestedInput
     class?: ClassUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
+    quizzes?: QuizUpdateManyWithoutTeacher_subject_classNestedInput
   }
 
   export type Relationship_teacher_subject_classUncheckedUpdateWithoutTeacher_subjectInput = {
@@ -23153,11 +23153,6 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
   }
 
-  export type Relationship_teacher_subject_classCreateManyClassInput = {
-    id?: number
-    teacher_subject_id: number
-  }
-
   export type StudentCreateManyClassInput = {
     id?: number
     enrollment: string
@@ -23166,28 +23161,17 @@ export namespace Prisma {
     modified_at?: Date | string
   }
 
-  export type Relationship_teacher_subject_classUpdateWithoutClassInput = {
-    quizzes?: QuizUpdateManyWithoutTeacher_subject_classNestedInput
-    teacher_subject?: Relationship_teacher_subjectUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
-  }
-
-  export type Relationship_teacher_subject_classUncheckedUpdateWithoutClassInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    teacher_subject_id?: IntFieldUpdateOperationsInput | number
-    quizzes?: QuizUncheckedUpdateManyWithoutTeacher_subject_classNestedInput
-  }
-
-  export type Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    teacher_subject_id?: IntFieldUpdateOperationsInput | number
+  export type Relationship_teacher_subject_classCreateManyClassInput = {
+    id?: number
+    teacher_subject_id: number
   }
 
   export type StudentUpdateWithoutClassInput = {
     enrollment?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    quiz_attempts?: Quiz_attemptUpdateManyWithoutStudentNestedInput
     user?: UserUpdateOneRequiredWithoutStudentNestedInput
+    quiz_attempts?: Quiz_attemptUpdateManyWithoutStudentNestedInput
   }
 
   export type StudentUncheckedUpdateWithoutClassInput = {
@@ -23205,6 +23189,22 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Relationship_teacher_subject_classUpdateWithoutClassInput = {
+    teacher_subject?: Relationship_teacher_subjectUpdateOneRequiredWithoutTeacher_subject_classesNestedInput
+    quizzes?: QuizUpdateManyWithoutTeacher_subject_classNestedInput
+  }
+
+  export type Relationship_teacher_subject_classUncheckedUpdateWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_subject_id?: IntFieldUpdateOperationsInput | number
+    quizzes?: QuizUncheckedUpdateManyWithoutTeacher_subject_classNestedInput
+  }
+
+  export type Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_subject_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type Quiz_attemptCreateManyStudentInput = {
@@ -23225,8 +23225,8 @@ export namespace Prisma {
     total_score?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    question_responses?: Question_responseUpdateManyWithoutQuiz_attemptNestedInput
     quiz?: QuizUpdateOneRequiredWithoutQuiz_attemptsNestedInput
+    question_responses?: Question_responseUpdateManyWithoutQuiz_attemptNestedInput
   }
 
   export type Quiz_attemptUncheckedUpdateWithoutStudentInput = {
@@ -23354,8 +23354,8 @@ export namespace Prisma {
     total_score?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    question_responses?: Question_responseUpdateManyWithoutQuiz_attemptNestedInput
     student?: StudentUpdateOneRequiredWithoutQuiz_attemptsNestedInput
+    question_responses?: Question_responseUpdateManyWithoutQuiz_attemptNestedInput
   }
 
   export type Quiz_attemptUncheckedUpdateWithoutQuizInput = {
@@ -23534,8 +23534,8 @@ export namespace Prisma {
     points_earned?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    marked_alternative?: AlternativeUpdateOneRequiredWithoutQuestion_responsesNestedInput
     question?: QuestionUpdateOneRequiredWithoutQuestion_responsesNestedInput
+    marked_alternative?: AlternativeUpdateOneRequiredWithoutQuestion_responsesNestedInput
   }
 
   export type Question_responseUncheckedUpdateWithoutQuiz_attemptInput = {

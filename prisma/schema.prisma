@@ -1,3 +1,9 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
@@ -18,19 +24,25 @@ model User {
   modified_at     DateTime @default(now()) @updatedAt
   role            Role
   hashed_password String
-  student         Student?
   teacher         Teacher?
+  student         Student?
 
   @@map("user")
+}
+
+enum Role {
+  Admin
+  Student
+  Teacher
 }
 
 model Teacher {
   id               Int                            @id @unique @default(autoincrement())
   user_id          Int                            @unique
+  user             User                           @relation(fields: [user_id], references: [id], onDelete: Cascade)
   created_at       DateTime                       @default(now())
   modified_at      DateTime                       @default(now()) @updatedAt
   teacher_subjects Relationship_teacher_subject[]
-  user             User                           @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   @@map("teacher")
 }
@@ -57,6 +69,13 @@ model Relationship_teacher_subject {
   @@map("relationship_teacher_subject")
 }
 
+enum Shift {
+  Morning
+  Afternoon
+  Evening
+  Full
+}
+
 model Class {
   id                      Int                                  @id @unique @default(autoincrement())
   name                    String
@@ -64,8 +83,8 @@ model Class {
   course                  String
   created_at              DateTime                             @default(now())
   modified_at             DateTime                             @default(now()) @updatedAt
-  teacher_subject_classes Relationship_teacher_subject_class[]
   students                Student[]
+  teacher_subject_classes Relationship_teacher_subject_class[]
 
   @@unique([name, shift, course])
   @@map("class")
@@ -78,9 +97,9 @@ model Student {
   class_id      Int
   created_at    DateTime       @default(now())
   modified_at   DateTime       @default(now()) @updatedAt
-  quiz_attempts Quiz_attempt[]
-  class         Class          @relation(fields: [class_id], references: [id])
   user          User           @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  class         Class          @relation(fields: [class_id], references: [id])
+  quiz_attempts Quiz_attempt[]
 
   @@map("student")
 }
@@ -89,9 +108,9 @@ model Relationship_teacher_subject_class {
   id                 Int                          @id @unique @default(autoincrement())
   class_id           Int
   teacher_subject_id Int
-  quizzes            Quiz[]
   class              Class                        @relation(fields: [class_id], references: [id], onDelete: Cascade)
   teacher_subject    Relationship_teacher_subject @relation(fields: [teacher_subject_id], references: [id], onDelete: Cascade)
+  quizzes            Quiz[]
 
   @@unique([teacher_subject_id, class_id])
   @@map("relationship_teacher_subject_class")
@@ -107,22 +126,28 @@ model Quiz {
   created_at               DateTime                           @default(now())
   modified_at              DateTime                           @default(now()) @updatedAt
   teacher_subject_class_id Int
-  questions                Question[]
   teacher_subject_class    Relationship_teacher_subject_class @relation(fields: [teacher_subject_class_id], references: [id], onDelete: Cascade)
+  questions                Question[]
   quiz_attempts            Quiz_attempt[]
 
   @@map("quiz")
 }
 
+enum QuizVisibility {
+  draft
+  public
+  archived
+}
+
 model Question {
   id                 Int                 @id @unique @default(autoincrement())
-  statement          String
+  statement          String              @db.Text
   points             Decimal
   quiz_id            Int
   created_at         DateTime            @default(now())
   modified_at        DateTime            @default(now()) @updatedAt
-  alternatives       Alternative[]
   quiz               Quiz                @relation(fields: [quiz_id], references: [id], onDelete: Cascade)
+  alternatives       Alternative[]
   question_images    Question_images[]
   question_responses Question_response[]
 
@@ -163,11 +188,17 @@ model Quiz_attempt {
   total_score        Decimal             @default(0)
   created_at         DateTime            @default(now())
   modified_at        DateTime            @default(now()) @updatedAt
-  question_responses Question_response[]
-  quiz               Quiz                @relation(fields: [quiz_id], references: [id], onDelete: Cascade)
   student            Student             @relation(fields: [student_id], references: [id], onDelete: Cascade)
+  quiz               Quiz                @relation(fields: [quiz_id], references: [id], onDelete: Cascade)
+  question_responses Question_response[]
 
   @@map("quiz_attempt")
+}
+
+enum AttemptStatus {
+  in_progress
+  completed
+  abandoned
 }
 
 model Question_response {
@@ -179,34 +210,9 @@ model Question_response {
   points_earned         Decimal      @default(0)
   created_at            DateTime     @default(now())
   modified_at           DateTime     @default(now()) @updatedAt
-  marked_alternative    Alternative  @relation(fields: [marked_alternative_id], references: [id], onDelete: Cascade)
   question              Question     @relation(fields: [question_id], references: [id], onDelete: Cascade)
+  marked_alternative    Alternative  @relation(fields: [marked_alternative_id], references: [id], onDelete: Cascade)
   quiz_attempt          Quiz_attempt @relation(fields: [quiz_attempt_id], references: [id], onDelete: Cascade)
 
   @@map("question_response")
-}
-
-enum Role {
-  Admin
-  Student
-  Teacher
-}
-
-enum Shift {
-  Morning
-  Afternoon
-  Evening
-  Full
-}
-
-enum QuizVisibility {
-  draft
-  public
-  archived
-}
-
-enum AttemptStatus {
-  in_progress
-  completed
-  abandoned
 }

@@ -1,30 +1,59 @@
 import prisma from '../../prisma/client.js';
-import { studentSchema } from '../schemas/schemas.js';
-import { createUser } from './User.js';
+import { createUser, updateUser } from './User.js';
 import { generateEnrollment } from '../utils/generateEnrollment.js';
 
 async function getAllStudents() {
-	try {
-		const students = await prisma.student.findMany();
-		return students;
-	} catch (error) {
-		console.error('Error fetching students:', error);
-		throw error;
-	}
+	return await prisma.student.findMany({
+		select: {
+			id: true,
+			enrollment: true,
+			user: {
+				select: {
+					id: true,
+					name: true,
+					email: true,
+					birth_date: true,
+					cpf: true,
+					role: true,
+				},
+			},
+			class: {
+				select: {
+					id: true,
+					name: true,
+					course: true,
+				},
+			},
+		},
+	});
 }
 
-async function getStudentById(id) {
+async function getStudentById(studentId) {
 	try {
-		const student = await prisma.student.findUnique({
-			where: { id: id },
+		return await prisma.student.findUnique({
+			where: { id: studentId },
+			select: {
+				id: true,
+				enrollment: true,
+				user: {
+					select: {
+						id: true,
+						name: true,
+						email: true,
+						birth_date: true,
+						cpf: true,
+						role: true,
+					},
+				},
+				class: {
+					select: {
+						id: true,
+						name: true,
+						course: true,
+					},
+				},
+			},
 		});
-
-		if (!student) {
-			console.error('Student not found');
-			return null;
-		}
-
-		return student;
 	} catch (error) {
 		console.error('Error fetching student:', error);
 		throw error;
@@ -35,112 +64,191 @@ async function createStudent(studentData) {
 	try {
 		const { user, student } = studentData;
 		const createdStudent = await prisma.$transaction(async (tx) => {
-			// 1. Cria o usuário
-			const user_id = await createUser(user, tx).then(
-				(createdUser) => createdUser.id,
-			);
-
-			if (!user_id) {
-				console.error('Error creating user while creating student');
-				throw new Error('Error creating user while creating student');
-			}
-
-			// 2. valida os dados
-			const validStudent = studentSchema.safeParse({
-				user_id,
-				class_id: student.class_id,
-			});
-
-			if (!validStudent.success) {
-				throw new Error(validStudent.error.message);
-			}
-
-			// 3. Verifica se a turma do aluno existe
+			// 1. Verifica se a turma do aluno existe
 			const schoolClass = await tx.class.findUnique({
-				where: { id: validStudent.data.class_id },
+				where: { id: student.class_id },
 			});
 
 			if (!schoolClass) {
-				console.error('Class not found while creating student');
-				throw new Error('Class not found while creating student');
+				throw new Error('Class not found');
 			}
 
-			// 4. Cria o aluno
+			if (user.role !== 'Student') {
+				throw new Error('User is not a student');
+			}
+
+			// 2. Cria o usuário
+			const createdUser = await createUser(user, tx);
+			const user_id = createdUser.id;
+
+			if (!user_id) {
+				throw new Error('Error creating user');
+			}
+
+			// 3. Cria o aluno
 			const studentData = {
-				...validStudent.data,
-				enrollment: generateEnrollment(validStudent.data.user_id),
+				...student,
+				user_id,
+				enrollment: generateEnrollment(user_id),
 			};
 
 			return await tx.student.create({
 				data: studentData,
 			});
 		});
-		return createdStudent;
+		return await prisma.student.findUnique({
+			where: { id: createdStudent.id },
+			select: {
+				id: true,
+				enrollment: true,
+				user: {
+					select: {
+						id: true,
+						name: true,
+						email: true,
+						cpf: true,
+						birth_date: true,
+						role: true,
+					},
+				},
+				class: {
+					select: {
+						id: true,
+						name: true,
+						shift: true,
+						course: true,
+					},
+				},
+			},
+		});
 	} catch (error) {
+		if (error.code === 'P2002') {
+			const target = error.meta?.target;
+			let message = 'Dados duplicados.';
+
+			if (target?.includes('email')) {
+				message = 'O e-mail informado já está em uso.';
+			} else if (target?.includes('cpf')) {
+				message = 'O CPF informado já está em uso.';
+			}
+
+			throw new Error(message);
+		}
 		throw error;
 	}
 }
 
-async function updateStudentClass(student_id, class_id) {
+async function updateStudent(studentId, studentData) {
+	const { user, student } = studentData;
+
+	if (user.role !== 'Student') {
+		throw new Error('User is not a student');
+	}
+
 	try {
-		// Verifica se o aluno e a turma existem
-		const student = await prisma.student.findUnique({
-			where: { id: student_id },
-			select: { id: true },
-		});
+		const updatedStudent = await prisma.$transaction(async (tx) => {
+			// 1. Busca estudante existente
+			const existingStudent = await tx.student.findUnique({
+				where: { id: studentId },
+			});
 
-		if (!student) {
-			console.error('Student not found');
-			throw new Error('Student not found');
-		}
+			if (!existingStudent) {
+				throw new Error('Student not found');
+			}
 
-		const schoolClass = await prisma.class.findUnique({
-			where: { id: class_id },
-			select: { id: true },
-		});
+			// 2. Atualiza user
+			if (user) {
+				await updateUser(tx, existingStudent.user_id, user);
+			}
 
-		if (!schoolClass) {
-			console.error('Class not found');
-			throw new Error('Class not found');
-		}
+			// 3. Atualiza dados do estudante (por exemplo, class_id)
+			if (student?.class_id) {
+				const classExists = await tx.class.findUnique({
+					where: { id: student.class_id },
+				});
+				if (!classExists) {
+					throw new Error('Class not found');
+				}
 
-		// Atualiza a turma do aluno
-		const updatedStudent = await prisma.student.update({
-			where: { id: student_id },
-			data: { class_id: class_id },
+				await tx.student.update({
+					where: { id: studentId },
+					data: {
+						class_id: student.class_id,
+					},
+				});
+			}
+
+			// 4. Retorna estudante com relações
+			const studentWithRelations = await tx.student.findUnique({
+				where: { id: studentId },
+				select: {
+					id: true,
+					enrollment: true,
+					user: {
+						select: {
+							id: true,
+							name: true,
+							email: true,
+							cpf: true,
+							birth_date: true,
+							role: true,
+						},
+					},
+					class: {
+						select: {
+							id: true,
+							name: true,
+							shift: true,
+							course: true,
+						},
+					},
+				},
+			});
+
+			return studentWithRelations;
 		});
 
 		return updatedStudent;
 	} catch (error) {
-		console.error('Error updating student class:', error);
+		if (error.code === 'P2002') {
+			const target = error.meta?.target;
+			let message = 'Dados duplicados.';
+
+			if (target?.includes('email')) {
+				message = 'O e-mail informado já está em uso.';
+			} else if (target?.includes('cpf')) {
+				message = 'O CPF informado já está em uso.';
+			}
+
+			throw new Error(message);
+		}
+
 		throw error;
 	}
 }
 
-async function deleteStudentAccount(user_id) {
+async function deleteStudent(studentId) {
 	try {
-		// Verifica se o user existe
-		const user = await prisma.user.findUnique({
-			where: { id: user_id },
-			select: { id: true, role: true },
+		const student = await prisma.student.findUnique({
+			where: { id: studentId },
+			select: {
+				user: {
+					select: {
+						id: true,
+						role: true,
+					},
+				},
+			},
 		});
 
-		if (!user) {
-			console.error('User not found');
-			throw new Error('User not found');
+		if (!student) {
+			throw new Error('Student not found');
 		}
 
-		if (user.role !== 'Student') {
-			console.error('User is not a student');
-			throw new Error('User is not a student');
-		}
+		const { id: userId } = student.user;
 
-		// Deleta o user do estudante
-		return await prisma.user.delete({
-			where: { id: user_id },
-		});
+		await prisma.user.delete({ where: { id: userId } });
 	} catch (error) {
-		console.error('Error deleting student:', error);
 		throw error;
 	}
 }
@@ -149,6 +257,6 @@ export {
 	getAllStudents,
 	getStudentById,
 	createStudent,
-	updateStudentClass,
-	deleteStudentAccount,
+	updateStudent,
+	deleteStudent,
 };
