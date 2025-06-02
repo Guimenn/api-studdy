@@ -1,21 +1,10 @@
-import { alternativeSchema } from '../schemas/alternative.schema.js';
-
-async function createAlternative(tx, alternativeData, question_id) {
-	let alternative;
-
+async function createAlternative(tx, alternative, question_id) {
 	try {
-		alternative = alternativeSchema.parse(alternativeData);
-	} catch (error) {
-		console.error('Invalid alternative data:', error);
-		throw new Error(`Invalid alternative data: ${error.message}`);
-	}
-
-	try {
+		// Cria a alternativa na tabela Alternative
 		return await tx.alternative.create({
 			data: { ...alternative, question_id },
 		});
 	} catch (error) {
-		console.error('Error creating alternative:', error);
 		throw error;
 	}
 }

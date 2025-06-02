@@ -32,10 +32,6 @@ import {
 	deleteClassController,
 } from '../controllers/ClassController.js';
 
-import {
-	getAllUsersController,
-	getUserByIdController
-} from '../controllers/UsersController.js';
 const router = express.Router();
 
 // Rotas para gerenciar disciplinas
@@ -44,10 +40,6 @@ router.get('/subjects/:subjectId', getSubjectByIdController);
 router.post('/subjects', createSubjectController);
 router.put('/subjects/:subjectId', updateSubjectController);
 router.delete('/subjects/:subjectId', deleteSubjectController);
-
-// Rotas para gerenciar usuários
-router.get('/users', getAllUsersController);
-router.get('/users/:userId', getUserByIdController);
 
 // Rotas para gerenciar professores
 router.get('/teachers', getAllTeachersController);
@@ -62,6 +54,7 @@ router.get('/students/:studentId', getStudentByIdController);
 router.post('/students', createStudentController);
 router.put('/students/:studentId', updateStudentController);
 router.delete('/students/:studentId', deleteStudentController);
+
 // Rotas para gerenciar turmas
 router.get('/classes', getAllClassesController);
 router.get('/classes/:classId', getClassByIdController);

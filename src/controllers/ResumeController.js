@@ -14,38 +14,41 @@ try {
     console.error('Erro ao inicializar OpenAI:', error.message);
 }
 
-
-const gerarAlternativas = async (req, res) => {
+async function generateResume(req, res) {
     if (!openai) {
         return res.status(500).json({ error: "OpenAI não está configurado corretamente. Verifique a chave API." });
     }
 
-    const { pergunta, respostaCorreta } = req.body;
+    const { title } = req.body;
 
-    if (!pergunta || !respostaCorreta) {
-        return res.status(400).json({ error: "Informe pergunta e respostaCorreta." });
+    if (!title) {
+        return res.status(400).json({ error: "Informe o titulo para gerar o resumo." });
     }
+
     try {
         const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini",
+            model: "gpt-4",
             messages: [
                 {
                     role: "system",
-                    content: "Você é um gerador de alternativas incorretas para quizzes."
+                    content: "Você é um assistente especializado em criar resumos detalhados e bem estruturados."
                 },
                 {
                     role: "user",
-                    content: `Pergunta: ${pergunta}
-	  Resposta correta: ${respostaCorreta}
-	  
-	  Gere 3 alternativas erradas que sejam plausíveis mas incorretas. (apenas mande as respostas e mais nada, sem numeração das respostas)`
+                    content: `Por favor, crie um resumo BEM EXTENSO e detalhado do seguinte titulo, mantendo os pontos principais e organizando as informações de forma clara e estruturada:
+
+${title}
+
+O resumo deve incluir:  
+- Principais tópicos e conceitos
+- Exemplos relevantes
+- Conclusões importantes
+- Relacionamentos entre as ideias`
                 }
             ],
-            max_tokens: 150,
+            max_tokens: 2000,
             temperature: 0.7
         });
-
-        console.log(JSON.stringify(completion, null, 2)); // Para debug
 
         const resposta = completion.choices?.[0]?.message?.content;
 
@@ -53,12 +56,11 @@ const gerarAlternativas = async (req, res) => {
             return res.status(500).json({ error: "Resposta do OpenAI vazia ou inválida" });
         }
 
-        res.json({ alternativasErradas: resposta.split("\n").filter(Boolean) });
+        res.json({ resume: resposta });
     } catch (error) {
-        console.error("Erro ao gerar alternativas:", error);
-        res.status(500).json({ error: "Erro ao gerar alternativas" });
+        console.error("Erro ao gerar resumo:", error);
+        res.status(500).json({ error: "Erro ao gerar resumo" });
     }
-
 };
 
-export { gerarAlternativas };
+export { generateResume };

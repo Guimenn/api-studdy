@@ -80,10 +80,53 @@ async function deleteSubject(subject_id) {
 	}
 }
 
+async function getClassSubjectsByTeacher(classId, userId) {
+	try {
+		const teacher = await prisma.teacher.findUnique({
+			where: { user_id: userId },
+			select: { id: true },
+		});
+
+		if (!teacher) {
+			throw new Error('Teacher not found');
+		}
+
+		const subjects =
+			await prisma.relationship_teacher_subject_class.findMany({
+				where: {
+					class_id: classId,
+					teacher_subject: { teacher_id: teacher.id },
+				},
+				select: {
+					teacher_subject: {
+						select: {
+							subject: {
+								select: {
+									id: true,
+									name: true,
+								},
+							},
+						},
+					},
+				},
+			});
+
+		return subjects.map((item) => {
+			return {
+				subject_id: item.teacher_subject.subject.id,
+				subject_name: item.teacher_subject.subject.name,
+			};
+		});
+	} catch (error) {
+		throw error;
+	}
+}
+
 export {
 	getAllSubjects,
 	getSubjectById,
 	createSubject,
 	updateSubject,
 	deleteSubject,
+	getClassSubjectsByTeacher,
 };

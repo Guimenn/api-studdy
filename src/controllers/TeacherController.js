@@ -5,8 +5,13 @@ import {
 	updateTeacher,
 	deleteTeacher,
 } from '../models/Teacher.js';
+import { getClassSubjectsByTeacher } from '../models/Subject.js';
+import { getClassByTeacherId } from '../models/Class.js';
+import { getQuizzesOfTeacher } from '../models/Quiz.js';
 import { teacherSchema } from '../schemas/teacher.schema.js';
 import { ZodError } from 'zod/v4';
+
+// Controllers do /admin
 
 async function getAllTeachersController(req, res) {
 	try {
@@ -119,10 +124,71 @@ async function deleteTeacherController(req, res) {
 	}
 }
 
+// Controllers do /teacher
+
+// Controller para obter as turmas de um professor
+async function getTeacherClassesController(req, res) {
+	try {
+		const teacherClasses = await getClassByTeacherId(parseInt(user.id));
+		return res.status(200).json(teacherClasses);
+	} catch (error) {
+		console.error(error);
+		if (error.message.includes('not found')) {
+			return res.status(404).json({ message: error.message });
+		}
+		return res
+			.status(500)
+			.json({ message: 'Error fetching teacher classes' });
+	}
+}
+
+// Controller para obter as matérias que ele leciona naquela turma
+async function getClassSubjectsByTeacherController(req, res) {
+	try {
+		const teacherSubjects = await getClassSubjectsByTeacher(
+			parseInt(req.params.classId),
+			parseInt(req.user.id),
+		);
+		return res.status(200).json(teacherSubjects);
+	} catch (error) {
+		console.error(error);
+		if (error.message.includes('not found')) {
+			return res.status(404).json({ message: error.message });
+		}
+		return res
+			.status(500)
+			.json({ message: 'Error fetching teacher subjects' });
+	}
+}
+
+// Controller para obter os quizzes de uma materia
+async function getSubjectQuizzesController(req, res) {
+	try {
+		const quizzes = await getQuizzesOfTeacher(
+			// parseInt(req.user.id),
+			6,
+			parseInt(req.params.classId),
+			parseInt(req.params.subjectId),
+		);
+		return res.status(200).json(quizzes);
+	} catch (error) {
+		console.error(error);
+		if (error.message.includes('not found')) {
+			return res.status(404).json({ message: error.message });
+		}
+		return res
+			.status(500)
+			.json({ message: 'Error fetching teacher subjects' });
+	}
+}
+
 export {
 	getAllTeachersController,
 	getTeacherByIdController,
 	createTeacherController,
 	updateTeacherController,
 	deleteTeacherController,
+	getTeacherClassesController,
+	getClassSubjectsByTeacherController,
+	getSubjectQuizzesController,
 };

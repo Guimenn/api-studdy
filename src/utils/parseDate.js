@@ -1,4 +1,4 @@
-function parseBRDateToIso(rawDate) {
+function formatDateISO(rawDate) {
 	const [day, month, year] = rawDate.split('/');
 	if (!day || !month || !year) return null;
 
@@ -11,4 +11,10 @@ function parseBRDateToIso(rawDate) {
 	return date;
 }
 
-export { parseBRDateToIso };
+function formatDateBR(date) {
+	if (!date) return '';
+	const d = new Date(date);
+	return d.toLocaleDateString('pt-BR');
+}
+
+export { formatDateISO, formatDateBR };

@@ -1,18 +1,9 @@
-import { questionSchema } from '../schemas/question.schema.js';
 import { createAlternative } from './Alternative.js';
 
-async function createQuestion(tx, questionData, quiz_id) {
-	let question;
-
+async function createQuestion(tx, question, quiz_id) {
 	try {
-		question = questionSchema.parse(questionData);
-	} catch (error) {
-		console.error('Invalid question data:', error);
-		throw new Error(`Invalid question data: ${error.message}`);
-	}
-
-	try {
-		const createdQuestion = await tx.question.create({
+		// Cria a questão na tabela Question
+		const created = await tx.question.create({
 			data: {
 				statement: question.statement,
 				points: question.points,
@@ -20,13 +11,13 @@ async function createQuestion(tx, questionData, quiz_id) {
 			},
 		});
 
+		// Para cada alternativa, cria a alternativa na tabela Alternative
 		for (const alternativeData of question.alternatives) {
-			await createAlternative(tx, alternativeData, createdQuestion.id);
+			await createAlternative(tx, alternativeData, created.id);
 		}
 
-		return createdQuestion;
+		return created;
 	} catch (error) {
-		console.error('Error creating question:', error);
 		throw error;
 	}
 }

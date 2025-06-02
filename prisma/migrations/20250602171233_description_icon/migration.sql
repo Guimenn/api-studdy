@@ -91,6 +91,8 @@ CREATE TABLE "relationship_teacher_subject_class" (
 CREATE TABLE "quiz" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
+    "icon" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "duration_minutes" INTEGER,
     "max_points" DECIMAL(65,30) NOT NULL DEFAULT 0,
     "max_attempt" INTEGER,

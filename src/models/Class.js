@@ -21,7 +21,6 @@ async function getClassById(classId) {
 				shift: true,
 				course: true,
 
-				// Alunos da turma
 				students: {
 					select: {
 						id: true,
@@ -35,14 +34,11 @@ async function getClassById(classId) {
 					},
 				},
 
-				// Professores e matérias
 				teacher_subject_classes: {
 					select: {
 						teacher_subject: {
 							select: {
-								subject: {
-									select: { id: true, name: true },
-								},
+								subject: { select: { id: true, name: true } },
 								teacher: {
 									select: {
 										id: true,
@@ -63,15 +59,27 @@ async function getClassById(classId) {
 
 		if (!schoolClass) throw new Error('Class not found');
 
-		// Formata os professores
-		const teachers = schoolClass.teacher_subject_classes.map((item) => ({
-			teacher_id: item.teacher_subject.teacher.id,
-			teacher_name: item.teacher_subject.teacher.user.name,
-			teacher_email: item.teacher_subject.teacher.user.email,
-			subject: item.teacher_subject.subject,
-		}));
+		// Agrupa matérias por professor
+		const teacherMap = new Map();
 
-		// Formata os alunos
+		schoolClass.teacher_subject_classes.forEach(({ teacher_subject }) => {
+			const teacherId = teacher_subject.teacher.id;
+			const subject = teacher_subject.subject;
+
+			if (!teacherMap.has(teacherId)) {
+				teacherMap.set(teacherId, {
+					teacher_id: teacherId,
+					teacher_name: teacher_subject.teacher.user.name,
+					teacher_email: teacher_subject.teacher.user.email,
+					subjects: [],
+				});
+			}
+
+			teacherMap.get(teacherId).subjects.push(subject);
+		});
+
+		const teachers = Array.from(teacherMap.values());
+
 		const students = schoolClass.students.map((s) => ({
 			student_id: s.id,
 			name: s.user.name,
@@ -129,32 +137,48 @@ async function createClass(classData) {
 }
 
 async function updateClass(classId, classData) {
-	try {
-		const updatedClass = await prisma.class.update({
+	const { name, shift, course, assignments } = classData;
+
+	return await prisma.$transaction(async (tx) => {
+		// 1. Atualiza os dados básicos da turma
+		const updatedClass = await tx.class.update({
 			where: { id: classId },
-			data: classData,
-			select: {
-				id: true,
-				name: true,
-				shift: true,
-				course: true,
-			},
+			data: { name, shift, course },
+			select: { id: true, name: true, shift: true, course: true },
 		});
+
+		// 2. Se vier lista de assignments, substitui os antigos
+		if (Array.isArray(assignments)) {
+			// 2.1 Remove todos os relacionamentos antigos dessa turma
+			await tx.relationship_teacher_subject_class.deleteMany({
+				where: { class_id: classId },
+			});
+
+			// 2.2 Insere os novos relacionamentos
+			for (const { teacher_id, subject_id } of assignments) {
+				// valida se o professor leciona a matéria
+				const ts = await tx.relationship_teacher_subject.findFirst({
+					where: { teacher_id, subject_id },
+					select: { id: true },
+				});
+				if (!ts) {
+					throw new Error(
+						`Teacher ${teacher_id} não leciona a subject ${subject_id}`,
+					);
+				}
+
+				// cria o vínculo turma ↔ teacher_subject
+				await tx.relationship_teacher_subject_class.create({
+					data: {
+						class_id: updatedClass.id,
+						teacher_subject_id: ts.id,
+					},
+				});
+			}
+		}
+
 		return updatedClass;
-	} catch (error) {
-		if (error.code === 'P2025') {
-			// ID não encontrado
-			throw new Error('Class not found');
-		}
-
-		if (error.message.includes('Invalid enum value')) {
-			throw new Error(
-				'O turno informado é inválido. Use: Morning, Afternoon ou Evening.',
-			);
-		}
-
-		throw error;
-	}
+	});
 }
 
 async function deleteClass(classId) {
@@ -179,4 +203,59 @@ async function deleteClass(classId) {
 	}
 }
 
-export { getAllClasses, getClassById, createClass, updateClass, deleteClass };
+async function getClassByTeacherId(userId) {
+	try {
+		const teacher = await prisma.teacher.findUnique({
+			where: { user_id: userId },
+			select: { id: true },
+		});
+
+		if (!teacher) {
+			throw new Error('Teacher not found');
+		}
+
+		const relations =
+			await prisma.relationship_teacher_subject_class.findMany({
+				where: { teacher_subject: { teacher_id: teacher.id } },
+				select: {
+					class: {
+						select: {
+							id: true,
+							name: true,
+							shift: true,
+							course: true,
+						},
+					},
+				},
+			});
+
+		const uniqueClassesMap = new Map();
+
+		for (const rel of relations) {
+			const cls = rel.class;
+
+			if (!uniqueClassesMap.has(cls.id)) {
+				uniqueClassesMap.set(cls.id, {
+					class_id: cls.id,
+					class_name: cls.name,
+					class_shift: cls.shift,
+					class_course: cls.course,
+				});
+			}
+		}
+
+		// Converter o Map para array
+		return Array.from(uniqueClassesMap.values());
+	} catch (error) {
+		throw error;
+	}
+}
+
+export {
+	getAllClasses,
+	getClassById,
+	createClass,
+	updateClass,
+	deleteClass,
+	getClassByTeacherId,
+};

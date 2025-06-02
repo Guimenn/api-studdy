@@ -16,3 +16,9 @@ export const quizSchema = z.object({
 		error: 'Invalid visibility',
 	}),
 });
+
+export const visibilitySchema = z.object({
+	visibility: z.enum(['draft', 'public', 'archived'], {
+		error: 'Invalid visibility',
+	}),
+});

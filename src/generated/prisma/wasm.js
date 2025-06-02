@@ -179,6 +179,8 @@ exports.Prisma.Relationship_teacher_subject_classScalarFieldEnum = {
 exports.Prisma.QuizScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  icon: 'icon',
+  description: 'description',
   duration_minutes: 'duration_minutes',
   max_points: 'max_points',
   max_attempt: 'max_attempt',

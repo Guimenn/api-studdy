@@ -8,7 +8,6 @@ generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
-
 }
 
 datasource db {
@@ -33,7 +32,7 @@ model User {
 }
 
 enum Role {
-  Admin
+  admin
   Student
   Teacher
 }
@@ -121,6 +120,8 @@ model Relationship_teacher_subject_class {
 model Quiz {
   id                       Int                                @id @unique @default(autoincrement())
   title                    String
+  icon                     String 
+  description              String 
   duration_minutes         Int?
   max_points               Decimal                            @default(0)
   max_attempt              Int?

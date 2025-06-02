@@ -10291,6 +10291,8 @@ export namespace Prisma {
   export type QuizMinAggregateOutputType = {
     id: number | null
     title: string | null
+    icon: string | null
+    description: string | null
     duration_minutes: number | null
     max_points: Decimal | null
     max_attempt: number | null
@@ -10303,6 +10305,8 @@ export namespace Prisma {
   export type QuizMaxAggregateOutputType = {
     id: number | null
     title: string | null
+    icon: string | null
+    description: string | null
     duration_minutes: number | null
     max_points: Decimal | null
     max_attempt: number | null
@@ -10315,6 +10319,8 @@ export namespace Prisma {
   export type QuizCountAggregateOutputType = {
     id: number
     title: number
+    icon: number
+    description: number
     duration_minutes: number
     max_points: number
     max_attempt: number
@@ -10345,6 +10351,8 @@ export namespace Prisma {
   export type QuizMinAggregateInputType = {
     id?: true
     title?: true
+    icon?: true
+    description?: true
     duration_minutes?: true
     max_points?: true
     max_attempt?: true
@@ -10357,6 +10365,8 @@ export namespace Prisma {
   export type QuizMaxAggregateInputType = {
     id?: true
     title?: true
+    icon?: true
+    description?: true
     duration_minutes?: true
     max_points?: true
     max_attempt?: true
@@ -10369,6 +10379,8 @@ export namespace Prisma {
   export type QuizCountAggregateInputType = {
     id?: true
     title?: true
+    icon?: true
+    description?: true
     duration_minutes?: true
     max_points?: true
     max_attempt?: true
@@ -10468,6 +10480,8 @@ export namespace Prisma {
   export type QuizGroupByOutputType = {
     id: number
     title: string
+    icon: string
+    description: string
     duration_minutes: number | null
     max_points: Decimal
     max_attempt: number | null
@@ -10499,6 +10513,8 @@ export namespace Prisma {
   export type QuizSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    icon?: boolean
+    description?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10515,6 +10531,8 @@ export namespace Prisma {
   export type QuizSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    icon?: boolean
+    description?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10528,6 +10546,8 @@ export namespace Prisma {
   export type QuizSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    icon?: boolean
+    description?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10541,6 +10561,8 @@ export namespace Prisma {
   export type QuizSelectScalar = {
     id?: boolean
     title?: boolean
+    icon?: boolean
+    description?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10550,7 +10572,7 @@ export namespace Prisma {
     teacher_subject_class_id?: boolean
   }
 
-  export type QuizOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "duration_minutes" | "max_points" | "max_attempt" | "visibility" | "created_at" | "modified_at" | "teacher_subject_class_id", ExtArgs["result"]["quiz"]>
+  export type QuizOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "icon" | "description" | "duration_minutes" | "max_points" | "max_attempt" | "visibility" | "created_at" | "modified_at" | "teacher_subject_class_id", ExtArgs["result"]["quiz"]>
   export type QuizInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teacher_subject_class?: boolean | Relationship_teacher_subject_classDefaultArgs<ExtArgs>
     questions?: boolean | Quiz$questionsArgs<ExtArgs>
@@ -10574,6 +10596,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
+      icon: string
+      description: string
       duration_minutes: number | null
       max_points: Prisma.Decimal
       max_attempt: number | null
@@ -11009,6 +11033,8 @@ export namespace Prisma {
   interface QuizFieldRefs {
     readonly id: FieldRef<"Quiz", 'Int'>
     readonly title: FieldRef<"Quiz", 'String'>
+    readonly icon: FieldRef<"Quiz", 'String'>
+    readonly description: FieldRef<"Quiz", 'String'>
     readonly duration_minutes: FieldRef<"Quiz", 'Int'>
     readonly max_points: FieldRef<"Quiz", 'Decimal'>
     readonly max_attempt: FieldRef<"Quiz", 'Int'>
@@ -17363,6 +17389,8 @@ export namespace Prisma {
   export const QuizScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    icon: 'icon',
+    description: 'description',
     duration_minutes: 'duration_minutes',
     max_points: 'max_points',
     max_attempt: 'max_attempt',
@@ -18039,6 +18067,8 @@ export namespace Prisma {
     NOT?: QuizWhereInput | QuizWhereInput[]
     id?: IntFilter<"Quiz"> | number
     title?: StringFilter<"Quiz"> | string
+    icon?: StringFilter<"Quiz"> | string
+    description?: StringFilter<"Quiz"> | string
     duration_minutes?: IntNullableFilter<"Quiz"> | number | null
     max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableFilter<"Quiz"> | number | null
@@ -18054,6 +18084,8 @@ export namespace Prisma {
   export type QuizOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
     duration_minutes?: SortOrderInput | SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrderInput | SortOrder
@@ -18072,6 +18104,8 @@ export namespace Prisma {
     OR?: QuizWhereInput[]
     NOT?: QuizWhereInput | QuizWhereInput[]
     title?: StringFilter<"Quiz"> | string
+    icon?: StringFilter<"Quiz"> | string
+    description?: StringFilter<"Quiz"> | string
     duration_minutes?: IntNullableFilter<"Quiz"> | number | null
     max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableFilter<"Quiz"> | number | null
@@ -18087,6 +18121,8 @@ export namespace Prisma {
   export type QuizOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
     duration_minutes?: SortOrderInput | SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrderInput | SortOrder
@@ -18107,6 +18143,8 @@ export namespace Prisma {
     NOT?: QuizScalarWhereWithAggregatesInput | QuizScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Quiz"> | number
     title?: StringWithAggregatesFilter<"Quiz"> | string
+    icon?: StringWithAggregatesFilter<"Quiz"> | string
+    description?: StringWithAggregatesFilter<"Quiz"> | string
     duration_minutes?: IntNullableWithAggregatesFilter<"Quiz"> | number | null
     max_points?: DecimalWithAggregatesFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableWithAggregatesFilter<"Quiz"> | number | null
@@ -18874,6 +18912,8 @@ export namespace Prisma {
 
   export type QuizCreateInput = {
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -18888,6 +18928,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateInput = {
     id?: number
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -18901,6 +18943,8 @@ export namespace Prisma {
 
   export type QuizUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18915,6 +18959,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18929,6 +18975,8 @@ export namespace Prisma {
   export type QuizCreateManyInput = {
     id?: number
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -18940,6 +18988,8 @@ export namespace Prisma {
 
   export type QuizUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18951,6 +19001,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19810,6 +19862,8 @@ export namespace Prisma {
   export type QuizCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
     duration_minutes?: SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrder
@@ -19830,6 +19884,8 @@ export namespace Prisma {
   export type QuizMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
     duration_minutes?: SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrder
@@ -19842,6 +19898,8 @@ export namespace Prisma {
   export type QuizMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
     duration_minutes?: SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrder
@@ -22106,6 +22164,8 @@ export namespace Prisma {
 
   export type QuizCreateWithoutTeacher_subject_classInput = {
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22119,6 +22179,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateWithoutTeacher_subject_classInput = {
     id?: number
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22213,6 +22275,8 @@ export namespace Prisma {
     NOT?: QuizScalarWhereInput | QuizScalarWhereInput[]
     id?: IntFilter<"Quiz"> | number
     title?: StringFilter<"Quiz"> | string
+    icon?: StringFilter<"Quiz"> | string
+    description?: StringFilter<"Quiz"> | string
     duration_minutes?: IntNullableFilter<"Quiz"> | number | null
     max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableFilter<"Quiz"> | number | null
@@ -22370,6 +22434,8 @@ export namespace Prisma {
 
   export type QuizCreateWithoutQuestionsInput = {
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22383,6 +22449,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateWithoutQuestionsInput = {
     id?: number
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22490,6 +22558,8 @@ export namespace Prisma {
 
   export type QuizUpdateWithoutQuestionsInput = {
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22503,6 +22573,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateWithoutQuestionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22783,6 +22855,8 @@ export namespace Prisma {
 
   export type QuizCreateWithoutQuiz_attemptsInput = {
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22796,6 +22870,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateWithoutQuiz_attemptsInput = {
     id?: number
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22881,6 +22957,8 @@ export namespace Prisma {
 
   export type QuizUpdateWithoutQuiz_attemptsInput = {
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22894,6 +22972,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateWithoutQuiz_attemptsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23255,6 +23335,8 @@ export namespace Prisma {
   export type QuizCreateManyTeacher_subject_classInput = {
     id?: number
     title: string
+    icon: string
+    description: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -23265,6 +23347,8 @@ export namespace Prisma {
 
   export type QuizUpdateWithoutTeacher_subject_classInput = {
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23278,6 +23362,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateWithoutTeacher_subject_classInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23291,6 +23377,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateManyWithoutTeacher_subject_classInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null

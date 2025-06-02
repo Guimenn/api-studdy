@@ -64,36 +64,45 @@ async function createClassController(req, res) {
 }
 
 async function updateClassController(req, res) {
-	const classId = parseInt(req.params.classId);
+	const classId = parseInt(req.params.classId, 10);
 	let classData;
 
-	// Validação do payload com Zod
+	// 1. Validação do payload
 	try {
 		classData = classSchema.parse(req.body);
 	} catch (err) {
-		return res.status(400).json({ message: 'Invalid request body' });
+		return res
+			.status(400)
+			.json({ message: 'Invalid request body', details: err.errors });
 	}
 
-	// Atualização da turma
+	// 2. Atualização da turma + assignments
 	try {
 		const updatedClass = await updateClass(classId, classData);
 		return res.status(200).json(updatedClass);
 	} catch (err) {
+		// 404: turma não encontrada
 		if (err.message === 'Class not found') {
 			return res.status(404).json({ message: 'Class not found' });
 		}
 
+		// 409: violação de unicidade (nome duplicado)
 		if (err.code === 'P2002') {
 			return res
 				.status(409)
 				.json({ message: 'Class with same name already exists' });
 		}
 
-		if (err.message.includes('turno')) {
+		// 400: turno inválido ou erro de assignment
+		if (
+			err.message.includes('turno') ||
+			err.message.includes('não leciona')
+		) {
 			return res.status(400).json({ message: err.message });
 		}
 
-		console.error('Unexpected error:', err);
+		// 500: erro não esperado
+		console.error('Unexpected error in updateClassController:', err);
 		return res.status(500).json({ message: 'Internal Server Error' });
 	}
 }

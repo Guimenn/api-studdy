@@ -1,6 +1,6 @@
 import { z } from 'zod/v4';
 import { validateCPF } from '../utils/validateCPF.js';
-import { parseBRDateToIso } from '../utils/parseDate.js';
+import { formatDateISO } from '../utils/parseDate.js';
 import { isOlderThanSixYears } from '../utils/validateAge.js';
 
 export const userSchema = z.object({
@@ -17,10 +17,10 @@ export const userSchema = z.object({
 		.transform((cpf) => validateCPF(cpf).formatted),
 	birth_date: z
 		.string()
-		.refine((date) => parseBRDateToIso(date) !== null, {
+		.refine((date) => formatDateISO(date) !== null, {
 			error: 'Invalid format, expected: dd/mm/yyyy',
 		})
-		.transform((date) => parseBRDateToIso(date))
+		.transform((date) => formatDateISO(date))
 		.refine((date) => isOlderThanSixYears(date), {
 			error: 'The user must be a minimum of six years old.',
 		}),
