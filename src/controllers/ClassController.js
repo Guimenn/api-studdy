@@ -4,8 +4,10 @@ import {
 	createClass,
 	updateClass,
 	deleteClass,
+	getClassesByTeacherId,
 } from '../models/Class.js';
 import { classSchema } from '../schemas/class.schema.js';
+import { ZodError } from 'zod/v4';
 
 async function getAllClassesController(req, res) {
 	try {
@@ -22,13 +24,13 @@ async function getClassByIdController(req, res) {
 		const schoolClass = await getClassById(parseInt(req.params.classId));
 
 		if (!schoolClass) {
-			return res.status(404).json({ message: 'Subject not found' });
+			return res.status(404).json({ message: 'Class not found' });
 		}
 
 		return res.status(200).json(schoolClass);
 	} catch (error) {
-		console.error('Error fetching subject:', error);
-		return res.status(500).json({ message: 'Error fetching subject' });
+		console.error(error);
+		return res.status(500).json({ message: error.message });
 	}
 }
 
@@ -36,12 +38,18 @@ async function createClassController(req, res) {
 	let payload;
 	try {
 		payload = classSchema.parse(req.body);
-	} catch (err) {
-		return res.status(400).json({
-			message: err.errors
-				? err.errors[0].message
-				: 'Invalid request body',
-		});
+	} catch (error) {
+		if (error instanceof ZodError) {
+			const formatted = error['issues'].map((err) => ({
+				path: err.path.join('.'),
+				message: err.message,
+			}));
+
+			return res.status(400).json({
+				message: 'Invalid request body',
+				errors: formatted,
+			});
+		}
 	}
 
 	try {
@@ -70,10 +78,18 @@ async function updateClassController(req, res) {
 	// 1. Validação do payload
 	try {
 		classData = classSchema.parse(req.body);
-	} catch (err) {
-		return res
-			.status(400)
-			.json({ message: 'Invalid request body', details: err.errors });
+	} catch (error) {
+		if (error instanceof ZodError) {
+			const formatted = error['issues'].map((err) => ({
+				path: err.path.join('.'),
+				message: err.message,
+			}));
+
+			return res.status(400).json({
+				message: 'Invalid request body',
+				errors: formatted,
+			});
+		}
 	}
 
 	// 2. Atualização da turma + assignments
@@ -129,10 +145,54 @@ async function deleteClassController(req, res) {
 	}
 }
 
+// Obter turmas de um professor
+async function getClassesByTeacherIdController(req, res) {
+	try {
+		const userId = req.user.id;
+
+		const classes = await getClassesByTeacherId(userId);
+
+		return res.status(200).json(classes);
+	} catch (error) {
+		console.error('Error getting teacher classes:', error);
+		return res.status(500).json({ error: error.message });
+	}
+}
+
+// Obter uma turma específica de um professor
+async function getTeacherClassByIdController(req, res) {
+	try {
+		const userId = req.user.id;
+		const classId = req.params.classId;
+
+		const teacherClass = await getClassById(classId);
+
+		if (!teacherClass) {
+			return res.status(404).json({ error: 'Turma não encontrada' });
+		}
+
+		// Verifica se o professor leciona nessa turma
+		const teacherSubjects = teacherClass.teachers.find(
+			(teacher) => teacher.teacher_id === userId
+		);
+
+		if (!teacherSubjects) {
+			return res.status(403).json({ error: 'Professor não leciona nesta turma' });
+		}
+
+		return res.status(200).json(teacherClass);
+	} catch (error) {
+		console.error('Error getting teacher class:', error);
+		return res.status(500).json({ error: error.message });
+	}
+}
+
 export {
 	getAllClassesController,
 	getClassByIdController,
 	createClassController,
 	updateClassController,
 	deleteClassController,
+	getClassesByTeacherIdController,
+	getTeacherClassByIdController,
 };

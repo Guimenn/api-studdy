@@ -7,6 +7,7 @@ async function getAllClasses() {
 			name: true,
 			shift: true,
 			course: true,
+			created_at: true,
 		},
 	});
 }
@@ -57,7 +58,7 @@ async function getClassById(classId) {
 			},
 		});
 
-		if (!schoolClass) throw new Error('Class not found');
+		if (!schoolClass) return null;
 
 		// Agrupa matérias por professor
 		const teacherMap = new Map();
@@ -203,7 +204,7 @@ async function deleteClass(classId) {
 	}
 }
 
-async function getClassByTeacherId(userId) {
+async function getClassesByTeacherId(userId) {
 	try {
 		const teacher = await prisma.teacher.findUnique({
 			where: { user_id: userId },
@@ -251,11 +252,103 @@ async function getClassByTeacherId(userId) {
 	}
 }
 
+async function getStudentClass(userId) {
+	try {
+		const student = await prisma.student.findUnique({
+			where: { user_id: userId },
+			select: {
+				id: true,
+				user: { select: { name: true, email: true } },
+				class: {
+					select: {
+						id: true,
+						name: true,
+						shift: true,
+						course: true,
+						students: {
+							select: {
+								id: true,
+								user: { select: { name: true } }, // apenas nome
+							},
+						},
+						teacher_subject_classes: {
+							select: {
+								teacher_subject: {
+									select: {
+										subject: {
+											select: { id: true, name: true },
+										},
+										teacher: {
+											select: {
+												id: true,
+												user: {
+													select: {
+														name: true,
+														email: true,
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		});
+
+		if (!student || !student.class) {
+			throw new Error('Student or class not found');
+		}
+
+		const schoolClass = student.class;
+
+		// Agrupa matérias por professor
+		const teacherMap = new Map();
+
+		for (const { teacher_subject } of schoolClass.teacher_subject_classes) {
+			const teacherId = teacher_subject.teacher.id;
+			const subject = teacher_subject.subject;
+
+			if (!teacherMap.has(teacherId)) {
+				teacherMap.set(teacherId, {
+					teacher_id: teacherId,
+					teacher_name: teacher_subject.teacher.user.name,
+					teacher_email: teacher_subject.teacher.user.email,
+					subjects: [],
+				});
+			}
+
+			teacherMap.get(teacherId).subjects.push(subject);
+		}
+
+		const teachers = Array.from(teacherMap.values());
+
+		const students = schoolClass.students.map((s) => ({
+			student_id: s.id,
+			name: s.user.name, // apenas nome
+		}));
+
+		return {
+			id: schoolClass.id,
+			name: schoolClass.name,
+			shift: schoolClass.shift,
+			course: schoolClass.course,
+			students,
+			teachers,
+		};
+	} catch (error) {
+		throw error;
+	}
+}
+
 export {
 	getAllClasses,
 	getClassById,
 	createClass,
 	updateClass,
 	deleteClass,
-	getClassByTeacherId,
+	getClassesByTeacherId,
+	getStudentClass,
 };

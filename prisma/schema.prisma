@@ -5,13 +5,13 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql" // <- Mudar para PostgreSQL quando for subir a API e deletar a pasta migrations
   url      = env("DATABASE_URL")
 }
 
@@ -32,28 +32,30 @@ model User {
 }
 
 enum Role {
-  admin
+  Admin
   Student
   Teacher
 }
 
 model Teacher {
-  id               Int                            @id @unique @default(autoincrement())
-  user_id          Int                            @unique
-  user             User                           @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  created_at       DateTime                       @default(now())
-  modified_at      DateTime                       @default(now()) @updatedAt
-  teacher_subjects Relationship_teacher_subject[]
+  id                            Int                            @id @unique @default(autoincrement())
+  user_id                       Int                            @unique
+  user                          User                           @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  created_at                    DateTime                       @default(now())
+  modified_at                   DateTime                       @default(now()) @updatedAt
+  teacher_subjects              Relationship_teacher_subject[]
+  teacher_subject_class_resumes TeacherSubjectClassResume[]
 
   @@map("teacher")
 }
 
 model Subject {
-  id               Int                            @id @unique @default(autoincrement())
-  name             String                         @unique
-  created_at       DateTime                       @default(now())
-  modified_at      DateTime                       @default(now()) @updatedAt
-  teacher_subjects Relationship_teacher_subject[]
+  id                            Int                            @id @unique @default(autoincrement())
+  name                          String                         @unique
+  created_at                    DateTime                       @default(now())
+  modified_at                   DateTime                       @default(now()) @updatedAt
+  teacher_subjects              Relationship_teacher_subject[]
+  teacher_subject_class_resumes TeacherSubjectClassResume[]
 
   @@map("subject")
 }
@@ -78,14 +80,15 @@ enum Shift {
 }
 
 model Class {
-  id                      Int                                  @id @unique @default(autoincrement())
-  name                    String
-  shift                   Shift
-  course                  String
-  created_at              DateTime                             @default(now())
-  modified_at             DateTime                             @default(now()) @updatedAt
-  students                Student[]
-  teacher_subject_classes Relationship_teacher_subject_class[]
+  id                            Int                                  @id @unique @default(autoincrement())
+  name                          String
+  shift                         Shift
+  course                        String
+  created_at                    DateTime                             @default(now())
+  modified_at                   DateTime                             @default(now()) @updatedAt
+  students                      Student[]
+  teacher_subject_classes       Relationship_teacher_subject_class[]
+  teacher_subject_class_resumes TeacherSubjectClassResume[]
 
   @@unique([name, shift, course])
   @@map("class")
@@ -120,8 +123,8 @@ model Relationship_teacher_subject_class {
 model Quiz {
   id                       Int                                @id @unique @default(autoincrement())
   title                    String
-  icon                     String 
-  description              String 
+  description              String
+  icon                     String
   duration_minutes         Int?
   max_points               Decimal                            @default(0)
   max_attempt              Int?
@@ -217,5 +220,82 @@ model Question_response {
   marked_alternative    Alternative  @relation(fields: [marked_alternative_id], references: [id], onDelete: Cascade)
   quiz_attempt          Quiz_attempt @relation(fields: [quiz_attempt_id], references: [id], onDelete: Cascade)
 
+  @@unique([question_id, quiz_attempt_id])
   @@map("question_response")
+}
+
+model Video_assignment {
+  id             Int      @id @unique @default(autoincrement())
+  videoUrl       String   @unique
+  title_video    String
+  name_channel   String
+  duration_video String
+  font           String
+  description    String   @db.Text
+  thumbnail      String
+  videoId        String
+  created_at     DateTime @default(now())
+  modified_at    DateTime @default(now()) @updatedAt
+
+  @@map("video_assignment")
+}
+
+model TeacherSubjectClassResume {
+  id          Int      @id @unique @default(autoincrement())
+  teacher_id  Int
+  subject_id  Int
+  class_id    Int
+  resume_id   Int      @unique
+  created_at  DateTime @default(now())
+  modified_at DateTime @default(now()) @updatedAt
+  teacher     Teacher  @relation(fields: [teacher_id], references: [id], onDelete: Cascade)
+  subject     Subject  @relation(fields: [subject_id], references: [id], onDelete: Cascade)
+  class       Class    @relation(fields: [class_id], references: [id], onDelete: Cascade)
+  resume      Resume   @relation(fields: [resume_id], references: [id], onDelete: Cascade)
+
+  @@unique([teacher_id, subject_id, class_id, resume_id])
+  @@map("teacher_subject_class_resume")
+}
+
+model Resume {
+  id                           Int                        @id @unique @default(autoincrement())
+  title                        String
+  icon                         String
+  description                  String
+  resume                       String                     @db.Text
+  created_at                   DateTime                   @default(now())
+  modified_at                  DateTime                   @default(now()) @updatedAt
+  teacher_subject_class_resume TeacherSubjectClassResume?
+
+  @@map("resume")
+}
+
+model Contests {
+  id          Int      @id @unique @default(autoincrement())
+  title       String
+  link        String
+  type        String
+  icon        String
+  color       String
+  description String   @db.Text
+  date        DateTime
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+
+  @@map("contests")
+}
+
+model Entrance_exam {
+  id          Int      @id @unique @default(autoincrement())
+  title       String
+  link        String
+  type        String
+  icon        String
+  color       String
+  description String   @db.Text
+  date        DateTime
+  created_at  DateTime @default(now())
+  modified_at DateTime @updatedAt
+
+  @@map("entrance_exam")
 }

@@ -78,6 +78,31 @@ export type Quiz_attempt = $Result.DefaultSelection<Prisma.$Quiz_attemptPayload>
  * 
  */
 export type Question_response = $Result.DefaultSelection<Prisma.$Question_responsePayload>
+/**
+ * Model Video_assignment
+ * 
+ */
+export type Video_assignment = $Result.DefaultSelection<Prisma.$Video_assignmentPayload>
+/**
+ * Model TeacherSubjectClassResume
+ * 
+ */
+export type TeacherSubjectClassResume = $Result.DefaultSelection<Prisma.$TeacherSubjectClassResumePayload>
+/**
+ * Model Resume
+ * 
+ */
+export type Resume = $Result.DefaultSelection<Prisma.$ResumePayload>
+/**
+ * Model Contests
+ * 
+ */
+export type Contests = $Result.DefaultSelection<Prisma.$ContestsPayload>
+/**
+ * Model Entrance_exam
+ * 
+ */
+export type Entrance_exam = $Result.DefaultSelection<Prisma.$Entrance_examPayload>
 
 /**
  * Enums
@@ -391,6 +416,56 @@ export class PrismaClient<
     * ```
     */
   get question_response(): Prisma.Question_responseDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.video_assignment`: Exposes CRUD operations for the **Video_assignment** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Video_assignments
+    * const video_assignments = await prisma.video_assignment.findMany()
+    * ```
+    */
+  get video_assignment(): Prisma.Video_assignmentDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.teacherSubjectClassResume`: Exposes CRUD operations for the **TeacherSubjectClassResume** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TeacherSubjectClassResumes
+    * const teacherSubjectClassResumes = await prisma.teacherSubjectClassResume.findMany()
+    * ```
+    */
+  get teacherSubjectClassResume(): Prisma.TeacherSubjectClassResumeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.resume`: Exposes CRUD operations for the **Resume** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Resumes
+    * const resumes = await prisma.resume.findMany()
+    * ```
+    */
+  get resume(): Prisma.ResumeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.contests`: Exposes CRUD operations for the **Contests** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Contests
+    * const contests = await prisma.contests.findMany()
+    * ```
+    */
+  get contests(): Prisma.ContestsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.entrance_exam`: Exposes CRUD operations for the **Entrance_exam** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Entrance_exams
+    * const entrance_exams = await prisma.entrance_exam.findMany()
+    * ```
+    */
+  get entrance_exam(): Prisma.Entrance_examDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -449,8 +524,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.8.2
-   * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+   * Prisma Client JS version: 6.9.0
+   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
    */
   export type PrismaVersion = {
     client: string
@@ -843,7 +918,12 @@ export namespace Prisma {
     Alternative: 'Alternative',
     Question_images: 'Question_images',
     Quiz_attempt: 'Quiz_attempt',
-    Question_response: 'Question_response'
+    Question_response: 'Question_response',
+    Video_assignment: 'Video_assignment',
+    TeacherSubjectClassResume: 'TeacherSubjectClassResume',
+    Resume: 'Resume',
+    Contests: 'Contests',
+    Entrance_exam: 'Entrance_exam'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -862,7 +942,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "teacher" | "subject" | "relationship_teacher_subject" | "class" | "student" | "relationship_teacher_subject_class" | "quiz" | "question" | "alternative" | "question_images" | "quiz_attempt" | "question_response"
+      modelProps: "user" | "teacher" | "subject" | "relationship_teacher_subject" | "class" | "student" | "relationship_teacher_subject_class" | "quiz" | "question" | "alternative" | "question_images" | "quiz_attempt" | "question_response" | "video_assignment" | "teacherSubjectClassResume" | "resume" | "contests" | "entrance_exam"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1828,6 +1908,376 @@ export namespace Prisma {
           }
         }
       }
+      Video_assignment: {
+        payload: Prisma.$Video_assignmentPayload<ExtArgs>
+        fields: Prisma.Video_assignmentFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Video_assignmentFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Video_assignmentFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>
+          }
+          findFirst: {
+            args: Prisma.Video_assignmentFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Video_assignmentFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>
+          }
+          findMany: {
+            args: Prisma.Video_assignmentFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>[]
+          }
+          create: {
+            args: Prisma.Video_assignmentCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>
+          }
+          createMany: {
+            args: Prisma.Video_assignmentCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Video_assignmentCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>[]
+          }
+          delete: {
+            args: Prisma.Video_assignmentDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>
+          }
+          update: {
+            args: Prisma.Video_assignmentUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>
+          }
+          deleteMany: {
+            args: Prisma.Video_assignmentDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Video_assignmentUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Video_assignmentUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>[]
+          }
+          upsert: {
+            args: Prisma.Video_assignmentUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Video_assignmentPayload>
+          }
+          aggregate: {
+            args: Prisma.Video_assignmentAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateVideo_assignment>
+          }
+          groupBy: {
+            args: Prisma.Video_assignmentGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Video_assignmentGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Video_assignmentCountArgs<ExtArgs>
+            result: $Utils.Optional<Video_assignmentCountAggregateOutputType> | number
+          }
+        }
+      }
+      TeacherSubjectClassResume: {
+        payload: Prisma.$TeacherSubjectClassResumePayload<ExtArgs>
+        fields: Prisma.TeacherSubjectClassResumeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TeacherSubjectClassResumeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TeacherSubjectClassResumeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>
+          }
+          findFirst: {
+            args: Prisma.TeacherSubjectClassResumeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TeacherSubjectClassResumeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>
+          }
+          findMany: {
+            args: Prisma.TeacherSubjectClassResumeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>[]
+          }
+          create: {
+            args: Prisma.TeacherSubjectClassResumeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>
+          }
+          createMany: {
+            args: Prisma.TeacherSubjectClassResumeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TeacherSubjectClassResumeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>[]
+          }
+          delete: {
+            args: Prisma.TeacherSubjectClassResumeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>
+          }
+          update: {
+            args: Prisma.TeacherSubjectClassResumeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>
+          }
+          deleteMany: {
+            args: Prisma.TeacherSubjectClassResumeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TeacherSubjectClassResumeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TeacherSubjectClassResumeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>[]
+          }
+          upsert: {
+            args: Prisma.TeacherSubjectClassResumeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeacherSubjectClassResumePayload>
+          }
+          aggregate: {
+            args: Prisma.TeacherSubjectClassResumeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTeacherSubjectClassResume>
+          }
+          groupBy: {
+            args: Prisma.TeacherSubjectClassResumeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TeacherSubjectClassResumeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TeacherSubjectClassResumeCountArgs<ExtArgs>
+            result: $Utils.Optional<TeacherSubjectClassResumeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Resume: {
+        payload: Prisma.$ResumePayload<ExtArgs>
+        fields: Prisma.ResumeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ResumeFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ResumeFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          findFirst: {
+            args: Prisma.ResumeFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ResumeFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          findMany: {
+            args: Prisma.ResumeFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>[]
+          }
+          create: {
+            args: Prisma.ResumeCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          createMany: {
+            args: Prisma.ResumeCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ResumeCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>[]
+          }
+          delete: {
+            args: Prisma.ResumeDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          update: {
+            args: Prisma.ResumeUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          deleteMany: {
+            args: Prisma.ResumeDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ResumeUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ResumeUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>[]
+          }
+          upsert: {
+            args: Prisma.ResumeUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ResumePayload>
+          }
+          aggregate: {
+            args: Prisma.ResumeAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateResume>
+          }
+          groupBy: {
+            args: Prisma.ResumeGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ResumeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ResumeCountArgs<ExtArgs>
+            result: $Utils.Optional<ResumeCountAggregateOutputType> | number
+          }
+        }
+      }
+      Contests: {
+        payload: Prisma.$ContestsPayload<ExtArgs>
+        fields: Prisma.ContestsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ContestsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ContestsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>
+          }
+          findFirst: {
+            args: Prisma.ContestsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ContestsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>
+          }
+          findMany: {
+            args: Prisma.ContestsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>[]
+          }
+          create: {
+            args: Prisma.ContestsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>
+          }
+          createMany: {
+            args: Prisma.ContestsCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ContestsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>[]
+          }
+          delete: {
+            args: Prisma.ContestsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>
+          }
+          update: {
+            args: Prisma.ContestsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>
+          }
+          deleteMany: {
+            args: Prisma.ContestsDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ContestsUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ContestsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>[]
+          }
+          upsert: {
+            args: Prisma.ContestsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ContestsPayload>
+          }
+          aggregate: {
+            args: Prisma.ContestsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateContests>
+          }
+          groupBy: {
+            args: Prisma.ContestsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ContestsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ContestsCountArgs<ExtArgs>
+            result: $Utils.Optional<ContestsCountAggregateOutputType> | number
+          }
+        }
+      }
+      Entrance_exam: {
+        payload: Prisma.$Entrance_examPayload<ExtArgs>
+        fields: Prisma.Entrance_examFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Entrance_examFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Entrance_examFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>
+          }
+          findFirst: {
+            args: Prisma.Entrance_examFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Entrance_examFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>
+          }
+          findMany: {
+            args: Prisma.Entrance_examFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>[]
+          }
+          create: {
+            args: Prisma.Entrance_examCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>
+          }
+          createMany: {
+            args: Prisma.Entrance_examCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.Entrance_examCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>[]
+          }
+          delete: {
+            args: Prisma.Entrance_examDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>
+          }
+          update: {
+            args: Prisma.Entrance_examUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>
+          }
+          deleteMany: {
+            args: Prisma.Entrance_examDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Entrance_examUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.Entrance_examUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>[]
+          }
+          upsert: {
+            args: Prisma.Entrance_examUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Entrance_examPayload>
+          }
+          aggregate: {
+            args: Prisma.Entrance_examAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEntrance_exam>
+          }
+          groupBy: {
+            args: Prisma.Entrance_examGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Entrance_examGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Entrance_examCountArgs<ExtArgs>
+            result: $Utils.Optional<Entrance_examCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1925,6 +2375,11 @@ export namespace Prisma {
     question_images?: Question_imagesOmit
     quiz_attempt?: Quiz_attemptOmit
     question_response?: Question_responseOmit
+    video_assignment?: Video_assignmentOmit
+    teacherSubjectClassResume?: TeacherSubjectClassResumeOmit
+    resume?: ResumeOmit
+    contests?: ContestsOmit
+    entrance_exam?: Entrance_examOmit
   }
 
   /* Types for Logging */
@@ -2020,10 +2475,12 @@ export namespace Prisma {
 
   export type TeacherCountOutputType = {
     teacher_subjects: number
+    teacher_subject_class_resumes: number
   }
 
   export type TeacherCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teacher_subjects?: boolean | TeacherCountOutputTypeCountTeacher_subjectsArgs
+    teacher_subject_class_resumes?: boolean | TeacherCountOutputTypeCountTeacher_subject_class_resumesArgs
   }
 
   // Custom InputTypes
@@ -2044,6 +2501,13 @@ export namespace Prisma {
     where?: Relationship_teacher_subjectWhereInput
   }
 
+  /**
+   * TeacherCountOutputType without action
+   */
+  export type TeacherCountOutputTypeCountTeacher_subject_class_resumesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeacherSubjectClassResumeWhereInput
+  }
+
 
   /**
    * Count Type SubjectCountOutputType
@@ -2051,10 +2515,12 @@ export namespace Prisma {
 
   export type SubjectCountOutputType = {
     teacher_subjects: number
+    teacher_subject_class_resumes: number
   }
 
   export type SubjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teacher_subjects?: boolean | SubjectCountOutputTypeCountTeacher_subjectsArgs
+    teacher_subject_class_resumes?: boolean | SubjectCountOutputTypeCountTeacher_subject_class_resumesArgs
   }
 
   // Custom InputTypes
@@ -2073,6 +2539,13 @@ export namespace Prisma {
    */
   export type SubjectCountOutputTypeCountTeacher_subjectsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Relationship_teacher_subjectWhereInput
+  }
+
+  /**
+   * SubjectCountOutputType without action
+   */
+  export type SubjectCountOutputTypeCountTeacher_subject_class_resumesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeacherSubjectClassResumeWhereInput
   }
 
 
@@ -2114,11 +2587,13 @@ export namespace Prisma {
   export type ClassCountOutputType = {
     students: number
     teacher_subject_classes: number
+    teacher_subject_class_resumes: number
   }
 
   export type ClassCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     students?: boolean | ClassCountOutputTypeCountStudentsArgs
     teacher_subject_classes?: boolean | ClassCountOutputTypeCountTeacher_subject_classesArgs
+    teacher_subject_class_resumes?: boolean | ClassCountOutputTypeCountTeacher_subject_class_resumesArgs
   }
 
   // Custom InputTypes
@@ -2144,6 +2619,13 @@ export namespace Prisma {
    */
   export type ClassCountOutputTypeCountTeacher_subject_classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Relationship_teacher_subject_classWhereInput
+  }
+
+  /**
+   * ClassCountOutputType without action
+   */
+  export type ClassCountOutputTypeCountTeacher_subject_class_resumesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeacherSubjectClassResumeWhereInput
   }
 
 
@@ -3732,6 +4214,7 @@ export namespace Prisma {
     modified_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     teacher_subjects?: boolean | Teacher$teacher_subjectsArgs<ExtArgs>
+    teacher_subject_class_resumes?: boolean | Teacher$teacher_subject_class_resumesArgs<ExtArgs>
     _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teacher"]>
 
@@ -3762,6 +4245,7 @@ export namespace Prisma {
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     teacher_subjects?: boolean | Teacher$teacher_subjectsArgs<ExtArgs>
+    teacher_subject_class_resumes?: boolean | Teacher$teacher_subject_class_resumesArgs<ExtArgs>
     _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TeacherIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3776,6 +4260,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       teacher_subjects: Prisma.$Relationship_teacher_subjectPayload<ExtArgs>[]
+      teacher_subject_class_resumes: Prisma.$TeacherSubjectClassResumePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -4178,6 +4663,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     teacher_subjects<T extends Teacher$teacher_subjectsArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$teacher_subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    teacher_subject_class_resumes<T extends Teacher$teacher_subject_class_resumesArgs<ExtArgs> = {}>(args?: Subset<T, Teacher$teacher_subject_class_resumesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4631,6 +5117,30 @@ export namespace Prisma {
   }
 
   /**
+   * Teacher.teacher_subject_class_resumes
+   */
+  export type Teacher$teacher_subject_class_resumesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    where?: TeacherSubjectClassResumeWhereInput
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TeacherSubjectClassResumeScalarFieldEnum | TeacherSubjectClassResumeScalarFieldEnum[]
+  }
+
+  /**
    * Teacher without action
    */
   export type TeacherDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4840,6 +5350,7 @@ export namespace Prisma {
     created_at?: boolean
     modified_at?: boolean
     teacher_subjects?: boolean | Subject$teacher_subjectsArgs<ExtArgs>
+    teacher_subject_class_resumes?: boolean | Subject$teacher_subject_class_resumesArgs<ExtArgs>
     _count?: boolean | SubjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["subject"]>
 
@@ -4867,6 +5378,7 @@ export namespace Prisma {
   export type SubjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "created_at" | "modified_at", ExtArgs["result"]["subject"]>
   export type SubjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teacher_subjects?: boolean | Subject$teacher_subjectsArgs<ExtArgs>
+    teacher_subject_class_resumes?: boolean | Subject$teacher_subject_class_resumesArgs<ExtArgs>
     _count?: boolean | SubjectCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SubjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -4876,6 +5388,7 @@ export namespace Prisma {
     name: "Subject"
     objects: {
       teacher_subjects: Prisma.$Relationship_teacher_subjectPayload<ExtArgs>[]
+      teacher_subject_class_resumes: Prisma.$TeacherSubjectClassResumePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5277,6 +5790,7 @@ export namespace Prisma {
   export interface Prisma__SubjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     teacher_subjects<T extends Subject$teacher_subjectsArgs<ExtArgs> = {}>(args?: Subset<T, Subject$teacher_subjectsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    teacher_subject_class_resumes<T extends Subject$teacher_subject_class_resumesArgs<ExtArgs> = {}>(args?: Subset<T, Subject$teacher_subject_class_resumesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5719,6 +6233,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Relationship_teacher_subjectScalarFieldEnum | Relationship_teacher_subjectScalarFieldEnum[]
+  }
+
+  /**
+   * Subject.teacher_subject_class_resumes
+   */
+  export type Subject$teacher_subject_class_resumesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    where?: TeacherSubjectClassResumeWhereInput
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TeacherSubjectClassResumeScalarFieldEnum | TeacherSubjectClassResumeScalarFieldEnum[]
   }
 
   /**
@@ -7060,6 +7598,7 @@ export namespace Prisma {
     modified_at?: boolean
     students?: boolean | Class$studentsArgs<ExtArgs>
     teacher_subject_classes?: boolean | Class$teacher_subject_classesArgs<ExtArgs>
+    teacher_subject_class_resumes?: boolean | Class$teacher_subject_class_resumesArgs<ExtArgs>
     _count?: boolean | ClassCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["class"]>
 
@@ -7094,6 +7633,7 @@ export namespace Prisma {
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     students?: boolean | Class$studentsArgs<ExtArgs>
     teacher_subject_classes?: boolean | Class$teacher_subject_classesArgs<ExtArgs>
+    teacher_subject_class_resumes?: boolean | Class$teacher_subject_class_resumesArgs<ExtArgs>
     _count?: boolean | ClassCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClassIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7104,6 +7644,7 @@ export namespace Prisma {
     objects: {
       students: Prisma.$StudentPayload<ExtArgs>[]
       teacher_subject_classes: Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>[]
+      teacher_subject_class_resumes: Prisma.$TeacherSubjectClassResumePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7508,6 +8049,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     students<T extends Class$studentsArgs<ExtArgs> = {}>(args?: Subset<T, Class$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     teacher_subject_classes<T extends Class$teacher_subject_classesArgs<ExtArgs> = {}>(args?: Subset<T, Class$teacher_subject_classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Relationship_teacher_subject_classPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    teacher_subject_class_resumes<T extends Class$teacher_subject_class_resumesArgs<ExtArgs> = {}>(args?: Subset<T, Class$teacher_subject_class_resumesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7976,6 +8518,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Relationship_teacher_subject_classScalarFieldEnum | Relationship_teacher_subject_classScalarFieldEnum[]
+  }
+
+  /**
+   * Class.teacher_subject_class_resumes
+   */
+  export type Class$teacher_subject_class_resumesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    where?: TeacherSubjectClassResumeWhereInput
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TeacherSubjectClassResumeScalarFieldEnum | TeacherSubjectClassResumeScalarFieldEnum[]
   }
 
   /**
@@ -10291,8 +10857,8 @@ export namespace Prisma {
   export type QuizMinAggregateOutputType = {
     id: number | null
     title: string | null
-    icon: string | null
     description: string | null
+    icon: string | null
     duration_minutes: number | null
     max_points: Decimal | null
     max_attempt: number | null
@@ -10305,8 +10871,8 @@ export namespace Prisma {
   export type QuizMaxAggregateOutputType = {
     id: number | null
     title: string | null
-    icon: string | null
     description: string | null
+    icon: string | null
     duration_minutes: number | null
     max_points: Decimal | null
     max_attempt: number | null
@@ -10319,8 +10885,8 @@ export namespace Prisma {
   export type QuizCountAggregateOutputType = {
     id: number
     title: number
-    icon: number
     description: number
+    icon: number
     duration_minutes: number
     max_points: number
     max_attempt: number
@@ -10351,8 +10917,8 @@ export namespace Prisma {
   export type QuizMinAggregateInputType = {
     id?: true
     title?: true
-    icon?: true
     description?: true
+    icon?: true
     duration_minutes?: true
     max_points?: true
     max_attempt?: true
@@ -10365,8 +10931,8 @@ export namespace Prisma {
   export type QuizMaxAggregateInputType = {
     id?: true
     title?: true
-    icon?: true
     description?: true
+    icon?: true
     duration_minutes?: true
     max_points?: true
     max_attempt?: true
@@ -10379,8 +10945,8 @@ export namespace Prisma {
   export type QuizCountAggregateInputType = {
     id?: true
     title?: true
-    icon?: true
     description?: true
+    icon?: true
     duration_minutes?: true
     max_points?: true
     max_attempt?: true
@@ -10480,8 +11046,8 @@ export namespace Prisma {
   export type QuizGroupByOutputType = {
     id: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes: number | null
     max_points: Decimal
     max_attempt: number | null
@@ -10513,8 +11079,8 @@ export namespace Prisma {
   export type QuizSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    icon?: boolean
     description?: boolean
+    icon?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10531,8 +11097,8 @@ export namespace Prisma {
   export type QuizSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    icon?: boolean
     description?: boolean
+    icon?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10546,8 +11112,8 @@ export namespace Prisma {
   export type QuizSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    icon?: boolean
     description?: boolean
+    icon?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10561,8 +11127,8 @@ export namespace Prisma {
   export type QuizSelectScalar = {
     id?: boolean
     title?: boolean
-    icon?: boolean
     description?: boolean
+    icon?: boolean
     duration_minutes?: boolean
     max_points?: boolean
     max_attempt?: boolean
@@ -10572,7 +11138,7 @@ export namespace Prisma {
     teacher_subject_class_id?: boolean
   }
 
-  export type QuizOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "icon" | "description" | "duration_minutes" | "max_points" | "max_attempt" | "visibility" | "created_at" | "modified_at" | "teacher_subject_class_id", ExtArgs["result"]["quiz"]>
+  export type QuizOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "icon" | "duration_minutes" | "max_points" | "max_attempt" | "visibility" | "created_at" | "modified_at" | "teacher_subject_class_id", ExtArgs["result"]["quiz"]>
   export type QuizInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teacher_subject_class?: boolean | Relationship_teacher_subject_classDefaultArgs<ExtArgs>
     questions?: boolean | Quiz$questionsArgs<ExtArgs>
@@ -10596,8 +11162,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       title: string
-      icon: string
       description: string
+      icon: string
       duration_minutes: number | null
       max_points: Prisma.Decimal
       max_attempt: number | null
@@ -11033,8 +11599,8 @@ export namespace Prisma {
   interface QuizFieldRefs {
     readonly id: FieldRef<"Quiz", 'Int'>
     readonly title: FieldRef<"Quiz", 'String'>
-    readonly icon: FieldRef<"Quiz", 'String'>
     readonly description: FieldRef<"Quiz", 'String'>
+    readonly icon: FieldRef<"Quiz", 'String'>
     readonly duration_minutes: FieldRef<"Quiz", 'Int'>
     readonly max_points: FieldRef<"Quiz", 'Decimal'>
     readonly max_attempt: FieldRef<"Quiz", 'Int'>
@@ -17296,6 +17862,5582 @@ export namespace Prisma {
 
 
   /**
+   * Model Video_assignment
+   */
+
+  export type AggregateVideo_assignment = {
+    _count: Video_assignmentCountAggregateOutputType | null
+    _avg: Video_assignmentAvgAggregateOutputType | null
+    _sum: Video_assignmentSumAggregateOutputType | null
+    _min: Video_assignmentMinAggregateOutputType | null
+    _max: Video_assignmentMaxAggregateOutputType | null
+  }
+
+  export type Video_assignmentAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Video_assignmentSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Video_assignmentMinAggregateOutputType = {
+    id: number | null
+    videoUrl: string | null
+    title_video: string | null
+    name_channel: string | null
+    duration_video: string | null
+    font: string | null
+    description: string | null
+    thumbnail: string | null
+    videoId: string | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type Video_assignmentMaxAggregateOutputType = {
+    id: number | null
+    videoUrl: string | null
+    title_video: string | null
+    name_channel: string | null
+    duration_video: string | null
+    font: string | null
+    description: string | null
+    thumbnail: string | null
+    videoId: string | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type Video_assignmentCountAggregateOutputType = {
+    id: number
+    videoUrl: number
+    title_video: number
+    name_channel: number
+    duration_video: number
+    font: number
+    description: number
+    thumbnail: number
+    videoId: number
+    created_at: number
+    modified_at: number
+    _all: number
+  }
+
+
+  export type Video_assignmentAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Video_assignmentSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Video_assignmentMinAggregateInputType = {
+    id?: true
+    videoUrl?: true
+    title_video?: true
+    name_channel?: true
+    duration_video?: true
+    font?: true
+    description?: true
+    thumbnail?: true
+    videoId?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type Video_assignmentMaxAggregateInputType = {
+    id?: true
+    videoUrl?: true
+    title_video?: true
+    name_channel?: true
+    duration_video?: true
+    font?: true
+    description?: true
+    thumbnail?: true
+    videoId?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type Video_assignmentCountAggregateInputType = {
+    id?: true
+    videoUrl?: true
+    title_video?: true
+    name_channel?: true
+    duration_video?: true
+    font?: true
+    description?: true
+    thumbnail?: true
+    videoId?: true
+    created_at?: true
+    modified_at?: true
+    _all?: true
+  }
+
+  export type Video_assignmentAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Video_assignment to aggregate.
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Video_assignments to fetch.
+     */
+    orderBy?: Video_assignmentOrderByWithRelationInput | Video_assignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Video_assignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Video_assignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Video_assignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Video_assignments
+    **/
+    _count?: true | Video_assignmentCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Video_assignmentAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Video_assignmentSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Video_assignmentMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Video_assignmentMaxAggregateInputType
+  }
+
+  export type GetVideo_assignmentAggregateType<T extends Video_assignmentAggregateArgs> = {
+        [P in keyof T & keyof AggregateVideo_assignment]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateVideo_assignment[P]>
+      : GetScalarType<T[P], AggregateVideo_assignment[P]>
+  }
+
+
+
+
+  export type Video_assignmentGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Video_assignmentWhereInput
+    orderBy?: Video_assignmentOrderByWithAggregationInput | Video_assignmentOrderByWithAggregationInput[]
+    by: Video_assignmentScalarFieldEnum[] | Video_assignmentScalarFieldEnum
+    having?: Video_assignmentScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Video_assignmentCountAggregateInputType | true
+    _avg?: Video_assignmentAvgAggregateInputType
+    _sum?: Video_assignmentSumAggregateInputType
+    _min?: Video_assignmentMinAggregateInputType
+    _max?: Video_assignmentMaxAggregateInputType
+  }
+
+  export type Video_assignmentGroupByOutputType = {
+    id: number
+    videoUrl: string
+    title_video: string
+    name_channel: string
+    duration_video: string
+    font: string
+    description: string
+    thumbnail: string
+    videoId: string
+    created_at: Date
+    modified_at: Date
+    _count: Video_assignmentCountAggregateOutputType | null
+    _avg: Video_assignmentAvgAggregateOutputType | null
+    _sum: Video_assignmentSumAggregateOutputType | null
+    _min: Video_assignmentMinAggregateOutputType | null
+    _max: Video_assignmentMaxAggregateOutputType | null
+  }
+
+  type GetVideo_assignmentGroupByPayload<T extends Video_assignmentGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Video_assignmentGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Video_assignmentGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Video_assignmentGroupByOutputType[P]>
+            : GetScalarType<T[P], Video_assignmentGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Video_assignmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    videoUrl?: boolean
+    title_video?: boolean
+    name_channel?: boolean
+    duration_video?: boolean
+    font?: boolean
+    description?: boolean
+    thumbnail?: boolean
+    videoId?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["video_assignment"]>
+
+  export type Video_assignmentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    videoUrl?: boolean
+    title_video?: boolean
+    name_channel?: boolean
+    duration_video?: boolean
+    font?: boolean
+    description?: boolean
+    thumbnail?: boolean
+    videoId?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["video_assignment"]>
+
+  export type Video_assignmentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    videoUrl?: boolean
+    title_video?: boolean
+    name_channel?: boolean
+    duration_video?: boolean
+    font?: boolean
+    description?: boolean
+    thumbnail?: boolean
+    videoId?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["video_assignment"]>
+
+  export type Video_assignmentSelectScalar = {
+    id?: boolean
+    videoUrl?: boolean
+    title_video?: boolean
+    name_channel?: boolean
+    duration_video?: boolean
+    font?: boolean
+    description?: boolean
+    thumbnail?: boolean
+    videoId?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }
+
+  export type Video_assignmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "videoUrl" | "title_video" | "name_channel" | "duration_video" | "font" | "description" | "thumbnail" | "videoId" | "created_at" | "modified_at", ExtArgs["result"]["video_assignment"]>
+
+  export type $Video_assignmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Video_assignment"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      videoUrl: string
+      title_video: string
+      name_channel: string
+      duration_video: string
+      font: string
+      description: string
+      thumbnail: string
+      videoId: string
+      created_at: Date
+      modified_at: Date
+    }, ExtArgs["result"]["video_assignment"]>
+    composites: {}
+  }
+
+  type Video_assignmentGetPayload<S extends boolean | null | undefined | Video_assignmentDefaultArgs> = $Result.GetResult<Prisma.$Video_assignmentPayload, S>
+
+  type Video_assignmentCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Video_assignmentFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Video_assignmentCountAggregateInputType | true
+    }
+
+  export interface Video_assignmentDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Video_assignment'], meta: { name: 'Video_assignment' } }
+    /**
+     * Find zero or one Video_assignment that matches the filter.
+     * @param {Video_assignmentFindUniqueArgs} args - Arguments to find a Video_assignment
+     * @example
+     * // Get one Video_assignment
+     * const video_assignment = await prisma.video_assignment.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Video_assignmentFindUniqueArgs>(args: SelectSubset<T, Video_assignmentFindUniqueArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Video_assignment that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Video_assignmentFindUniqueOrThrowArgs} args - Arguments to find a Video_assignment
+     * @example
+     * // Get one Video_assignment
+     * const video_assignment = await prisma.video_assignment.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Video_assignmentFindUniqueOrThrowArgs>(args: SelectSubset<T, Video_assignmentFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Video_assignment that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentFindFirstArgs} args - Arguments to find a Video_assignment
+     * @example
+     * // Get one Video_assignment
+     * const video_assignment = await prisma.video_assignment.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Video_assignmentFindFirstArgs>(args?: SelectSubset<T, Video_assignmentFindFirstArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Video_assignment that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentFindFirstOrThrowArgs} args - Arguments to find a Video_assignment
+     * @example
+     * // Get one Video_assignment
+     * const video_assignment = await prisma.video_assignment.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Video_assignmentFindFirstOrThrowArgs>(args?: SelectSubset<T, Video_assignmentFindFirstOrThrowArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Video_assignments that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Video_assignments
+     * const video_assignments = await prisma.video_assignment.findMany()
+     * 
+     * // Get first 10 Video_assignments
+     * const video_assignments = await prisma.video_assignment.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const video_assignmentWithIdOnly = await prisma.video_assignment.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Video_assignmentFindManyArgs>(args?: SelectSubset<T, Video_assignmentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Video_assignment.
+     * @param {Video_assignmentCreateArgs} args - Arguments to create a Video_assignment.
+     * @example
+     * // Create one Video_assignment
+     * const Video_assignment = await prisma.video_assignment.create({
+     *   data: {
+     *     // ... data to create a Video_assignment
+     *   }
+     * })
+     * 
+     */
+    create<T extends Video_assignmentCreateArgs>(args: SelectSubset<T, Video_assignmentCreateArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Video_assignments.
+     * @param {Video_assignmentCreateManyArgs} args - Arguments to create many Video_assignments.
+     * @example
+     * // Create many Video_assignments
+     * const video_assignment = await prisma.video_assignment.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Video_assignmentCreateManyArgs>(args?: SelectSubset<T, Video_assignmentCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Video_assignments and returns the data saved in the database.
+     * @param {Video_assignmentCreateManyAndReturnArgs} args - Arguments to create many Video_assignments.
+     * @example
+     * // Create many Video_assignments
+     * const video_assignment = await prisma.video_assignment.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Video_assignments and only return the `id`
+     * const video_assignmentWithIdOnly = await prisma.video_assignment.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Video_assignmentCreateManyAndReturnArgs>(args?: SelectSubset<T, Video_assignmentCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Video_assignment.
+     * @param {Video_assignmentDeleteArgs} args - Arguments to delete one Video_assignment.
+     * @example
+     * // Delete one Video_assignment
+     * const Video_assignment = await prisma.video_assignment.delete({
+     *   where: {
+     *     // ... filter to delete one Video_assignment
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Video_assignmentDeleteArgs>(args: SelectSubset<T, Video_assignmentDeleteArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Video_assignment.
+     * @param {Video_assignmentUpdateArgs} args - Arguments to update one Video_assignment.
+     * @example
+     * // Update one Video_assignment
+     * const video_assignment = await prisma.video_assignment.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Video_assignmentUpdateArgs>(args: SelectSubset<T, Video_assignmentUpdateArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Video_assignments.
+     * @param {Video_assignmentDeleteManyArgs} args - Arguments to filter Video_assignments to delete.
+     * @example
+     * // Delete a few Video_assignments
+     * const { count } = await prisma.video_assignment.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Video_assignmentDeleteManyArgs>(args?: SelectSubset<T, Video_assignmentDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Video_assignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Video_assignments
+     * const video_assignment = await prisma.video_assignment.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Video_assignmentUpdateManyArgs>(args: SelectSubset<T, Video_assignmentUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Video_assignments and returns the data updated in the database.
+     * @param {Video_assignmentUpdateManyAndReturnArgs} args - Arguments to update many Video_assignments.
+     * @example
+     * // Update many Video_assignments
+     * const video_assignment = await prisma.video_assignment.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Video_assignments and only return the `id`
+     * const video_assignmentWithIdOnly = await prisma.video_assignment.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Video_assignmentUpdateManyAndReturnArgs>(args: SelectSubset<T, Video_assignmentUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Video_assignment.
+     * @param {Video_assignmentUpsertArgs} args - Arguments to update or create a Video_assignment.
+     * @example
+     * // Update or create a Video_assignment
+     * const video_assignment = await prisma.video_assignment.upsert({
+     *   create: {
+     *     // ... data to create a Video_assignment
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Video_assignment we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Video_assignmentUpsertArgs>(args: SelectSubset<T, Video_assignmentUpsertArgs<ExtArgs>>): Prisma__Video_assignmentClient<$Result.GetResult<Prisma.$Video_assignmentPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Video_assignments.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentCountArgs} args - Arguments to filter Video_assignments to count.
+     * @example
+     * // Count the number of Video_assignments
+     * const count = await prisma.video_assignment.count({
+     *   where: {
+     *     // ... the filter for the Video_assignments we want to count
+     *   }
+     * })
+    **/
+    count<T extends Video_assignmentCountArgs>(
+      args?: Subset<T, Video_assignmentCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Video_assignmentCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Video_assignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Video_assignmentAggregateArgs>(args: Subset<T, Video_assignmentAggregateArgs>): Prisma.PrismaPromise<GetVideo_assignmentAggregateType<T>>
+
+    /**
+     * Group by Video_assignment.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Video_assignmentGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Video_assignmentGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Video_assignmentGroupByArgs['orderBy'] }
+        : { orderBy?: Video_assignmentGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Video_assignmentGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetVideo_assignmentGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Video_assignment model
+   */
+  readonly fields: Video_assignmentFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Video_assignment.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Video_assignmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Video_assignment model
+   */
+  interface Video_assignmentFieldRefs {
+    readonly id: FieldRef<"Video_assignment", 'Int'>
+    readonly videoUrl: FieldRef<"Video_assignment", 'String'>
+    readonly title_video: FieldRef<"Video_assignment", 'String'>
+    readonly name_channel: FieldRef<"Video_assignment", 'String'>
+    readonly duration_video: FieldRef<"Video_assignment", 'String'>
+    readonly font: FieldRef<"Video_assignment", 'String'>
+    readonly description: FieldRef<"Video_assignment", 'String'>
+    readonly thumbnail: FieldRef<"Video_assignment", 'String'>
+    readonly videoId: FieldRef<"Video_assignment", 'String'>
+    readonly created_at: FieldRef<"Video_assignment", 'DateTime'>
+    readonly modified_at: FieldRef<"Video_assignment", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Video_assignment findUnique
+   */
+  export type Video_assignmentFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Video_assignment to fetch.
+     */
+    where: Video_assignmentWhereUniqueInput
+  }
+
+  /**
+   * Video_assignment findUniqueOrThrow
+   */
+  export type Video_assignmentFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Video_assignment to fetch.
+     */
+    where: Video_assignmentWhereUniqueInput
+  }
+
+  /**
+   * Video_assignment findFirst
+   */
+  export type Video_assignmentFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Video_assignment to fetch.
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Video_assignments to fetch.
+     */
+    orderBy?: Video_assignmentOrderByWithRelationInput | Video_assignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Video_assignments.
+     */
+    cursor?: Video_assignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Video_assignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Video_assignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Video_assignments.
+     */
+    distinct?: Video_assignmentScalarFieldEnum | Video_assignmentScalarFieldEnum[]
+  }
+
+  /**
+   * Video_assignment findFirstOrThrow
+   */
+  export type Video_assignmentFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Video_assignment to fetch.
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Video_assignments to fetch.
+     */
+    orderBy?: Video_assignmentOrderByWithRelationInput | Video_assignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Video_assignments.
+     */
+    cursor?: Video_assignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Video_assignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Video_assignments.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Video_assignments.
+     */
+    distinct?: Video_assignmentScalarFieldEnum | Video_assignmentScalarFieldEnum[]
+  }
+
+  /**
+   * Video_assignment findMany
+   */
+  export type Video_assignmentFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * Filter, which Video_assignments to fetch.
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Video_assignments to fetch.
+     */
+    orderBy?: Video_assignmentOrderByWithRelationInput | Video_assignmentOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Video_assignments.
+     */
+    cursor?: Video_assignmentWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Video_assignments from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Video_assignments.
+     */
+    skip?: number
+    distinct?: Video_assignmentScalarFieldEnum | Video_assignmentScalarFieldEnum[]
+  }
+
+  /**
+   * Video_assignment create
+   */
+  export type Video_assignmentCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Video_assignment.
+     */
+    data: XOR<Video_assignmentCreateInput, Video_assignmentUncheckedCreateInput>
+  }
+
+  /**
+   * Video_assignment createMany
+   */
+  export type Video_assignmentCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Video_assignments.
+     */
+    data: Video_assignmentCreateManyInput | Video_assignmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Video_assignment createManyAndReturn
+   */
+  export type Video_assignmentCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * The data used to create many Video_assignments.
+     */
+    data: Video_assignmentCreateManyInput | Video_assignmentCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Video_assignment update
+   */
+  export type Video_assignmentUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Video_assignment.
+     */
+    data: XOR<Video_assignmentUpdateInput, Video_assignmentUncheckedUpdateInput>
+    /**
+     * Choose, which Video_assignment to update.
+     */
+    where: Video_assignmentWhereUniqueInput
+  }
+
+  /**
+   * Video_assignment updateMany
+   */
+  export type Video_assignmentUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Video_assignments.
+     */
+    data: XOR<Video_assignmentUpdateManyMutationInput, Video_assignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Video_assignments to update
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * Limit how many Video_assignments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video_assignment updateManyAndReturn
+   */
+  export type Video_assignmentUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * The data used to update Video_assignments.
+     */
+    data: XOR<Video_assignmentUpdateManyMutationInput, Video_assignmentUncheckedUpdateManyInput>
+    /**
+     * Filter which Video_assignments to update
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * Limit how many Video_assignments to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video_assignment upsert
+   */
+  export type Video_assignmentUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Video_assignment to update in case it exists.
+     */
+    where: Video_assignmentWhereUniqueInput
+    /**
+     * In case the Video_assignment found by the `where` argument doesn't exist, create a new Video_assignment with this data.
+     */
+    create: XOR<Video_assignmentCreateInput, Video_assignmentUncheckedCreateInput>
+    /**
+     * In case the Video_assignment was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Video_assignmentUpdateInput, Video_assignmentUncheckedUpdateInput>
+  }
+
+  /**
+   * Video_assignment delete
+   */
+  export type Video_assignmentDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+    /**
+     * Filter which Video_assignment to delete.
+     */
+    where: Video_assignmentWhereUniqueInput
+  }
+
+  /**
+   * Video_assignment deleteMany
+   */
+  export type Video_assignmentDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Video_assignments to delete
+     */
+    where?: Video_assignmentWhereInput
+    /**
+     * Limit how many Video_assignments to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Video_assignment without action
+   */
+  export type Video_assignmentDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Video_assignment
+     */
+    select?: Video_assignmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Video_assignment
+     */
+    omit?: Video_assignmentOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TeacherSubjectClassResume
+   */
+
+  export type AggregateTeacherSubjectClassResume = {
+    _count: TeacherSubjectClassResumeCountAggregateOutputType | null
+    _avg: TeacherSubjectClassResumeAvgAggregateOutputType | null
+    _sum: TeacherSubjectClassResumeSumAggregateOutputType | null
+    _min: TeacherSubjectClassResumeMinAggregateOutputType | null
+    _max: TeacherSubjectClassResumeMaxAggregateOutputType | null
+  }
+
+  export type TeacherSubjectClassResumeAvgAggregateOutputType = {
+    id: number | null
+    teacher_id: number | null
+    subject_id: number | null
+    class_id: number | null
+    resume_id: number | null
+  }
+
+  export type TeacherSubjectClassResumeSumAggregateOutputType = {
+    id: number | null
+    teacher_id: number | null
+    subject_id: number | null
+    class_id: number | null
+    resume_id: number | null
+  }
+
+  export type TeacherSubjectClassResumeMinAggregateOutputType = {
+    id: number | null
+    teacher_id: number | null
+    subject_id: number | null
+    class_id: number | null
+    resume_id: number | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type TeacherSubjectClassResumeMaxAggregateOutputType = {
+    id: number | null
+    teacher_id: number | null
+    subject_id: number | null
+    class_id: number | null
+    resume_id: number | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type TeacherSubjectClassResumeCountAggregateOutputType = {
+    id: number
+    teacher_id: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+    created_at: number
+    modified_at: number
+    _all: number
+  }
+
+
+  export type TeacherSubjectClassResumeAvgAggregateInputType = {
+    id?: true
+    teacher_id?: true
+    subject_id?: true
+    class_id?: true
+    resume_id?: true
+  }
+
+  export type TeacherSubjectClassResumeSumAggregateInputType = {
+    id?: true
+    teacher_id?: true
+    subject_id?: true
+    class_id?: true
+    resume_id?: true
+  }
+
+  export type TeacherSubjectClassResumeMinAggregateInputType = {
+    id?: true
+    teacher_id?: true
+    subject_id?: true
+    class_id?: true
+    resume_id?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type TeacherSubjectClassResumeMaxAggregateInputType = {
+    id?: true
+    teacher_id?: true
+    subject_id?: true
+    class_id?: true
+    resume_id?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type TeacherSubjectClassResumeCountAggregateInputType = {
+    id?: true
+    teacher_id?: true
+    subject_id?: true
+    class_id?: true
+    resume_id?: true
+    created_at?: true
+    modified_at?: true
+    _all?: true
+  }
+
+  export type TeacherSubjectClassResumeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TeacherSubjectClassResume to aggregate.
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TeacherSubjectClassResumes to fetch.
+     */
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TeacherSubjectClassResumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TeacherSubjectClassResumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TeacherSubjectClassResumes
+    **/
+    _count?: true | TeacherSubjectClassResumeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TeacherSubjectClassResumeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TeacherSubjectClassResumeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TeacherSubjectClassResumeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TeacherSubjectClassResumeMaxAggregateInputType
+  }
+
+  export type GetTeacherSubjectClassResumeAggregateType<T extends TeacherSubjectClassResumeAggregateArgs> = {
+        [P in keyof T & keyof AggregateTeacherSubjectClassResume]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTeacherSubjectClassResume[P]>
+      : GetScalarType<T[P], AggregateTeacherSubjectClassResume[P]>
+  }
+
+
+
+
+  export type TeacherSubjectClassResumeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeacherSubjectClassResumeWhereInput
+    orderBy?: TeacherSubjectClassResumeOrderByWithAggregationInput | TeacherSubjectClassResumeOrderByWithAggregationInput[]
+    by: TeacherSubjectClassResumeScalarFieldEnum[] | TeacherSubjectClassResumeScalarFieldEnum
+    having?: TeacherSubjectClassResumeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TeacherSubjectClassResumeCountAggregateInputType | true
+    _avg?: TeacherSubjectClassResumeAvgAggregateInputType
+    _sum?: TeacherSubjectClassResumeSumAggregateInputType
+    _min?: TeacherSubjectClassResumeMinAggregateInputType
+    _max?: TeacherSubjectClassResumeMaxAggregateInputType
+  }
+
+  export type TeacherSubjectClassResumeGroupByOutputType = {
+    id: number
+    teacher_id: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+    created_at: Date
+    modified_at: Date
+    _count: TeacherSubjectClassResumeCountAggregateOutputType | null
+    _avg: TeacherSubjectClassResumeAvgAggregateOutputType | null
+    _sum: TeacherSubjectClassResumeSumAggregateOutputType | null
+    _min: TeacherSubjectClassResumeMinAggregateOutputType | null
+    _max: TeacherSubjectClassResumeMaxAggregateOutputType | null
+  }
+
+  type GetTeacherSubjectClassResumeGroupByPayload<T extends TeacherSubjectClassResumeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TeacherSubjectClassResumeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TeacherSubjectClassResumeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TeacherSubjectClassResumeGroupByOutputType[P]>
+            : GetScalarType<T[P], TeacherSubjectClassResumeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TeacherSubjectClassResumeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    teacher_id?: boolean
+    subject_id?: boolean
+    class_id?: boolean
+    resume_id?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+    teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    resume?: boolean | ResumeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["teacherSubjectClassResume"]>
+
+  export type TeacherSubjectClassResumeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    teacher_id?: boolean
+    subject_id?: boolean
+    class_id?: boolean
+    resume_id?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+    teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    resume?: boolean | ResumeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["teacherSubjectClassResume"]>
+
+  export type TeacherSubjectClassResumeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    teacher_id?: boolean
+    subject_id?: boolean
+    class_id?: boolean
+    resume_id?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+    teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    resume?: boolean | ResumeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["teacherSubjectClassResume"]>
+
+  export type TeacherSubjectClassResumeSelectScalar = {
+    id?: boolean
+    teacher_id?: boolean
+    subject_id?: boolean
+    class_id?: boolean
+    resume_id?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }
+
+  export type TeacherSubjectClassResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "teacher_id" | "subject_id" | "class_id" | "resume_id" | "created_at" | "modified_at", ExtArgs["result"]["teacherSubjectClassResume"]>
+  export type TeacherSubjectClassResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    resume?: boolean | ResumeDefaultArgs<ExtArgs>
+  }
+  export type TeacherSubjectClassResumeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    resume?: boolean | ResumeDefaultArgs<ExtArgs>
+  }
+  export type TeacherSubjectClassResumeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teacher?: boolean | TeacherDefaultArgs<ExtArgs>
+    subject?: boolean | SubjectDefaultArgs<ExtArgs>
+    class?: boolean | ClassDefaultArgs<ExtArgs>
+    resume?: boolean | ResumeDefaultArgs<ExtArgs>
+  }
+
+  export type $TeacherSubjectClassResumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TeacherSubjectClassResume"
+    objects: {
+      teacher: Prisma.$TeacherPayload<ExtArgs>
+      subject: Prisma.$SubjectPayload<ExtArgs>
+      class: Prisma.$ClassPayload<ExtArgs>
+      resume: Prisma.$ResumePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      teacher_id: number
+      subject_id: number
+      class_id: number
+      resume_id: number
+      created_at: Date
+      modified_at: Date
+    }, ExtArgs["result"]["teacherSubjectClassResume"]>
+    composites: {}
+  }
+
+  type TeacherSubjectClassResumeGetPayload<S extends boolean | null | undefined | TeacherSubjectClassResumeDefaultArgs> = $Result.GetResult<Prisma.$TeacherSubjectClassResumePayload, S>
+
+  type TeacherSubjectClassResumeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TeacherSubjectClassResumeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TeacherSubjectClassResumeCountAggregateInputType | true
+    }
+
+  export interface TeacherSubjectClassResumeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TeacherSubjectClassResume'], meta: { name: 'TeacherSubjectClassResume' } }
+    /**
+     * Find zero or one TeacherSubjectClassResume that matches the filter.
+     * @param {TeacherSubjectClassResumeFindUniqueArgs} args - Arguments to find a TeacherSubjectClassResume
+     * @example
+     * // Get one TeacherSubjectClassResume
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TeacherSubjectClassResumeFindUniqueArgs>(args: SelectSubset<T, TeacherSubjectClassResumeFindUniqueArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TeacherSubjectClassResume that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TeacherSubjectClassResumeFindUniqueOrThrowArgs} args - Arguments to find a TeacherSubjectClassResume
+     * @example
+     * // Get one TeacherSubjectClassResume
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TeacherSubjectClassResumeFindUniqueOrThrowArgs>(args: SelectSubset<T, TeacherSubjectClassResumeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TeacherSubjectClassResume that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeFindFirstArgs} args - Arguments to find a TeacherSubjectClassResume
+     * @example
+     * // Get one TeacherSubjectClassResume
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TeacherSubjectClassResumeFindFirstArgs>(args?: SelectSubset<T, TeacherSubjectClassResumeFindFirstArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TeacherSubjectClassResume that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeFindFirstOrThrowArgs} args - Arguments to find a TeacherSubjectClassResume
+     * @example
+     * // Get one TeacherSubjectClassResume
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TeacherSubjectClassResumeFindFirstOrThrowArgs>(args?: SelectSubset<T, TeacherSubjectClassResumeFindFirstOrThrowArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TeacherSubjectClassResumes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TeacherSubjectClassResumes
+     * const teacherSubjectClassResumes = await prisma.teacherSubjectClassResume.findMany()
+     * 
+     * // Get first 10 TeacherSubjectClassResumes
+     * const teacherSubjectClassResumes = await prisma.teacherSubjectClassResume.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const teacherSubjectClassResumeWithIdOnly = await prisma.teacherSubjectClassResume.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TeacherSubjectClassResumeFindManyArgs>(args?: SelectSubset<T, TeacherSubjectClassResumeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TeacherSubjectClassResume.
+     * @param {TeacherSubjectClassResumeCreateArgs} args - Arguments to create a TeacherSubjectClassResume.
+     * @example
+     * // Create one TeacherSubjectClassResume
+     * const TeacherSubjectClassResume = await prisma.teacherSubjectClassResume.create({
+     *   data: {
+     *     // ... data to create a TeacherSubjectClassResume
+     *   }
+     * })
+     * 
+     */
+    create<T extends TeacherSubjectClassResumeCreateArgs>(args: SelectSubset<T, TeacherSubjectClassResumeCreateArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TeacherSubjectClassResumes.
+     * @param {TeacherSubjectClassResumeCreateManyArgs} args - Arguments to create many TeacherSubjectClassResumes.
+     * @example
+     * // Create many TeacherSubjectClassResumes
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TeacherSubjectClassResumeCreateManyArgs>(args?: SelectSubset<T, TeacherSubjectClassResumeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TeacherSubjectClassResumes and returns the data saved in the database.
+     * @param {TeacherSubjectClassResumeCreateManyAndReturnArgs} args - Arguments to create many TeacherSubjectClassResumes.
+     * @example
+     * // Create many TeacherSubjectClassResumes
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TeacherSubjectClassResumes and only return the `id`
+     * const teacherSubjectClassResumeWithIdOnly = await prisma.teacherSubjectClassResume.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TeacherSubjectClassResumeCreateManyAndReturnArgs>(args?: SelectSubset<T, TeacherSubjectClassResumeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TeacherSubjectClassResume.
+     * @param {TeacherSubjectClassResumeDeleteArgs} args - Arguments to delete one TeacherSubjectClassResume.
+     * @example
+     * // Delete one TeacherSubjectClassResume
+     * const TeacherSubjectClassResume = await prisma.teacherSubjectClassResume.delete({
+     *   where: {
+     *     // ... filter to delete one TeacherSubjectClassResume
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TeacherSubjectClassResumeDeleteArgs>(args: SelectSubset<T, TeacherSubjectClassResumeDeleteArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TeacherSubjectClassResume.
+     * @param {TeacherSubjectClassResumeUpdateArgs} args - Arguments to update one TeacherSubjectClassResume.
+     * @example
+     * // Update one TeacherSubjectClassResume
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TeacherSubjectClassResumeUpdateArgs>(args: SelectSubset<T, TeacherSubjectClassResumeUpdateArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TeacherSubjectClassResumes.
+     * @param {TeacherSubjectClassResumeDeleteManyArgs} args - Arguments to filter TeacherSubjectClassResumes to delete.
+     * @example
+     * // Delete a few TeacherSubjectClassResumes
+     * const { count } = await prisma.teacherSubjectClassResume.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TeacherSubjectClassResumeDeleteManyArgs>(args?: SelectSubset<T, TeacherSubjectClassResumeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TeacherSubjectClassResumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TeacherSubjectClassResumes
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TeacherSubjectClassResumeUpdateManyArgs>(args: SelectSubset<T, TeacherSubjectClassResumeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TeacherSubjectClassResumes and returns the data updated in the database.
+     * @param {TeacherSubjectClassResumeUpdateManyAndReturnArgs} args - Arguments to update many TeacherSubjectClassResumes.
+     * @example
+     * // Update many TeacherSubjectClassResumes
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TeacherSubjectClassResumes and only return the `id`
+     * const teacherSubjectClassResumeWithIdOnly = await prisma.teacherSubjectClassResume.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TeacherSubjectClassResumeUpdateManyAndReturnArgs>(args: SelectSubset<T, TeacherSubjectClassResumeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TeacherSubjectClassResume.
+     * @param {TeacherSubjectClassResumeUpsertArgs} args - Arguments to update or create a TeacherSubjectClassResume.
+     * @example
+     * // Update or create a TeacherSubjectClassResume
+     * const teacherSubjectClassResume = await prisma.teacherSubjectClassResume.upsert({
+     *   create: {
+     *     // ... data to create a TeacherSubjectClassResume
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TeacherSubjectClassResume we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TeacherSubjectClassResumeUpsertArgs>(args: SelectSubset<T, TeacherSubjectClassResumeUpsertArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TeacherSubjectClassResumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeCountArgs} args - Arguments to filter TeacherSubjectClassResumes to count.
+     * @example
+     * // Count the number of TeacherSubjectClassResumes
+     * const count = await prisma.teacherSubjectClassResume.count({
+     *   where: {
+     *     // ... the filter for the TeacherSubjectClassResumes we want to count
+     *   }
+     * })
+    **/
+    count<T extends TeacherSubjectClassResumeCountArgs>(
+      args?: Subset<T, TeacherSubjectClassResumeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TeacherSubjectClassResumeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TeacherSubjectClassResume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TeacherSubjectClassResumeAggregateArgs>(args: Subset<T, TeacherSubjectClassResumeAggregateArgs>): Prisma.PrismaPromise<GetTeacherSubjectClassResumeAggregateType<T>>
+
+    /**
+     * Group by TeacherSubjectClassResume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TeacherSubjectClassResumeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TeacherSubjectClassResumeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TeacherSubjectClassResumeGroupByArgs['orderBy'] }
+        : { orderBy?: TeacherSubjectClassResumeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TeacherSubjectClassResumeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTeacherSubjectClassResumeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TeacherSubjectClassResume model
+   */
+  readonly fields: TeacherSubjectClassResumeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TeacherSubjectClassResume.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TeacherSubjectClassResumeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    teacher<T extends TeacherDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeacherDefaultArgs<ExtArgs>>): Prisma__TeacherClient<$Result.GetResult<Prisma.$TeacherPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    subject<T extends SubjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubjectDefaultArgs<ExtArgs>>): Prisma__SubjectClient<$Result.GetResult<Prisma.$SubjectPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    class<T extends ClassDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassDefaultArgs<ExtArgs>>): Prisma__ClassClient<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    resume<T extends ResumeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ResumeDefaultArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TeacherSubjectClassResume model
+   */
+  interface TeacherSubjectClassResumeFieldRefs {
+    readonly id: FieldRef<"TeacherSubjectClassResume", 'Int'>
+    readonly teacher_id: FieldRef<"TeacherSubjectClassResume", 'Int'>
+    readonly subject_id: FieldRef<"TeacherSubjectClassResume", 'Int'>
+    readonly class_id: FieldRef<"TeacherSubjectClassResume", 'Int'>
+    readonly resume_id: FieldRef<"TeacherSubjectClassResume", 'Int'>
+    readonly created_at: FieldRef<"TeacherSubjectClassResume", 'DateTime'>
+    readonly modified_at: FieldRef<"TeacherSubjectClassResume", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TeacherSubjectClassResume findUnique
+   */
+  export type TeacherSubjectClassResumeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which TeacherSubjectClassResume to fetch.
+     */
+    where: TeacherSubjectClassResumeWhereUniqueInput
+  }
+
+  /**
+   * TeacherSubjectClassResume findUniqueOrThrow
+   */
+  export type TeacherSubjectClassResumeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which TeacherSubjectClassResume to fetch.
+     */
+    where: TeacherSubjectClassResumeWhereUniqueInput
+  }
+
+  /**
+   * TeacherSubjectClassResume findFirst
+   */
+  export type TeacherSubjectClassResumeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which TeacherSubjectClassResume to fetch.
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TeacherSubjectClassResumes to fetch.
+     */
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TeacherSubjectClassResumes.
+     */
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TeacherSubjectClassResumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TeacherSubjectClassResumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TeacherSubjectClassResumes.
+     */
+    distinct?: TeacherSubjectClassResumeScalarFieldEnum | TeacherSubjectClassResumeScalarFieldEnum[]
+  }
+
+  /**
+   * TeacherSubjectClassResume findFirstOrThrow
+   */
+  export type TeacherSubjectClassResumeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which TeacherSubjectClassResume to fetch.
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TeacherSubjectClassResumes to fetch.
+     */
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TeacherSubjectClassResumes.
+     */
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TeacherSubjectClassResumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TeacherSubjectClassResumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TeacherSubjectClassResumes.
+     */
+    distinct?: TeacherSubjectClassResumeScalarFieldEnum | TeacherSubjectClassResumeScalarFieldEnum[]
+  }
+
+  /**
+   * TeacherSubjectClassResume findMany
+   */
+  export type TeacherSubjectClassResumeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which TeacherSubjectClassResumes to fetch.
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TeacherSubjectClassResumes to fetch.
+     */
+    orderBy?: TeacherSubjectClassResumeOrderByWithRelationInput | TeacherSubjectClassResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TeacherSubjectClassResumes.
+     */
+    cursor?: TeacherSubjectClassResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TeacherSubjectClassResumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TeacherSubjectClassResumes.
+     */
+    skip?: number
+    distinct?: TeacherSubjectClassResumeScalarFieldEnum | TeacherSubjectClassResumeScalarFieldEnum[]
+  }
+
+  /**
+   * TeacherSubjectClassResume create
+   */
+  export type TeacherSubjectClassResumeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a TeacherSubjectClassResume.
+     */
+    data: XOR<TeacherSubjectClassResumeCreateInput, TeacherSubjectClassResumeUncheckedCreateInput>
+  }
+
+  /**
+   * TeacherSubjectClassResume createMany
+   */
+  export type TeacherSubjectClassResumeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TeacherSubjectClassResumes.
+     */
+    data: TeacherSubjectClassResumeCreateManyInput | TeacherSubjectClassResumeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TeacherSubjectClassResume createManyAndReturn
+   */
+  export type TeacherSubjectClassResumeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * The data used to create many TeacherSubjectClassResumes.
+     */
+    data: TeacherSubjectClassResumeCreateManyInput | TeacherSubjectClassResumeCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TeacherSubjectClassResume update
+   */
+  export type TeacherSubjectClassResumeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a TeacherSubjectClassResume.
+     */
+    data: XOR<TeacherSubjectClassResumeUpdateInput, TeacherSubjectClassResumeUncheckedUpdateInput>
+    /**
+     * Choose, which TeacherSubjectClassResume to update.
+     */
+    where: TeacherSubjectClassResumeWhereUniqueInput
+  }
+
+  /**
+   * TeacherSubjectClassResume updateMany
+   */
+  export type TeacherSubjectClassResumeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TeacherSubjectClassResumes.
+     */
+    data: XOR<TeacherSubjectClassResumeUpdateManyMutationInput, TeacherSubjectClassResumeUncheckedUpdateManyInput>
+    /**
+     * Filter which TeacherSubjectClassResumes to update
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * Limit how many TeacherSubjectClassResumes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TeacherSubjectClassResume updateManyAndReturn
+   */
+  export type TeacherSubjectClassResumeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * The data used to update TeacherSubjectClassResumes.
+     */
+    data: XOR<TeacherSubjectClassResumeUpdateManyMutationInput, TeacherSubjectClassResumeUncheckedUpdateManyInput>
+    /**
+     * Filter which TeacherSubjectClassResumes to update
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * Limit how many TeacherSubjectClassResumes to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * TeacherSubjectClassResume upsert
+   */
+  export type TeacherSubjectClassResumeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the TeacherSubjectClassResume to update in case it exists.
+     */
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    /**
+     * In case the TeacherSubjectClassResume found by the `where` argument doesn't exist, create a new TeacherSubjectClassResume with this data.
+     */
+    create: XOR<TeacherSubjectClassResumeCreateInput, TeacherSubjectClassResumeUncheckedCreateInput>
+    /**
+     * In case the TeacherSubjectClassResume was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TeacherSubjectClassResumeUpdateInput, TeacherSubjectClassResumeUncheckedUpdateInput>
+  }
+
+  /**
+   * TeacherSubjectClassResume delete
+   */
+  export type TeacherSubjectClassResumeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    /**
+     * Filter which TeacherSubjectClassResume to delete.
+     */
+    where: TeacherSubjectClassResumeWhereUniqueInput
+  }
+
+  /**
+   * TeacherSubjectClassResume deleteMany
+   */
+  export type TeacherSubjectClassResumeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TeacherSubjectClassResumes to delete
+     */
+    where?: TeacherSubjectClassResumeWhereInput
+    /**
+     * Limit how many TeacherSubjectClassResumes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TeacherSubjectClassResume without action
+   */
+  export type TeacherSubjectClassResumeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Resume
+   */
+
+  export type AggregateResume = {
+    _count: ResumeCountAggregateOutputType | null
+    _avg: ResumeAvgAggregateOutputType | null
+    _sum: ResumeSumAggregateOutputType | null
+    _min: ResumeMinAggregateOutputType | null
+    _max: ResumeMaxAggregateOutputType | null
+  }
+
+  export type ResumeAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ResumeSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ResumeMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    icon: string | null
+    description: string | null
+    resume: string | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type ResumeMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    icon: string | null
+    description: string | null
+    resume: string | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type ResumeCountAggregateOutputType = {
+    id: number
+    title: number
+    icon: number
+    description: number
+    resume: number
+    created_at: number
+    modified_at: number
+    _all: number
+  }
+
+
+  export type ResumeAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ResumeSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ResumeMinAggregateInputType = {
+    id?: true
+    title?: true
+    icon?: true
+    description?: true
+    resume?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type ResumeMaxAggregateInputType = {
+    id?: true
+    title?: true
+    icon?: true
+    description?: true
+    resume?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type ResumeCountAggregateInputType = {
+    id?: true
+    title?: true
+    icon?: true
+    description?: true
+    resume?: true
+    created_at?: true
+    modified_at?: true
+    _all?: true
+  }
+
+  export type ResumeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Resume to aggregate.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Resumes
+    **/
+    _count?: true | ResumeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ResumeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ResumeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ResumeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ResumeMaxAggregateInputType
+  }
+
+  export type GetResumeAggregateType<T extends ResumeAggregateArgs> = {
+        [P in keyof T & keyof AggregateResume]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateResume[P]>
+      : GetScalarType<T[P], AggregateResume[P]>
+  }
+
+
+
+
+  export type ResumeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ResumeWhereInput
+    orderBy?: ResumeOrderByWithAggregationInput | ResumeOrderByWithAggregationInput[]
+    by: ResumeScalarFieldEnum[] | ResumeScalarFieldEnum
+    having?: ResumeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ResumeCountAggregateInputType | true
+    _avg?: ResumeAvgAggregateInputType
+    _sum?: ResumeSumAggregateInputType
+    _min?: ResumeMinAggregateInputType
+    _max?: ResumeMaxAggregateInputType
+  }
+
+  export type ResumeGroupByOutputType = {
+    id: number
+    title: string
+    icon: string
+    description: string
+    resume: string
+    created_at: Date
+    modified_at: Date
+    _count: ResumeCountAggregateOutputType | null
+    _avg: ResumeAvgAggregateOutputType | null
+    _sum: ResumeSumAggregateOutputType | null
+    _min: ResumeMinAggregateOutputType | null
+    _max: ResumeMaxAggregateOutputType | null
+  }
+
+  type GetResumeGroupByPayload<T extends ResumeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ResumeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ResumeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ResumeGroupByOutputType[P]>
+            : GetScalarType<T[P], ResumeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ResumeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    icon?: boolean
+    description?: boolean
+    resume?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+    teacher_subject_class_resume?: boolean | Resume$teacher_subject_class_resumeArgs<ExtArgs>
+  }, ExtArgs["result"]["resume"]>
+
+  export type ResumeSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    icon?: boolean
+    description?: boolean
+    resume?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["resume"]>
+
+  export type ResumeSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    icon?: boolean
+    description?: boolean
+    resume?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["resume"]>
+
+  export type ResumeSelectScalar = {
+    id?: boolean
+    title?: boolean
+    icon?: boolean
+    description?: boolean
+    resume?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }
+
+  export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "icon" | "description" | "resume" | "created_at" | "modified_at", ExtArgs["result"]["resume"]>
+  export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teacher_subject_class_resume?: boolean | Resume$teacher_subject_class_resumeArgs<ExtArgs>
+  }
+  export type ResumeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ResumeIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ResumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Resume"
+    objects: {
+      teacher_subject_class_resume: Prisma.$TeacherSubjectClassResumePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      icon: string
+      description: string
+      resume: string
+      created_at: Date
+      modified_at: Date
+    }, ExtArgs["result"]["resume"]>
+    composites: {}
+  }
+
+  type ResumeGetPayload<S extends boolean | null | undefined | ResumeDefaultArgs> = $Result.GetResult<Prisma.$ResumePayload, S>
+
+  type ResumeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ResumeFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ResumeCountAggregateInputType | true
+    }
+
+  export interface ResumeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Resume'], meta: { name: 'Resume' } }
+    /**
+     * Find zero or one Resume that matches the filter.
+     * @param {ResumeFindUniqueArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ResumeFindUniqueArgs>(args: SelectSubset<T, ResumeFindUniqueArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Resume that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ResumeFindUniqueOrThrowArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ResumeFindUniqueOrThrowArgs>(args: SelectSubset<T, ResumeFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Resume that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeFindFirstArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ResumeFindFirstArgs>(args?: SelectSubset<T, ResumeFindFirstArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Resume that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeFindFirstOrThrowArgs} args - Arguments to find a Resume
+     * @example
+     * // Get one Resume
+     * const resume = await prisma.resume.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ResumeFindFirstOrThrowArgs>(args?: SelectSubset<T, ResumeFindFirstOrThrowArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Resumes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Resumes
+     * const resumes = await prisma.resume.findMany()
+     * 
+     * // Get first 10 Resumes
+     * const resumes = await prisma.resume.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const resumeWithIdOnly = await prisma.resume.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ResumeFindManyArgs>(args?: SelectSubset<T, ResumeFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Resume.
+     * @param {ResumeCreateArgs} args - Arguments to create a Resume.
+     * @example
+     * // Create one Resume
+     * const Resume = await prisma.resume.create({
+     *   data: {
+     *     // ... data to create a Resume
+     *   }
+     * })
+     * 
+     */
+    create<T extends ResumeCreateArgs>(args: SelectSubset<T, ResumeCreateArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Resumes.
+     * @param {ResumeCreateManyArgs} args - Arguments to create many Resumes.
+     * @example
+     * // Create many Resumes
+     * const resume = await prisma.resume.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ResumeCreateManyArgs>(args?: SelectSubset<T, ResumeCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Resumes and returns the data saved in the database.
+     * @param {ResumeCreateManyAndReturnArgs} args - Arguments to create many Resumes.
+     * @example
+     * // Create many Resumes
+     * const resume = await prisma.resume.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Resumes and only return the `id`
+     * const resumeWithIdOnly = await prisma.resume.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ResumeCreateManyAndReturnArgs>(args?: SelectSubset<T, ResumeCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Resume.
+     * @param {ResumeDeleteArgs} args - Arguments to delete one Resume.
+     * @example
+     * // Delete one Resume
+     * const Resume = await prisma.resume.delete({
+     *   where: {
+     *     // ... filter to delete one Resume
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ResumeDeleteArgs>(args: SelectSubset<T, ResumeDeleteArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Resume.
+     * @param {ResumeUpdateArgs} args - Arguments to update one Resume.
+     * @example
+     * // Update one Resume
+     * const resume = await prisma.resume.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ResumeUpdateArgs>(args: SelectSubset<T, ResumeUpdateArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Resumes.
+     * @param {ResumeDeleteManyArgs} args - Arguments to filter Resumes to delete.
+     * @example
+     * // Delete a few Resumes
+     * const { count } = await prisma.resume.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ResumeDeleteManyArgs>(args?: SelectSubset<T, ResumeDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Resumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Resumes
+     * const resume = await prisma.resume.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ResumeUpdateManyArgs>(args: SelectSubset<T, ResumeUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Resumes and returns the data updated in the database.
+     * @param {ResumeUpdateManyAndReturnArgs} args - Arguments to update many Resumes.
+     * @example
+     * // Update many Resumes
+     * const resume = await prisma.resume.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Resumes and only return the `id`
+     * const resumeWithIdOnly = await prisma.resume.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ResumeUpdateManyAndReturnArgs>(args: SelectSubset<T, ResumeUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Resume.
+     * @param {ResumeUpsertArgs} args - Arguments to update or create a Resume.
+     * @example
+     * // Update or create a Resume
+     * const resume = await prisma.resume.upsert({
+     *   create: {
+     *     // ... data to create a Resume
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Resume we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ResumeUpsertArgs>(args: SelectSubset<T, ResumeUpsertArgs<ExtArgs>>): Prisma__ResumeClient<$Result.GetResult<Prisma.$ResumePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Resumes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeCountArgs} args - Arguments to filter Resumes to count.
+     * @example
+     * // Count the number of Resumes
+     * const count = await prisma.resume.count({
+     *   where: {
+     *     // ... the filter for the Resumes we want to count
+     *   }
+     * })
+    **/
+    count<T extends ResumeCountArgs>(
+      args?: Subset<T, ResumeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ResumeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Resume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ResumeAggregateArgs>(args: Subset<T, ResumeAggregateArgs>): Prisma.PrismaPromise<GetResumeAggregateType<T>>
+
+    /**
+     * Group by Resume.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ResumeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ResumeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ResumeGroupByArgs['orderBy'] }
+        : { orderBy?: ResumeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ResumeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetResumeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Resume model
+   */
+  readonly fields: ResumeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Resume.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ResumeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    teacher_subject_class_resume<T extends Resume$teacher_subject_class_resumeArgs<ExtArgs> = {}>(args?: Subset<T, Resume$teacher_subject_class_resumeArgs<ExtArgs>>): Prisma__TeacherSubjectClassResumeClient<$Result.GetResult<Prisma.$TeacherSubjectClassResumePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Resume model
+   */
+  interface ResumeFieldRefs {
+    readonly id: FieldRef<"Resume", 'Int'>
+    readonly title: FieldRef<"Resume", 'String'>
+    readonly icon: FieldRef<"Resume", 'String'>
+    readonly description: FieldRef<"Resume", 'String'>
+    readonly resume: FieldRef<"Resume", 'String'>
+    readonly created_at: FieldRef<"Resume", 'DateTime'>
+    readonly modified_at: FieldRef<"Resume", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Resume findUnique
+   */
+  export type ResumeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume findUniqueOrThrow
+   */
+  export type ResumeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume findFirst
+   */
+  export type ResumeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Resumes.
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Resumes.
+     */
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * Resume findFirstOrThrow
+   */
+  export type ResumeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resume to fetch.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Resumes.
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Resumes.
+     */
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * Resume findMany
+   */
+  export type ResumeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter, which Resumes to fetch.
+     */
+    where?: ResumeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Resumes to fetch.
+     */
+    orderBy?: ResumeOrderByWithRelationInput | ResumeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Resumes.
+     */
+    cursor?: ResumeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Resumes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Resumes.
+     */
+    skip?: number
+    distinct?: ResumeScalarFieldEnum | ResumeScalarFieldEnum[]
+  }
+
+  /**
+   * Resume create
+   */
+  export type ResumeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Resume.
+     */
+    data: XOR<ResumeCreateInput, ResumeUncheckedCreateInput>
+  }
+
+  /**
+   * Resume createMany
+   */
+  export type ResumeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Resumes.
+     */
+    data: ResumeCreateManyInput | ResumeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Resume createManyAndReturn
+   */
+  export type ResumeCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * The data used to create many Resumes.
+     */
+    data: ResumeCreateManyInput | ResumeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Resume update
+   */
+  export type ResumeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Resume.
+     */
+    data: XOR<ResumeUpdateInput, ResumeUncheckedUpdateInput>
+    /**
+     * Choose, which Resume to update.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume updateMany
+   */
+  export type ResumeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Resumes.
+     */
+    data: XOR<ResumeUpdateManyMutationInput, ResumeUncheckedUpdateManyInput>
+    /**
+     * Filter which Resumes to update
+     */
+    where?: ResumeWhereInput
+    /**
+     * Limit how many Resumes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Resume updateManyAndReturn
+   */
+  export type ResumeUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * The data used to update Resumes.
+     */
+    data: XOR<ResumeUpdateManyMutationInput, ResumeUncheckedUpdateManyInput>
+    /**
+     * Filter which Resumes to update
+     */
+    where?: ResumeWhereInput
+    /**
+     * Limit how many Resumes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Resume upsert
+   */
+  export type ResumeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Resume to update in case it exists.
+     */
+    where: ResumeWhereUniqueInput
+    /**
+     * In case the Resume found by the `where` argument doesn't exist, create a new Resume with this data.
+     */
+    create: XOR<ResumeCreateInput, ResumeUncheckedCreateInput>
+    /**
+     * In case the Resume was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ResumeUpdateInput, ResumeUncheckedUpdateInput>
+  }
+
+  /**
+   * Resume delete
+   */
+  export type ResumeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+    /**
+     * Filter which Resume to delete.
+     */
+    where: ResumeWhereUniqueInput
+  }
+
+  /**
+   * Resume deleteMany
+   */
+  export type ResumeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Resumes to delete
+     */
+    where?: ResumeWhereInput
+    /**
+     * Limit how many Resumes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Resume.teacher_subject_class_resume
+   */
+  export type Resume$teacher_subject_class_resumeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TeacherSubjectClassResume
+     */
+    select?: TeacherSubjectClassResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TeacherSubjectClassResume
+     */
+    omit?: TeacherSubjectClassResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TeacherSubjectClassResumeInclude<ExtArgs> | null
+    where?: TeacherSubjectClassResumeWhereInput
+  }
+
+  /**
+   * Resume without action
+   */
+  export type ResumeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Resume
+     */
+    select?: ResumeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Resume
+     */
+    omit?: ResumeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ResumeInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Contests
+   */
+
+  export type AggregateContests = {
+    _count: ContestsCountAggregateOutputType | null
+    _avg: ContestsAvgAggregateOutputType | null
+    _sum: ContestsSumAggregateOutputType | null
+    _min: ContestsMinAggregateOutputType | null
+    _max: ContestsMaxAggregateOutputType | null
+  }
+
+  export type ContestsAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContestsSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ContestsMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    link: string | null
+    type: string | null
+    icon: string | null
+    color: string | null
+    description: string | null
+    date: Date | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type ContestsMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    link: string | null
+    type: string | null
+    icon: string | null
+    color: string | null
+    description: string | null
+    date: Date | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type ContestsCountAggregateOutputType = {
+    id: number
+    title: number
+    link: number
+    type: number
+    icon: number
+    color: number
+    description: number
+    date: number
+    created_at: number
+    modified_at: number
+    _all: number
+  }
+
+
+  export type ContestsAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ContestsSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ContestsMinAggregateInputType = {
+    id?: true
+    title?: true
+    link?: true
+    type?: true
+    icon?: true
+    color?: true
+    description?: true
+    date?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type ContestsMaxAggregateInputType = {
+    id?: true
+    title?: true
+    link?: true
+    type?: true
+    icon?: true
+    color?: true
+    description?: true
+    date?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type ContestsCountAggregateInputType = {
+    id?: true
+    title?: true
+    link?: true
+    type?: true
+    icon?: true
+    color?: true
+    description?: true
+    date?: true
+    created_at?: true
+    modified_at?: true
+    _all?: true
+  }
+
+  export type ContestsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Contests to aggregate.
+     */
+    where?: ContestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: ContestsOrderByWithRelationInput | ContestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ContestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Contests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Contests
+    **/
+    _count?: true | ContestsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ContestsAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ContestsSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ContestsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ContestsMaxAggregateInputType
+  }
+
+  export type GetContestsAggregateType<T extends ContestsAggregateArgs> = {
+        [P in keyof T & keyof AggregateContests]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateContests[P]>
+      : GetScalarType<T[P], AggregateContests[P]>
+  }
+
+
+
+
+  export type ContestsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ContestsWhereInput
+    orderBy?: ContestsOrderByWithAggregationInput | ContestsOrderByWithAggregationInput[]
+    by: ContestsScalarFieldEnum[] | ContestsScalarFieldEnum
+    having?: ContestsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ContestsCountAggregateInputType | true
+    _avg?: ContestsAvgAggregateInputType
+    _sum?: ContestsSumAggregateInputType
+    _min?: ContestsMinAggregateInputType
+    _max?: ContestsMaxAggregateInputType
+  }
+
+  export type ContestsGroupByOutputType = {
+    id: number
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date
+    created_at: Date
+    modified_at: Date
+    _count: ContestsCountAggregateOutputType | null
+    _avg: ContestsAvgAggregateOutputType | null
+    _sum: ContestsSumAggregateOutputType | null
+    _min: ContestsMinAggregateOutputType | null
+    _max: ContestsMaxAggregateOutputType | null
+  }
+
+  type GetContestsGroupByPayload<T extends ContestsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ContestsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ContestsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ContestsGroupByOutputType[P]>
+            : GetScalarType<T[P], ContestsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ContestsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["contests"]>
+
+  export type ContestsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["contests"]>
+
+  export type ContestsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["contests"]>
+
+  export type ContestsSelectScalar = {
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }
+
+  export type ContestsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "link" | "type" | "icon" | "color" | "description" | "date" | "created_at" | "modified_at", ExtArgs["result"]["contests"]>
+
+  export type $ContestsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Contests"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      link: string
+      type: string
+      icon: string
+      color: string
+      description: string
+      date: Date
+      created_at: Date
+      modified_at: Date
+    }, ExtArgs["result"]["contests"]>
+    composites: {}
+  }
+
+  type ContestsGetPayload<S extends boolean | null | undefined | ContestsDefaultArgs> = $Result.GetResult<Prisma.$ContestsPayload, S>
+
+  type ContestsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ContestsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ContestsCountAggregateInputType | true
+    }
+
+  export interface ContestsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Contests'], meta: { name: 'Contests' } }
+    /**
+     * Find zero or one Contests that matches the filter.
+     * @param {ContestsFindUniqueArgs} args - Arguments to find a Contests
+     * @example
+     * // Get one Contests
+     * const contests = await prisma.contests.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ContestsFindUniqueArgs>(args: SelectSubset<T, ContestsFindUniqueArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Contests that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ContestsFindUniqueOrThrowArgs} args - Arguments to find a Contests
+     * @example
+     * // Get one Contests
+     * const contests = await prisma.contests.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ContestsFindUniqueOrThrowArgs>(args: SelectSubset<T, ContestsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Contests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsFindFirstArgs} args - Arguments to find a Contests
+     * @example
+     * // Get one Contests
+     * const contests = await prisma.contests.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ContestsFindFirstArgs>(args?: SelectSubset<T, ContestsFindFirstArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Contests that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsFindFirstOrThrowArgs} args - Arguments to find a Contests
+     * @example
+     * // Get one Contests
+     * const contests = await prisma.contests.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ContestsFindFirstOrThrowArgs>(args?: SelectSubset<T, ContestsFindFirstOrThrowArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Contests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Contests
+     * const contests = await prisma.contests.findMany()
+     * 
+     * // Get first 10 Contests
+     * const contests = await prisma.contests.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const contestsWithIdOnly = await prisma.contests.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ContestsFindManyArgs>(args?: SelectSubset<T, ContestsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Contests.
+     * @param {ContestsCreateArgs} args - Arguments to create a Contests.
+     * @example
+     * // Create one Contests
+     * const Contests = await prisma.contests.create({
+     *   data: {
+     *     // ... data to create a Contests
+     *   }
+     * })
+     * 
+     */
+    create<T extends ContestsCreateArgs>(args: SelectSubset<T, ContestsCreateArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Contests.
+     * @param {ContestsCreateManyArgs} args - Arguments to create many Contests.
+     * @example
+     * // Create many Contests
+     * const contests = await prisma.contests.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ContestsCreateManyArgs>(args?: SelectSubset<T, ContestsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Contests and returns the data saved in the database.
+     * @param {ContestsCreateManyAndReturnArgs} args - Arguments to create many Contests.
+     * @example
+     * // Create many Contests
+     * const contests = await prisma.contests.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Contests and only return the `id`
+     * const contestsWithIdOnly = await prisma.contests.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ContestsCreateManyAndReturnArgs>(args?: SelectSubset<T, ContestsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Contests.
+     * @param {ContestsDeleteArgs} args - Arguments to delete one Contests.
+     * @example
+     * // Delete one Contests
+     * const Contests = await prisma.contests.delete({
+     *   where: {
+     *     // ... filter to delete one Contests
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ContestsDeleteArgs>(args: SelectSubset<T, ContestsDeleteArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Contests.
+     * @param {ContestsUpdateArgs} args - Arguments to update one Contests.
+     * @example
+     * // Update one Contests
+     * const contests = await prisma.contests.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ContestsUpdateArgs>(args: SelectSubset<T, ContestsUpdateArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Contests.
+     * @param {ContestsDeleteManyArgs} args - Arguments to filter Contests to delete.
+     * @example
+     * // Delete a few Contests
+     * const { count } = await prisma.contests.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ContestsDeleteManyArgs>(args?: SelectSubset<T, ContestsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Contests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Contests
+     * const contests = await prisma.contests.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ContestsUpdateManyArgs>(args: SelectSubset<T, ContestsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Contests and returns the data updated in the database.
+     * @param {ContestsUpdateManyAndReturnArgs} args - Arguments to update many Contests.
+     * @example
+     * // Update many Contests
+     * const contests = await prisma.contests.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Contests and only return the `id`
+     * const contestsWithIdOnly = await prisma.contests.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ContestsUpdateManyAndReturnArgs>(args: SelectSubset<T, ContestsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Contests.
+     * @param {ContestsUpsertArgs} args - Arguments to update or create a Contests.
+     * @example
+     * // Update or create a Contests
+     * const contests = await prisma.contests.upsert({
+     *   create: {
+     *     // ... data to create a Contests
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Contests we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ContestsUpsertArgs>(args: SelectSubset<T, ContestsUpsertArgs<ExtArgs>>): Prisma__ContestsClient<$Result.GetResult<Prisma.$ContestsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Contests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsCountArgs} args - Arguments to filter Contests to count.
+     * @example
+     * // Count the number of Contests
+     * const count = await prisma.contests.count({
+     *   where: {
+     *     // ... the filter for the Contests we want to count
+     *   }
+     * })
+    **/
+    count<T extends ContestsCountArgs>(
+      args?: Subset<T, ContestsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ContestsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Contests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ContestsAggregateArgs>(args: Subset<T, ContestsAggregateArgs>): Prisma.PrismaPromise<GetContestsAggregateType<T>>
+
+    /**
+     * Group by Contests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ContestsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ContestsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ContestsGroupByArgs['orderBy'] }
+        : { orderBy?: ContestsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ContestsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetContestsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Contests model
+   */
+  readonly fields: ContestsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Contests.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ContestsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Contests model
+   */
+  interface ContestsFieldRefs {
+    readonly id: FieldRef<"Contests", 'Int'>
+    readonly title: FieldRef<"Contests", 'String'>
+    readonly link: FieldRef<"Contests", 'String'>
+    readonly type: FieldRef<"Contests", 'String'>
+    readonly icon: FieldRef<"Contests", 'String'>
+    readonly color: FieldRef<"Contests", 'String'>
+    readonly description: FieldRef<"Contests", 'String'>
+    readonly date: FieldRef<"Contests", 'DateTime'>
+    readonly created_at: FieldRef<"Contests", 'DateTime'>
+    readonly modified_at: FieldRef<"Contests", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Contests findUnique
+   */
+  export type ContestsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * Filter, which Contests to fetch.
+     */
+    where: ContestsWhereUniqueInput
+  }
+
+  /**
+   * Contests findUniqueOrThrow
+   */
+  export type ContestsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * Filter, which Contests to fetch.
+     */
+    where: ContestsWhereUniqueInput
+  }
+
+  /**
+   * Contests findFirst
+   */
+  export type ContestsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * Filter, which Contests to fetch.
+     */
+    where?: ContestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: ContestsOrderByWithRelationInput | ContestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Contests.
+     */
+    cursor?: ContestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Contests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Contests.
+     */
+    distinct?: ContestsScalarFieldEnum | ContestsScalarFieldEnum[]
+  }
+
+  /**
+   * Contests findFirstOrThrow
+   */
+  export type ContestsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * Filter, which Contests to fetch.
+     */
+    where?: ContestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: ContestsOrderByWithRelationInput | ContestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Contests.
+     */
+    cursor?: ContestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Contests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Contests.
+     */
+    distinct?: ContestsScalarFieldEnum | ContestsScalarFieldEnum[]
+  }
+
+  /**
+   * Contests findMany
+   */
+  export type ContestsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * Filter, which Contests to fetch.
+     */
+    where?: ContestsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Contests to fetch.
+     */
+    orderBy?: ContestsOrderByWithRelationInput | ContestsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Contests.
+     */
+    cursor?: ContestsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Contests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Contests.
+     */
+    skip?: number
+    distinct?: ContestsScalarFieldEnum | ContestsScalarFieldEnum[]
+  }
+
+  /**
+   * Contests create
+   */
+  export type ContestsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Contests.
+     */
+    data: XOR<ContestsCreateInput, ContestsUncheckedCreateInput>
+  }
+
+  /**
+   * Contests createMany
+   */
+  export type ContestsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Contests.
+     */
+    data: ContestsCreateManyInput | ContestsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Contests createManyAndReturn
+   */
+  export type ContestsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * The data used to create many Contests.
+     */
+    data: ContestsCreateManyInput | ContestsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Contests update
+   */
+  export type ContestsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Contests.
+     */
+    data: XOR<ContestsUpdateInput, ContestsUncheckedUpdateInput>
+    /**
+     * Choose, which Contests to update.
+     */
+    where: ContestsWhereUniqueInput
+  }
+
+  /**
+   * Contests updateMany
+   */
+  export type ContestsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Contests.
+     */
+    data: XOR<ContestsUpdateManyMutationInput, ContestsUncheckedUpdateManyInput>
+    /**
+     * Filter which Contests to update
+     */
+    where?: ContestsWhereInput
+    /**
+     * Limit how many Contests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Contests updateManyAndReturn
+   */
+  export type ContestsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * The data used to update Contests.
+     */
+    data: XOR<ContestsUpdateManyMutationInput, ContestsUncheckedUpdateManyInput>
+    /**
+     * Filter which Contests to update
+     */
+    where?: ContestsWhereInput
+    /**
+     * Limit how many Contests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Contests upsert
+   */
+  export type ContestsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Contests to update in case it exists.
+     */
+    where: ContestsWhereUniqueInput
+    /**
+     * In case the Contests found by the `where` argument doesn't exist, create a new Contests with this data.
+     */
+    create: XOR<ContestsCreateInput, ContestsUncheckedCreateInput>
+    /**
+     * In case the Contests was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ContestsUpdateInput, ContestsUncheckedUpdateInput>
+  }
+
+  /**
+   * Contests delete
+   */
+  export type ContestsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+    /**
+     * Filter which Contests to delete.
+     */
+    where: ContestsWhereUniqueInput
+  }
+
+  /**
+   * Contests deleteMany
+   */
+  export type ContestsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Contests to delete
+     */
+    where?: ContestsWhereInput
+    /**
+     * Limit how many Contests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Contests without action
+   */
+  export type ContestsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Contests
+     */
+    select?: ContestsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Contests
+     */
+    omit?: ContestsOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Entrance_exam
+   */
+
+  export type AggregateEntrance_exam = {
+    _count: Entrance_examCountAggregateOutputType | null
+    _avg: Entrance_examAvgAggregateOutputType | null
+    _sum: Entrance_examSumAggregateOutputType | null
+    _min: Entrance_examMinAggregateOutputType | null
+    _max: Entrance_examMaxAggregateOutputType | null
+  }
+
+  export type Entrance_examAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Entrance_examSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Entrance_examMinAggregateOutputType = {
+    id: number | null
+    title: string | null
+    link: string | null
+    type: string | null
+    icon: string | null
+    color: string | null
+    description: string | null
+    date: Date | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type Entrance_examMaxAggregateOutputType = {
+    id: number | null
+    title: string | null
+    link: string | null
+    type: string | null
+    icon: string | null
+    color: string | null
+    description: string | null
+    date: Date | null
+    created_at: Date | null
+    modified_at: Date | null
+  }
+
+  export type Entrance_examCountAggregateOutputType = {
+    id: number
+    title: number
+    link: number
+    type: number
+    icon: number
+    color: number
+    description: number
+    date: number
+    created_at: number
+    modified_at: number
+    _all: number
+  }
+
+
+  export type Entrance_examAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Entrance_examSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Entrance_examMinAggregateInputType = {
+    id?: true
+    title?: true
+    link?: true
+    type?: true
+    icon?: true
+    color?: true
+    description?: true
+    date?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type Entrance_examMaxAggregateInputType = {
+    id?: true
+    title?: true
+    link?: true
+    type?: true
+    icon?: true
+    color?: true
+    description?: true
+    date?: true
+    created_at?: true
+    modified_at?: true
+  }
+
+  export type Entrance_examCountAggregateInputType = {
+    id?: true
+    title?: true
+    link?: true
+    type?: true
+    icon?: true
+    color?: true
+    description?: true
+    date?: true
+    created_at?: true
+    modified_at?: true
+    _all?: true
+  }
+
+  export type Entrance_examAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Entrance_exam to aggregate.
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Entrance_exams to fetch.
+     */
+    orderBy?: Entrance_examOrderByWithRelationInput | Entrance_examOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Entrance_examWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Entrance_exams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Entrance_exams.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Entrance_exams
+    **/
+    _count?: true | Entrance_examCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Entrance_examAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Entrance_examSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Entrance_examMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Entrance_examMaxAggregateInputType
+  }
+
+  export type GetEntrance_examAggregateType<T extends Entrance_examAggregateArgs> = {
+        [P in keyof T & keyof AggregateEntrance_exam]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEntrance_exam[P]>
+      : GetScalarType<T[P], AggregateEntrance_exam[P]>
+  }
+
+
+
+
+  export type Entrance_examGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Entrance_examWhereInput
+    orderBy?: Entrance_examOrderByWithAggregationInput | Entrance_examOrderByWithAggregationInput[]
+    by: Entrance_examScalarFieldEnum[] | Entrance_examScalarFieldEnum
+    having?: Entrance_examScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Entrance_examCountAggregateInputType | true
+    _avg?: Entrance_examAvgAggregateInputType
+    _sum?: Entrance_examSumAggregateInputType
+    _min?: Entrance_examMinAggregateInputType
+    _max?: Entrance_examMaxAggregateInputType
+  }
+
+  export type Entrance_examGroupByOutputType = {
+    id: number
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date
+    created_at: Date
+    modified_at: Date
+    _count: Entrance_examCountAggregateOutputType | null
+    _avg: Entrance_examAvgAggregateOutputType | null
+    _sum: Entrance_examSumAggregateOutputType | null
+    _min: Entrance_examMinAggregateOutputType | null
+    _max: Entrance_examMaxAggregateOutputType | null
+  }
+
+  type GetEntrance_examGroupByPayload<T extends Entrance_examGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Entrance_examGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Entrance_examGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Entrance_examGroupByOutputType[P]>
+            : GetScalarType<T[P], Entrance_examGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Entrance_examSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["entrance_exam"]>
+
+  export type Entrance_examSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["entrance_exam"]>
+
+  export type Entrance_examSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }, ExtArgs["result"]["entrance_exam"]>
+
+  export type Entrance_examSelectScalar = {
+    id?: boolean
+    title?: boolean
+    link?: boolean
+    type?: boolean
+    icon?: boolean
+    color?: boolean
+    description?: boolean
+    date?: boolean
+    created_at?: boolean
+    modified_at?: boolean
+  }
+
+  export type Entrance_examOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "link" | "type" | "icon" | "color" | "description" | "date" | "created_at" | "modified_at", ExtArgs["result"]["entrance_exam"]>
+
+  export type $Entrance_examPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Entrance_exam"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      title: string
+      link: string
+      type: string
+      icon: string
+      color: string
+      description: string
+      date: Date
+      created_at: Date
+      modified_at: Date
+    }, ExtArgs["result"]["entrance_exam"]>
+    composites: {}
+  }
+
+  type Entrance_examGetPayload<S extends boolean | null | undefined | Entrance_examDefaultArgs> = $Result.GetResult<Prisma.$Entrance_examPayload, S>
+
+  type Entrance_examCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Entrance_examFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Entrance_examCountAggregateInputType | true
+    }
+
+  export interface Entrance_examDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Entrance_exam'], meta: { name: 'Entrance_exam' } }
+    /**
+     * Find zero or one Entrance_exam that matches the filter.
+     * @param {Entrance_examFindUniqueArgs} args - Arguments to find a Entrance_exam
+     * @example
+     * // Get one Entrance_exam
+     * const entrance_exam = await prisma.entrance_exam.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Entrance_examFindUniqueArgs>(args: SelectSubset<T, Entrance_examFindUniqueArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Entrance_exam that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Entrance_examFindUniqueOrThrowArgs} args - Arguments to find a Entrance_exam
+     * @example
+     * // Get one Entrance_exam
+     * const entrance_exam = await prisma.entrance_exam.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Entrance_examFindUniqueOrThrowArgs>(args: SelectSubset<T, Entrance_examFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Entrance_exam that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examFindFirstArgs} args - Arguments to find a Entrance_exam
+     * @example
+     * // Get one Entrance_exam
+     * const entrance_exam = await prisma.entrance_exam.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Entrance_examFindFirstArgs>(args?: SelectSubset<T, Entrance_examFindFirstArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Entrance_exam that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examFindFirstOrThrowArgs} args - Arguments to find a Entrance_exam
+     * @example
+     * // Get one Entrance_exam
+     * const entrance_exam = await prisma.entrance_exam.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Entrance_examFindFirstOrThrowArgs>(args?: SelectSubset<T, Entrance_examFindFirstOrThrowArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Entrance_exams that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Entrance_exams
+     * const entrance_exams = await prisma.entrance_exam.findMany()
+     * 
+     * // Get first 10 Entrance_exams
+     * const entrance_exams = await prisma.entrance_exam.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const entrance_examWithIdOnly = await prisma.entrance_exam.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Entrance_examFindManyArgs>(args?: SelectSubset<T, Entrance_examFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Entrance_exam.
+     * @param {Entrance_examCreateArgs} args - Arguments to create a Entrance_exam.
+     * @example
+     * // Create one Entrance_exam
+     * const Entrance_exam = await prisma.entrance_exam.create({
+     *   data: {
+     *     // ... data to create a Entrance_exam
+     *   }
+     * })
+     * 
+     */
+    create<T extends Entrance_examCreateArgs>(args: SelectSubset<T, Entrance_examCreateArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Entrance_exams.
+     * @param {Entrance_examCreateManyArgs} args - Arguments to create many Entrance_exams.
+     * @example
+     * // Create many Entrance_exams
+     * const entrance_exam = await prisma.entrance_exam.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Entrance_examCreateManyArgs>(args?: SelectSubset<T, Entrance_examCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Entrance_exams and returns the data saved in the database.
+     * @param {Entrance_examCreateManyAndReturnArgs} args - Arguments to create many Entrance_exams.
+     * @example
+     * // Create many Entrance_exams
+     * const entrance_exam = await prisma.entrance_exam.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Entrance_exams and only return the `id`
+     * const entrance_examWithIdOnly = await prisma.entrance_exam.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends Entrance_examCreateManyAndReturnArgs>(args?: SelectSubset<T, Entrance_examCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Entrance_exam.
+     * @param {Entrance_examDeleteArgs} args - Arguments to delete one Entrance_exam.
+     * @example
+     * // Delete one Entrance_exam
+     * const Entrance_exam = await prisma.entrance_exam.delete({
+     *   where: {
+     *     // ... filter to delete one Entrance_exam
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Entrance_examDeleteArgs>(args: SelectSubset<T, Entrance_examDeleteArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Entrance_exam.
+     * @param {Entrance_examUpdateArgs} args - Arguments to update one Entrance_exam.
+     * @example
+     * // Update one Entrance_exam
+     * const entrance_exam = await prisma.entrance_exam.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Entrance_examUpdateArgs>(args: SelectSubset<T, Entrance_examUpdateArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Entrance_exams.
+     * @param {Entrance_examDeleteManyArgs} args - Arguments to filter Entrance_exams to delete.
+     * @example
+     * // Delete a few Entrance_exams
+     * const { count } = await prisma.entrance_exam.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Entrance_examDeleteManyArgs>(args?: SelectSubset<T, Entrance_examDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Entrance_exams.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Entrance_exams
+     * const entrance_exam = await prisma.entrance_exam.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Entrance_examUpdateManyArgs>(args: SelectSubset<T, Entrance_examUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Entrance_exams and returns the data updated in the database.
+     * @param {Entrance_examUpdateManyAndReturnArgs} args - Arguments to update many Entrance_exams.
+     * @example
+     * // Update many Entrance_exams
+     * const entrance_exam = await prisma.entrance_exam.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Entrance_exams and only return the `id`
+     * const entrance_examWithIdOnly = await prisma.entrance_exam.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends Entrance_examUpdateManyAndReturnArgs>(args: SelectSubset<T, Entrance_examUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Entrance_exam.
+     * @param {Entrance_examUpsertArgs} args - Arguments to update or create a Entrance_exam.
+     * @example
+     * // Update or create a Entrance_exam
+     * const entrance_exam = await prisma.entrance_exam.upsert({
+     *   create: {
+     *     // ... data to create a Entrance_exam
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Entrance_exam we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Entrance_examUpsertArgs>(args: SelectSubset<T, Entrance_examUpsertArgs<ExtArgs>>): Prisma__Entrance_examClient<$Result.GetResult<Prisma.$Entrance_examPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Entrance_exams.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examCountArgs} args - Arguments to filter Entrance_exams to count.
+     * @example
+     * // Count the number of Entrance_exams
+     * const count = await prisma.entrance_exam.count({
+     *   where: {
+     *     // ... the filter for the Entrance_exams we want to count
+     *   }
+     * })
+    **/
+    count<T extends Entrance_examCountArgs>(
+      args?: Subset<T, Entrance_examCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Entrance_examCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Entrance_exam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Entrance_examAggregateArgs>(args: Subset<T, Entrance_examAggregateArgs>): Prisma.PrismaPromise<GetEntrance_examAggregateType<T>>
+
+    /**
+     * Group by Entrance_exam.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Entrance_examGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Entrance_examGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Entrance_examGroupByArgs['orderBy'] }
+        : { orderBy?: Entrance_examGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Entrance_examGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEntrance_examGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Entrance_exam model
+   */
+  readonly fields: Entrance_examFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Entrance_exam.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Entrance_examClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Entrance_exam model
+   */
+  interface Entrance_examFieldRefs {
+    readonly id: FieldRef<"Entrance_exam", 'Int'>
+    readonly title: FieldRef<"Entrance_exam", 'String'>
+    readonly link: FieldRef<"Entrance_exam", 'String'>
+    readonly type: FieldRef<"Entrance_exam", 'String'>
+    readonly icon: FieldRef<"Entrance_exam", 'String'>
+    readonly color: FieldRef<"Entrance_exam", 'String'>
+    readonly description: FieldRef<"Entrance_exam", 'String'>
+    readonly date: FieldRef<"Entrance_exam", 'DateTime'>
+    readonly created_at: FieldRef<"Entrance_exam", 'DateTime'>
+    readonly modified_at: FieldRef<"Entrance_exam", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Entrance_exam findUnique
+   */
+  export type Entrance_examFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * Filter, which Entrance_exam to fetch.
+     */
+    where: Entrance_examWhereUniqueInput
+  }
+
+  /**
+   * Entrance_exam findUniqueOrThrow
+   */
+  export type Entrance_examFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * Filter, which Entrance_exam to fetch.
+     */
+    where: Entrance_examWhereUniqueInput
+  }
+
+  /**
+   * Entrance_exam findFirst
+   */
+  export type Entrance_examFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * Filter, which Entrance_exam to fetch.
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Entrance_exams to fetch.
+     */
+    orderBy?: Entrance_examOrderByWithRelationInput | Entrance_examOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Entrance_exams.
+     */
+    cursor?: Entrance_examWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Entrance_exams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Entrance_exams.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Entrance_exams.
+     */
+    distinct?: Entrance_examScalarFieldEnum | Entrance_examScalarFieldEnum[]
+  }
+
+  /**
+   * Entrance_exam findFirstOrThrow
+   */
+  export type Entrance_examFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * Filter, which Entrance_exam to fetch.
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Entrance_exams to fetch.
+     */
+    orderBy?: Entrance_examOrderByWithRelationInput | Entrance_examOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Entrance_exams.
+     */
+    cursor?: Entrance_examWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Entrance_exams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Entrance_exams.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Entrance_exams.
+     */
+    distinct?: Entrance_examScalarFieldEnum | Entrance_examScalarFieldEnum[]
+  }
+
+  /**
+   * Entrance_exam findMany
+   */
+  export type Entrance_examFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * Filter, which Entrance_exams to fetch.
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Entrance_exams to fetch.
+     */
+    orderBy?: Entrance_examOrderByWithRelationInput | Entrance_examOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Entrance_exams.
+     */
+    cursor?: Entrance_examWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Entrance_exams from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Entrance_exams.
+     */
+    skip?: number
+    distinct?: Entrance_examScalarFieldEnum | Entrance_examScalarFieldEnum[]
+  }
+
+  /**
+   * Entrance_exam create
+   */
+  export type Entrance_examCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Entrance_exam.
+     */
+    data: XOR<Entrance_examCreateInput, Entrance_examUncheckedCreateInput>
+  }
+
+  /**
+   * Entrance_exam createMany
+   */
+  export type Entrance_examCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Entrance_exams.
+     */
+    data: Entrance_examCreateManyInput | Entrance_examCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Entrance_exam createManyAndReturn
+   */
+  export type Entrance_examCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * The data used to create many Entrance_exams.
+     */
+    data: Entrance_examCreateManyInput | Entrance_examCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Entrance_exam update
+   */
+  export type Entrance_examUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Entrance_exam.
+     */
+    data: XOR<Entrance_examUpdateInput, Entrance_examUncheckedUpdateInput>
+    /**
+     * Choose, which Entrance_exam to update.
+     */
+    where: Entrance_examWhereUniqueInput
+  }
+
+  /**
+   * Entrance_exam updateMany
+   */
+  export type Entrance_examUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Entrance_exams.
+     */
+    data: XOR<Entrance_examUpdateManyMutationInput, Entrance_examUncheckedUpdateManyInput>
+    /**
+     * Filter which Entrance_exams to update
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * Limit how many Entrance_exams to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Entrance_exam updateManyAndReturn
+   */
+  export type Entrance_examUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * The data used to update Entrance_exams.
+     */
+    data: XOR<Entrance_examUpdateManyMutationInput, Entrance_examUncheckedUpdateManyInput>
+    /**
+     * Filter which Entrance_exams to update
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * Limit how many Entrance_exams to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Entrance_exam upsert
+   */
+  export type Entrance_examUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Entrance_exam to update in case it exists.
+     */
+    where: Entrance_examWhereUniqueInput
+    /**
+     * In case the Entrance_exam found by the `where` argument doesn't exist, create a new Entrance_exam with this data.
+     */
+    create: XOR<Entrance_examCreateInput, Entrance_examUncheckedCreateInput>
+    /**
+     * In case the Entrance_exam was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Entrance_examUpdateInput, Entrance_examUncheckedUpdateInput>
+  }
+
+  /**
+   * Entrance_exam delete
+   */
+  export type Entrance_examDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+    /**
+     * Filter which Entrance_exam to delete.
+     */
+    where: Entrance_examWhereUniqueInput
+  }
+
+  /**
+   * Entrance_exam deleteMany
+   */
+  export type Entrance_examDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Entrance_exams to delete
+     */
+    where?: Entrance_examWhereInput
+    /**
+     * Limit how many Entrance_exams to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Entrance_exam without action
+   */
+  export type Entrance_examDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Entrance_exam
+     */
+    select?: Entrance_examSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Entrance_exam
+     */
+    omit?: Entrance_examOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -17389,8 +23531,8 @@ export namespace Prisma {
   export const QuizScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    icon: 'icon',
     description: 'description',
+    icon: 'icon',
     duration_minutes: 'duration_minutes',
     max_points: 'max_points',
     max_attempt: 'max_attempt',
@@ -17465,6 +23607,81 @@ export namespace Prisma {
   };
 
   export type Question_responseScalarFieldEnum = (typeof Question_responseScalarFieldEnum)[keyof typeof Question_responseScalarFieldEnum]
+
+
+  export const Video_assignmentScalarFieldEnum: {
+    id: 'id',
+    videoUrl: 'videoUrl',
+    title_video: 'title_video',
+    name_channel: 'name_channel',
+    duration_video: 'duration_video',
+    font: 'font',
+    description: 'description',
+    thumbnail: 'thumbnail',
+    videoId: 'videoId',
+    created_at: 'created_at',
+    modified_at: 'modified_at'
+  };
+
+  export type Video_assignmentScalarFieldEnum = (typeof Video_assignmentScalarFieldEnum)[keyof typeof Video_assignmentScalarFieldEnum]
+
+
+  export const TeacherSubjectClassResumeScalarFieldEnum: {
+    id: 'id',
+    teacher_id: 'teacher_id',
+    subject_id: 'subject_id',
+    class_id: 'class_id',
+    resume_id: 'resume_id',
+    created_at: 'created_at',
+    modified_at: 'modified_at'
+  };
+
+  export type TeacherSubjectClassResumeScalarFieldEnum = (typeof TeacherSubjectClassResumeScalarFieldEnum)[keyof typeof TeacherSubjectClassResumeScalarFieldEnum]
+
+
+  export const ResumeScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    icon: 'icon',
+    description: 'description',
+    resume: 'resume',
+    created_at: 'created_at',
+    modified_at: 'modified_at'
+  };
+
+  export type ResumeScalarFieldEnum = (typeof ResumeScalarFieldEnum)[keyof typeof ResumeScalarFieldEnum]
+
+
+  export const ContestsScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    link: 'link',
+    type: 'type',
+    icon: 'icon',
+    color: 'color',
+    description: 'description',
+    date: 'date',
+    created_at: 'created_at',
+    modified_at: 'modified_at'
+  };
+
+  export type ContestsScalarFieldEnum = (typeof ContestsScalarFieldEnum)[keyof typeof ContestsScalarFieldEnum]
+
+
+  export const Entrance_examScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    link: 'link',
+    type: 'type',
+    icon: 'icon',
+    color: 'color',
+    description: 'description',
+    date: 'date',
+    created_at: 'created_at',
+    modified_at: 'modified_at'
+  };
+
+  export type Entrance_examScalarFieldEnum = (typeof Entrance_examScalarFieldEnum)[keyof typeof Entrance_examScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -17722,6 +23939,7 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"Teacher"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     teacher_subjects?: Relationship_teacher_subjectListRelationFilter
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeListRelationFilter
   }
 
   export type TeacherOrderByWithRelationInput = {
@@ -17731,6 +23949,7 @@ export namespace Prisma {
     modified_at?: SortOrder
     user?: UserOrderByWithRelationInput
     teacher_subjects?: Relationship_teacher_subjectOrderByRelationAggregateInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeOrderByRelationAggregateInput
   }
 
   export type TeacherWhereUniqueInput = Prisma.AtLeast<{
@@ -17743,6 +23962,7 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"Teacher"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     teacher_subjects?: Relationship_teacher_subjectListRelationFilter
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeListRelationFilter
   }, "id" | "id" | "user_id">
 
   export type TeacherOrderByWithAggregationInput = {
@@ -17776,6 +23996,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Subject"> | Date | string
     modified_at?: DateTimeFilter<"Subject"> | Date | string
     teacher_subjects?: Relationship_teacher_subjectListRelationFilter
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeListRelationFilter
   }
 
   export type SubjectOrderByWithRelationInput = {
@@ -17784,6 +24005,7 @@ export namespace Prisma {
     created_at?: SortOrder
     modified_at?: SortOrder
     teacher_subjects?: Relationship_teacher_subjectOrderByRelationAggregateInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeOrderByRelationAggregateInput
   }
 
   export type SubjectWhereUniqueInput = Prisma.AtLeast<{
@@ -17795,6 +24017,7 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"Subject"> | Date | string
     modified_at?: DateTimeFilter<"Subject"> | Date | string
     teacher_subjects?: Relationship_teacher_subjectListRelationFilter
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeListRelationFilter
   }, "id" | "id" | "name">
 
   export type SubjectOrderByWithAggregationInput = {
@@ -17885,6 +24108,7 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"Class"> | Date | string
     students?: StudentListRelationFilter
     teacher_subject_classes?: Relationship_teacher_subject_classListRelationFilter
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeListRelationFilter
   }
 
   export type ClassOrderByWithRelationInput = {
@@ -17896,6 +24120,7 @@ export namespace Prisma {
     modified_at?: SortOrder
     students?: StudentOrderByRelationAggregateInput
     teacher_subject_classes?: Relationship_teacher_subject_classOrderByRelationAggregateInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeOrderByRelationAggregateInput
   }
 
   export type ClassWhereUniqueInput = Prisma.AtLeast<{
@@ -17911,6 +24136,7 @@ export namespace Prisma {
     modified_at?: DateTimeFilter<"Class"> | Date | string
     students?: StudentListRelationFilter
     teacher_subject_classes?: Relationship_teacher_subject_classListRelationFilter
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeListRelationFilter
   }, "id" | "id" | "name_shift_course">
 
   export type ClassOrderByWithAggregationInput = {
@@ -18067,8 +24293,8 @@ export namespace Prisma {
     NOT?: QuizWhereInput | QuizWhereInput[]
     id?: IntFilter<"Quiz"> | number
     title?: StringFilter<"Quiz"> | string
-    icon?: StringFilter<"Quiz"> | string
     description?: StringFilter<"Quiz"> | string
+    icon?: StringFilter<"Quiz"> | string
     duration_minutes?: IntNullableFilter<"Quiz"> | number | null
     max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableFilter<"Quiz"> | number | null
@@ -18084,8 +24310,8 @@ export namespace Prisma {
   export type QuizOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    icon?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
     duration_minutes?: SortOrderInput | SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrderInput | SortOrder
@@ -18104,8 +24330,8 @@ export namespace Prisma {
     OR?: QuizWhereInput[]
     NOT?: QuizWhereInput | QuizWhereInput[]
     title?: StringFilter<"Quiz"> | string
-    icon?: StringFilter<"Quiz"> | string
     description?: StringFilter<"Quiz"> | string
+    icon?: StringFilter<"Quiz"> | string
     duration_minutes?: IntNullableFilter<"Quiz"> | number | null
     max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableFilter<"Quiz"> | number | null
@@ -18121,8 +24347,8 @@ export namespace Prisma {
   export type QuizOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    icon?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
     duration_minutes?: SortOrderInput | SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrderInput | SortOrder
@@ -18143,8 +24369,8 @@ export namespace Prisma {
     NOT?: QuizScalarWhereWithAggregatesInput | QuizScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Quiz"> | number
     title?: StringWithAggregatesFilter<"Quiz"> | string
-    icon?: StringWithAggregatesFilter<"Quiz"> | string
     description?: StringWithAggregatesFilter<"Quiz"> | string
+    icon?: StringWithAggregatesFilter<"Quiz"> | string
     duration_minutes?: IntNullableWithAggregatesFilter<"Quiz"> | number | null
     max_points?: DecimalWithAggregatesFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableWithAggregatesFilter<"Quiz"> | number | null
@@ -18463,6 +24689,7 @@ export namespace Prisma {
 
   export type Question_responseWhereUniqueInput = Prisma.AtLeast<{
     id?: number
+    question_id_quiz_attempt_id?: Question_responseQuestion_idQuiz_attempt_idCompoundUniqueInput
     AND?: Question_responseWhereInput | Question_responseWhereInput[]
     OR?: Question_responseWhereInput[]
     NOT?: Question_responseWhereInput | Question_responseWhereInput[]
@@ -18476,7 +24703,7 @@ export namespace Prisma {
     question?: XOR<QuestionScalarRelationFilter, QuestionWhereInput>
     marked_alternative?: XOR<AlternativeScalarRelationFilter, AlternativeWhereInput>
     quiz_attempt?: XOR<Quiz_attemptScalarRelationFilter, Quiz_attemptWhereInput>
-  }, "id" | "id">
+  }, "id" | "id" | "question_id_quiz_attempt_id">
 
   export type Question_responseOrderByWithAggregationInput = {
     id?: SortOrder
@@ -18506,6 +24733,392 @@ export namespace Prisma {
     points_earned?: DecimalWithAggregatesFilter<"Question_response"> | Decimal | DecimalJsLike | number | string
     created_at?: DateTimeWithAggregatesFilter<"Question_response"> | Date | string
     modified_at?: DateTimeWithAggregatesFilter<"Question_response"> | Date | string
+  }
+
+  export type Video_assignmentWhereInput = {
+    AND?: Video_assignmentWhereInput | Video_assignmentWhereInput[]
+    OR?: Video_assignmentWhereInput[]
+    NOT?: Video_assignmentWhereInput | Video_assignmentWhereInput[]
+    id?: IntFilter<"Video_assignment"> | number
+    videoUrl?: StringFilter<"Video_assignment"> | string
+    title_video?: StringFilter<"Video_assignment"> | string
+    name_channel?: StringFilter<"Video_assignment"> | string
+    duration_video?: StringFilter<"Video_assignment"> | string
+    font?: StringFilter<"Video_assignment"> | string
+    description?: StringFilter<"Video_assignment"> | string
+    thumbnail?: StringFilter<"Video_assignment"> | string
+    videoId?: StringFilter<"Video_assignment"> | string
+    created_at?: DateTimeFilter<"Video_assignment"> | Date | string
+    modified_at?: DateTimeFilter<"Video_assignment"> | Date | string
+  }
+
+  export type Video_assignmentOrderByWithRelationInput = {
+    id?: SortOrder
+    videoUrl?: SortOrder
+    title_video?: SortOrder
+    name_channel?: SortOrder
+    duration_video?: SortOrder
+    font?: SortOrder
+    description?: SortOrder
+    thumbnail?: SortOrder
+    videoId?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Video_assignmentWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    videoUrl?: string
+    AND?: Video_assignmentWhereInput | Video_assignmentWhereInput[]
+    OR?: Video_assignmentWhereInput[]
+    NOT?: Video_assignmentWhereInput | Video_assignmentWhereInput[]
+    title_video?: StringFilter<"Video_assignment"> | string
+    name_channel?: StringFilter<"Video_assignment"> | string
+    duration_video?: StringFilter<"Video_assignment"> | string
+    font?: StringFilter<"Video_assignment"> | string
+    description?: StringFilter<"Video_assignment"> | string
+    thumbnail?: StringFilter<"Video_assignment"> | string
+    videoId?: StringFilter<"Video_assignment"> | string
+    created_at?: DateTimeFilter<"Video_assignment"> | Date | string
+    modified_at?: DateTimeFilter<"Video_assignment"> | Date | string
+  }, "id" | "id" | "videoUrl">
+
+  export type Video_assignmentOrderByWithAggregationInput = {
+    id?: SortOrder
+    videoUrl?: SortOrder
+    title_video?: SortOrder
+    name_channel?: SortOrder
+    duration_video?: SortOrder
+    font?: SortOrder
+    description?: SortOrder
+    thumbnail?: SortOrder
+    videoId?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    _count?: Video_assignmentCountOrderByAggregateInput
+    _avg?: Video_assignmentAvgOrderByAggregateInput
+    _max?: Video_assignmentMaxOrderByAggregateInput
+    _min?: Video_assignmentMinOrderByAggregateInput
+    _sum?: Video_assignmentSumOrderByAggregateInput
+  }
+
+  export type Video_assignmentScalarWhereWithAggregatesInput = {
+    AND?: Video_assignmentScalarWhereWithAggregatesInput | Video_assignmentScalarWhereWithAggregatesInput[]
+    OR?: Video_assignmentScalarWhereWithAggregatesInput[]
+    NOT?: Video_assignmentScalarWhereWithAggregatesInput | Video_assignmentScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Video_assignment"> | number
+    videoUrl?: StringWithAggregatesFilter<"Video_assignment"> | string
+    title_video?: StringWithAggregatesFilter<"Video_assignment"> | string
+    name_channel?: StringWithAggregatesFilter<"Video_assignment"> | string
+    duration_video?: StringWithAggregatesFilter<"Video_assignment"> | string
+    font?: StringWithAggregatesFilter<"Video_assignment"> | string
+    description?: StringWithAggregatesFilter<"Video_assignment"> | string
+    thumbnail?: StringWithAggregatesFilter<"Video_assignment"> | string
+    videoId?: StringWithAggregatesFilter<"Video_assignment"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Video_assignment"> | Date | string
+    modified_at?: DateTimeWithAggregatesFilter<"Video_assignment"> | Date | string
+  }
+
+  export type TeacherSubjectClassResumeWhereInput = {
+    AND?: TeacherSubjectClassResumeWhereInput | TeacherSubjectClassResumeWhereInput[]
+    OR?: TeacherSubjectClassResumeWhereInput[]
+    NOT?: TeacherSubjectClassResumeWhereInput | TeacherSubjectClassResumeWhereInput[]
+    id?: IntFilter<"TeacherSubjectClassResume"> | number
+    teacher_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    subject_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    class_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    resume_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    created_at?: DateTimeFilter<"TeacherSubjectClassResume"> | Date | string
+    modified_at?: DateTimeFilter<"TeacherSubjectClassResume"> | Date | string
+    teacher?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
+    subject?: XOR<SubjectScalarRelationFilter, SubjectWhereInput>
+    class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
+    resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
+  }
+
+  export type TeacherSubjectClassResumeOrderByWithRelationInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    teacher?: TeacherOrderByWithRelationInput
+    subject?: SubjectOrderByWithRelationInput
+    class?: ClassOrderByWithRelationInput
+    resume?: ResumeOrderByWithRelationInput
+  }
+
+  export type TeacherSubjectClassResumeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    resume_id?: number
+    teacher_id_subject_id_class_id_resume_id?: TeacherSubjectClassResumeTeacher_idSubject_idClass_idResume_idCompoundUniqueInput
+    AND?: TeacherSubjectClassResumeWhereInput | TeacherSubjectClassResumeWhereInput[]
+    OR?: TeacherSubjectClassResumeWhereInput[]
+    NOT?: TeacherSubjectClassResumeWhereInput | TeacherSubjectClassResumeWhereInput[]
+    teacher_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    subject_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    class_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    created_at?: DateTimeFilter<"TeacherSubjectClassResume"> | Date | string
+    modified_at?: DateTimeFilter<"TeacherSubjectClassResume"> | Date | string
+    teacher?: XOR<TeacherScalarRelationFilter, TeacherWhereInput>
+    subject?: XOR<SubjectScalarRelationFilter, SubjectWhereInput>
+    class?: XOR<ClassScalarRelationFilter, ClassWhereInput>
+    resume?: XOR<ResumeScalarRelationFilter, ResumeWhereInput>
+  }, "id" | "id" | "resume_id" | "teacher_id_subject_id_class_id_resume_id">
+
+  export type TeacherSubjectClassResumeOrderByWithAggregationInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    _count?: TeacherSubjectClassResumeCountOrderByAggregateInput
+    _avg?: TeacherSubjectClassResumeAvgOrderByAggregateInput
+    _max?: TeacherSubjectClassResumeMaxOrderByAggregateInput
+    _min?: TeacherSubjectClassResumeMinOrderByAggregateInput
+    _sum?: TeacherSubjectClassResumeSumOrderByAggregateInput
+  }
+
+  export type TeacherSubjectClassResumeScalarWhereWithAggregatesInput = {
+    AND?: TeacherSubjectClassResumeScalarWhereWithAggregatesInput | TeacherSubjectClassResumeScalarWhereWithAggregatesInput[]
+    OR?: TeacherSubjectClassResumeScalarWhereWithAggregatesInput[]
+    NOT?: TeacherSubjectClassResumeScalarWhereWithAggregatesInput | TeacherSubjectClassResumeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"TeacherSubjectClassResume"> | number
+    teacher_id?: IntWithAggregatesFilter<"TeacherSubjectClassResume"> | number
+    subject_id?: IntWithAggregatesFilter<"TeacherSubjectClassResume"> | number
+    class_id?: IntWithAggregatesFilter<"TeacherSubjectClassResume"> | number
+    resume_id?: IntWithAggregatesFilter<"TeacherSubjectClassResume"> | number
+    created_at?: DateTimeWithAggregatesFilter<"TeacherSubjectClassResume"> | Date | string
+    modified_at?: DateTimeWithAggregatesFilter<"TeacherSubjectClassResume"> | Date | string
+  }
+
+  export type ResumeWhereInput = {
+    AND?: ResumeWhereInput | ResumeWhereInput[]
+    OR?: ResumeWhereInput[]
+    NOT?: ResumeWhereInput | ResumeWhereInput[]
+    id?: IntFilter<"Resume"> | number
+    title?: StringFilter<"Resume"> | string
+    icon?: StringFilter<"Resume"> | string
+    description?: StringFilter<"Resume"> | string
+    resume?: StringFilter<"Resume"> | string
+    created_at?: DateTimeFilter<"Resume"> | Date | string
+    modified_at?: DateTimeFilter<"Resume"> | Date | string
+    teacher_subject_class_resume?: XOR<TeacherSubjectClassResumeNullableScalarRelationFilter, TeacherSubjectClassResumeWhereInput> | null
+  }
+
+  export type ResumeOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    resume?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    teacher_subject_class_resume?: TeacherSubjectClassResumeOrderByWithRelationInput
+  }
+
+  export type ResumeWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ResumeWhereInput | ResumeWhereInput[]
+    OR?: ResumeWhereInput[]
+    NOT?: ResumeWhereInput | ResumeWhereInput[]
+    title?: StringFilter<"Resume"> | string
+    icon?: StringFilter<"Resume"> | string
+    description?: StringFilter<"Resume"> | string
+    resume?: StringFilter<"Resume"> | string
+    created_at?: DateTimeFilter<"Resume"> | Date | string
+    modified_at?: DateTimeFilter<"Resume"> | Date | string
+    teacher_subject_class_resume?: XOR<TeacherSubjectClassResumeNullableScalarRelationFilter, TeacherSubjectClassResumeWhereInput> | null
+  }, "id" | "id">
+
+  export type ResumeOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    resume?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    _count?: ResumeCountOrderByAggregateInput
+    _avg?: ResumeAvgOrderByAggregateInput
+    _max?: ResumeMaxOrderByAggregateInput
+    _min?: ResumeMinOrderByAggregateInput
+    _sum?: ResumeSumOrderByAggregateInput
+  }
+
+  export type ResumeScalarWhereWithAggregatesInput = {
+    AND?: ResumeScalarWhereWithAggregatesInput | ResumeScalarWhereWithAggregatesInput[]
+    OR?: ResumeScalarWhereWithAggregatesInput[]
+    NOT?: ResumeScalarWhereWithAggregatesInput | ResumeScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Resume"> | number
+    title?: StringWithAggregatesFilter<"Resume"> | string
+    icon?: StringWithAggregatesFilter<"Resume"> | string
+    description?: StringWithAggregatesFilter<"Resume"> | string
+    resume?: StringWithAggregatesFilter<"Resume"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
+    modified_at?: DateTimeWithAggregatesFilter<"Resume"> | Date | string
+  }
+
+  export type ContestsWhereInput = {
+    AND?: ContestsWhereInput | ContestsWhereInput[]
+    OR?: ContestsWhereInput[]
+    NOT?: ContestsWhereInput | ContestsWhereInput[]
+    id?: IntFilter<"Contests"> | number
+    title?: StringFilter<"Contests"> | string
+    link?: StringFilter<"Contests"> | string
+    type?: StringFilter<"Contests"> | string
+    icon?: StringFilter<"Contests"> | string
+    color?: StringFilter<"Contests"> | string
+    description?: StringFilter<"Contests"> | string
+    date?: DateTimeFilter<"Contests"> | Date | string
+    created_at?: DateTimeFilter<"Contests"> | Date | string
+    modified_at?: DateTimeFilter<"Contests"> | Date | string
+  }
+
+  export type ContestsOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ContestsWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: ContestsWhereInput | ContestsWhereInput[]
+    OR?: ContestsWhereInput[]
+    NOT?: ContestsWhereInput | ContestsWhereInput[]
+    title?: StringFilter<"Contests"> | string
+    link?: StringFilter<"Contests"> | string
+    type?: StringFilter<"Contests"> | string
+    icon?: StringFilter<"Contests"> | string
+    color?: StringFilter<"Contests"> | string
+    description?: StringFilter<"Contests"> | string
+    date?: DateTimeFilter<"Contests"> | Date | string
+    created_at?: DateTimeFilter<"Contests"> | Date | string
+    modified_at?: DateTimeFilter<"Contests"> | Date | string
+  }, "id" | "id">
+
+  export type ContestsOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    _count?: ContestsCountOrderByAggregateInput
+    _avg?: ContestsAvgOrderByAggregateInput
+    _max?: ContestsMaxOrderByAggregateInput
+    _min?: ContestsMinOrderByAggregateInput
+    _sum?: ContestsSumOrderByAggregateInput
+  }
+
+  export type ContestsScalarWhereWithAggregatesInput = {
+    AND?: ContestsScalarWhereWithAggregatesInput | ContestsScalarWhereWithAggregatesInput[]
+    OR?: ContestsScalarWhereWithAggregatesInput[]
+    NOT?: ContestsScalarWhereWithAggregatesInput | ContestsScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Contests"> | number
+    title?: StringWithAggregatesFilter<"Contests"> | string
+    link?: StringWithAggregatesFilter<"Contests"> | string
+    type?: StringWithAggregatesFilter<"Contests"> | string
+    icon?: StringWithAggregatesFilter<"Contests"> | string
+    color?: StringWithAggregatesFilter<"Contests"> | string
+    description?: StringWithAggregatesFilter<"Contests"> | string
+    date?: DateTimeWithAggregatesFilter<"Contests"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"Contests"> | Date | string
+    modified_at?: DateTimeWithAggregatesFilter<"Contests"> | Date | string
+  }
+
+  export type Entrance_examWhereInput = {
+    AND?: Entrance_examWhereInput | Entrance_examWhereInput[]
+    OR?: Entrance_examWhereInput[]
+    NOT?: Entrance_examWhereInput | Entrance_examWhereInput[]
+    id?: IntFilter<"Entrance_exam"> | number
+    title?: StringFilter<"Entrance_exam"> | string
+    link?: StringFilter<"Entrance_exam"> | string
+    type?: StringFilter<"Entrance_exam"> | string
+    icon?: StringFilter<"Entrance_exam"> | string
+    color?: StringFilter<"Entrance_exam"> | string
+    description?: StringFilter<"Entrance_exam"> | string
+    date?: DateTimeFilter<"Entrance_exam"> | Date | string
+    created_at?: DateTimeFilter<"Entrance_exam"> | Date | string
+    modified_at?: DateTimeFilter<"Entrance_exam"> | Date | string
+  }
+
+  export type Entrance_examOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Entrance_examWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: Entrance_examWhereInput | Entrance_examWhereInput[]
+    OR?: Entrance_examWhereInput[]
+    NOT?: Entrance_examWhereInput | Entrance_examWhereInput[]
+    title?: StringFilter<"Entrance_exam"> | string
+    link?: StringFilter<"Entrance_exam"> | string
+    type?: StringFilter<"Entrance_exam"> | string
+    icon?: StringFilter<"Entrance_exam"> | string
+    color?: StringFilter<"Entrance_exam"> | string
+    description?: StringFilter<"Entrance_exam"> | string
+    date?: DateTimeFilter<"Entrance_exam"> | Date | string
+    created_at?: DateTimeFilter<"Entrance_exam"> | Date | string
+    modified_at?: DateTimeFilter<"Entrance_exam"> | Date | string
+  }, "id" | "id">
+
+  export type Entrance_examOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+    _count?: Entrance_examCountOrderByAggregateInput
+    _avg?: Entrance_examAvgOrderByAggregateInput
+    _max?: Entrance_examMaxOrderByAggregateInput
+    _min?: Entrance_examMinOrderByAggregateInput
+    _sum?: Entrance_examSumOrderByAggregateInput
+  }
+
+  export type Entrance_examScalarWhereWithAggregatesInput = {
+    AND?: Entrance_examScalarWhereWithAggregatesInput | Entrance_examScalarWhereWithAggregatesInput[]
+    OR?: Entrance_examScalarWhereWithAggregatesInput[]
+    NOT?: Entrance_examScalarWhereWithAggregatesInput | Entrance_examScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Entrance_exam"> | number
+    title?: StringWithAggregatesFilter<"Entrance_exam"> | string
+    link?: StringWithAggregatesFilter<"Entrance_exam"> | string
+    type?: StringWithAggregatesFilter<"Entrance_exam"> | string
+    icon?: StringWithAggregatesFilter<"Entrance_exam"> | string
+    color?: StringWithAggregatesFilter<"Entrance_exam"> | string
+    description?: StringWithAggregatesFilter<"Entrance_exam"> | string
+    date?: DateTimeWithAggregatesFilter<"Entrance_exam"> | Date | string
+    created_at?: DateTimeWithAggregatesFilter<"Entrance_exam"> | Date | string
+    modified_at?: DateTimeWithAggregatesFilter<"Entrance_exam"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -18602,6 +25215,7 @@ export namespace Prisma {
     modified_at?: Date | string
     user: UserCreateNestedOneWithoutTeacherInput
     teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateInput = {
@@ -18610,6 +25224,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subjects?: Relationship_teacher_subjectUncheckedCreateNestedManyWithoutTeacherInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUpdateInput = {
@@ -18617,6 +25232,7 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTeacherNestedInput
     teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutTeacherNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateInput = {
@@ -18625,6 +25241,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subjects?: Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherCreateManyInput = {
@@ -18651,6 +25268,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutSubjectInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectUncheckedCreateInput = {
@@ -18659,6 +25277,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subjects?: Relationship_teacher_subjectUncheckedCreateNestedManyWithoutSubjectInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectUpdateInput = {
@@ -18666,6 +25285,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutSubjectNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutSubjectNestedInput
   }
 
   export type SubjectUncheckedUpdateInput = {
@@ -18674,6 +25294,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subjects?: Relationship_teacher_subjectUncheckedUpdateManyWithoutSubjectNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutSubjectNestedInput
   }
 
   export type SubjectCreateManyInput = {
@@ -18746,6 +25367,7 @@ export namespace Prisma {
     modified_at?: Date | string
     students?: StudentCreateNestedManyWithoutClassInput
     teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutClassInput
   }
 
   export type ClassUncheckedCreateInput = {
@@ -18757,6 +25379,7 @@ export namespace Prisma {
     modified_at?: Date | string
     students?: StudentUncheckedCreateNestedManyWithoutClassInput
     teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassUpdateInput = {
@@ -18767,6 +25390,7 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     students?: StudentUpdateManyWithoutClassNestedInput
     teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateInput = {
@@ -18778,6 +25402,7 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     students?: StudentUncheckedUpdateManyWithoutClassNestedInput
     teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type ClassCreateManyInput = {
@@ -18912,8 +25537,8 @@ export namespace Prisma {
 
   export type QuizCreateInput = {
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -18928,8 +25553,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateInput = {
     id?: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -18943,8 +25568,8 @@ export namespace Prisma {
 
   export type QuizUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18959,8 +25584,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -18975,8 +25600,8 @@ export namespace Prisma {
   export type QuizCreateManyInput = {
     id?: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -18988,8 +25613,8 @@ export namespace Prisma {
 
   export type QuizUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19001,8 +25626,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -19352,6 +25977,411 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type Video_assignmentCreateInput = {
+    videoUrl: string
+    title_video: string
+    name_channel: string
+    duration_video: string
+    font: string
+    description: string
+    thumbnail: string
+    videoId: string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type Video_assignmentUncheckedCreateInput = {
+    id?: number
+    videoUrl: string
+    title_video: string
+    name_channel: string
+    duration_video: string
+    font: string
+    description: string
+    thumbnail: string
+    videoId: string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type Video_assignmentUpdateInput = {
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    title_video?: StringFieldUpdateOperationsInput | string
+    name_channel?: StringFieldUpdateOperationsInput | string
+    duration_video?: StringFieldUpdateOperationsInput | string
+    font?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Video_assignmentUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    title_video?: StringFieldUpdateOperationsInput | string
+    name_channel?: StringFieldUpdateOperationsInput | string
+    duration_video?: StringFieldUpdateOperationsInput | string
+    font?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Video_assignmentCreateManyInput = {
+    id?: number
+    videoUrl: string
+    title_video: string
+    name_channel: string
+    duration_video: string
+    font: string
+    description: string
+    thumbnail: string
+    videoId: string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type Video_assignmentUpdateManyMutationInput = {
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    title_video?: StringFieldUpdateOperationsInput | string
+    name_channel?: StringFieldUpdateOperationsInput | string
+    duration_video?: StringFieldUpdateOperationsInput | string
+    font?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Video_assignmentUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    videoUrl?: StringFieldUpdateOperationsInput | string
+    title_video?: StringFieldUpdateOperationsInput | string
+    name_channel?: StringFieldUpdateOperationsInput | string
+    duration_video?: StringFieldUpdateOperationsInput | string
+    font?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    thumbnail?: StringFieldUpdateOperationsInput | string
+    videoId?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateInput = {
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher: TeacherCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    subject: SubjectCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    class: ClassCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    resume: ResumeCreateNestedOneWithoutTeacher_subject_class_resumeInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateInput = {
+    id?: number
+    teacher_id: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type TeacherSubjectClassResumeUpdateInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher?: TeacherUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    subject?: SubjectUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    class?: ClassUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    resume?: ResumeUpdateOneRequiredWithoutTeacher_subject_class_resumeNestedInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateManyInput = {
+    id?: number
+    teacher_id: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type TeacherSubjectClassResumeUpdateManyMutationInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResumeCreateInput = {
+    title: string
+    icon: string
+    description: string
+    resume: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subject_class_resume?: TeacherSubjectClassResumeCreateNestedOneWithoutResumeInput
+  }
+
+  export type ResumeUncheckedCreateInput = {
+    id?: number
+    title: string
+    icon: string
+    description: string
+    resume: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subject_class_resume?: TeacherSubjectClassResumeUncheckedCreateNestedOneWithoutResumeInput
+  }
+
+  export type ResumeUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_class_resume?: TeacherSubjectClassResumeUpdateOneWithoutResumeNestedInput
+  }
+
+  export type ResumeUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_class_resume?: TeacherSubjectClassResumeUncheckedUpdateOneWithoutResumeNestedInput
+  }
+
+  export type ResumeCreateManyInput = {
+    id?: number
+    title: string
+    icon: string
+    description: string
+    resume: string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type ResumeUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResumeUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContestsCreateInput = {
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date | string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type ContestsUncheckedCreateInput = {
+    id?: number
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date | string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type ContestsUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContestsUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContestsCreateManyInput = {
+    id?: number
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date | string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type ContestsUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ContestsUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Entrance_examCreateInput = {
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date | string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type Entrance_examUncheckedCreateInput = {
+    id?: number
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date | string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type Entrance_examUpdateInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Entrance_examUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Entrance_examCreateManyInput = {
+    id?: number
+    title: string
+    link: string
+    type: string
+    icon: string
+    color: string
+    description: string
+    date: Date | string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type Entrance_examUpdateManyMutationInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type Entrance_examUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    color?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -19519,7 +26549,17 @@ export namespace Prisma {
     none?: Relationship_teacher_subjectWhereInput
   }
 
+  export type TeacherSubjectClassResumeListRelationFilter = {
+    every?: TeacherSubjectClassResumeWhereInput
+    some?: TeacherSubjectClassResumeWhereInput
+    none?: TeacherSubjectClassResumeWhereInput
+  }
+
   export type Relationship_teacher_subjectOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type TeacherSubjectClassResumeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19862,8 +26902,8 @@ export namespace Prisma {
   export type QuizCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    icon?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
     duration_minutes?: SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrder
@@ -19884,8 +26924,8 @@ export namespace Prisma {
   export type QuizMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    icon?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
     duration_minutes?: SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrder
@@ -19898,8 +26938,8 @@ export namespace Prisma {
   export type QuizMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    icon?: SortOrder
     description?: SortOrder
+    icon?: SortOrder
     duration_minutes?: SortOrder
     max_points?: SortOrder
     max_attempt?: SortOrder
@@ -20229,6 +27269,11 @@ export namespace Prisma {
     isNot?: Quiz_attemptWhereInput
   }
 
+  export type Question_responseQuestion_idQuiz_attempt_idCompoundUniqueInput = {
+    question_id: number
+    quiz_attempt_id: number
+  }
+
   export type Question_responseCountOrderByAggregateInput = {
     id?: SortOrder
     question_id?: SortOrder
@@ -20276,6 +27321,251 @@ export namespace Prisma {
     marked_alternative_id?: SortOrder
     quiz_attempt_id?: SortOrder
     points_earned?: SortOrder
+  }
+
+  export type Video_assignmentCountOrderByAggregateInput = {
+    id?: SortOrder
+    videoUrl?: SortOrder
+    title_video?: SortOrder
+    name_channel?: SortOrder
+    duration_video?: SortOrder
+    font?: SortOrder
+    description?: SortOrder
+    thumbnail?: SortOrder
+    videoId?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Video_assignmentAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type Video_assignmentMaxOrderByAggregateInput = {
+    id?: SortOrder
+    videoUrl?: SortOrder
+    title_video?: SortOrder
+    name_channel?: SortOrder
+    duration_video?: SortOrder
+    font?: SortOrder
+    description?: SortOrder
+    thumbnail?: SortOrder
+    videoId?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Video_assignmentMinOrderByAggregateInput = {
+    id?: SortOrder
+    videoUrl?: SortOrder
+    title_video?: SortOrder
+    name_channel?: SortOrder
+    duration_video?: SortOrder
+    font?: SortOrder
+    description?: SortOrder
+    thumbnail?: SortOrder
+    videoId?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Video_assignmentSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ResumeScalarRelationFilter = {
+    is?: ResumeWhereInput
+    isNot?: ResumeWhereInput
+  }
+
+  export type TeacherSubjectClassResumeTeacher_idSubject_idClass_idResume_idCompoundUniqueInput = {
+    teacher_id: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+  }
+
+  export type TeacherSubjectClassResumeCountOrderByAggregateInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type TeacherSubjectClassResumeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+  }
+
+  export type TeacherSubjectClassResumeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type TeacherSubjectClassResumeMinOrderByAggregateInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type TeacherSubjectClassResumeSumOrderByAggregateInput = {
+    id?: SortOrder
+    teacher_id?: SortOrder
+    subject_id?: SortOrder
+    class_id?: SortOrder
+    resume_id?: SortOrder
+  }
+
+  export type TeacherSubjectClassResumeNullableScalarRelationFilter = {
+    is?: TeacherSubjectClassResumeWhereInput | null
+    isNot?: TeacherSubjectClassResumeWhereInput | null
+  }
+
+  export type ResumeCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    resume?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ResumeAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ResumeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    resume?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ResumeMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    icon?: SortOrder
+    description?: SortOrder
+    resume?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ResumeSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContestsCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ContestsAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ContestsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ContestsMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type ContestsSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type Entrance_examCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Entrance_examAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type Entrance_examMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Entrance_examMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    link?: SortOrder
+    type?: SortOrder
+    icon?: SortOrder
+    color?: SortOrder
+    description?: SortOrder
+    date?: SortOrder
+    created_at?: SortOrder
+    modified_at?: SortOrder
+  }
+
+  export type Entrance_examSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type TeacherCreateNestedOneWithoutUserInput = {
@@ -20375,11 +27665,25 @@ export namespace Prisma {
     connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
   }
 
+  export type TeacherSubjectClassResumeCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput> | TeacherSubjectClassResumeCreateWithoutTeacherInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput | TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyTeacherInputEnvelope
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+  }
+
   export type Relationship_teacher_subjectUncheckedCreateNestedManyWithoutTeacherInput = {
     create?: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput> | Relationship_teacher_subjectCreateWithoutTeacherInput[] | Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput[]
     connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput | Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput[]
     createMany?: Relationship_teacher_subjectCreateManyTeacherInputEnvelope
     connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutTeacherInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput> | TeacherSubjectClassResumeCreateWithoutTeacherInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput | TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyTeacherInputEnvelope
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
   }
 
   export type UserUpdateOneRequiredWithoutTeacherNestedInput = {
@@ -20404,6 +27708,20 @@ export namespace Prisma {
     deleteMany?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
   }
 
+  export type TeacherSubjectClassResumeUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput> | TeacherSubjectClassResumeCreateWithoutTeacherInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput | TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput[]
+    upsert?: TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutTeacherInput | TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyTeacherInputEnvelope
+    set?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    disconnect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    delete?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    update?: TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutTeacherInput | TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: TeacherSubjectClassResumeUpdateManyWithWhereWithoutTeacherInput | TeacherSubjectClassResumeUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
+  }
+
   export type Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherNestedInput = {
     create?: XOR<Relationship_teacher_subjectCreateWithoutTeacherInput, Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput> | Relationship_teacher_subjectCreateWithoutTeacherInput[] | Relationship_teacher_subjectUncheckedCreateWithoutTeacherInput[]
     connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput | Relationship_teacher_subjectCreateOrConnectWithoutTeacherInput[]
@@ -20418,6 +27736,20 @@ export namespace Prisma {
     deleteMany?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
   }
 
+  export type TeacherSubjectClassResumeUncheckedUpdateManyWithoutTeacherNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput> | TeacherSubjectClassResumeCreateWithoutTeacherInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput | TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput[]
+    upsert?: TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutTeacherInput | TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutTeacherInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyTeacherInputEnvelope
+    set?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    disconnect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    delete?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    update?: TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutTeacherInput | TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutTeacherInput[]
+    updateMany?: TeacherSubjectClassResumeUpdateManyWithWhereWithoutTeacherInput | TeacherSubjectClassResumeUpdateManyWithWhereWithoutTeacherInput[]
+    deleteMany?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
+  }
+
   export type Relationship_teacher_subjectCreateNestedManyWithoutSubjectInput = {
     create?: XOR<Relationship_teacher_subjectCreateWithoutSubjectInput, Relationship_teacher_subjectUncheckedCreateWithoutSubjectInput> | Relationship_teacher_subjectCreateWithoutSubjectInput[] | Relationship_teacher_subjectUncheckedCreateWithoutSubjectInput[]
     connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutSubjectInput | Relationship_teacher_subjectCreateOrConnectWithoutSubjectInput[]
@@ -20425,11 +27757,25 @@ export namespace Prisma {
     connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
   }
 
+  export type TeacherSubjectClassResumeCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput> | TeacherSubjectClassResumeCreateWithoutSubjectInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput | TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput[]
+    createMany?: TeacherSubjectClassResumeCreateManySubjectInputEnvelope
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+  }
+
   export type Relationship_teacher_subjectUncheckedCreateNestedManyWithoutSubjectInput = {
     create?: XOR<Relationship_teacher_subjectCreateWithoutSubjectInput, Relationship_teacher_subjectUncheckedCreateWithoutSubjectInput> | Relationship_teacher_subjectCreateWithoutSubjectInput[] | Relationship_teacher_subjectUncheckedCreateWithoutSubjectInput[]
     connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutSubjectInput | Relationship_teacher_subjectCreateOrConnectWithoutSubjectInput[]
     createMany?: Relationship_teacher_subjectCreateManySubjectInputEnvelope
     connect?: Relationship_teacher_subjectWhereUniqueInput | Relationship_teacher_subjectWhereUniqueInput[]
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutSubjectInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput> | TeacherSubjectClassResumeCreateWithoutSubjectInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput | TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput[]
+    createMany?: TeacherSubjectClassResumeCreateManySubjectInputEnvelope
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
   }
 
   export type Relationship_teacher_subjectUpdateManyWithoutSubjectNestedInput = {
@@ -20446,6 +27792,20 @@ export namespace Prisma {
     deleteMany?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
   }
 
+  export type TeacherSubjectClassResumeUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput> | TeacherSubjectClassResumeCreateWithoutSubjectInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput | TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput[]
+    upsert?: TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutSubjectInput | TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: TeacherSubjectClassResumeCreateManySubjectInputEnvelope
+    set?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    disconnect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    delete?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    update?: TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutSubjectInput | TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: TeacherSubjectClassResumeUpdateManyWithWhereWithoutSubjectInput | TeacherSubjectClassResumeUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
+  }
+
   export type Relationship_teacher_subjectUncheckedUpdateManyWithoutSubjectNestedInput = {
     create?: XOR<Relationship_teacher_subjectCreateWithoutSubjectInput, Relationship_teacher_subjectUncheckedCreateWithoutSubjectInput> | Relationship_teacher_subjectCreateWithoutSubjectInput[] | Relationship_teacher_subjectUncheckedCreateWithoutSubjectInput[]
     connectOrCreate?: Relationship_teacher_subjectCreateOrConnectWithoutSubjectInput | Relationship_teacher_subjectCreateOrConnectWithoutSubjectInput[]
@@ -20458,6 +27818,20 @@ export namespace Prisma {
     update?: Relationship_teacher_subjectUpdateWithWhereUniqueWithoutSubjectInput | Relationship_teacher_subjectUpdateWithWhereUniqueWithoutSubjectInput[]
     updateMany?: Relationship_teacher_subjectUpdateManyWithWhereWithoutSubjectInput | Relationship_teacher_subjectUpdateManyWithWhereWithoutSubjectInput[]
     deleteMany?: Relationship_teacher_subjectScalarWhereInput | Relationship_teacher_subjectScalarWhereInput[]
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateManyWithoutSubjectNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput> | TeacherSubjectClassResumeCreateWithoutSubjectInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput | TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput[]
+    upsert?: TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutSubjectInput | TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutSubjectInput[]
+    createMany?: TeacherSubjectClassResumeCreateManySubjectInputEnvelope
+    set?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    disconnect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    delete?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    update?: TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutSubjectInput | TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutSubjectInput[]
+    updateMany?: TeacherSubjectClassResumeUpdateManyWithWhereWithoutSubjectInput | TeacherSubjectClassResumeUpdateManyWithWhereWithoutSubjectInput[]
+    deleteMany?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
   }
 
   export type SubjectCreateNestedOneWithoutTeacher_subjectsInput = {
@@ -20544,6 +27918,13 @@ export namespace Prisma {
     connect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
   }
 
+  export type TeacherSubjectClassResumeCreateNestedManyWithoutClassInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutClassInput, TeacherSubjectClassResumeUncheckedCreateWithoutClassInput> | TeacherSubjectClassResumeCreateWithoutClassInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutClassInput | TeacherSubjectClassResumeCreateOrConnectWithoutClassInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyClassInputEnvelope
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+  }
+
   export type StudentUncheckedCreateNestedManyWithoutClassInput = {
     create?: XOR<StudentCreateWithoutClassInput, StudentUncheckedCreateWithoutClassInput> | StudentCreateWithoutClassInput[] | StudentUncheckedCreateWithoutClassInput[]
     connectOrCreate?: StudentCreateOrConnectWithoutClassInput | StudentCreateOrConnectWithoutClassInput[]
@@ -20556,6 +27937,13 @@ export namespace Prisma {
     connectOrCreate?: Relationship_teacher_subject_classCreateOrConnectWithoutClassInput | Relationship_teacher_subject_classCreateOrConnectWithoutClassInput[]
     createMany?: Relationship_teacher_subject_classCreateManyClassInputEnvelope
     connect?: Relationship_teacher_subject_classWhereUniqueInput | Relationship_teacher_subject_classWhereUniqueInput[]
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutClassInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutClassInput, TeacherSubjectClassResumeUncheckedCreateWithoutClassInput> | TeacherSubjectClassResumeCreateWithoutClassInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutClassInput | TeacherSubjectClassResumeCreateOrConnectWithoutClassInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyClassInputEnvelope
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
   }
 
   export type EnumShiftFieldUpdateOperationsInput = {
@@ -20590,6 +27978,20 @@ export namespace Prisma {
     deleteMany?: Relationship_teacher_subject_classScalarWhereInput | Relationship_teacher_subject_classScalarWhereInput[]
   }
 
+  export type TeacherSubjectClassResumeUpdateManyWithoutClassNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutClassInput, TeacherSubjectClassResumeUncheckedCreateWithoutClassInput> | TeacherSubjectClassResumeCreateWithoutClassInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutClassInput | TeacherSubjectClassResumeCreateOrConnectWithoutClassInput[]
+    upsert?: TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutClassInput | TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyClassInputEnvelope
+    set?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    disconnect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    delete?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    update?: TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutClassInput | TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: TeacherSubjectClassResumeUpdateManyWithWhereWithoutClassInput | TeacherSubjectClassResumeUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
+  }
+
   export type StudentUncheckedUpdateManyWithoutClassNestedInput = {
     create?: XOR<StudentCreateWithoutClassInput, StudentUncheckedCreateWithoutClassInput> | StudentCreateWithoutClassInput[] | StudentUncheckedCreateWithoutClassInput[]
     connectOrCreate?: StudentCreateOrConnectWithoutClassInput | StudentCreateOrConnectWithoutClassInput[]
@@ -20616,6 +28018,20 @@ export namespace Prisma {
     update?: Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput | Relationship_teacher_subject_classUpdateWithWhereUniqueWithoutClassInput[]
     updateMany?: Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput | Relationship_teacher_subject_classUpdateManyWithWhereWithoutClassInput[]
     deleteMany?: Relationship_teacher_subject_classScalarWhereInput | Relationship_teacher_subject_classScalarWhereInput[]
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateManyWithoutClassNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutClassInput, TeacherSubjectClassResumeUncheckedCreateWithoutClassInput> | TeacherSubjectClassResumeCreateWithoutClassInput[] | TeacherSubjectClassResumeUncheckedCreateWithoutClassInput[]
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutClassInput | TeacherSubjectClassResumeCreateOrConnectWithoutClassInput[]
+    upsert?: TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutClassInput | TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutClassInput[]
+    createMany?: TeacherSubjectClassResumeCreateManyClassInputEnvelope
+    set?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    disconnect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    delete?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    connect?: TeacherSubjectClassResumeWhereUniqueInput | TeacherSubjectClassResumeWhereUniqueInput[]
+    update?: TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutClassInput | TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutClassInput[]
+    updateMany?: TeacherSubjectClassResumeUpdateManyWithWhereWithoutClassInput | TeacherSubjectClassResumeUpdateManyWithWhereWithoutClassInput[]
+    deleteMany?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutStudentInput = {
@@ -21210,6 +28626,94 @@ export namespace Prisma {
     update?: XOR<XOR<Quiz_attemptUpdateToOneWithWhereWithoutQuestion_responsesInput, Quiz_attemptUpdateWithoutQuestion_responsesInput>, Quiz_attemptUncheckedUpdateWithoutQuestion_responsesInput>
   }
 
+  export type TeacherCreateNestedOneWithoutTeacher_subject_class_resumesInput = {
+    create?: XOR<TeacherCreateWithoutTeacher_subject_class_resumesInput, TeacherUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    connectOrCreate?: TeacherCreateOrConnectWithoutTeacher_subject_class_resumesInput
+    connect?: TeacherWhereUniqueInput
+  }
+
+  export type SubjectCreateNestedOneWithoutTeacher_subject_class_resumesInput = {
+    create?: XOR<SubjectCreateWithoutTeacher_subject_class_resumesInput, SubjectUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    connectOrCreate?: SubjectCreateOrConnectWithoutTeacher_subject_class_resumesInput
+    connect?: SubjectWhereUniqueInput
+  }
+
+  export type ClassCreateNestedOneWithoutTeacher_subject_class_resumesInput = {
+    create?: XOR<ClassCreateWithoutTeacher_subject_class_resumesInput, ClassUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    connectOrCreate?: ClassCreateOrConnectWithoutTeacher_subject_class_resumesInput
+    connect?: ClassWhereUniqueInput
+  }
+
+  export type ResumeCreateNestedOneWithoutTeacher_subject_class_resumeInput = {
+    create?: XOR<ResumeCreateWithoutTeacher_subject_class_resumeInput, ResumeUncheckedCreateWithoutTeacher_subject_class_resumeInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutTeacher_subject_class_resumeInput
+    connect?: ResumeWhereUniqueInput
+  }
+
+  export type TeacherUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput = {
+    create?: XOR<TeacherCreateWithoutTeacher_subject_class_resumesInput, TeacherUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    connectOrCreate?: TeacherCreateOrConnectWithoutTeacher_subject_class_resumesInput
+    upsert?: TeacherUpsertWithoutTeacher_subject_class_resumesInput
+    connect?: TeacherWhereUniqueInput
+    update?: XOR<XOR<TeacherUpdateToOneWithWhereWithoutTeacher_subject_class_resumesInput, TeacherUpdateWithoutTeacher_subject_class_resumesInput>, TeacherUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type SubjectUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput = {
+    create?: XOR<SubjectCreateWithoutTeacher_subject_class_resumesInput, SubjectUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    connectOrCreate?: SubjectCreateOrConnectWithoutTeacher_subject_class_resumesInput
+    upsert?: SubjectUpsertWithoutTeacher_subject_class_resumesInput
+    connect?: SubjectWhereUniqueInput
+    update?: XOR<XOR<SubjectUpdateToOneWithWhereWithoutTeacher_subject_class_resumesInput, SubjectUpdateWithoutTeacher_subject_class_resumesInput>, SubjectUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type ClassUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput = {
+    create?: XOR<ClassCreateWithoutTeacher_subject_class_resumesInput, ClassUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    connectOrCreate?: ClassCreateOrConnectWithoutTeacher_subject_class_resumesInput
+    upsert?: ClassUpsertWithoutTeacher_subject_class_resumesInput
+    connect?: ClassWhereUniqueInput
+    update?: XOR<XOR<ClassUpdateToOneWithWhereWithoutTeacher_subject_class_resumesInput, ClassUpdateWithoutTeacher_subject_class_resumesInput>, ClassUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type ResumeUpdateOneRequiredWithoutTeacher_subject_class_resumeNestedInput = {
+    create?: XOR<ResumeCreateWithoutTeacher_subject_class_resumeInput, ResumeUncheckedCreateWithoutTeacher_subject_class_resumeInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutTeacher_subject_class_resumeInput
+    upsert?: ResumeUpsertWithoutTeacher_subject_class_resumeInput
+    connect?: ResumeWhereUniqueInput
+    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutTeacher_subject_class_resumeInput, ResumeUpdateWithoutTeacher_subject_class_resumeInput>, ResumeUncheckedUpdateWithoutTeacher_subject_class_resumeInput>
+  }
+
+  export type TeacherSubjectClassResumeCreateNestedOneWithoutResumeInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutResumeInput, TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput>
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutResumeInput
+    connect?: TeacherSubjectClassResumeWhereUniqueInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateNestedOneWithoutResumeInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutResumeInput, TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput>
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutResumeInput
+    connect?: TeacherSubjectClassResumeWhereUniqueInput
+  }
+
+  export type TeacherSubjectClassResumeUpdateOneWithoutResumeNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutResumeInput, TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput>
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutResumeInput
+    upsert?: TeacherSubjectClassResumeUpsertWithoutResumeInput
+    disconnect?: TeacherSubjectClassResumeWhereInput | boolean
+    delete?: TeacherSubjectClassResumeWhereInput | boolean
+    connect?: TeacherSubjectClassResumeWhereUniqueInput
+    update?: XOR<XOR<TeacherSubjectClassResumeUpdateToOneWithWhereWithoutResumeInput, TeacherSubjectClassResumeUpdateWithoutResumeInput>, TeacherSubjectClassResumeUncheckedUpdateWithoutResumeInput>
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateOneWithoutResumeNestedInput = {
+    create?: XOR<TeacherSubjectClassResumeCreateWithoutResumeInput, TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput>
+    connectOrCreate?: TeacherSubjectClassResumeCreateOrConnectWithoutResumeInput
+    upsert?: TeacherSubjectClassResumeUpsertWithoutResumeInput
+    disconnect?: TeacherSubjectClassResumeWhereInput | boolean
+    delete?: TeacherSubjectClassResumeWhereInput | boolean
+    connect?: TeacherSubjectClassResumeWhereUniqueInput
+    update?: XOR<XOR<TeacherSubjectClassResumeUpdateToOneWithWhereWithoutResumeInput, TeacherSubjectClassResumeUpdateWithoutResumeInput>, TeacherSubjectClassResumeUncheckedUpdateWithoutResumeInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -21479,6 +28983,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateWithoutUserInput = {
@@ -21486,6 +28991,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subjects?: Relationship_teacher_subjectUncheckedCreateNestedManyWithoutTeacherInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherCreateOrConnectWithoutUserInput = {
@@ -21530,6 +29036,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutTeacherNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateWithoutUserInput = {
@@ -21537,6 +29044,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subjects?: Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutTeacherNestedInput
   }
 
   export type StudentUpsertWithoutUserInput = {
@@ -21618,6 +29126,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TeacherSubjectClassResumeCreateWithoutTeacherInput = {
+    created_at?: Date | string
+    modified_at?: Date | string
+    subject: SubjectCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    class: ClassCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    resume: ResumeCreateNestedOneWithoutTeacher_subject_class_resumeInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput = {
+    id?: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateOrConnectWithoutTeacherInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    create: XOR<TeacherSubjectClassResumeCreateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type TeacherSubjectClassResumeCreateManyTeacherInputEnvelope = {
+    data: TeacherSubjectClassResumeCreateManyTeacherInput | TeacherSubjectClassResumeCreateManyTeacherInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserUpsertWithoutTeacherInput = {
     update: XOR<UserUpdateWithoutTeacherInput, UserUncheckedUpdateWithoutTeacherInput>
     create: XOR<UserCreateWithoutTeacherInput, UserUncheckedCreateWithoutTeacherInput>
@@ -21679,6 +29214,35 @@ export namespace Prisma {
     teacher_id?: IntFilter<"Relationship_teacher_subject"> | number
   }
 
+  export type TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutTeacherInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    update: XOR<TeacherSubjectClassResumeUpdateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedUpdateWithoutTeacherInput>
+    create: XOR<TeacherSubjectClassResumeCreateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedCreateWithoutTeacherInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutTeacherInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    data: XOR<TeacherSubjectClassResumeUpdateWithoutTeacherInput, TeacherSubjectClassResumeUncheckedUpdateWithoutTeacherInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateManyWithWhereWithoutTeacherInput = {
+    where: TeacherSubjectClassResumeScalarWhereInput
+    data: XOR<TeacherSubjectClassResumeUpdateManyMutationInput, TeacherSubjectClassResumeUncheckedUpdateManyWithoutTeacherInput>
+  }
+
+  export type TeacherSubjectClassResumeScalarWhereInput = {
+    AND?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
+    OR?: TeacherSubjectClassResumeScalarWhereInput[]
+    NOT?: TeacherSubjectClassResumeScalarWhereInput | TeacherSubjectClassResumeScalarWhereInput[]
+    id?: IntFilter<"TeacherSubjectClassResume"> | number
+    teacher_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    subject_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    class_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    resume_id?: IntFilter<"TeacherSubjectClassResume"> | number
+    created_at?: DateTimeFilter<"TeacherSubjectClassResume"> | Date | string
+    modified_at?: DateTimeFilter<"TeacherSubjectClassResume"> | Date | string
+  }
+
   export type Relationship_teacher_subjectCreateWithoutSubjectInput = {
     teacher: TeacherCreateNestedOneWithoutTeacher_subjectsInput
     teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutTeacher_subjectInput
@@ -21700,6 +29264,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TeacherSubjectClassResumeCreateWithoutSubjectInput = {
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher: TeacherCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    class: ClassCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    resume: ResumeCreateNestedOneWithoutTeacher_subject_class_resumeInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput = {
+    id?: number
+    teacher_id: number
+    class_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateOrConnectWithoutSubjectInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    create: XOR<TeacherSubjectClassResumeCreateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type TeacherSubjectClassResumeCreateManySubjectInputEnvelope = {
+    data: TeacherSubjectClassResumeCreateManySubjectInput | TeacherSubjectClassResumeCreateManySubjectInput[]
+    skipDuplicates?: boolean
+  }
+
   export type Relationship_teacher_subjectUpsertWithWhereUniqueWithoutSubjectInput = {
     where: Relationship_teacher_subjectWhereUniqueInput
     update: XOR<Relationship_teacher_subjectUpdateWithoutSubjectInput, Relationship_teacher_subjectUncheckedUpdateWithoutSubjectInput>
@@ -21716,10 +29307,27 @@ export namespace Prisma {
     data: XOR<Relationship_teacher_subjectUpdateManyMutationInput, Relationship_teacher_subjectUncheckedUpdateManyWithoutSubjectInput>
   }
 
+  export type TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutSubjectInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    update: XOR<TeacherSubjectClassResumeUpdateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedUpdateWithoutSubjectInput>
+    create: XOR<TeacherSubjectClassResumeCreateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedCreateWithoutSubjectInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutSubjectInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    data: XOR<TeacherSubjectClassResumeUpdateWithoutSubjectInput, TeacherSubjectClassResumeUncheckedUpdateWithoutSubjectInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateManyWithWhereWithoutSubjectInput = {
+    where: TeacherSubjectClassResumeScalarWhereInput
+    data: XOR<TeacherSubjectClassResumeUpdateManyMutationInput, TeacherSubjectClassResumeUncheckedUpdateManyWithoutSubjectInput>
+  }
+
   export type SubjectCreateWithoutTeacher_subjectsInput = {
     name: string
     created_at?: Date | string
     modified_at?: Date | string
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectUncheckedCreateWithoutTeacher_subjectsInput = {
@@ -21727,6 +29335,7 @@ export namespace Prisma {
     name: string
     created_at?: Date | string
     modified_at?: Date | string
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutSubjectInput
   }
 
   export type SubjectCreateOrConnectWithoutTeacher_subjectsInput = {
@@ -21738,6 +29347,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     user: UserCreateNestedOneWithoutTeacherInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateWithoutTeacher_subjectsInput = {
@@ -21745,6 +29355,7 @@ export namespace Prisma {
     user_id: number
     created_at?: Date | string
     modified_at?: Date | string
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherCreateOrConnectWithoutTeacher_subjectsInput = {
@@ -21788,6 +29399,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutSubjectNestedInput
   }
 
   export type SubjectUncheckedUpdateWithoutTeacher_subjectsInput = {
@@ -21795,6 +29407,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutSubjectNestedInput
   }
 
   export type TeacherUpsertWithoutTeacher_subjectsInput = {
@@ -21812,6 +29425,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutTeacherNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateWithoutTeacher_subjectsInput = {
@@ -21819,6 +29433,7 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutTeacherNestedInput
   }
 
   export type Relationship_teacher_subject_classUpsertWithWhereUniqueWithoutTeacher_subjectInput = {
@@ -21894,6 +29509,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type TeacherSubjectClassResumeCreateWithoutClassInput = {
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher: TeacherCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    subject: SubjectCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    resume: ResumeCreateNestedOneWithoutTeacher_subject_class_resumeInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateWithoutClassInput = {
+    id?: number
+    teacher_id: number
+    subject_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateOrConnectWithoutClassInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    create: XOR<TeacherSubjectClassResumeCreateWithoutClassInput, TeacherSubjectClassResumeUncheckedCreateWithoutClassInput>
+  }
+
+  export type TeacherSubjectClassResumeCreateManyClassInputEnvelope = {
+    data: TeacherSubjectClassResumeCreateManyClassInput | TeacherSubjectClassResumeCreateManyClassInput[]
+    skipDuplicates?: boolean
+  }
+
   export type StudentUpsertWithWhereUniqueWithoutClassInput = {
     where: StudentWhereUniqueInput
     update: XOR<StudentUpdateWithoutClassInput, StudentUncheckedUpdateWithoutClassInput>
@@ -21938,6 +29580,22 @@ export namespace Prisma {
     data: XOR<Relationship_teacher_subject_classUpdateManyMutationInput, Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassInput>
   }
 
+  export type TeacherSubjectClassResumeUpsertWithWhereUniqueWithoutClassInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    update: XOR<TeacherSubjectClassResumeUpdateWithoutClassInput, TeacherSubjectClassResumeUncheckedUpdateWithoutClassInput>
+    create: XOR<TeacherSubjectClassResumeCreateWithoutClassInput, TeacherSubjectClassResumeUncheckedCreateWithoutClassInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateWithWhereUniqueWithoutClassInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    data: XOR<TeacherSubjectClassResumeUpdateWithoutClassInput, TeacherSubjectClassResumeUncheckedUpdateWithoutClassInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateManyWithWhereWithoutClassInput = {
+    where: TeacherSubjectClassResumeScalarWhereInput
+    data: XOR<TeacherSubjectClassResumeUpdateManyMutationInput, TeacherSubjectClassResumeUncheckedUpdateManyWithoutClassInput>
+  }
+
   export type UserCreateWithoutStudentInput = {
     name: string
     email: string
@@ -21975,6 +29633,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutClassInput
   }
 
   export type ClassUncheckedCreateWithoutStudentsInput = {
@@ -21985,6 +29644,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassCreateOrConnectWithoutStudentsInput = {
@@ -22079,6 +29739,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateWithoutStudentsInput = {
@@ -22089,6 +29750,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type Quiz_attemptUpsertWithWhereUniqueWithoutStudentInput = {
@@ -22129,6 +29791,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     students?: StudentCreateNestedManyWithoutClassInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeCreateNestedManyWithoutClassInput
   }
 
   export type ClassUncheckedCreateWithoutTeacher_subject_classesInput = {
@@ -22139,6 +29802,7 @@ export namespace Prisma {
     created_at?: Date | string
     modified_at?: Date | string
     students?: StudentUncheckedCreateNestedManyWithoutClassInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedCreateNestedManyWithoutClassInput
   }
 
   export type ClassCreateOrConnectWithoutTeacher_subject_classesInput = {
@@ -22164,8 +29828,8 @@ export namespace Prisma {
 
   export type QuizCreateWithoutTeacher_subject_classInput = {
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22179,8 +29843,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateWithoutTeacher_subject_classInput = {
     id?: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22219,6 +29883,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     students?: StudentUpdateManyWithoutClassNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUpdateManyWithoutClassNestedInput
   }
 
   export type ClassUncheckedUpdateWithoutTeacher_subject_classesInput = {
@@ -22229,6 +29894,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
     students?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    teacher_subject_class_resumes?: TeacherSubjectClassResumeUncheckedUpdateManyWithoutClassNestedInput
   }
 
   export type Relationship_teacher_subjectUpsertWithoutTeacher_subject_classesInput = {
@@ -22275,8 +29941,8 @@ export namespace Prisma {
     NOT?: QuizScalarWhereInput | QuizScalarWhereInput[]
     id?: IntFilter<"Quiz"> | number
     title?: StringFilter<"Quiz"> | string
-    icon?: StringFilter<"Quiz"> | string
     description?: StringFilter<"Quiz"> | string
+    icon?: StringFilter<"Quiz"> | string
     duration_minutes?: IntNullableFilter<"Quiz"> | number | null
     max_points?: DecimalFilter<"Quiz"> | Decimal | DecimalJsLike | number | string
     max_attempt?: IntNullableFilter<"Quiz"> | number | null
@@ -22434,8 +30100,8 @@ export namespace Prisma {
 
   export type QuizCreateWithoutQuestionsInput = {
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22449,8 +30115,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateWithoutQuestionsInput = {
     id?: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22558,8 +30224,8 @@ export namespace Prisma {
 
   export type QuizUpdateWithoutQuestionsInput = {
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22573,8 +30239,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateWithoutQuestionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22855,8 +30521,8 @@ export namespace Prisma {
 
   export type QuizCreateWithoutQuiz_attemptsInput = {
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22870,8 +30536,8 @@ export namespace Prisma {
   export type QuizUncheckedCreateWithoutQuiz_attemptsInput = {
     id?: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -22957,8 +30623,8 @@ export namespace Prisma {
 
   export type QuizUpdateWithoutQuiz_attemptsInput = {
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -22972,8 +30638,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateWithoutQuiz_attemptsInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23170,9 +30836,272 @@ export namespace Prisma {
     modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TeacherCreateWithoutTeacher_subject_class_resumesInput = {
+    created_at?: Date | string
+    modified_at?: Date | string
+    user: UserCreateNestedOneWithoutTeacherInput
+    teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutTeacherInput
+  }
+
+  export type TeacherUncheckedCreateWithoutTeacher_subject_class_resumesInput = {
+    id?: number
+    user_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subjects?: Relationship_teacher_subjectUncheckedCreateNestedManyWithoutTeacherInput
+  }
+
+  export type TeacherCreateOrConnectWithoutTeacher_subject_class_resumesInput = {
+    where: TeacherWhereUniqueInput
+    create: XOR<TeacherCreateWithoutTeacher_subject_class_resumesInput, TeacherUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type SubjectCreateWithoutTeacher_subject_class_resumesInput = {
+    name: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subjects?: Relationship_teacher_subjectCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectUncheckedCreateWithoutTeacher_subject_class_resumesInput = {
+    id?: number
+    name: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher_subjects?: Relationship_teacher_subjectUncheckedCreateNestedManyWithoutSubjectInput
+  }
+
+  export type SubjectCreateOrConnectWithoutTeacher_subject_class_resumesInput = {
+    where: SubjectWhereUniqueInput
+    create: XOR<SubjectCreateWithoutTeacher_subject_class_resumesInput, SubjectUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type ClassCreateWithoutTeacher_subject_class_resumesInput = {
+    name: string
+    shift: $Enums.Shift
+    course: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    students?: StudentCreateNestedManyWithoutClassInput
+    teacher_subject_classes?: Relationship_teacher_subject_classCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassUncheckedCreateWithoutTeacher_subject_class_resumesInput = {
+    id?: number
+    name: string
+    shift: $Enums.Shift
+    course: string
+    created_at?: Date | string
+    modified_at?: Date | string
+    students?: StudentUncheckedCreateNestedManyWithoutClassInput
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassCreateOrConnectWithoutTeacher_subject_class_resumesInput = {
+    where: ClassWhereUniqueInput
+    create: XOR<ClassCreateWithoutTeacher_subject_class_resumesInput, ClassUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type ResumeCreateWithoutTeacher_subject_class_resumeInput = {
+    title: string
+    icon: string
+    description: string
+    resume: string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type ResumeUncheckedCreateWithoutTeacher_subject_class_resumeInput = {
+    id?: number
+    title: string
+    icon: string
+    description: string
+    resume: string
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type ResumeCreateOrConnectWithoutTeacher_subject_class_resumeInput = {
+    where: ResumeWhereUniqueInput
+    create: XOR<ResumeCreateWithoutTeacher_subject_class_resumeInput, ResumeUncheckedCreateWithoutTeacher_subject_class_resumeInput>
+  }
+
+  export type TeacherUpsertWithoutTeacher_subject_class_resumesInput = {
+    update: XOR<TeacherUpdateWithoutTeacher_subject_class_resumesInput, TeacherUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+    create: XOR<TeacherCreateWithoutTeacher_subject_class_resumesInput, TeacherUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    where?: TeacherWhereInput
+  }
+
+  export type TeacherUpdateToOneWithWhereWithoutTeacher_subject_class_resumesInput = {
+    where?: TeacherWhereInput
+    data: XOR<TeacherUpdateWithoutTeacher_subject_class_resumesInput, TeacherUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type TeacherUpdateWithoutTeacher_subject_class_resumesInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutTeacherNestedInput
+    teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type TeacherUncheckedUpdateWithoutTeacher_subject_class_resumesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subjects?: Relationship_teacher_subjectUncheckedUpdateManyWithoutTeacherNestedInput
+  }
+
+  export type SubjectUpsertWithoutTeacher_subject_class_resumesInput = {
+    update: XOR<SubjectUpdateWithoutTeacher_subject_class_resumesInput, SubjectUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+    create: XOR<SubjectCreateWithoutTeacher_subject_class_resumesInput, SubjectUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    where?: SubjectWhereInput
+  }
+
+  export type SubjectUpdateToOneWithWhereWithoutTeacher_subject_class_resumesInput = {
+    where?: SubjectWhereInput
+    data: XOR<SubjectUpdateWithoutTeacher_subject_class_resumesInput, SubjectUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type SubjectUpdateWithoutTeacher_subject_class_resumesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subjects?: Relationship_teacher_subjectUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type SubjectUncheckedUpdateWithoutTeacher_subject_class_resumesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher_subjects?: Relationship_teacher_subjectUncheckedUpdateManyWithoutSubjectNestedInput
+  }
+
+  export type ClassUpsertWithoutTeacher_subject_class_resumesInput = {
+    update: XOR<ClassUpdateWithoutTeacher_subject_class_resumesInput, ClassUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+    create: XOR<ClassCreateWithoutTeacher_subject_class_resumesInput, ClassUncheckedCreateWithoutTeacher_subject_class_resumesInput>
+    where?: ClassWhereInput
+  }
+
+  export type ClassUpdateToOneWithWhereWithoutTeacher_subject_class_resumesInput = {
+    where?: ClassWhereInput
+    data: XOR<ClassUpdateWithoutTeacher_subject_class_resumesInput, ClassUncheckedUpdateWithoutTeacher_subject_class_resumesInput>
+  }
+
+  export type ClassUpdateWithoutTeacher_subject_class_resumesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    shift?: EnumShiftFieldUpdateOperationsInput | $Enums.Shift
+    course?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    students?: StudentUpdateManyWithoutClassNestedInput
+    teacher_subject_classes?: Relationship_teacher_subject_classUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassUncheckedUpdateWithoutTeacher_subject_class_resumesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    shift?: EnumShiftFieldUpdateOperationsInput | $Enums.Shift
+    course?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    students?: StudentUncheckedUpdateManyWithoutClassNestedInput
+    teacher_subject_classes?: Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type ResumeUpsertWithoutTeacher_subject_class_resumeInput = {
+    update: XOR<ResumeUpdateWithoutTeacher_subject_class_resumeInput, ResumeUncheckedUpdateWithoutTeacher_subject_class_resumeInput>
+    create: XOR<ResumeCreateWithoutTeacher_subject_class_resumeInput, ResumeUncheckedCreateWithoutTeacher_subject_class_resumeInput>
+    where?: ResumeWhereInput
+  }
+
+  export type ResumeUpdateToOneWithWhereWithoutTeacher_subject_class_resumeInput = {
+    where?: ResumeWhereInput
+    data: XOR<ResumeUpdateWithoutTeacher_subject_class_resumeInput, ResumeUncheckedUpdateWithoutTeacher_subject_class_resumeInput>
+  }
+
+  export type ResumeUpdateWithoutTeacher_subject_class_resumeInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ResumeUncheckedUpdateWithoutTeacher_subject_class_resumeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    resume?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateWithoutResumeInput = {
+    created_at?: Date | string
+    modified_at?: Date | string
+    teacher: TeacherCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    subject: SubjectCreateNestedOneWithoutTeacher_subject_class_resumesInput
+    class: ClassCreateNestedOneWithoutTeacher_subject_class_resumesInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput = {
+    id?: number
+    teacher_id: number
+    subject_id: number
+    class_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
+  }
+
+  export type TeacherSubjectClassResumeCreateOrConnectWithoutResumeInput = {
+    where: TeacherSubjectClassResumeWhereUniqueInput
+    create: XOR<TeacherSubjectClassResumeCreateWithoutResumeInput, TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput>
+  }
+
+  export type TeacherSubjectClassResumeUpsertWithoutResumeInput = {
+    update: XOR<TeacherSubjectClassResumeUpdateWithoutResumeInput, TeacherSubjectClassResumeUncheckedUpdateWithoutResumeInput>
+    create: XOR<TeacherSubjectClassResumeCreateWithoutResumeInput, TeacherSubjectClassResumeUncheckedCreateWithoutResumeInput>
+    where?: TeacherSubjectClassResumeWhereInput
+  }
+
+  export type TeacherSubjectClassResumeUpdateToOneWithWhereWithoutResumeInput = {
+    where?: TeacherSubjectClassResumeWhereInput
+    data: XOR<TeacherSubjectClassResumeUpdateWithoutResumeInput, TeacherSubjectClassResumeUncheckedUpdateWithoutResumeInput>
+  }
+
+  export type TeacherSubjectClassResumeUpdateWithoutResumeInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher?: TeacherUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    subject?: SubjectUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    class?: ClassUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateWithoutResumeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type Relationship_teacher_subjectCreateManyTeacherInput = {
     id?: number
     subject_id: number
+  }
+
+  export type TeacherSubjectClassResumeCreateManyTeacherInput = {
+    id?: number
+    subject_id: number
+    class_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
   }
 
   export type Relationship_teacher_subjectUpdateWithoutTeacherInput = {
@@ -23191,9 +31120,44 @@ export namespace Prisma {
     subject_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type TeacherSubjectClassResumeUpdateWithoutTeacherInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    subject?: SubjectUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    class?: ClassUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    resume?: ResumeUpdateOneRequiredWithoutTeacher_subject_class_resumeNestedInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateWithoutTeacherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateManyWithoutTeacherInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type Relationship_teacher_subjectCreateManySubjectInput = {
     id?: number
     teacher_id: number
+  }
+
+  export type TeacherSubjectClassResumeCreateManySubjectInput = {
+    id?: number
+    teacher_id: number
+    class_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
   }
 
   export type Relationship_teacher_subjectUpdateWithoutSubjectInput = {
@@ -23210,6 +31174,32 @@ export namespace Prisma {
   export type Relationship_teacher_subjectUncheckedUpdateManyWithoutSubjectInput = {
     id?: IntFieldUpdateOperationsInput | number
     teacher_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TeacherSubjectClassResumeUpdateWithoutSubjectInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher?: TeacherUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    class?: ClassUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    resume?: ResumeUpdateOneRequiredWithoutTeacher_subject_class_resumeNestedInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateWithoutSubjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateManyWithoutSubjectInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Relationship_teacher_subject_classCreateManyTeacher_subjectInput = {
@@ -23244,6 +31234,15 @@ export namespace Prisma {
   export type Relationship_teacher_subject_classCreateManyClassInput = {
     id?: number
     teacher_subject_id: number
+  }
+
+  export type TeacherSubjectClassResumeCreateManyClassInput = {
+    id?: number
+    teacher_id: number
+    subject_id: number
+    resume_id: number
+    created_at?: Date | string
+    modified_at?: Date | string
   }
 
   export type StudentUpdateWithoutClassInput = {
@@ -23285,6 +31284,32 @@ export namespace Prisma {
   export type Relationship_teacher_subject_classUncheckedUpdateManyWithoutClassInput = {
     id?: IntFieldUpdateOperationsInput | number
     teacher_subject_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type TeacherSubjectClassResumeUpdateWithoutClassInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    teacher?: TeacherUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    subject?: SubjectUpdateOneRequiredWithoutTeacher_subject_class_resumesNestedInput
+    resume?: ResumeUpdateOneRequiredWithoutTeacher_subject_class_resumeNestedInput
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TeacherSubjectClassResumeUncheckedUpdateManyWithoutClassInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    teacher_id?: IntFieldUpdateOperationsInput | number
+    subject_id?: IntFieldUpdateOperationsInput | number
+    resume_id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    modified_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type Quiz_attemptCreateManyStudentInput = {
@@ -23335,8 +31360,8 @@ export namespace Prisma {
   export type QuizCreateManyTeacher_subject_classInput = {
     id?: number
     title: string
-    icon: string
     description: string
+    icon: string
     duration_minutes?: number | null
     max_points?: Decimal | DecimalJsLike | number | string
     max_attempt?: number | null
@@ -23347,8 +31372,8 @@ export namespace Prisma {
 
   export type QuizUpdateWithoutTeacher_subject_classInput = {
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23362,8 +31387,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateWithoutTeacher_subject_classInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null
@@ -23377,8 +31402,8 @@ export namespace Prisma {
   export type QuizUncheckedUpdateManyWithoutTeacher_subject_classInput = {
     id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
-    icon?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    icon?: StringFieldUpdateOperationsInput | string
     duration_minutes?: NullableIntFieldUpdateOperationsInput | number | null
     max_points?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     max_attempt?: NullableIntFieldUpdateOperationsInput | number | null

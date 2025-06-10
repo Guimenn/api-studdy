@@ -1,5 +1,13 @@
 import prisma from '../../prisma/client.js';
 import { createUser, updateUser } from './User.js';
+import {
+	averageCorrectResponses,
+	availableQuizzesXCompletedQuizzes,
+	completedQuizzesBySubject,
+	timeSpentOnQuizzes,
+	lastsCompletedQuizzes,
+	availableQuizzes
+} from './Statistics.js';
 import { generateEnrollment } from '../utils/generateEnrollment.js';
 
 async function getAllStudents() {
@@ -253,10 +261,65 @@ async function deleteStudent(studentId) {
 	}
 }
 
+async function getStudentStatistics(userId) {
+	try {
+		const student = await prisma.student.findUnique({
+			where: { user_id: userId },
+			select: {
+				id: true,
+				class_id: true,
+			},
+		});
+
+		if (!student) {
+			throw new Error('Student not found');
+		}
+
+		// Consulta as estatísticas
+		const [
+			averageCorrect,
+			quizzesCount,
+			completionBySubject,
+			totalTimeSpent,
+			lastQuizzes,
+			availableQuizzesCount
+		] = await Promise.all([
+			averageCorrectResponses(student),
+			availableQuizzesXCompletedQuizzes(student),
+			completedQuizzesBySubject(student.id),
+			timeSpentOnQuizzes(student.id),
+			lastsCompletedQuizzes(student.id, 5),
+			availableQuizzes(student.id)
+		]);
+
+		return {
+			averageCorrectResponses: averageCorrect,
+			completedQuizzes: quizzesCount.completedQuizzes,
+			availableQuizzes: quizzesCount.availableQuizzes,
+			completionPercentageOverall:
+				quizzesCount.availableQuizzes > 0
+					? Math.round(
+							(quizzesCount.completedQuizzes /
+								quizzesCount.availableQuizzes) *
+								100 *
+								100,
+						) / 100
+					: 0,
+			completionPercentageBySubject: completionBySubject,
+			totalTimeSpentMinutes: totalTimeSpent,
+			lastCompletedQuizzes: lastQuizzes,
+			availableQuizzesCount: availableQuizzesCount
+		};
+	} catch (error) {
+		throw error;
+	}
+}
+
 export {
 	getAllStudents,
 	getStudentById,
 	createStudent,
 	updateStudent,
 	deleteStudent,
+	getStudentStatistics,
 };

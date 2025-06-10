@@ -1,5 +1,7 @@
 import express from 'express';
 
+import { getAdminStatisticsController } from '../controllers/AdminController.js';
+
 import {
 	getAllSubjectsController,
 	getSubjectByIdController,
@@ -61,5 +63,8 @@ router.get('/classes/:classId', getClassByIdController);
 router.post('/classes', createClassController);
 router.put('/classes/:classId', updateClassController);
 router.delete('/classes/:classId', deleteClassController);
+
+// Rota para obter as estatísticas do admin
+router.get('/status', getAdminStatisticsController);
 
 export default router;

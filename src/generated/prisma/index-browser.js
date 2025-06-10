@@ -20,12 +20,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 6.8.2
- * Query Engine version: 2060c79ba17c6bb9f5823312b6f6b7f4a845738e
+ * Prisma Client JS version: 6.9.0
+ * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
  */
 Prisma.prismaVersion = {
-  client: "6.8.2",
-  engine: "2060c79ba17c6bb9f5823312b6f6b7f4a845738e"
+  client: "6.9.0",
+  engine: "81e4af48011447c3cc503a190e86995b66d2a28e"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -179,8 +179,8 @@ exports.Prisma.Relationship_teacher_subject_classScalarFieldEnum = {
 exports.Prisma.QuizScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  icon: 'icon',
   description: 'description',
+  icon: 'icon',
   duration_minutes: 'duration_minutes',
   max_points: 'max_points',
   max_attempt: 'max_attempt',
@@ -239,6 +239,66 @@ exports.Prisma.Question_responseScalarFieldEnum = {
   modified_at: 'modified_at'
 };
 
+exports.Prisma.Video_assignmentScalarFieldEnum = {
+  id: 'id',
+  videoUrl: 'videoUrl',
+  title_video: 'title_video',
+  name_channel: 'name_channel',
+  duration_video: 'duration_video',
+  font: 'font',
+  description: 'description',
+  thumbnail: 'thumbnail',
+  videoId: 'videoId',
+  created_at: 'created_at',
+  modified_at: 'modified_at'
+};
+
+exports.Prisma.TeacherSubjectClassResumeScalarFieldEnum = {
+  id: 'id',
+  teacher_id: 'teacher_id',
+  subject_id: 'subject_id',
+  class_id: 'class_id',
+  resume_id: 'resume_id',
+  created_at: 'created_at',
+  modified_at: 'modified_at'
+};
+
+exports.Prisma.ResumeScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  icon: 'icon',
+  description: 'description',
+  resume: 'resume',
+  created_at: 'created_at',
+  modified_at: 'modified_at'
+};
+
+exports.Prisma.ContestsScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  type: 'type',
+  icon: 'icon',
+  color: 'color',
+  description: 'description',
+  date: 'date',
+  created_at: 'created_at',
+  modified_at: 'modified_at'
+};
+
+exports.Prisma.Entrance_examScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  link: 'link',
+  type: 'type',
+  icon: 'icon',
+  color: 'color',
+  description: 'description',
+  date: 'date',
+  created_at: 'created_at',
+  modified_at: 'modified_at'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -291,7 +351,12 @@ exports.Prisma.ModelName = {
   Alternative: 'Alternative',
   Question_images: 'Question_images',
   Quiz_attempt: 'Quiz_attempt',
-  Question_response: 'Question_response'
+  Question_response: 'Question_response',
+  Video_assignment: 'Video_assignment',
+  TeacherSubjectClassResume: 'TeacherSubjectClassResume',
+  Resume: 'Resume',
+  Contests: 'Contests',
+  Entrance_exam: 'Entrance_exam'
 };
 
 /**

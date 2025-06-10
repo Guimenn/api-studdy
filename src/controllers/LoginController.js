@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
-import prisma from '../../prisma/client.js';
 import jwt from 'jsonwebtoken';
+import prisma from '../../prisma/client.js';
+
 async function compare(password, hashedPassword) {
 	try {
 		return await bcrypt.compare(password, hashedPassword);
@@ -63,6 +64,7 @@ async function recoveryController(req, res) {
 	}
 }
 
+
 async function loginController(req, res) {
 	const SECRET = process.env.JWT_SECRET;
 
@@ -98,7 +100,7 @@ async function loginController(req, res) {
 		return res.status(200).json({
 			message: 'Login successful',
 			token,
-			user: { id: user.id, role: user.role.toLocaleLowerCase() },
+			user: { id: user.id, role: user.role },
 		});
 	} catch (error) {
 		console.error('Error fetching users:', error);

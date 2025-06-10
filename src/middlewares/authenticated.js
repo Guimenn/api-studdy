@@ -17,7 +17,7 @@ function authenticated(req, res, next) {
 		const decoded = jwt.verify(token, secret);
 
 		req.user = {
-			user_id: decoded.user_id,
+			id: decoded.user_id,
 			role: decoded.role,
 		};
 

@@ -1,66 +1,95 @@
-import OpenAI from 'openai';
-import dotenv from "dotenv";
+import {
+    getAllResumes,
+    getResumeById,
+    createResume,
+    updateResume,
+    deleteResume,
+} from '../models/Resume.js';
+import { getTeacherByUserId } from '../models/Teacher.js';
 
-dotenv.config();
-let openai;
-try {
-    if (!process.env.OPENAI_API_KEY) {
-        throw new Error('OPENAI_API_KEY não encontrada nas variáveis de ambiente');
+async function getAllResumesController(req, res) {
+    try {
+        const resumes = await getAllResumes();
+        return res.status(200).json(resumes);
+    } catch (error) {
+        console.error('Error fetching resumes:', error);
+        return res.status(500).json({ message: 'Error fetching resumes' });
     }
-    openai = new OpenAI({
-        apiKey: process.env.OPENAI_API_KEY,
-    });
-} catch (error) {
-    console.error('Erro ao inicializar OpenAI:', error.message);
 }
 
-async function generateResume(req, res) {
-    if (!openai) {
-        return res.status(500).json({ error: "OpenAI não está configurado corretamente. Verifique a chave API." });
-    }
-
-    const { title } = req.body;
-
-    if (!title) {
-        return res.status(400).json({ error: "Informe o titulo para gerar o resumo." });
-    }
-
+async function getResumeByIdController(req, res) {
     try {
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4",
-            messages: [
-                {
-                    role: "system",
-                    content: "Você é um assistente especializado em criar resumos detalhados e bem estruturados."
-                },
-                {
-                    role: "user",
-                    content: `Por favor, crie um resumo BEM EXTENSO e detalhado do seguinte titulo, mantendo os pontos principais e organizando as informações de forma clara e estruturada:
+        const resume = await getResumeById(parseInt(req.params.resumeId));
 
-${title}
-
-O resumo deve incluir:  
-- Principais tópicos e conceitos
-- Exemplos relevantes
-- Conclusões importantes
-- Relacionamentos entre as ideias`
-                }
-            ],
-            max_tokens: 2000,
-            temperature: 0.7
-        });
-
-        const resposta = completion.choices?.[0]?.message?.content;
-
-        if (!resposta) {
-            return res.status(500).json({ error: "Resposta do OpenAI vazia ou inválida" });
+        if (!resume) {
+            return res.status(404).json({ message: 'Resume not found' });
         }
 
-        res.json({ resume: resposta });
+        return res.status(200).json(resume);
     } catch (error) {
-        console.error("Erro ao gerar resumo:", error);
-        res.status(500).json({ error: "Erro ao gerar resumo" });
+        console.error('Error fetching resume:', error);
+        return res.status(500).json({ message: 'Error fetching resume' });
     }
-};
+}
 
-export { generateResume };
+async function createResumeController(req, res) {
+    try {
+        const { subject_id, class_id, title, icon, description, resume } = req.body;
+        const teacher = await getTeacherByUserId(req.user.id);
+
+        if (!teacher) {
+            return res.status(404).json({ message: 'Teacher not found' });
+        }
+
+        if (!subject_id || !class_id || !title || !icon || !description || !resume) {
+            return res.status(400).json({ 
+                message: 'subject_id, class_id, title, icon, description and resume fields are required.' 
+            });
+        }
+
+        const resumeData = {
+            teacher_id: teacher.id,
+            subject_id: parseInt(subject_id),
+            class_id: parseInt(class_id),
+            title,
+            icon,
+            description,
+            resume
+        };
+
+        const newResume = await createResume(resumeData);
+        return res.status(201).json(newResume);
+    } catch (error) {
+        console.error('Error creating resume:', error);
+        return res.status(500).json({ message: 'Error creating resume', details: error.message });
+    }
+}
+
+async function updateResumeController(req, res) {
+    try {
+        const resume = await updateResume(parseInt(req.params.resumeId), req.body);
+        return res.status(200).json(resume);
+    } catch (error) {
+        console.error('Error updating resume:', error);
+        return res.status(500).json({ message: 'Error updating resume' });
+    }
+}
+
+async function deleteResumeController(req, res) {
+    try {
+        const resumeId = parseInt(req.params.resumeId, 10);
+        const resume = await deleteResume(resumeId);
+        return res.status(200).json(resume);
+    } catch (error) {
+        console.error('Error deleting resume:', error);
+        return res.status(error.status || 500).json({ message: error.message, details: error.details });
+    }
+}
+
+export {
+    getAllResumesController,
+    getResumeByIdController,
+    createResumeController,
+    updateResumeController,
+    deleteResumeController,
+};

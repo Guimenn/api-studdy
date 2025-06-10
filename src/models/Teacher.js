@@ -1,4 +1,10 @@
 import prisma from '../../prisma/client.js';
+import {
+	countStudentsByTeacherId,
+	getQuizCompletionRate,
+	getClassAverageScoreGlobal,
+	getPerformanceBySubject,
+} from './Statistics.js';
 import { createUser, updateUser } from './User.js';
 import { formatDateBR } from '../utils/parseDate.js';
 
@@ -66,6 +72,8 @@ async function getTeacherById(teacherId) {
 			},
 		});
 
+		if (!teacher) return null;
+
 		return {
 			...teacher,
 			user: {
@@ -74,7 +82,6 @@ async function getTeacherById(teacherId) {
 			},
 		};
 	} catch (error) {
-		console.error('Error fetching teacher:', error);
 		throw error;
 	}
 }
@@ -301,10 +308,60 @@ async function deleteTeacher(teacherId) {
 	}
 }
 
+async function getTeacherByUserId(userId) {
+	try {
+		const teacher = await prisma.teacher.findUnique({
+			where: { user_id: userId },
+			select: { id: true },
+		});
+
+		return teacher;
+	} catch (error) {
+		throw error;
+	}
+}
+
+// Função principal que busca todas as estatísticas do professor
+async function getTeacherStatistics(userId) {
+	const teacher = await prisma.teacher.findUnique({
+		where: {
+			user_id: userId,
+		},
+	});
+
+	if (!teacher) {
+		throw new Error('Teacher not found');
+	}
+
+	const teacherId = teacher.id;
+
+	// Consulta as estatísticas
+	const [
+		totalStudents,
+		quizCompletionRate,
+		classAverageScoreGlobal,
+		performanceBySubject,
+	] = await Promise.all([
+		countStudentsByTeacherId(teacherId),
+		getQuizCompletionRate(teacherId),
+		getClassAverageScoreGlobal(teacherId),
+		getPerformanceBySubject(teacherId),
+	]);
+
+	return {
+		totalStudents,
+		quizCompletionRate: parseFloat(quizCompletionRate.toFixed(1)),
+		classAverageScoreGlobal: parseFloat(classAverageScoreGlobal.toFixed(1)),
+		performanceBySubject,
+	};
+}
+
 export {
 	getAllTeachers,
 	getTeacherById,
 	createTeacher,
 	updateTeacher,
 	deleteTeacher,
+	getTeacherByUserId,
+	getTeacherStatistics,
 };

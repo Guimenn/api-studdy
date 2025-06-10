@@ -4,9 +4,18 @@ import {
 	createStudent,
 	updateStudent,
 	deleteStudent,
+	getStudentStatistics,
 } from '../models/Student.js';
-import { studentSchema } from '../schemas/student.schema.js';
+import { getStudentClass } from '../models/Class.js';
+import { getSubjectsByStudent } from '../models/Subject.js';
+import {
+	studentSchema,
+	updateStudentSchema,
+} from '../schemas/student.schema.js';
 import { ZodError } from 'zod/v4';
+import { getQuizzesByStudent } from '../models/Quiz.js';
+
+// Controllers do /admin/student
 
 async function getAllStudentsController(req, res) {
 	try {
@@ -70,7 +79,7 @@ async function updateStudentController(req, res) {
 	let student;
 
 	try {
-		student = studentSchema.parse(req.body);
+		student = updateStudentSchema.parse(req.body);
 	} catch (error) {
 		if (error instanceof ZodError) {
 			const formatted = error['issues'].map((err) => ({
@@ -124,10 +133,80 @@ async function deleteStudentController(req, res) {
 	}
 }
 
+// Controllers do /student
+
+// Controller para obter as informações da turma do aluno
+async function getStudentClassController(req, res) {
+	try {
+		let studentClass = await getStudentClass(parseInt(req.user.id));
+		return res.status(200).json(studentClass);
+	} catch (error) {
+		console.error(error);
+		return res
+			.status(500)
+			.json({ message: 'Error fetching student class' });
+	}
+}
+
+// Controller para obter as matérias da turma do aluno
+async function getStudentSubjectsController(req, res) {
+	try {
+		const studentSubjects = await getSubjectsByStudent(
+			parseInt(req.user.id),
+		);
+		return res.status(200).json(studentSubjects);
+	} catch (error) {
+		console.error(error);
+		return res
+			.status(500)
+			.json({ message: 'Error fetching student subjects' });
+	}
+}
+
+// Controller para obter todos os quizzes
+async function getStudentQuizzesController(req, res) {
+	try {
+		const studentQuizzes = await getQuizzesByStudent(req.user.id);
+		return res.status(200).json(studentQuizzes);
+	} catch (error) {
+		console.error(error);
+		if (error.message.includes('not found')) {
+			return res.status(404).json({ message: error.message });
+		}
+		return res
+			.status(500)
+			.json({ message: 'Error fetching student quizzes' });
+	}
+}
+
+// Controller para obter as estatísticas gerais do aluno
+async function getStudentStatisticsController(req, res) {
+	try {
+		const userId = req.user.id;
+
+		const statistics = await getStudentStatistics(userId);
+
+		res.json(statistics);
+	} catch (error) {
+		console.error(error);
+		if (error.message.includes('not found')) {
+			return res.status(404).json({ message: error.message });
+		}
+
+		res.status(500).json({
+			message: 'Erro interno do servidor',
+		});
+	}
+}
+
 export {
 	getAllStudentsController,
 	getStudentByIdController,
 	createStudentController,
 	updateStudentController,
 	deleteStudentController,
+	getStudentClassController,
+	getStudentSubjectsController,
+	getStudentQuizzesController,
+	getStudentStatisticsController,
 };

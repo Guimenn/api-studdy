@@ -122,6 +122,57 @@ async function getClassSubjectsByTeacher(classId, userId) {
 	}
 }
 
+async function getSubjectsByStudent(userId) {
+	try {
+		const student = await prisma.student.findUnique({
+			where: { user_id: userId },
+			select: { id: true, class: { select: { id: true } } },
+		});
+
+		if (!student) {
+			throw new Error('Student not found');
+		}
+
+		const subjects =
+			await prisma.relationship_teacher_subject_class.findMany({
+				where: { class_id: student.class.id },
+				select: {
+					teacher_subject: {
+						select: {
+							teacher: {
+								select: {
+									id: true,
+									user: {
+										select: {
+											name: true,
+										},
+									},
+								},
+							},
+							subject: {
+								select: {
+									id: true,
+									name: true,
+								},
+							},
+						},
+					},
+				},
+			});
+
+		return subjects.map((item) => {
+			return {
+				teacher_id: item.teacher_subject.teacher.id,
+				teacher_name: item.teacher_subject.teacher.user.name,
+				subject_id: item.teacher_subject.subject.id,
+				subject_name: item.teacher_subject.subject.name,
+			};
+		});
+	} catch (error) {
+		throw error;
+	}
+}
+
 export {
 	getAllSubjects,
 	getSubjectById,
@@ -129,4 +180,5 @@ export {
 	updateSubject,
 	deleteSubject,
 	getClassSubjectsByTeacher,
+	getSubjectsByStudent,
 };

@@ -26,3 +26,5 @@ export const userSchema = z.object({
 		}),
 	role: z.enum(['Admin', 'Teacher', 'Student'], { error: 'Invalid role' }),
 });
+
+export const userUpdateSchema = userSchema.partial({ password: true });
