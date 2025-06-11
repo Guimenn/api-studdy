@@ -31,7 +31,7 @@ env.config();
 app.use(express.json());
 app.use(
 	cors({
-		origin: `https://api-studdy.onrender.com`,
+		origin: `https://studdy-three.vercel.app`,
 		credentials: true,
 	}),
 );
