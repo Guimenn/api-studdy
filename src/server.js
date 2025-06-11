@@ -31,7 +31,7 @@ env.config();
 app.use(express.json());
 app.use(
 	cors({
-		origin: `http://localhost:3001`,
+		origin: `https://api-studdy.onrender.com`,
 		credentials: true,
 	}),
 );
