@@ -342,7 +342,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\menle\\OneDrive\\Documentos\\GitHub\\Studdy-API\\src\\generated\\prisma",
+      "value": "C:\\Users\\menle\\OneDrive\\Documentos\\GitHub\\projeto\\Studdy-API\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -360,7 +360,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\menle\\OneDrive\\Documentos\\GitHub\\Studdy-API\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\menle\\OneDrive\\Documentos\\GitHub\\projeto\\Studdy-API\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

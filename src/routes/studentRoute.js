@@ -1,3 +1,7 @@
+/**
+ * Rotas específicas para funcionalidades do aluno
+ * Gerencia acesso a turmas, matérias, quizzes, tentativas, resumos, vídeos e estatísticas
+ */
 import express from 'express';
 import {
 	getStudentClassController,

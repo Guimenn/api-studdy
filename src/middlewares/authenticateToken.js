@@ -1,5 +1,9 @@
 import jwt from 'jsonwebtoken';
 
+/**
+ * Middleware de autenticação JWT
+ * Verifica e valida tokens de acesso nas requisições
+ */
 export function authenticateToken(req, res, next) {
 	const authHeader = req.headers['authorization'];
 	const token = authHeader && authHeader.split(' ')[1];
@@ -16,4 +20,4 @@ export function authenticateToken(req, res, next) {
 		console.error('Erro na autenticação:', error);
 		return res.status(403).json({ message: 'Token inválido' });
 	}
-} 
+}

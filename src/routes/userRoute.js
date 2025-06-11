@@ -1,3 +1,7 @@
+/**
+ * Rotas para gerenciamento de usuários
+ * Operações CRUD básicas para administração de usuários do sistema
+ */
 import express from 'express';
 import {
 	getAllUsersController,
@@ -7,12 +11,13 @@ import {
 
 const router = express.Router();
 
-// Rota para gerar resumos
+// Rota para obter todos os usuários
 router.get('/', getAllUsersController);
 
-// Rota para gerar alternativas erradas
+// Rota para obter um usuário específico por ID
 router.get('/:userId', getUserByIdController);
 
+// Rota para atualizar dados de um usuário
 router.put('/:userId', updateUserController);
 
 export default router;

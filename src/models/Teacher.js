@@ -8,6 +8,16 @@ import {
 import { createUser, updateUser } from './User.js';
 import { formatDateBR } from '../utils/parseDate.js';
 
+/**
+ * Model para operações relacionadas a professores
+ * Gerencia CRUD de professores, incluindo dados do usuário e disciplinas lecionadas
+ * Integra com estatísticas de turmas e desempenho dos alunos
+ */
+
+/**
+ * Obtém todos os professores do sistema
+ * @returns {Array} - Lista de professores com dados do usuário e disciplinas
+ */
 async function getAllTeachers() {
 	const teachers = await prisma.teacher.findMany({
 		select: {

@@ -1,5 +1,14 @@
 import prisma from '../../prisma/client.js';
 
+/**
+ * Model para operações relacionadas a turmas/classes
+ * Gerencia CRUD de turmas, estudantes, professores e suas relações
+ */
+
+/**
+ * Obtém todas as turmas do sistema
+ * @returns {Array} - Lista de turmas com informações básicas
+ */
 async function getAllClasses() {
 	return await prisma.class.findMany({
 		select: {
@@ -12,6 +21,11 @@ async function getAllClasses() {
 	});
 }
 
+/**
+ * Obtém uma turma específica por ID com informações detalhadas
+ * @param {number} classId - ID da turma
+ * @returns {Object|null} - Dados completos da turma incluindo estudantes e professores
+ */
 async function getClassById(classId) {
 	try {
 		const schoolClass = await prisma.class.findUnique({

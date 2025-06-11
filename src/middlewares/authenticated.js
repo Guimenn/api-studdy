@@ -2,6 +2,10 @@ import jwt from 'jsonwebtoken';
 
 const secret = process.env.JWT_SECRET;
 
+/**
+ * Middleware de autenticação JWT
+ * Verifica tokens Bearer e extrai informações do usuário para requisições autenticadas
+ */
 function authenticated(req, res, next) {
 	const authHeader = req.headers.authorization;
 

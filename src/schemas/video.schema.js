@@ -1,6 +1,9 @@
 import { z } from 'zod/v4';
 
-// video validation schema
+/**
+ * Schema de validação para vídeos educacionais
+ * Define a estrutura para vídeos do YouTube e outras plataformas usados no ensino
+ */
 export const videoSchema = z.object({
     videoUrl: z.string().url({ message: 'Invalid video URL' }),
     title_video: z.string().min(1, { message: 'Video title is required' }),

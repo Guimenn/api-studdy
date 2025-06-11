@@ -7,6 +7,7 @@ import {
 } from '../models/Resume.js';
 import { getTeacherByUserId } from '../models/Teacher.js';
 
+// Controller para listar todos os resumos
 async function getAllResumesController(req, res) {
     try {
         const resumes = await getAllResumes();
@@ -17,6 +18,7 @@ async function getAllResumesController(req, res) {
     }
 }
 
+// Controller para obter um resumo específico por ID
 async function getResumeByIdController(req, res) {
     try {
         const resume = await getResumeById(parseInt(req.params.resumeId));
@@ -32,6 +34,7 @@ async function getResumeByIdController(req, res) {
     }
 }
 
+// Controller para criar um novo resumo
 async function createResumeController(req, res) {
     try {
         const { subject_id, class_id, title, icon, description, resume } = req.body;
@@ -65,6 +68,7 @@ async function createResumeController(req, res) {
     }
 }
 
+// Controller para atualizar um resumo existente
 async function updateResumeController(req, res) {
     try {
         const resume = await updateResume(parseInt(req.params.resumeId), req.body);
@@ -75,6 +79,7 @@ async function updateResumeController(req, res) {
     }
 }
 
+// Controller para deletar um resumo
 async function deleteResumeController(req, res) {
     try {
         const resumeId = parseInt(req.params.resumeId, 10);

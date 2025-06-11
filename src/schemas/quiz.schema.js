@@ -1,7 +1,10 @@
 import { z } from 'zod/v4';
 import { questionSchema } from './question.schema.js';
 
-// Schema de validação de questionário
+/**
+ * Schema de validação para questionários/quizzes
+ * Define a estrutura completa de um quiz incluindo metadados e questões
+ */
 export const quizSchema = z.object({
 	title: z
 		.string()
@@ -22,6 +25,9 @@ export const quizSchema = z.object({
 	}),
 });
 
+/**
+ * Schema para atualização de visibilidade do quiz
+ */
 export const visibilitySchema = z.object({
 	visibility: z.enum(['draft', 'public', 'archived'], {
 		error: 'Invalid visibility',

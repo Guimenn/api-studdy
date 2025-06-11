@@ -1,5 +1,6 @@
 import { getUserProfile } from '../models/User.js';
 
+// Controller para obter o perfil do usuário autenticado
 async function meController(req, res) {
 	const { user_id, role } = req.user;
 

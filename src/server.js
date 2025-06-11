@@ -19,46 +19,46 @@ import userRoute from './routes/userRoute.js';
 import quizRoute from './routes/quizRoute.js';
 import ContestsEntraceRoute from './routes/contestsEntrace.js';
 
-// Config
+/**
+ * Configuração do servidor Express
+ * API principal da plataforma Studdy
+ */
 const app = express();
 const port = 3000;
 env.config();
 
-// express middlewares
+// Middlewares globais
 app.use(express.json());
 app.use(
 	cors({
-		origin: `https://studdy-three.vercel.app`,
+		origin: `http://localhost:3001`,
 		credentials: true,
 	}),
 );
 
-// Login route
+/**
+ * Configuração das rotas da API
+ * Cada rota tem middlewares específicos de autenticação e autorização
+ */
+
+// Rota de autenticação (pública)
 app.use('/login', authRoute);
 
-
-// Admin route
+// Rotas protegidas por papel de usuário
 app.use('/admin', authenticated, autorizeRole(['Admin']), adminRoute);
-
-// Teacher route
 app.use('/teacher', authenticated, autorizeRole(['Teacher']), teacherRoute);
-
-// Generate route
 app.use('/generate', authenticated, autorizeRole(['Teacher']), generateRoute);
-
-// Student route
 app.use('/student', authenticated, autorizeRole(['Student']), studentRoute);
 
-// Quiz route
+// Rotas com proteção básica
 app.use('/quiz', quizRoute);
-
-// User Route
 app.use('/user', userRoute);
-
-// Contests Entrace Route
 app.use('/contestsEntrace', ContestsEntraceRoute);
 
-// Start server
+/**
+ * Inicialização do servidor
+ * Cria usuário admin padrão se não existir
+ */
 try {
 	const adminExists = await prisma.user.findFirst({
 		where: { role: 'Admin' },

@@ -1,5 +1,6 @@
 import { getAdminStatistics } from '../models/Admin.js';
 
+// Controller para obter estatísticas administrativas do sistema
 async function getAdminStatisticsController(req, res) {
 	try {
 		const statistics = await getAdminStatistics(req.user.id);

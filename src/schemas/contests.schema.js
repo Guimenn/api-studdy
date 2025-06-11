@@ -1,6 +1,9 @@
 import { z } from 'zod/v4';
 
-// video validation schema
+/**
+ * Schema de validação para concursos e vestibulares
+ * Define a estrutura para informações sobre processos seletivos e concursos
+ */
 export const contests = z.object({
     title: z.string().min(1, { message: 'Title is required' }),
     link: z.string().url({ message: 'Invalid URL' }),

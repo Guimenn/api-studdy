@@ -2,6 +2,10 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import prisma from '../../prisma/client.js';
 
+/**
+ * Função auxiliar para comparar senhas
+ * Compara senha em texto plano com hash bcrypt
+ */
 async function compare(password, hashedPassword) {
 	try {
 		return await bcrypt.compare(password, hashedPassword);
@@ -11,6 +15,10 @@ async function compare(password, hashedPassword) {
 	}
 }
 
+/**
+ * Controller para definir nova senha
+ * Atualiza senha do usuário no banco de dados
+ */
 async function newPasswordController(req, res) {
 	const { email, password } = req.body;
 
@@ -41,6 +49,10 @@ async function newPasswordController(req, res) {
 	}
 }
 
+/**
+ * Controller para recuperação de senha
+ * Verifica se usuário existe para processo de recuperação
+ */
 async function recoveryController(req, res) {
 	const { email } = req.body;
 
@@ -64,7 +76,10 @@ async function recoveryController(req, res) {
 	}
 }
 
-
+/**
+ * Controller principal de login
+ * Autentica usuário e gera token JWT
+ */
 async function loginController(req, res) {
 	const SECRET = process.env.JWT_SECRET;
 

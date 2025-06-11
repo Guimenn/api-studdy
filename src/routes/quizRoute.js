@@ -1,3 +1,7 @@
+/**
+ * Rotas para acesso a quizzes
+ * Permite que professores e alunos visualizem questionários
+ */
 import express from 'express';
 
 import authenticated from '../middlewares/authenticated.js';

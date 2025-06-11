@@ -1,3 +1,7 @@
+/**
+ * Rotas para geração de conteúdo usando IA
+ * Fornece endpoints para gerar resumos e alternativas incorretas
+ */
 import express from 'express';
 import {
 	generateResumeController,

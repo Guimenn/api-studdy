@@ -1,3 +1,7 @@
+/**
+ * Rotas para gerenciamento de concursos e vestibulares
+ * Operações CRUD com controle de acesso baseado em roles
+ */
 import express from 'express';
 import {
 	getAllContestsController,

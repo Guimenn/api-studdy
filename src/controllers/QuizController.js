@@ -21,7 +21,6 @@ import { quizSchema, visibilitySchema } from '../schemas/quiz.schema.js';
 import { ZodError } from 'zod/v4';
 import { getClassById } from '../models/Class.js';
 
-// Controller do /teacher
 // Controller para criar um novo quiz
 async function createQuizController(req, res) {
 	// Valida o corpo da requisição

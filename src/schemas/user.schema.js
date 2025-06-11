@@ -3,6 +3,11 @@ import { validateCPF } from '../utils/validateCPF.js';
 import { formatDateISO } from '../utils/parseDate.js';
 import { isOlderThanSixYears } from '../utils/validateAge.js';
 
+/**
+ * Schema de validação para usuários do sistema
+ * Define a estrutura base para todos os tipos de usuário (Admin, Teacher, Student)
+ * Inclui validações para CPF, email, data de nascimento e idade mínima
+ */
 export const userSchema = z.object({
 	name: z.string().min(3, { error: 'Invalid Name' }),
 	email: z
@@ -27,4 +32,7 @@ export const userSchema = z.object({
 	role: z.enum(['Admin', 'Teacher', 'Student'], { error: 'Invalid role' }),
 });
 
+/**
+ * Schema para atualização de usuários (senha opcional)
+ */
 export const userUpdateSchema = userSchema.partial({ password: true });

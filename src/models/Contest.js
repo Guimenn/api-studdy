@@ -1,5 +1,15 @@
 import prisma from '../../prisma/client.js';
 
+/**
+ * Model para operações relacionadas a concursos e vestibulares
+ * Gerencia CRUD de informações sobre processos seletivos e concursos
+ */
+
+/**
+ * Verifica se já existe um concurso com o mesmo link
+ * @param {string} link - URL do concurso
+ * @returns {boolean} - True se o link já existe, false caso contrário
+ */
 async function checkDuplicateLink(link) {
     const existingContest = await prisma.contests.findFirst({
         where: { link },
@@ -7,6 +17,10 @@ async function checkDuplicateLink(link) {
     return existingContest !== null;
 }
 
+/**
+ * Obtém todos os concursos cadastrados
+ * @returns {Array} - Lista de concursos com informações básicas
+ */
 async function getAllContests() {
     return await prisma.contests.findMany({
         select: {
@@ -24,6 +38,12 @@ async function getAllContests() {
     });
 }
 
+/**
+ * Obtém um concurso específico por ID
+ * @param {number} contest_id - ID do concurso
+ * @returns {Object|null} - Dados completos do concurso
+ * @throws {Error} - Se houver erro na busca
+ */
 async function getContestById(contest_id) {
     try {
         const contest = await prisma.contests.findUnique({

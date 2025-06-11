@@ -1,3 +1,7 @@
+/**
+ * Rotas específicas para funcionalidades do professor
+ * Gerencia turmas, matérias, quizzes, vídeos, resumos e estatísticas
+ */
 import express from 'express';
 import {
 	getTeacherClassesController,
@@ -5,6 +9,7 @@ import {
 	getSubjectQuizzesController,
 	getTeacherClassByIdController,
 	getTeacherStatisticsController,
+	getClassStatisticsController
 } from '../controllers/TeacherController.js';
 import {
 	createQuizController,
@@ -104,5 +109,8 @@ router.put('/resumes/:resumeId', updateResumeController);
 
 // Rota para deletar um resumo
 router.delete('/resumes/:resumeId', deleteResumeController);
+
+// Rota para obter estatísticas da turma
+router.get('/classes/:classId/statistics', getClassStatisticsController);
 
 export default router;

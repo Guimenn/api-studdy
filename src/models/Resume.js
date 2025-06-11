@@ -1,5 +1,14 @@
 import prisma from '../../prisma/client.js';
 
+/**
+ * Model para operações relacionadas a resumos educacionais
+ * Gerencia CRUD de resumos criados por professores para turmas e disciplinas específicas
+ */
+
+/**
+ * Obtém todos os resumos do sistema
+ * @returns {Array} - Lista de resumos com informações de professor, disciplina, turma e conteúdo
+ */
 async function getAllResumes() {
     return await prisma.teacherSubjectClassResume.findMany({
         select: {

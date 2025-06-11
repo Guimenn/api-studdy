@@ -6,6 +6,7 @@ import {
 import { userUpdateSchema } from '../schemas/user.schema.js';
 import { ZodError } from 'zod/v4';
 
+// Controller para listar todos os usuários
 async function getAllUsersController(req, res) {
 	try {
 		const users = await getAllUsers();
@@ -16,6 +17,7 @@ async function getAllUsersController(req, res) {
 	}
 }
 
+// Controller para obter um usuário específico por ID
 async function getUserByIdController(req, res) {
 	try {
 		const user = await getUserById(parseInt(req.params.userId));
@@ -31,6 +33,7 @@ async function getUserByIdController(req, res) {
 	}
 }
 
+// Controller para atualizar um usuário
 async function updateUserController(req, res) {
 	let userData;
 

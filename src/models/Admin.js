@@ -1,6 +1,17 @@
 import prisma from '../../prisma/client.js';
 import { getSystemStatistics } from './Statistics.js';
 
+/**
+ * Model para operações relacionadas a administradores
+ * Gerencia funcionalidades específicas do perfil de administrador
+ */
+
+/**
+ * Obtém estatísticas do sistema para administradores
+ * @param {number} userId - ID do usuário administrador
+ * @returns {Object} - Estatísticas gerais do sistema
+ * @throws {Error} - Se o usuário não for encontrado ou não for admin
+ */
 async function getAdminStatistics(userId) {
 	try {
 		const admin = await prisma.user.findUnique({

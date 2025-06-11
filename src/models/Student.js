@@ -10,6 +10,16 @@ import {
 } from './Statistics.js';
 import { generateEnrollment } from '../utils/generateEnrollment.js';
 
+/**
+ * Model para operações relacionadas a estudantes
+ * Gerencia CRUD de estudantes, incluindo dados do usuário e informações específicas como matrícula e turma
+ * Integra com estatísticas de desempenho e progresso acadêmico
+ */
+
+/**
+ * Obtém todos os estudantes do sistema
+ * @returns {Array} - Lista de estudantes com dados do usuário e turma
+ */
 async function getAllStudents() {
 	return await prisma.student.findMany({
 		select: {
@@ -301,9 +311,8 @@ async function getStudentStatistics(userId) {
 					? Math.round(
 							(quizzesCount.completedQuizzes /
 								quizzesCount.availableQuizzes) *
-								100 *
 								100,
-						) / 100
+						)
 					: 0,
 			completionPercentageBySubject: completionBySubject,
 			totalTimeSpentMinutes: totalTimeSpent,

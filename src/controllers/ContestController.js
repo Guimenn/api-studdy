@@ -6,6 +6,7 @@ import {
     deleteContest,
 } from '../models/Contest.js';
 
+// Controller para listar todos os concursos
 async function getAllContestsController(req, res) {
     try {
         const contests = await getAllContests();
@@ -16,6 +17,7 @@ async function getAllContestsController(req, res) {
     }
 }
 
+// Controller para obter um concurso específico por ID
 async function getContestByIdController(req, res) {
     try {
         const contest = await getContestById(parseInt(req.params.contestId));
@@ -31,6 +33,7 @@ async function getContestByIdController(req, res) {
     }
 }
 
+// Controller para criar um novo concurso
 async function createContestController(req, res) {
     try {
         const { title, link, type, icon, color, description, date } = req.body;
@@ -60,6 +63,7 @@ async function createContestController(req, res) {
     }
 }
 
+// Controller para atualizar um concurso existente
 async function updateContestController(req, res) {
     try {
         const contestId = parseInt(req.params.contestId);
@@ -78,6 +82,7 @@ async function updateContestController(req, res) {
     }
 }
 
+// Controller para deletar um concurso
 async function deleteContestController(req, res) {
     try {
         const contestId = parseInt(req.params.contestId, 10);

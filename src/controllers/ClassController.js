@@ -9,6 +9,7 @@ import {
 import { classSchema } from '../schemas/class.schema.js';
 import { ZodError } from 'zod/v4';
 
+// Controller para listar todas as turmas
 async function getAllClassesController(req, res) {
 	try {
 		const classes = await getAllClasses();
@@ -19,6 +20,7 @@ async function getAllClassesController(req, res) {
 	}
 }
 
+// Controller para obter uma turma específica por ID
 async function getClassByIdController(req, res) {
 	try {
 		const schoolClass = await getClassById(parseInt(req.params.classId));
@@ -34,6 +36,7 @@ async function getClassByIdController(req, res) {
 	}
 }
 
+// Controller para criar uma nova turma
 async function createClassController(req, res) {
 	let payload;
 	try {
@@ -71,6 +74,7 @@ async function createClassController(req, res) {
 	}
 }
 
+// Controller para atualizar uma turma existente
 async function updateClassController(req, res) {
 	const classId = parseInt(req.params.classId, 10);
 	let classData;
@@ -123,6 +127,7 @@ async function updateClassController(req, res) {
 	}
 }
 
+// Controller para deletar uma turma
 async function deleteClassController(req, res) {
 	const classId = parseInt(req.params.classId);
 
@@ -145,7 +150,7 @@ async function deleteClassController(req, res) {
 	}
 }
 
-// Obter turmas de um professor
+// Controller para obter turmas de um professor específico
 async function getClassesByTeacherIdController(req, res) {
 	try {
 		const userId = req.user.id;
@@ -159,7 +164,7 @@ async function getClassesByTeacherIdController(req, res) {
 	}
 }
 
-// Obter uma turma específica de um professor
+// Controller para obter uma turma específica de um professor
 async function getTeacherClassByIdController(req, res) {
 	try {
 		const userId = req.user.id;

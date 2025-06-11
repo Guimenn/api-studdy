@@ -1,7 +1,10 @@
 import { z } from 'zod/v4';
 import { alternativeSchema } from './alternative.schema.js';
 
-// schema de validação de questão
+/**
+ * Schema de validação para questões de quiz
+ * Define a estrutura de uma questão incluindo enunciado, pontuação e alternativas
+ */
 export const questionSchema = z.object({
 	statement: z
 		.string()

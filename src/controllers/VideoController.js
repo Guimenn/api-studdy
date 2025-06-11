@@ -7,6 +7,7 @@ import {
 } from '../models/Video.js';
 import fetch from 'node-fetch';
 
+// Controller para listar todos os vídeos
 async function getAllVideosController(req, res) {
     try {
         const videos = await getAllVideos();
@@ -17,6 +18,7 @@ async function getAllVideosController(req, res) {
     }
 }
 
+// Controller para obter um vídeo específico por ID
 async function getVideoByIdController(req, res) {
     try {
         const video = await getVideoById(parseInt(req.params.videoId));
@@ -32,6 +34,7 @@ async function getVideoByIdController(req, res) {
     }
 }
 
+// Controller para criar um novo vídeo do YouTube
 async function createVideoController(req, res) {
     try {
         const { videoUrl } = req.body;
@@ -83,6 +86,7 @@ async function createVideoController(req, res) {
     }
 }
 
+// Controller para atualizar um vídeo existente
 async function updateVideoController(req, res) {
     try {
         const video = await updateVideo(req.params.videoId, req.body);
@@ -93,6 +97,7 @@ async function updateVideoController(req, res) {
     }
 }
 
+// Controller para deletar um vídeo
 async function deleteVideoController(req, res) {
     try {
         const videoId = parseInt(req.params.videoId, 10);

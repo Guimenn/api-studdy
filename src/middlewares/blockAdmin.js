@@ -1,4 +1,7 @@
-// Middleware para bloquear apenas admins
+/**
+ * Middleware para bloquear acesso de administradores
+ * Impede que usuários com role 'Admin' acessem determinadas rotas
+ */
 function blockAdmin(req, res, next) {
 	if (req.user.role === 'Admin') {
 		return res.status(403).json({

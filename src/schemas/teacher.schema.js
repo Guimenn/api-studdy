@@ -1,6 +1,10 @@
 import { z } from 'zod/v4';
 import { userSchema, userUpdateSchema } from './user.schema.js';
 
+/**
+ * Schema de validação para professores
+ * Combina dados de usuário com informações específicas do professor (disciplinas que leciona)
+ */
 export const teacherSchema = z.object({
 	user: userSchema,
 	teacher: z.object({
@@ -15,6 +19,9 @@ export const teacherSchema = z.object({
 	}),
 });
 
+/**
+ * Schema para atualização de dados do professor
+ */
 export const updateTeacherSchema = z.object({
 	user: userUpdateSchema,
 	teacher: z.object({

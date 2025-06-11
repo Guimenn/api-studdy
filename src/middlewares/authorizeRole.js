@@ -1,3 +1,7 @@
+/**
+ * Middleware de autorização por papel
+ * Verifica se o usuário tem permissão baseada em seu role
+ */
 export default function autorizeRole(allowedRoles) {
 	return (req, res, next) => {
 		if (!allowedRoles.includes(req.user.role)) {

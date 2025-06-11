@@ -1,5 +1,9 @@
 import { z } from 'zod/v4';
 
+/**
+ * Schema de validação para disciplinas/matérias
+ * Define a estrutura e validação para nomes de disciplinas acadêmicas
+ */
 export const subjectSchema = z.object({
 	name: z
 		.string()

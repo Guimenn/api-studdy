@@ -1,6 +1,17 @@
 import openaiClient from '../config/openai.js';
 
+/**
+ * Model para operações de geração de conteúdo usando IA
+ * Utiliza OpenAI GPT para gerar alternativas incorretas e resumos educacionais
+ */
 
+/**
+ * Gera alternativas incorretas mas plausíveis para questões de múltipla escolha
+ * @param {string} question - Enunciado da questão
+ * @param {string} correct_answer - Resposta correta da questão
+ * @returns {string} - Três alternativas incorretas geradas pela IA
+ * @throws {Error} - Se o cliente OpenAI não estiver inicializado ou houver erro na geração
+ */
 async function generateWrongAlternatives(question, correct_answer) {
 	if (!openaiClient) {
 		throw new Error('OpenAI client not initialized');
@@ -31,6 +42,12 @@ async function generateWrongAlternatives(question, correct_answer) {
 	}
 }
 
+/**
+ * Gera resumos educacionais detalhados baseados em títulos ou tópicos
+ * @param {string} title - Título ou tópico para gerar o resumo
+ * @returns {string} - Resumo detalhado em português brasileiro
+ * @throws {Error} - Se o cliente OpenAI não estiver inicializado ou houver erro na geração
+ */
 async function generateResume(title) {
 	if (!openaiClient) {
 		throw new Error('OpenAI client not initialized');

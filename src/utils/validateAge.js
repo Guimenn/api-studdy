@@ -1,3 +1,13 @@
+/**
+ * Utilitário para validação de idade
+ * Verifica se uma pessoa tem pelo menos 6 anos de idade
+ */
+
+/**
+ * Verifica se a pessoa tem mais de 6 anos
+ * @param {Date} date - Data de nascimento
+ * @returns {boolean} - True se tem 6 anos ou mais, false caso contrário
+ */
 function isOlderThanSixYears(date) {
 	const today = new Date();
 

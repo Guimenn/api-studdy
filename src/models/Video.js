@@ -1,5 +1,16 @@
 import prisma from '../../prisma/client.js';
 
+/**
+ * Model para operações relacionadas a vídeos educacionais
+ * Gerencia CRUD de vídeos do YouTube e outras plataformas
+ * Inclui validações de URL duplicada e metadados de vídeo
+ */
+
+/**
+ * Verifica se uma URL de vídeo já existe no sistema
+ * @param {string} videoUrl - URL do vídeo a ser verificada
+ * @returns {boolean} - True se a URL já existe, false caso contrário
+ */
 async function checkDuplicateUrl(videoUrl) {
     const existingVideo = await prisma.video_assignment.findFirst({
         where: { videoUrl },

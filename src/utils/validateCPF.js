@@ -1,3 +1,7 @@
+/**
+ * Função para validação de CPF
+ * Valida CPF brasileiro usando algoritmo oficial e retorna resultado formatado
+ */
 function validateCPF(rawCPF) {
 	if (!rawCPF) {
 		return { valid: false };
@@ -9,6 +13,9 @@ function validateCPF(rawCPF) {
 
 	if (/^(\d)\1{10}$/.test(digits)) return { valid: false };
 
+	/**
+	 * Calcula dígito verificador do CPF
+	 */
 	const calcCheckDigit = (base, factor) => {
 		const total = base
 			.split('')

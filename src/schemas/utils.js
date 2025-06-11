@@ -1,4 +1,14 @@
-// Validação de CPF
+/**
+ * Utilitários de validação para schemas
+ * Contém funções auxiliares reutilizáveis para validação de dados
+ * NOTA: Algumas dessas funções são duplicatas dos utilitários em /src/utils/
+ */
+
+/**
+ * Validação de CPF brasileiro
+ * @param {string} rawCPF - CPF em formato string
+ * @returns {Object} - Objeto com propriedades valid e formatted
+ */
 function validateCPF(rawCPF) {
 	if (!rawCPF) {
 		return { valid: false };
@@ -31,7 +41,11 @@ function validateCPF(rawCPF) {
 	};
 }
 
-// Converte uma data de dd/mm/yyyy para DateTime
+/**
+ * Converte data do formato brasileiro (DD/MM/YYYY) para ISO
+ * @param {string} rawDate - Data no formato DD/MM/YYYY
+ * @returns {Date|null} - Objeto Date válido ou null se inválida
+ */
 function parseBRDateToIso(rawDate) {
 	const [day, month, year] = rawDate.split('/');
 	if (!day || !month || !year) return null;
@@ -45,7 +59,11 @@ function parseBRDateToIso(rawDate) {
 	return date;
 }
 
-// Valida se o usuário é maior que seis anos
+/**
+ * Valida se o usuário tem mais de 6 anos de idade
+ * @param {Date} date - Data de nascimento
+ * @returns {boolean} - True se tem 6 anos ou mais, false caso contrário
+ */
 function isOlderThanSixYears(date) {
 	const today = new Date();
 

@@ -6,6 +6,7 @@ import {
     deleteEntranceExam,
 } from '../models/Entrance_exame.js';
 
+// Controller para listar todos os vestibulares
 async function getAllEntranceExamsController(req, res) {
     try {
         const entranceExams = await getAllEntranceExams();
@@ -16,6 +17,7 @@ async function getAllEntranceExamsController(req, res) {
     }
 }
 
+// Controller para obter um vestibular específico por ID
 async function getEntranceExamByIdController(req, res) {
     try {
         const entranceExam = await getEntranceExamById(parseInt(req.params.examId));
@@ -31,6 +33,7 @@ async function getEntranceExamByIdController(req, res) {
     }
 }
 
+// Controller para criar um novo vestibular
 async function createEntranceExamController(req, res) {
     try {
         const { title, link, type, icon, color, description, date } = req.body;
@@ -60,6 +63,7 @@ async function createEntranceExamController(req, res) {
     }
 }
 
+// Controller para atualizar um vestibular existente
 async function updateEntranceExamController(req, res) {
     try {
         const examId = parseInt(req.params.examId);
@@ -78,6 +82,7 @@ async function updateEntranceExamController(req, res) {
     }
 }
 
+// Controller para deletar um vestibular
 async function deleteEntranceExamController(req, res) {
     try {
         const examId = parseInt(req.params.examId, 10);

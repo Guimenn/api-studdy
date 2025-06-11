@@ -1,3 +1,7 @@
+/**
+ * Rotas administrativas do sistema
+ * Gerencia operações CRUD para disciplinas, professores, alunos, turmas e estatísticas
+ */
 import express from 'express';
 
 import { getAdminStatisticsController } from '../controllers/AdminController.js';

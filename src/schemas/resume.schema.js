@@ -1,6 +1,9 @@
 import { z } from 'zod/v4';
 
-// resume validation schema
+/**
+ * Schema de validação para resumos educacionais
+ * Define a estrutura para resumos de conteúdo criados por professores
+ */
 export const resumeSchema = z.object({
     teacher_id: z.number().int().positive(),
     subject_id: z.number().int().positive(),

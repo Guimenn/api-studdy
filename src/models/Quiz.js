@@ -1,7 +1,20 @@
 import prisma from '../../prisma/client.js';
 import { createQuestion } from './Question.js';
 
-// Busca os quizzes relacionados ao professor, turma e disciplina
+/**
+ * Model para operações relacionadas a quizzes/questionários
+ * Gerencia CRUD completo de quizzes, questões, tentativas e resultados
+ * Inclui funcionalidades para professores e estudantes
+ */
+
+/**
+ * Busca os quizzes relacionados ao professor, turma e disciplina
+ * @param {number} userId - ID do usuário professor
+ * @param {number} classId - ID da turma
+ * @param {number} subjectId - ID da disciplina
+ * @returns {Array} - Lista de quizzes do professor para a turma e disciplina específicas
+ * @throws {Error} - Se o professor não for encontrado
+ */
 async function getQuizzesOfTeacher(userId, classId, subjectId) {
 	try {
 		const teacher = await prisma.teacher.findUnique({
@@ -40,7 +53,15 @@ async function getQuizzesOfTeacher(userId, classId, subjectId) {
 	}
 }
 
-// Cria um novo quiz
+/**
+ * Cria um novo quiz com questões e alternativas
+ * @param {number} userId - ID do usuário professor
+ * @param {number} classId - ID da turma
+ * @param {number} subjectId - ID da disciplina
+ * @param {Object} quizData - Dados do quiz (title, description, questions, etc.)
+ * @returns {Object} - Quiz criado com suas questões
+ * @throws {Error} - Se houver erro na criação ou se o professor não for encontrado
+ */
 async function createQuiz(userId, classId, subjectId, quizData) {
 	try {
 		const teacher = await prisma.teacher.findUnique({
@@ -86,15 +107,30 @@ async function createQuiz(userId, classId, subjectId, quizData) {
 					icon: quiz.icon,
 					duration_minutes: quiz.duration_minutes,
 					max_points: totalPoints,
-					max_attempt: quiz.max_attempts,
+					max_attempt: quiz.max_attempt,
 					visibility: quiz.visibility || 'draft',
 					teacher_subject_class_id: quiz.teacher_subject_class_id,
 				},
 			});
 
-			// Para cada questão, cria a questão na tabela Question
+			// Para cada questão, cria a questão e suas alternativas
 			for (const questionData of quiz.questions) {
-				await createQuestion(tx, questionData, createdQuiz.id);
+				const question = await tx.question.create({
+					data: {
+						statement: questionData.statement,
+						points: questionData.points,
+						quiz_id: createdQuiz.id,
+					},
+				});
+
+				// Cria todas as alternativas de uma vez usando createMany
+				await tx.alternative.createMany({
+					data: questionData.alternatives.map(alt => ({
+						question_id: question.id,
+						response: alt.response,
+						correct_alternative: alt.correct_alternative
+					}))
+				});
 			}
 
 			// Retorna o quiz criado
@@ -505,8 +541,19 @@ async function changeAttemptStatus(attemptId, status) {
 		const updatedAttempt = await prisma.quiz_attempt.update({
 			where: { id: attemptId },
 			data: { status: status },
+			include: {
+				quiz: {
+					select: {
+						id: true,
+						title: true,
+						description: true
+					}
+				}
+			}
 		});
+		return updatedAttempt;
 	} catch (error) {
+		console.error('Erro ao atualizar status da tentativa:', error);
 		throw error;
 	}
 }
@@ -529,7 +576,11 @@ async function submitAnswer(attemptId, responses, userId) {
 				include: { 
 					quiz: { 
 						include: { 
-							questions: true 
+							questions: {
+								include: {
+									alternatives: true
+								}
+							} 
 						} 
 					} 
 				},
@@ -541,12 +592,7 @@ async function submitAnswer(attemptId, responses, userId) {
 
 			// Verificar se a tentativa pertence ao estudante atual
 			if (attempt.student_id !== student.id) {
-				console.log(
-					`Tentativa ${attemptId} pertence ao student ${attempt.student_id}, mas usuário atual é student ${student.id}`,
-				);
-				throw new Error(
-					'Você não tem permissão para finalizar esta tentativa.',
-				);
+				throw new Error('Você não tem permissão para finalizar esta tentativa.');
 			}
 
 			if (attempt.status !== 'in_progress') {
@@ -563,44 +609,27 @@ async function submitAnswer(attemptId, responses, userId) {
 			// Calcular a pontuação total possível
 			const totalPossiblePoints = attempt.quiz.questions.reduce((sum, question) => sum + question.points, 0);
 
-			for (const { questionId, markedAlternativeId } of responses) {
-				const markedAlternative = await tx.alternative.findUnique({
-					where: { id: markedAlternativeId },
-					select: {
-						id: true,
-						response: true,
-						question_id: true,
-						correct_alternative: true,
-						question: {
-							select: {
-								id: true,
-								statement: true,
-								points: true,
-								alternatives: {
-									where: { correct_alternative: true },
-									select: { id: true, response: true },
-								},
-							},
-						},
-					},
+			// Criar um mapa de alternativas para acesso rápido
+			const alternativesMap = new Map();
+			attempt.quiz.questions.forEach(question => {
+				question.alternatives.forEach(alt => {
+					alternativesMap.set(alt.id, {
+						...alt,
+						question
+					});
 				});
+			});
 
+			// Processar todas as respostas de uma vez
+			const questionResponses = responses.map(({ questionId, markedAlternativeId }) => {
+				const markedAlternative = alternativesMap.get(markedAlternativeId);
+				
 				if (!markedAlternative || markedAlternative.question_id !== questionId) {
 					throw new Error(`Alternativa ${markedAlternativeId} inválida para a questão ${questionId}.`);
 				}
 
 				const isCorrect = markedAlternative.correct_alternative;
 				const pointsEarned = isCorrect ? Number(markedAlternative.question.points) : 0;
-
-				await tx.question_response.create({
-					data: {
-						question_id: questionId,
-						marked_alternative_id: markedAlternativeId,
-						quiz_attempt_id: Number(attemptId),
-						is_correct: isCorrect,
-						points_earned: pointsEarned,
-					},
-				});
 
 				if (isCorrect) summary.correctAnswers += 1;
 				summary.totalScore += pointsEarned;
@@ -614,14 +643,27 @@ async function submitAnswer(attemptId, responses, userId) {
 						id: markedAlternative.id,
 						description: markedAlternative.response,
 					},
-					correctAlternative: markedAlternative.question.alternatives[0]
+					correctAlternative: markedAlternative.question.alternatives.find(alt => alt.correct_alternative)
 						? {
-							id: markedAlternative.question.alternatives[0].id,
-							description: markedAlternative.question.alternatives[0].response,
+							id: markedAlternative.question.alternatives.find(alt => alt.correct_alternative).id,
+							description: markedAlternative.question.alternatives.find(alt => alt.correct_alternative).response,
 						}
 						: null,
 				});
-			}
+
+				return {
+					question_id: questionId,
+					marked_alternative_id: markedAlternativeId,
+					quiz_attempt_id: Number(attemptId),
+					is_correct: isCorrect,
+					points_earned: pointsEarned,
+				};
+			});
+
+			// Criar todas as respostas de uma vez
+			await tx.question_response.createMany({
+				data: questionResponses
+			});
 
 			// Calcular a porcentagem final (limitada a 100%)
 			const finalScore = totalPossiblePoints > 0 
@@ -629,12 +671,13 @@ async function submitAnswer(attemptId, responses, userId) {
 				: 0;
 
 			// Atualizar a tentativa com a pontuação total
+			const now = new Date();
 			await tx.quiz_attempt.update({
 				where: { id: Number(attemptId) },
 				data: {
 					total_score: summary.totalScore,
 					status: 'completed',
-					finished_at: new Date(),
+					finished_at: now,
 				},
 			});
 
@@ -642,11 +685,15 @@ async function submitAnswer(attemptId, responses, userId) {
 				...summary,
 				finalScore,
 				totalPossiblePoints,
+				finished_at: now,
 			};
+		}, {
+			timeout: 10000 // Aumentar o timeout para 10 segundos
 		});
 
 		return result;
 	} catch (error) {
+		console.error('Erro ao processar respostas:', error);
 		throw error;
 	}
 }
@@ -1185,7 +1232,7 @@ async function getQuizResults(quizId, classId) {
 				enrollment: student.enrollment,
 				status: studentAttempt.status,
 				score: score,
-				score_percentage: Math.round(scorePercentage * 100) / 100,
+				score_percentage: Math.round(scorePercentage),
 				correct_answers: correctAnswers,
 				total_questions: totalQuestions,
 				started_at: studentAttempt.started_at,

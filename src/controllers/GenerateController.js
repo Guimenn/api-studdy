@@ -4,6 +4,7 @@ import {
 	generateResume,
 } from '../models/Generate.js';
 
+// Controller para gerar alternativas incorretas usando IA
 async function generateWrongAlternativesController(req, res) {
 	let { question, correct_answer } = req.body;
 
@@ -39,6 +40,7 @@ async function generateWrongAlternativesController(req, res) {
 	}
 }
 
+// Controller para gerar resumos usando IA
 async function generateResumeController(req, res) {
 	let { title } = req.body;
 

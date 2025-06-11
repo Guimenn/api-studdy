@@ -7,6 +7,7 @@ import {
 } from '../models/Subject.js';
 import { subjectSchema } from '../schemas/subject.schema.js';
 
+// Controller para listar todas as matérias
 async function getAllSubjectsController(req, res) {
 	try {
 		const subjects = await getAllSubjects();
@@ -17,6 +18,7 @@ async function getAllSubjectsController(req, res) {
 	}
 }
 
+// Controller para obter uma matéria específica por ID
 async function getSubjectByIdController(req, res) {
 	try {
 		const subject = await getSubjectById(parseInt(req.params.subjectId));
@@ -32,6 +34,7 @@ async function getSubjectByIdController(req, res) {
 	}
 }
 
+// Controller para criar uma nova matéria
 async function createSubjectController(req, res) {
 	let subjectData;
 
@@ -57,6 +60,7 @@ async function createSubjectController(req, res) {
 	}
 }
 
+// Controller para atualizar uma matéria existente
 async function updateSubjectController(req, res) {
 	const subject_id = parseInt(req.params.subjectId);
 	let subject;
@@ -79,6 +83,7 @@ async function updateSubjectController(req, res) {
 	}
 }
 
+// Controller para deletar uma matéria
 async function deleteSubjectController(req, res) {
 	try {
 		const subject_id = parseInt(req.params.subjectId);

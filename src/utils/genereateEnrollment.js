@@ -1,3 +1,8 @@
+/**
+ * Utilitário para geração de números de matrícula (arquivo duplicado)
+ * Gera códigos únicos de matrícula baseados no ID do usuário
+ * NOTA: Este arquivo parece ser uma duplicata de generateEnrollment.js
+ */
 function generateEnrollment(id) {
 	const BASE = 100000;
 	const suffix = id.toString().padStart(2, '0').slice(-2);

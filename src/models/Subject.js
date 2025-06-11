@@ -1,5 +1,15 @@
 import prisma from '../../prisma/client.js';
 
+/**
+ * Model para operações relacionadas a disciplinas/matérias
+ * Gerencia CRUD de disciplinas do sistema educacional
+ * Disciplinas são associadas a professores, turmas e conteúdos educacionais
+ */
+
+/**
+ * Obtém todas as disciplinas do sistema
+ * @returns {Array} - Lista de disciplinas com ID e nome
+ */
 async function getAllSubjects() {
 	return await prisma.subject.findMany({
 		select: {

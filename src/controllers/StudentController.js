@@ -15,8 +15,7 @@ import {
 import { ZodError } from 'zod/v4';
 import { getQuizzesByStudent } from '../models/Quiz.js';
 
-// Controllers do /admin/student
-
+// Controller para listar todos os estudantes
 async function getAllStudentsController(req, res) {
 	try {
 		const students = await getAllStudents();
@@ -27,6 +26,7 @@ async function getAllStudentsController(req, res) {
 	}
 }
 
+// Controller para obter um estudante específico por ID
 async function getStudentByIdController(req, res) {
 	try {
 		const student = await getStudentById(parseInt(req.params.studentId));
@@ -42,6 +42,7 @@ async function getStudentByIdController(req, res) {
 	}
 }
 
+// Controller para criar um novo estudante
 async function createStudentController(req, res) {
 	let student;
 
